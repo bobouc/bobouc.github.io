@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>lipsky</title>
   
-  <subtitle>Let me try</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/liysky/liysky.github.io.git/"/>
@@ -10,7 +10,7 @@
   <id>https://github.com/liysky/liysky.github.io.git/</id>
   
   <author>
-    <name>Lipsky</name>
+    <name>lipsky</name>
     
   </author>
   
