@@ -20,23 +20,34 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="551. Student Attendance Record I551. Student Attendance Record I You are given a string representing an attendance record for a student. The record only contains the following three characters:‘A’ : A">
+    <meta name="description" content="##数字图像处理作业02 背景知识空间域与频率域空间域与频率域提供了观察图像的不同视角  空间域中，数字图像f(x,y)即为一个定义在二维空间中的矩形区域上的离散函数  如果将f(x,y)视为幅值变化（即空间域灰度值在平面空间的梯度——直观表现为衡量表征图像中灰度变化剧烈程度的指标）的二维信号——幅值变化即为灰度值的梯度。则可以通过某些变换手段（如傅立叶变换、离散余弦变化、小波变换等）在频域下对图">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode551. Student Attendance Record I">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2020/02/27/LeetCode551-Student-Attendance-Record-I/index.html">
+<meta property="og:title" content="频率域高通低通滤波&amp;同态滤波">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2020/10/23/%E9%A2%91%E7%8E%87%E5%9F%9F%E9%AB%98%E9%80%9A%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2-%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/index.html">
 <meta property="og:site_name" content="Jax&#39;s Blog">
-<meta property="og:description" content="551. Student Attendance Record I551. Student Attendance Record I You are given a string representing an attendance record for a student. The record only contains the following three characters:‘A’ : A">
-<meta property="article:published_time" content="2020-02-27T13:48:48.000Z">
-<meta property="article:modified_time" content="2020-05-05T15:36:19.389Z">
+<meta property="og:description" content="##数字图像处理作业02 背景知识空间域与频率域空间域与频率域提供了观察图像的不同视角  空间域中，数字图像f(x,y)即为一个定义在二维空间中的矩形区域上的离散函数  如果将f(x,y)视为幅值变化（即空间域灰度值在平面空间的梯度——直观表现为衡量表征图像中灰度变化剧烈程度的指标）的二维信号——幅值变化即为灰度值的梯度。则可以通过某些变换手段（如傅立叶变换、离散余弦变化、小波变换等）在频域下对图">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021140831977.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021145937937.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021151648193.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021151701682.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021151718012.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201023022624600.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021155933953.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021161549234.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021161615446.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201023012547066.png">
+<meta property="article:published_time" content="2020-10-22T18:27:31.000Z">
+<meta property="article:modified_time" content="2020-10-22T18:29:59.036Z">
 <meta property="article:author" content="jax">
-<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="BuaaAssignments">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021140831977.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
     <link rel="alternate" href="/atom.xml" title="Jax&#39;s Blog" type="application/atom+xml">
     
-    <title>LeetCode551. Student Attendance Record I · Jax&#39;s Blog</title>
+    <title>频率域高通低通滤波&amp;同态滤波 · Jax&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -231,7 +242,7 @@
                 <a href="/" >Jax&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">LeetCode551. Student Attendance Record I</a>
+                <a href="#" class="post-name">频率域高通低通滤波&同态滤波</a>
             </div>
     </div>
     
@@ -261,7 +272,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            LeetCode551. Student Attendance Record I
+            频率域高通低通滤波&同态滤波
             <!-- 404 -->
             
         </h1>
@@ -280,18 +291,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "BuaaAssignments">BuaaAssignments</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">311</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/02/27</span>
+                    <span class="post-intro-time">2020/10/23</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -415,22 +426,93 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h3 id="551-Student-Attendance-Record-I"><a href="#551-Student-Attendance-Record-I" class="headerlink" title="551. Student Attendance Record I"></a>551. Student Attendance Record I</h3><p><a href="https://leetcode-cn.com/problems/student-attendance-record-i/" target="_blank" rel="noopener">551. Student Attendance Record I</a></p>
-<p>You are given a string representing an attendance record for a student. The record only contains the following three characters:<br>‘A’ : Absent.<br>‘L’ : Late.<br>‘P’ : Present.<br>A student could be rewarded if his attendance record doesn’t contain more than one ‘A’ (absent) or more than two continuous ‘L’ (late).</p>
-<p>You need to return whether the student could be rewarded according to his attendance record.</p>
-<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h3><p>Input: “PPALLP”<br>Output: True<br>Example 2:</p>
-<p>Input: “PPALLL”<br>Output: False</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkRecord</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(count &gt; <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i) == <span class="string">'A'</span>)&#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>( i &lt; (s.length()-<span class="number">2</span>) &amp;&amp; (s.charAt(i) == <span class="string">'L'</span>) &amp;&amp; (s.charAt(i+<span class="number">1</span>) == <span class="string">'L'</span>) &amp;&amp; (s.charAt(i+<span class="number">2</span>) == <span class="string">'L'</span>))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (count &lt; <span class="number">2</span>) ;</span><br><span class="line">        <span class="comment">//return (count &lt; 2) &amp;&amp; (s.indexOf("LLL") &lt; 0)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>##数字图像处理作业02</p>
+<h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><h2 id="空间域与频率域"><a href="#空间域与频率域" class="headerlink" title="空间域与频率域"></a>空间域与频率域</h2><p><strong>空间域与频率域提供了观察图像的不同视角</strong></p>
+<ul>
+<li><p>空间域中，数字图像f(x,y)即为一个定义在二维空间中的矩形区域上的离散函数</p>
+</li>
+<li><p>如果将f(x,y)视为幅值变化（即空间域灰度值在平面空间的梯度——直观表现为衡量表征图像中灰度变化剧烈程度的指标）的二维信号——幅值变化即为灰度值的梯度。则可以通过某些变换手段（如傅立叶变换、离散余弦变化、小波变换等）在频域下对图像进行处理。</p>
+</li>
+<li><p>比如在空间图像里不好找出噪声的模式，如果变换到频率域，则比较好找出噪声的模式（高频分量），并能更容易处理。</p>
+</li>
+</ul>
+<p><strong>空间域：</strong></p>
+<p>有<strong>图像像素组成的空间</strong>，其<strong>物理描述的是图像的灰度 分布函数</strong>。</p>
+<p><strong>频率域：</strong></p>
+<p>以频率（即波数）为自变量的描述图像的特征，可以将一幅图像值元值在空间上的变化分解为具有不同振幅、空间频率和相位的简振函数的线性叠加，图像中各种频率成分的组成和分布称为空间频谱，<strong>其物理意义是图像的频率分布函数</strong>。这种对图像的频率特征进行分解、处理和分析称为频率域处理。</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021140831977.png" alt="image-20201021140831977"></p>
+<h2 id="频率域滤波的目的"><a href="#频率域滤波的目的" class="headerlink" title="频率域滤波的目的"></a>频率域滤波的目的</h2><ul>
+<li>引起图像质量下降的噪声占频谱的高频段</li>
+<li>图像边缘占高频段</li>
+<li>图像主题或灰度缓变区域占低频段</li>
+</ul>
+<h2 id="在频率域研究图像的原因"><a href="#在频率域研究图像的原因" class="headerlink" title="在频率域研究图像的原因"></a>在频率域研究图像的原因</h2><ul>
+<li>空间域复杂的问题转变为频谱上简单易于求解的问题</li>
+<li>滤波在频率域更为直观，可以解释空间域滤波的某些性质</li>
+<li>可以在频率域制定滤波器，做饭变换，然后在空间域使用结果滤波器作为空间域滤波器的指导</li>
+</ul>
+<h2 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h2><ul>
+<li>利用傅立叶变换将原问题转变为频域上解决</li>
+<li>应用反变换，将频域上的解转化为原问题的解</li>
+</ul>
+<h2 id="频率域的特征"><a href="#频率域的特征" class="headerlink" title="频率域的特征"></a>频率域的特征</h2><ul>
+<li>频谱的直流低频分量对应图像的平滑区域</li>
+<li>频谱的高频分量对应图像的边沿或变化剧烈区域</li>
+<li>外界叠加噪声对应于频率较高的部分</li>
+<li>恒定的干扰条纹对应频谱中的某些特征点</li>
+</ul>
+<h2 id="低通滤波"><a href="#低通滤波" class="headerlink" title="低通滤波"></a>低通滤波</h2><ul>
+<li>构造一个低通滤波器，使得低频分量顺利通过，有效阻止高频分量</li>
+<li>低通滤波时一个牺牲图像清晰度为代价来减少干扰效果的修饰过程</li>
+<li>高通滤波与低通滤波作用相反，它使高频分量顺利通过，而削弱低通分量</li>
+</ul>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021145937937.png" alt="image-20201021145937937"></p>
+<ul>
+<li>低通滤波器类型<ul>
+<li>理想低通滤波器：尖锐</li>
+<li>巴特沃思低通滤波器：处于理想和高斯滤波器之间</li>
+<li>高斯滤波器：平滑</li>
+</ul>
+</li>
+</ul>
+<h3 id="低通滤波器应用实例：模糊，平滑等"><a href="#低通滤波器应用实例：模糊，平滑等" class="headerlink" title="低通滤波器应用实例：模糊，平滑等"></a>低通滤波器应用实例：模糊，平滑等</h3><ul>
+<li><p>字符识别：通过模拟图像，桥接断裂字符的裂缝</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021151648193.png" alt="image-20201021151648193"></p>
+</li>
+<li><p>印刷和出版业：从一幅尖锐的原始图像产生平滑、柔和的外观，如减少人脸皮肤皱纹和小斑点</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021151701682.png" alt="image-20201021151701682"></p>
+</li>
+<li><p>处理卫星和航空图像：尽可能模糊细节，保留大的可识别特征</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021151718012.png" alt="image-20201021151718012"></p>
+</li>
+</ul>
+<h3 id="频率域锐化滤波器"><a href="#频率域锐化滤波器" class="headerlink" title="频率域锐化滤波器"></a>频率域锐化滤波器</h3><p>图像的锐化可以通过高通滤波器过程实现，减弱傅立叶变换的低频成分，而不改变高频信息</p>
+<p>是低通滤波的相反过程：</p>
+<p>$H_{hp}(u,v) = 1-H_{lp}(u,v)$</p>
+<h2 id="高通滤波器类型"><a href="#高通滤波器类型" class="headerlink" title="高通滤波器类型"></a>高通滤波器类型</h2><ul>
+<li>理想高通滤波器：尖锐</li>
+<li>巴特沃思高通滤波器：处于理想和高斯滤波器之间</li>
+<li>高斯高通滤波器：平滑</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="comment">###################################################################</span></span><br><span class="line"><span class="comment">###############            进行频率域处理             #############</span></span><br><span class="line"><span class="comment">###################################################################</span></span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">"fog.jpg"</span>,<span class="number">0</span>)<span class="comment">#读图</span></span><br><span class="line">dft = cv2.dft(np.float64(img),flags = cv2.DFT_COMPLEX_OUTPUT)<span class="comment">#设置输入格式为float32</span></span><br><span class="line">dft_shift = np.fft.fftshift(dft)<span class="comment">#低频分量中心化处理，方便观察</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置振幅大小</span></span><br><span class="line">magnitude_spectrum = <span class="number">20</span> * np.log(cv2.magnitude(dft_shift[:, :, <span class="number">0</span>], dft_shift[:, :, <span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment">#打印输入图像</span></span><br><span class="line">plt.subplot(<span class="number">221</span>), plt.imshow(img, cmap=<span class="string">'gray'</span>)</span><br><span class="line">plt.title(<span class="string">'input'</span>), plt.xticks([]), plt.yticks([])</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取频谱图</span></span><br><span class="line">plt.subplot(<span class="number">222</span>), plt.imshow(magnitude_spectrum, cmap=<span class="string">'gray'</span>)</span><br><span class="line">plt.title(<span class="string">'Frequency Domain'</span>), plt.xticks([]), plt.yticks([])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置低通滤波器</span></span><br><span class="line">rows, cols = img.shape</span><br><span class="line">crow,ccol = int(rows/<span class="number">2</span>), int(cols/<span class="number">2</span>) <span class="comment">#中心位置</span></span><br><span class="line">mask = np.zeros((rows, cols, <span class="number">2</span>), np.uint8)</span><br><span class="line">mask[crow<span class="number">-30</span>:crow+<span class="number">30</span>, ccol<span class="number">-30</span>:ccol+<span class="number">30</span>] = <span class="number">1</span><span class="comment">#设置矩形窗口遮罩，设为1，过滤高频</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#掩膜图像和频谱图像乘积</span></span><br><span class="line">f = dft_shift * mask</span><br><span class="line"></span><br><span class="line"><span class="comment">#傅里叶逆变换</span></span><br><span class="line">ishift = np.fft.ifftshift(f)</span><br><span class="line">iimg = cv2.idft(ishift)</span><br><span class="line">res = cv2.magnitude(iimg[:,:,<span class="number">0</span>], iimg[:,:,<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#显示低通滤波处理图像</span></span><br><span class="line">plt.subplot(<span class="number">223</span>), plt.imshow(res, <span class="string">'gray'</span>), plt.title(<span class="string">'low'</span>)</span><br><span class="line">plt.axis(<span class="string">'off'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f = np.fft.fft2(img)</span><br><span class="line">fshift = np.fft.fftshift(f)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置高通滤波器</span></span><br><span class="line">rows, cols = img.shape</span><br><span class="line">crow,ccol = int(rows/<span class="number">2</span>), int(cols/<span class="number">2</span>)</span><br><span class="line">fshift[crow<span class="number">-30</span>:crow+<span class="number">30</span>, ccol<span class="number">-30</span>:ccol+<span class="number">30</span>] = <span class="number">0</span> <span class="comment">#设置矩形窗口遮罩，设为0，过滤低频</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#傅里叶逆变换</span></span><br><span class="line">ishift = np.fft.ifftshift(fshift)</span><br><span class="line">himg = np.fft.ifft2(ishift)</span><br><span class="line">himg = np.abs(himg)</span><br><span class="line"></span><br><span class="line"><span class="comment">#显示原始图像和高通滤波处理图像</span></span><br><span class="line">plt.subplot(<span class="number">224</span>), plt.imshow(himg, <span class="string">'gray'</span>), plt.title(<span class="string">'high'</span>)</span><br><span class="line">plt.axis(<span class="string">'off'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c++</span></span><br><span class="line"><span class="comment">//from Huahua, good solution</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkRecord</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> l&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : s)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'A'</span>) ++a;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'L'</span>) ++l;</span><br><span class="line">            <span class="keyword">else</span> l = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(a &gt; <span class="number">1</span> || l &gt; <span class="number">2</span> ) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201023022624600.png" alt="image-20201023022624600"></p>
+<h2 id="同态滤波"><a href="#同态滤波" class="headerlink" title="同态滤波"></a>同态滤波</h2><blockquote>
+<p>  同态滤波是一种广泛于信号和图像处理的技术，将原本的信号经由非线性映射，转换到可以使用线性滤波器的不同域，做完运算后再映射回原始域。同态的性质就是保持相关的属性不变，而同态滤波的好处是将原本复杂的运算转为效能相同但相对简单的运算。这个概念在1960年代由Thomas Stockham，Alan V. Oppenheim和Ronald W. Schafer在麻省理工学院提出。——wiki</p>
+</blockquote>
+<p><strong>基本思想</strong></p>
+<p>把图像的灰度函数 f(x,y) 看作为入射光分量和反射光分量两部分组成</p>
+<p>$f(x,y) = i(x,y) r(x,y)$</p>
+<p>i(x,y)：入射光，占据低频段</p>
+<p>r(x,y)：反射光——取决于物体的特性，物体的亮度特征主要取决于反射光，占据高频段</p>
+<p>![image-20201021161436906](/Users/lipskyli/Library/Application Support/typora-user-images/image-20201021161436906.png)</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021155933953.png" alt="image-20201021155933953"></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021161549234.png" alt="image-20201021161549234"></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201021161615446.png" alt="image-20201021161615446"></p>
+<p>![image-20201021161632876](/Users/lipskyli/Library/Application Support/typora-user-images/image-20201021161632876.png)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">homomorphic_filter</span><span class="params">(src,d0 = <span class="number">1</span>,r1 = <span class="number">0.5</span>,rh=<span class="number">2</span>,c=<span class="number">4</span>,h=<span class="number">2.0</span>,l=<span class="number">0.5</span>)</span>:</span></span><br><span class="line">    gray = src.copy()      <span class="comment">#duplicate img</span></span><br><span class="line">    <span class="keyword">if</span> len(src.shape) &gt; <span class="number">2</span>:</span><br><span class="line">        gray = cv2.cvtColor(src,cv2.COLOR_BGR2GRAY) <span class="comment">#set image gray</span></span><br><span class="line">    gray = np.float64(gray)</span><br><span class="line">    print(gray)</span><br><span class="line">    rows,cols = gray.shape <span class="comment">#get rows and columns of inputed pic</span></span><br><span class="line"></span><br><span class="line">    gray_fft = np.fft.fft2(gray)    <span class="comment"># two dimension fft</span></span><br><span class="line">    print(gray_fft)</span><br><span class="line">    gray_fftshift = np.fft.fftshift(gray_fft)</span><br><span class="line">    print(gray_fftshift)</span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    需要fftshift的原因：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    1、经过fft变换后，数据的频率范围是从[0,fs]排列的。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    2、而一般，我们在画图或者讨论的时候，是从[-fs/2,fs/2]的范围进行分析。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    3、因此，需要将经过fft变换后的图像的[fs/2,fs]部分移动到[-fs/2,0]这个范围内。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    而fftshift就是完成这个功能。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    通常，如果想得到所见的中间是0频的图像，经过fft变换后，都要再经过fftshift。</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line"></span><br><span class="line">    dst_fftshift = np.zeros_like(gray_fftshift) <span class="comment">#产生0类似的零矩阵</span></span><br><span class="line">    <span class="comment"># np.meshgrid: 矩阵化   np.arange: start,stop,step 'arange can solve remainder'</span></span><br><span class="line">    M,N = np.meshgrid(np.arange(-cols // <span class="number">2</span>,cols // <span class="number">2</span>),np.arange(-rows//<span class="number">2</span>,rows//<span class="number">2</span>))</span><br><span class="line">    D = np.sqrt(M ** <span class="number">2</span> + N ** <span class="number">2</span>) <span class="comment">#square result</span></span><br><span class="line">    Z = (rh - r1) * (<span class="number">1</span> - np.exp(-c * (D ** <span class="number">2</span> / d0 ** <span class="number">2</span>))) + r1</span><br><span class="line"></span><br><span class="line">    <span class="comment">#使用频率增强函数进行对原频域的分量进行处理</span></span><br><span class="line">    dst_fftshift = Z * gray_fftshift                <span class="comment">#对零矩阵进行Z处理，Z*原频域处理后的分量</span></span><br><span class="line">    dst_fftshift = (h - l) * dst_fftshift + l</span><br><span class="line"></span><br><span class="line">    dst_ifftshift = np.fft.ifftshift(dst_fftshift)</span><br><span class="line">    dst_ifft = np.fft.ifft2(dst_ifftshift)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#取实数部分</span></span><br><span class="line">    dst = np.real(dst_ifft)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#np.clip to clip bigger than 255</span></span><br><span class="line">    dst = np.uint8(np.clip(dst,<span class="number">0</span>,<span class="number">255</span>))</span><br><span class="line">    <span class="keyword">return</span> dst</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># main</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment">#resize img</span></span><br><span class="line">    img = cv2.imread(<span class="string">"preSny.jpg"</span>, cv2.IMREAD_GRAYSCALE)</span><br><span class="line">    img = cv2.resize(img, (<span class="number">600</span>,<span class="number">400</span>))</span><br><span class="line"></span><br><span class="line">    img_new = homomorphic_filter(img)</span><br><span class="line">    result = np.hstack((img, img_new))</span><br><span class="line"></span><br><span class="line">    cv2.imshow(<span class="string">"Contrast"</span>, result)</span><br><span class="line"></span><br><span class="line">    cv2.waitKey()</span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c++</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">bool <span class="title">checkRecord</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s.find(<span class="string">'A'</span>, s.find(<span class="string">'A'</span>) + <span class="number">1</span>) == -<span class="number">1</span> &amp;&amp;  s.find(<span class="string">"LLL"</span>) == -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Time Complexity: solution1: O(n) + O(n), solution2: O(n)</strong></p>
-<p><strong>Space Complexity: O(1)</strong></p>
-<p><strong>note:</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> s = <span class="string">"lipsky"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> p = <span class="string">"l"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans = s.<span class="built_in">find</span>(p, <span class="number">2</span>) ;  <span class="comment">//find "l" from 2 index in s; if true return index, else return -1 (same as java)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">system(<span class="string">"pause"</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201023012547066.png" alt="image-20201023012547066"></p>
 
     </article>
     <!-- license  -->
@@ -439,17 +521,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/02/29/LeetCode504-Base-7/" title= "LeetCode504. Base 7">
-                    <div class="nextTitle">LeetCode504. Base 7</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/02/26/LeetCode-303-Range-Sum-Query-Immutable/" title= "LeetCode 303. Range Sum Query - Immutable">
-                    <div class="prevTitle">LeetCode 303. Range Sum Query - Immutable</div>
+                <a href= "/2020/10/19/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86work-%E7%A9%BA%E9%97%B4%E5%9F%9F-%E5%9B%BE%E5%83%8F%E5%9F%9F-%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96-%E5%B9%B3%E6%BB%91%E7%A9%BA%E9%97%B4%E6%BB%A4%E6%B3%A2-%E9%94%90%E5%8C%96%E6%BB%A4%E6%B3%A2%E5%99%A8/" title= "数字图像处理work-空间域/图像域-直方图均衡化/平滑空间滤波/锐化滤波器">
+                    <div class="prevTitle">数字图像处理work-空间域/图像域-直方图均衡化/平滑空间滤波/锐化滤波器</div>
                 </a>
             
         </li>
@@ -551,7 +628,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#551-Student-Attendance-Record-I"><span class="toc-number">1.</span> <span class="toc-text">551. Student Attendance Record I</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example-1"><span class="toc-number">2.</span> <span class="toc-text">Example 1:</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景知识"><span class="toc-number">1.</span> <span class="toc-text">背景知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空间域与频率域"><span class="toc-number">2.</span> <span class="toc-text">空间域与频率域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#频率域滤波的目的"><span class="toc-number">3.</span> <span class="toc-text">频率域滤波的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在频率域研究图像的原因"><span class="toc-number">4.</span> <span class="toc-text">在频率域研究图像的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决过程"><span class="toc-number">5.</span> <span class="toc-text">解决过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#频率域的特征"><span class="toc-number">6.</span> <span class="toc-text">频率域的特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#低通滤波"><span class="toc-number">7.</span> <span class="toc-text">低通滤波</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#低通滤波器应用实例：模糊，平滑等"><span class="toc-number">7.1.</span> <span class="toc-text">低通滤波器应用实例：模糊，平滑等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#频率域锐化滤波器"><span class="toc-number">7.2.</span> <span class="toc-text">频率域锐化滤波器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高通滤波器类型"><span class="toc-number">8.</span> <span class="toc-text">高通滤波器类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同态滤波"><span class="toc-number">9.</span> <span class="toc-text">同态滤波</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
