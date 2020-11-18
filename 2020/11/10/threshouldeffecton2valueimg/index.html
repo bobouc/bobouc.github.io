@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109143750177.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201110121940396.png">
 <meta property="article:published_time" content="2020-11-10T04:22:00.000Z">
-<meta property="article:modified_time" content="2020-11-13T12:07:44.025Z">
+<meta property="article:modified_time" content="2020-11-16T08:29:28.401Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="BuaaAssignments">
 <meta name="twitter:card" content="summary">
@@ -458,7 +458,7 @@ height:50vh;
 
 <p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109143750177.png" alt="image-20201109143750177"></p>
 <p><strong>相比较全局阈值方法，可以清晰的看到，自适应阈值化不会使得图像出现大面积的目标丢失——黑色块或者白色块，局部信息的细节更加友好，虽然不会出现大面积的目标丢失，但是对于最终目标的连结性是比较差的，通常包含有许多的噪点噪声，所以对于自适应的局部特性的自适应阈值方法，最后还会进行一些噪声去除的操作，从而消除噪声，来进一步加强对于目标物体的检测。</strong></p>
-<h3 id="Otsu-大津阈值法"><a href="#Otsu-大津阈值法" class="headerlink" title="Otsu 大津阈值法"></a>Otsu 大津阈值法</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109164629903.png" alt="image-20201109164629903"></p>
+<h3 id="Otsu-大律阈值法"><a href="#Otsu-大律阈值法" class="headerlink" title="Otsu 大律阈值法"></a>Otsu 大律阈值法</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109164629903.png" alt="image-20201109164629903"></p>
 <p>将图像按灰度阈值分为两类，分别求出两类的均值和方差，再求出两个类之间的方差，当类之间方差比类内方差最大时，所求出的阈值T，即为所求阈值。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">img = cv.imread(<span class="string">'shot.jpg'</span>,<span class="number">0</span>)</span><br><span class="line"><span class="comment"># global thresholding</span></span><br><span class="line">ret1,th1 = cv.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv.THRESH_BINARY)</span><br><span class="line"><span class="comment"># Otsu's thresholding</span></span><br><span class="line">ret2,th2 = cv.threshold(img,<span class="number">0</span>,<span class="number">255</span>,cv.THRESH_BINARY+cv.THRESH_OTSU)</span><br><span class="line"><span class="comment"># plot all the images and their histograms</span></span><br><span class="line">images = [img, <span class="number">0</span>, th1,</span><br><span class="line">          img, <span class="number">0</span>, th2]</span><br><span class="line">titles = [<span class="string">'Original Noisy Image'</span>,<span class="string">'Histogram'</span>,<span class="string">'Global Thresholding (v=50)'</span>,</span><br><span class="line">          <span class="string">'Original Noisy Image'</span>,<span class="string">'Histogram'</span>,<span class="string">"Otsu's Thresholding"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">    plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i*<span class="number">3</span>+<span class="number">1</span>),plt.imshow(images[i*<span class="number">3</span>],<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i*<span class="number">3</span>]), plt.xticks([]), plt.yticks([])</span><br><span class="line">    plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i*<span class="number">3</span>+<span class="number">2</span>),plt.hist(images[i*<span class="number">3</span>].ravel(),<span class="number">256</span>)</span><br><span class="line">    plt.title(titles[i*<span class="number">3</span>+<span class="number">1</span>]), plt.xticks([]), plt.yticks([])</span><br><span class="line">    plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i*<span class="number">3</span>+<span class="number">3</span>),plt.imshow(images[i*<span class="number">3</span>+<span class="number">2</span>],<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i*<span class="number">3</span>+<span class="number">2</span>]), plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
@@ -468,7 +468,7 @@ height:50vh;
 <p><strong>总结</strong></p>
 <ul>
 <li>全局阈值法处理的方法较自适应阈值法，两者的区别最主要集中在噪声分布和对于均匀光照还是非均匀光照的处理上，全局阈值法适合于简单单一的均匀光照条件上进行处理，而自适应阈值法适合于不同的局部光照条件，对于细节的处理会更好，但同时也会有噪声的保留。</li>
-<li>大津法是一种更优的阈值处理方法，能够快速有效地找到类间的分割阈值，但是缺点在于对于目标的检测是单一的，如果想要检测的目标不属于同一或者接近的灰度区域，那么将会导致想要检测的目标物体的信息丢失，反映在图片上就是会有连结信息的消失（黑色块或者白色块），但是相较于普通的全局阈值处理，效果是由明显的提升对比的。</li>
+<li>大律法是一种更优的阈值处理方法，能够快速有效地找到类间的分割阈值，但是缺点在于对于目标的检测是单一的，如果想要检测的目标不属于同一或者接近的灰度区域，那么将会导致想要检测的目标物体的信息丢失，反映在图片上就是会有连结信息的消失（黑色块或者白色块），但是相较于普通的全局阈值处理，效果是由明显的提升对比的。</li>
 </ul>
 <table>
 <thead>
@@ -606,7 +606,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#比较不同的阈值处理方法对生成二值图像的影响"><span class="toc-number">1.</span> <span class="toc-text">比较不同的阈值处理方法对生成二值图像的影响</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局阈值法"><span class="toc-number">1.1.</span> <span class="toc-text">全局阈值法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自适应阈值化"><span class="toc-number">1.2.</span> <span class="toc-text">自适应阈值化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Otsu-大津阈值法"><span class="toc-number">1.3.</span> <span class="toc-text">Otsu 大津阈值法</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#比较不同的阈值处理方法对生成二值图像的影响"><span class="toc-number">1.</span> <span class="toc-text">比较不同的阈值处理方法对生成二值图像的影响</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局阈值法"><span class="toc-number">1.1.</span> <span class="toc-text">全局阈值法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自适应阈值化"><span class="toc-number">1.2.</span> <span class="toc-text">自适应阈值化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Otsu-大律阈值法"><span class="toc-number">1.3.</span> <span class="toc-text">Otsu 大律阈值法</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1434,9 +1434,26 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 57
+        Total : 58
         </div>
         <!-- search  -->
         
@@ -1449,6 +1466,11 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href= "/2020/11/18/DogsVSCats/" >DogsVSCats</a>
+        </li>
     
     
         <li class="archive-post-item">
