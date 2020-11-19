@@ -20,23 +20,23 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="PAT 1013 数素数 （20分）  令 Pi 表示第 i 个素数。现任给两个正整数 M≤N≤104，请输出 PM 到 PN 的所有素数。 输入格式：输入在一行中给出 M 和 N，其间以空格分隔。 输出格式：输出从 PM 到 PN 的所有素数，每 10 个数字占 1 行，其间以空格分隔，但行末不得有多余空格。 输入样例：15 27  输出样例：12311 13 17 19 23 29 31 37">
+    <meta name="description" content="08.06. Hanota LCCIIn the classic problem of the Towers of Hanoi, you have 3 towers and N disks of different sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending order">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PAT 1013 数素数">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2019/03/21/PAT-1013-%E6%95%B0%E7%B4%A0%E6%95%B0/index.html">
+<meta property="og:title" content="LeetCode-Hanota LCCI">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2020/11/20/LeetCode-Hanota-LCCI/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="PAT 1013 数素数 （20分）  令 Pi 表示第 i 个素数。现任给两个正整数 M≤N≤104，请输出 PM 到 PN 的所有素数。 输入格式：输入在一行中给出 M 和 N，其间以空格分隔。 输出格式：输出从 PM 到 PN 的所有素数，每 10 个数字占 1 行，其间以空格分隔，但行末不得有多余空格。 输入样例：15 27  输出样例：12311 13 17 19 23 29 31 37">
-<meta property="article:published_time" content="2019-03-21T14:49:27.000Z">
-<meta property="article:modified_time" content="2020-05-05T15:36:19.406Z">
+<meta property="og:description" content="08.06. Hanota LCCIIn the classic problem of the Towers of Hanoi, you have 3 towers and N disks of different sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending order">
+<meta property="article:published_time" content="2020-11-19T16:01:32.000Z">
+<meta property="article:modified_time" content="2020-11-19T16:11:02.956Z">
 <meta property="article:author" content="jax">
-<meta property="article:tag" content="PAT">
+<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
     <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
     
-    <title>PAT 1013 数素数 · GuoXin Li&#39;s Blog</title>
+    <title>LeetCode-Hanota LCCI · GuoXin Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -231,7 +231,7 @@
                 <a href="/" >GuoXin Li&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">PAT 1013 数素数</a>
+                <a href="#" class="post-name">LeetCode-Hanota LCCI</a>
             </div>
     </div>
     
@@ -261,7 +261,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            PAT 1013 数素数
+            LeetCode-Hanota LCCI
             <!-- 404 -->
             
         </h1>
@@ -280,18 +280,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "PAT">PAT</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">375</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">304</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/03/21</span>
+                    <span class="post-intro-time">2020/11/20</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -415,18 +415,23 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="PAT-1013-数素数-（20分）"><a href="#PAT-1013-数素数-（20分）" class="headerlink" title="PAT 1013 数素数 （20分）"></a>PAT 1013 数素数 （20分）</h2><!-- toc -->
-
-<p>令 Pi 表示第 i 个素数。现任给两个正整数 M≤N≤104，请输出 PM 到 PN 的所有素数。</p>
-<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入在一行中给出 M 和 N，其间以空格分隔。</p>
-<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>输出从 PM 到 PN 的所有素数，每 10 个数字占 1 行，其间以空格分隔，但行末不得有多余空格。</p>
-<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5 27</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">11 13 17 19 23 29 31 37 41 43</span><br><span class="line">47 53 59 61 67 71 73 79 83 89</span><br><span class="line">97 101 103</span><br></pre></td></tr></table></figure>
-
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>可以用 vector 容器来存储所有第 M 个 到 第 N 个素数，然后，再输出。</p>
-<p>输入问题，判断从第 M 个素数开始，才写入 vector 容器中，第 M 个之前的都不写入。再设置一个参数 cnt ，每次写入之后加 1， 到第 N 个停止。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isprime</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= a; i++)</span><br><span class="line">        <span class="keyword">if</span>(a % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> M, N, num = <span class="number">2</span>, cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; M &gt;&gt; N;</span><br><span class="line">    <span class="keyword">while</span>(cnt &lt; N)&#123;            <span class="comment">//当素数个数小于最大的 N 时,继续写入 v 中</span></span><br><span class="line">        <span class="keyword">if</span>( isprime(num))&#123;</span><br><span class="line">            cnt++;                <span class="comment">//素数判断基数增加 1</span></span><br><span class="line">            <span class="keyword">if</span>(cnt &gt;= M) v.push_back(num);     <span class="comment">//如果这个素数是第 M+ 个素数(包括第 M 个),写入 v</span></span><br><span class="line">        &#125;</span><br><span class="line">        num++;              <span class="comment">//总素数个数增加 1</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        cnt++;</span><br><span class="line">        <span class="keyword">if</span>(cnt % <span class="number">10</span> != <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>, v[i]);</span><br><span class="line">        <span class="keyword">if</span>(cnt % <span class="number">10</span> == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="08-06-Hanota-LCCI"><a href="#08-06-Hanota-LCCI" class="headerlink" title="08.06. Hanota LCCI"></a><a href="https://leetcode-cn.com/problems/hanota-lcci/" target="_blank" rel="noopener">08.06. Hanota LCCI</a></h3><p>In the classic problem of the Towers of Hanoi, you have 3 towers and N disks of different sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending order of size from top to bottom (i.e., each disk sits on top of an even larger one). You have the following constraints:</p>
+<p>(1) Only one disk can be moved at a time.<br>(2) A disk is slid off the top of one tower onto another tower.<br>(3) A disk cannot be placed on top of a smaller disk.</p>
+<p>Write a program to move the disks from the first tower to the last using stacks.</p>
+<h4 id="Example1"><a href="#Example1" class="headerlink" title="Example1:"></a>Example1:</h4><p> Input: A = [2, 1, 0], B = [], C = []<br> Output: C = [2, 1, 0]</p>
+<h4 id="Example2"><a href="#Example2" class="headerlink" title="Example2:"></a>Example2:</h4><p> Input: A = [1, 0], B = [], C = []<br> Output: C = [1, 0]<br>Note:</p>
+<p><strong>A.length &lt;= 14</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">hanota</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; C)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = A.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">move</span>(n, A, B, C);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">int</span> n, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; C)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">            C.push_back(A.back());</span><br><span class="line">            A.pop_back();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">move</span>(n<span class="number">-1</span>, A, C, B);</span><br><span class="line">        C.push_back(A.back());</span><br><span class="line">        A.pop_back();</span><br><span class="line">        <span class="built_in">move</span>(n<span class="number">-1</span>, B, A, C);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>time complexity: $O(2^n-1)$</strong> . It’s the moving times.</p>
+<p><strong>space complexity:</strong> $O(1)$</p>
+<p><strong>Key Solution:</strong></p>
+<ul>
+<li>wanna to resolve n number, first to resolve n-1</li>
+<li>put <strong>n-1</strong> number of A into B using C</li>
+<li>push_back A.back into C. (It’s a half answer that A.back must be at the bottum of C)</li>
+<li>pop A.back(). (=delete A.back)</li>
+<li>put <strong>n-1</strong> number of B into C using A</li>
+</ul>
 
     </article>
     <!-- license  -->
@@ -435,17 +440,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/03/24/PAT-1014%E7%A6%8F%E5%B0%94%E6%91%A9%E6%96%AF%E7%9A%84%E7%BA%A6%E4%BC%9A/" title= "PAT 1014福尔摩斯的约会">
-                    <div class="nextTitle">PAT 1014福尔摩斯的约会</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/03/20/Character-String-C/" title= "C语言字符串浅析 Character String (C)">
-                    <div class="prevTitle">C语言字符串浅析 Character String (C)</div>
+                <a href= "/2020/11/18/DogsVSCats/" title= "DogsVSCats">
+                    <div class="prevTitle">DogsVSCats</div>
                 </a>
             
         </li>
@@ -547,7 +547,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PAT-1013-数素数-（20分）"><span class="toc-number">1.</span> <span class="toc-text">PAT 1013 数素数 （20分）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式："><span class="toc-number">1.1.</span> <span class="toc-text">输入格式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式："><span class="toc-number">1.2.</span> <span class="toc-text">输出格式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入样例："><span class="toc-number">1.3.</span> <span class="toc-text">输入样例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出样例："><span class="toc-number">1.4.</span> <span class="toc-text">输出样例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析："><span class="toc-number">1.5.</span> <span class="toc-text">分析：</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#08-06-Hanota-LCCI"><span class="toc-number">1.</span> <span class="toc-text">08.06. Hanota LCCI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Example1"><span class="toc-number">1.1.</span> <span class="toc-text">Example1:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Example2"><span class="toc-number">1.2.</span> <span class="toc-text">Example2:</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
