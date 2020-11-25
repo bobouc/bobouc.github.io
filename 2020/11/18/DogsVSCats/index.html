@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201119132146392.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201119141718413.png">
 <meta property="article:published_time" content="2020-11-18T07:25:45.000Z">
-<meta property="article:modified_time" content="2020-11-21T06:51:54.579Z">
+<meta property="article:modified_time" content="2020-11-25T09:54:40.519Z">
 <meta property="article:author" content="jax">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/main-qimg-4eb892d2fa56e21288ae723397f5f329.png">
@@ -536,9 +536,36 @@ height:50vh;
 </li>
 <li><p>当修改了学习率时，发现对 Acc 有不错的影响，选择 epoch = 10， 测试了 0.001 学习率，和0.005学习率，发现0.005可以在一开始时就获得比较高的 Acc。</p>
 <p>对于学习率的设置有:</p>
-<p>| 学习率     | 大                        | 小                          |<br>| ————— | ————————————- | —————————————- |<br>| 学习速度   | 快                        | 慢                          |<br>| 使用时间点 | 刚开始训练时              | 一定轮数过后                |<br>| 副作用     | 1.易损失值爆炸；2. 易震荡 | 1. 易过拟合； 2. 收敛速度慢 |</p>
 </li>
 </ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>学习率</th>
+<th>大</th>
+<th>小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>学习速度</td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>使用时间点</td>
+<td>刚开始训练时</td>
+<td>经过一定轮数后</td>
+</tr>
+<tr>
+<td>副作用</td>
+<td>1. 易损失值爆炸；2. 易震荡</td>
+<td>1. 易过拟合；2. 收敛速度慢</td>
+</tr>
+</tbody>
+</table>
+</div>
 <ul>
 <li>设置一个最大精度值max_acc，每一个 epoch 的 Acc 都与之进行比较，当新的 epoch 精度更好时替换之，保存训练出的最好的模型。然后用最好的训练模型进行 valid 数据集测试和 test 数据集测试。</li>
 </ul>
