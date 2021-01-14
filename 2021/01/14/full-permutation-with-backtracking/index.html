@@ -20,20 +20,25 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="Help myself">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GuoXin Li&#39;s Blog">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/tags/learning-note/index.html">
+    <meta name="description" content="1, 2, 3 full permutation example in conventional “for circle” full permutation.   with vector path.  then backtracking method. 123456789101112131415161718192021222324#include &lt;iostream&gt;#include">
+<meta property="og:type" content="article">
+<meta property="og:title" content="full permutation with backtracking">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/01/14/full-permutation-with-backtracking/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="Help myself">
+<meta property="og:description" content="1, 2, 3 full permutation example in conventional “for circle” full permutation.   with vector path.  then backtracking method. 123456789101112131415161718192021222324#include &lt;iostream&gt;#include">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210114195633990.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210114195922265.png">
+<meta property="article:published_time" content="2021-01-14T11:55:32.000Z">
+<meta property="article:modified_time" content="2021-01-14T12:00:00.496Z">
 <meta property="article:author" content="jax">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210114195633990.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
     <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
     
-    <title>GuoXin Li&#39;s Blog</title>
+    <title>full permutation with backtracking · GuoXin Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -214,12 +219,23 @@
 <meta name="generator" content="Hexo 4.2.0"></head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >GuoXin Li&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">full permutation with backtracking</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>GuoXin Li's Blog</a>
 </header>
@@ -231,24 +247,68 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random/1600x500)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            full permutation with backtracking
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">140</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2021/01/14</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -349,401 +409,66 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/10/09/%E7%AC%94%E8%AE%B0-GAMES101%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%85%A5%E9%97%A8-%E9%97%AB%E4%BB%A4%E7%90%AA/" >
-            
-                <span>笔记- GAMES101计算机图形学入门-闫令琪</span>
-        </a>
-        <div class="abstract-content">
-            笔记- GAMES101计算机图形学入门-闫令琪P1 Overview of Computer Graphic
-什么是好的画面：亮
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>1, 2, 3 full permutation example in conventional “for circle” full permutation. </p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210114195633990.png" alt="image-20210114195633990"></p>
+<p>with vector path.</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210114195922265.png" alt="image-20210114195922265"></p>
+<p>then backtracking method.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> level, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;path )</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(level == path.<span class="built_in">size</span>())&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:path)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;num&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(path[level] = <span class="number">1</span>; path[level] &lt;= path.<span class="built_in">size</span>(); path[level]++)&#123;</span><br><span class="line">        <span class="comment">// before enter into next layer decision tree,</span></span><br><span class="line">        <span class="comment">// checking whether path contains item contained or not.</span></span><br><span class="line">        <span class="comment">// std::count: Returns the number of elements in the range [first,last) that compare equal to val.</span></span><br><span class="line">        <span class="keyword">if</span>( count(path.<span class="built_in">begin</span>(), <span class="built_in">begin</span>(path) + level, path[level] ) != <span class="number">0</span> ) <span class="keyword">continue</span>;</span><br><span class="line">        fun(level+<span class="number">1</span>, path);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">path</span><span class="params">(<span class="number">4</span>)</span></span>;</span><br><span class="line">    fun(<span class="number">0</span>, path);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-
-课程主要内容
-
-Resterization 光栅化
-Curves and Meshes 曲线和曲面（几何）
-Ray Tracing 光线追踪
-Animation / Simulation 动画和模拟
-
-Rasterization 光栅化理解：将三位形态的几何形体显示在屏幕上
-
-Project geometry primitive (3D triangle / polygons) onto the screen
-Break projected prim...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/23/Python-Error-Handing/" >
-            
-                <span>Python_Error_Handing</span>
-        </a>
-        <div class="abstract-content">
-            Python 错误处理try 来运行代码，如果执行出错，则后续代码不会继续执行，而是直接跳转至错误处理代码，即 except 语句块，执行完 except 后，如果有 finally 语句块，则执行。
-finally 如果有，则一定会被执行（finally 语句可以不设）
-可以设多个 except 来捕获不同类型的错误
-1234567891011try:    print('try...')    r = 10 / int('a')    print('result:', r)except ValueError as e:    print('ValueError:', e)except...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/23</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/12/Python-Functional-Programming/" >
-            
-                <span>Python_Functional_Programming</span>
-        </a>
-        <div class="abstract-content">
-            
-
-Python_Advanced_Function_Programming通过大段代码拆成函数，通过一层一层的函数调用，可以把复杂的任务分解成简单的任务，这种分解可以称之为面向过程的程序设计。函数就是面向过程的程序设计的基本单元。
-函数式编程，可以归结到面向过程的程序设计，但其思想更接近数学计算。
-越低级的语言，越接近计算机，抽象程度低，执行效率高，如 C 语言；越高级的语言，越接近计算，抽象程度高，执行效率低，如 Lisp 语言。
-
-纯函数式编程：
-函数没有变量，因此，任意一个函数，只要输入是确定的，输出就是确定的，这种纯函数称之为没有副作用
-
-非纯函数式编程：
-允许使用变量的程序设...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE%E7%9A%84%E6%A6%82%E5%BF%B5/" >
-            
-                <span>数据结构-图的概念</span>
-        </a>
-        <div class="abstract-content">
-            图的概念图 G 由顶点集 V 和边集 E 组成，记为 G=(V, E)，其中 V(G) 表示图 G 中顶点的有限非集；E(G) 表示图 G 中顶点之间的关系（边）的集合。
-注意：图不可以是空图，也就是说图中不能一个顶点都没有，但是边集可以为空
-有向图边 E 是有向边的有限集合。入度和出度分别等于边数
-无向图边 E 是无向边的有限集合。无向图的度之和为边数的两倍
-简单图
-不存在重复的边
-不存在顶点到自身的边
-
-多重图图 G 中某两个结点之间的边数多余一条，又允许顶点通过同一条边和自己关联。多重图的定义与简单图相对。
-完全图（简单完全图）
-无向完全图：在无向图中，任意两个顶点之间都存在边。含...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/27/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" >
-            
-                <span>树和二叉树</span>
-        </a>
-        <div class="abstract-content">
-            树与二叉树树（上）引子查找：根据某个给定关键字 K，从集合 R 中找出关键字与 K 相同的记录
-静态查找：集合中记录是固定的。没有插入和删除操作，只有查找
-
-顺序查找：(通过设置哨兵，进行判断是否找到元素或者是否到达表末尾)
-123456789101112int SequentialSearch(list Tbl, ElementType k)&#123;  int i;  Tb1-&gt;Element[0] = k;		//建立哨兵，最后函数返回的时候如果值为0，则没找到  for(i = Tab-&gt;Length; Tb1-&gt;Element[i]!=k; i--);  r...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/27</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/27/C-C-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-%E8%AF%AD%E6%B3%95%E9%80%9F%E9%80%92/" >
-            
-                <span>C/C++快速入门-语法速递</span>
-        </a>
-        <div class="abstract-content">
-            c/c++快速入门
-
-[TOC]
-变量类型：整型：短整型（short）、整型（int）和长整型（long long），其中短整型（short）一般用不到。int 也被称为 long int，long long 也被称为 long long int
-
-对于整型 int 来说，一个整数占用 32 bit，即 4Byte，取值为（-2^31~+2^31-1）。一般10^9范围内的整数都可以定义成 int 型。
-long long 占用64bit，即8Byte，取值范围（-2^63~+2^63-1）超过10^9数量级的一般用 long long 进行定义。
-注意：如果 long long 型赋值...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/27</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/20/Character-String-C/" >
-            
-                <span>C语言字符串浅析 Character String (C)</span>
-        </a>
-        <div class="abstract-content">
-            字符串
-
-[TOC]
-字符串常量
-字符串是选择用指针，还是用数组？
-字符串字面量首先字符串字面量是一对双引号括起来的字符序列
-延续字符串字面量可以用字符\，用来把两行或更多行的代码连接称一行（在 C 标准中这一过程称为“拼接（splicing）”）例如：
-12printf("When you conme to a fork in the road, take it. \--Yogi Berra");
-
-但是使用 \ 会有一个缺陷，就是下一行必须要顶格写，这样可能会破坏程序的缩进结构。可以使用下面真个更好的方法：
-12printf("When you come to a fork in t...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >
-            
-                <span>C++ vector 基础操作</span>
-        </a>
-        <div class="abstract-content">
-            C++ vector 容器浅析
-
-Vector is a Sequence Container.
-向量（矢量）是一个封装了动态大小数组的顺序容器（Sequence Container）。跟任意其他类型容器一样，它能够存放各种类型的对象。可以简单的认为，向量是一个能够存放任意类型的动态数组。
-容器的特性
-Sequence 顺序序列
-顺序容器中的元素按照严格的线性顺序排列，每个单独的元素都能够在序列中位置被获取到
-
-Dynamic array 动态数组
-支持定向获取在顺序中的任意元素，甚至可以通过指针进行算数进行该操作，提供了对序列末尾相对快速地添加/删除元素的操作
-
-Allocator-a...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/19</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/12/31/Android-learning-record/" >
-            
-                <span>Android_learning_record</span>
-        </a>
-        <div class="abstract-content">
-            Android Leanrning_record一、Android 概述Android 的优点
-系统的开放性和免费性
-移动互联网的发展
-相关厂商的大力支持
-
-Android 的挑战
-用户体验不一致，安全性有待提高
-技术的进一步完善
-开放手机联盟的挑战
-其他技术的竞争
-
-Android 平台的技术架构四部分：
-
-Linux 内核层
-中间层
-应用程序框架
-应用层
-
-Android 应用程序构成
-活动（Activity）
-活动是最基本的 Android 应用程序组件。在应用程序中，一个活动通常是一个单独的屏幕。每个活动都通过继承活动基类而被实现为一个独立的活动类。
-
-意图（Intent）
-意图...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/31</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/21/Cortex-STM32F107-learning-record/" >
-            
-                <span>Cortex-M3(STM32F107)_Learning_Notes</span>
-        </a>
-        <div class="abstract-content">
-            Cortex-M3概述
-ARM 是一个公司，一种技术，一类处理器
-CM3 内核采用哈佛结构，拥有独立的32位指令总线和数据总线
-CM3 内核不再支持  ARM  指令集，而只支持  Thumb-2 和 Thumb 指令集
-STM32 系列 MCU 由意法半导体 （ST）公司设计和制造
-CMSIS 是 ARM 公司和一些编译器厂家以及半导体厂家共同遵循的一套标准，是由 ARM 公司提出，专门针对 Cortex-M 系列的标准
-STM32 固件库是一个函数包，它由程序、数据结构和宏组成，包括了 STM32 系列 MCU 标准外设的性能特征
-采用调用 STM32 固件库的编程方法，既可以较快地...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2021/01/04/Hyperspectral-Classification/" title= "高光谱分类-Hyperspectral Classification">
+                    <div class="prevTitle">高光谱分类-Hyperspectral Classification</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "XrooY1MX6dtgMUvz2AVrhunW-gzGzoHsz",
+        appKey: "snUQS6fyCLRFVlEmNmlJnYtb",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -791,6 +516,24 @@ STM32 固件库是一个函数包，它由程序、数据结构和宏组成，�
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -2175,6 +1918,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

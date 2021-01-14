@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/liysky/liysky.github.io.git/"/>
-  <updated>2021-01-05T08:04:43.782Z</updated>
+  <updated>2021-01-14T12:00:00.496Z</updated>
   <id>https://github.com/liysky/liysky.github.io.git/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>full permutation with backtracking</title>
+    <link href="https://github.com/liysky/liysky.github.io.git/2021/01/14/full-permutation-with-backtracking/"/>
+    <id>https://github.com/liysky/liysky.github.io.git/2021/01/14/full-permutation-with-backtracking/</id>
+    <published>2021-01-14T11:55:32.000Z</published>
+    <updated>2021-01-14T12:00:00.496Z</updated>
+    
+    <content type="html"><![CDATA[<p>1, 2, 3 full permutation example in conventional “for circle” full permutation. </p><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210114195633990.png" alt="image-20210114195633990"></p><p>with vector path.</p><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210114195922265.png" alt="image-20210114195922265"></p><p>then backtracking method.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> level, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;path )</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(level == path.<span class="built_in">size</span>())&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:path)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;num&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(path[level] = <span class="number">1</span>; path[level] &lt;= path.<span class="built_in">size</span>(); path[level]++)&#123;</span><br><span class="line">        <span class="comment">// before enter into next layer decision tree,</span></span><br><span class="line">        <span class="comment">// checking whether path contains item contained or not.</span></span><br><span class="line">        <span class="comment">// std::count: Returns the number of elements in the range [first,last) that compare equal to val.</span></span><br><span class="line">        <span class="keyword">if</span>( count(path.<span class="built_in">begin</span>(), <span class="built_in">begin</span>(path) + level, path[level] ) != <span class="number">0</span> ) <span class="keyword">continue</span>;</span><br><span class="line">        fun(level+<span class="number">1</span>, path);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">path</span><span class="params">(<span class="number">4</span>)</span></span>;</span><br><span class="line">    fun(<span class="number">0</span>, path);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1, 2, 3 full permutation example in conventional “for circle” full permutation. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://jaximage-1253102271.cos.ap-beij
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>高光谱分类-Hyperspectral Classification</title>
@@ -460,30 +483,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode504. Base 7</title>
-    <link href="https://github.com/liysky/liysky.github.io.git/2020/02/29/LeetCode504-Base-7/"/>
-    <id>https://github.com/liysky/liysky.github.io.git/2020/02/29/LeetCode504-Base-7/</id>
-    <published>2020-02-29T13:25:47.000Z</published>
-    <updated>2020-05-05T15:36:19.341Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="504-Base-7"><a href="#504-Base-7" class="headerlink" title="504. Base 7"></a>504. Base 7</h3><p><a href="https://leetcode-cn.com/problems/base-7/" target="_blank" rel="noopener">504. Base 7</a></p><p>Given an integer, return its base 7 string representation.</p><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h3><p>Input: 100<br>Output: “202”<br>Example 2:</p><p>Input: -7<br>Output: “-10”<br>Note: The input will be in range of [-1e7, 1e7].</p><h3 id="Resolution"><a href="#Resolution" class="headerlink" title="Resolution"></a>Resolution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convertToBase7</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        StringBuilder com = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">if</span>(num == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">        <span class="keyword">boolean</span> flag = num &lt; <span class="number">0</span>;</span><br><span class="line">        num = Math.abs(num);</span><br><span class="line">        <span class="keyword">while</span>(num != <span class="number">0</span>)&#123;</span><br><span class="line">            com.append(num % <span class="number">7</span>);</span><br><span class="line">            num = num/<span class="number">7</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder com_ = com.reverse();</span><br><span class="line">        String str = com_.toString();</span><br><span class="line">        <span class="keyword">return</span> flag ? <span class="string">"-"</span>+str : str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>Time Complexity: O(logn)</strong></p><p><strong>Space Complexity: O(logn)</strong></p><p><strong>note:</strong></p><p>important: num.toString( ); ——&gt; wrong. Object numberdo not has the method “toString( )”</p><p>don’t foget to check the initial condition firstly.</p><h3 id="A-good-solution-of-java-Integer"><a href="#A-good-solution-of-java-Integer" class="headerlink" title="A good solution of java Integer"></a>A good solution of java Integer</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">convertToBase7</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Integer.toString(num, <span class="number">7</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="C-solution"><a href="#C-solution" class="headerlink" title="C++ solution"></a>C++ solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">convertToBase7</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        string ans;</span><br><span class="line">        bool is_nagetive = num &lt; <span class="number">0</span>;</span><br><span class="line">        num = abs(num);</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            ans = std::to_string(num%<span class="number">7</span>) + ans;</span><br><span class="line">            num /=<span class="number">7</span>;</span><br><span class="line">        &#125;<span class="keyword">while</span>(num &gt; <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span>(is_nagetive)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"-"</span>+ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>*<em>key:implicit handle of special case 0 –&gt;&gt; using do{ }while( ); *</em></p><p><strong>Time Complexity: O(logn)</strong></p><p><strong>Space Complexity: O(logn)</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;504-Base-7&quot;&gt;&lt;a href=&quot;#504-Base-7&quot; class=&quot;headerlink&quot; title=&quot;504. Base 7&quot;&gt;&lt;/a&gt;504. Base 7&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/pro
-      
-    
-    </summary>
-    
-    
-    
-      <category term="LeetCode" scheme="https://github.com/liysky/liysky.github.io.git/tags/LeetCode/"/>
     
   </entry>
   
