@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/liysky/liysky.github.io.git/"/>
-  <updated>2021-01-14T12:02:25.756Z</updated>
+  <updated>2021-01-29T15:38:26.803Z</updated>
   <id>https://github.com/liysky/liysky.github.io.git/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 111. Minimum Depth of Binary Tree</title>
+    <link href="https://github.com/liysky/liysky.github.io.git/2021/01/29/LeetCode-111-Minimum-Depth-of-Binary-Tree/"/>
+    <id>https://github.com/liysky/liysky.github.io.git/2021/01/29/LeetCode-111-Minimum-Depth-of-Binary-Tree/</id>
+    <published>2021-01-29T15:37:16.000Z</published>
+    <updated>2021-01-29T15:38:26.803Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="111-Minimum-Depth-of-Binary-Tree"><a href="#111-Minimum-Depth-of-Binary-Tree" class="headerlink" title="111. Minimum Depth of Binary Tree"></a><a href="https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/" target="_blank" rel="noopener">111. Minimum Depth of Binary Tree</a></h1><p>Given a binary tree, find its minimum depth.</p><p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p><p>Note: A leaf is a node with no children.</p><p>Example 1:</p><p>Input: root = [3,9,20,null,null,15,7]<br>Output: 2<br>Example 2:</p><p>Input: root = [2,null,3,null,4,null,5,null,6]<br>Output: 5</p><p>Constraints:</p><p>The number of nodes in the tree is in the range [0, 105].<br>-1000 &lt;= Node.val &lt;= 1000</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left==<span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> min_Set = INT_MAX;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            min_Set = <span class="built_in">min</span>( minDepth(root-&gt;left), min_Set );</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;right != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            min_Set = <span class="built_in">min</span>( minDepth(root-&gt;right), min_Set );</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> min_Set + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;111-Minimum-Depth-of-Binary-Tree&quot;&gt;&lt;a href=&quot;#111-Minimum-Depth-of-Binary-Tree&quot; class=&quot;headerlink&quot; title=&quot;111. Minimum Depth of Binary
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>full permutation with backtracking</title>
@@ -455,29 +477,6 @@
       
       
         &lt;h3 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h3&gt;&lt;p&gt;第一行输入一个数n，1 &amp;lt;= n &amp;lt;= 1000，下面输入n行数据，每一行有两个数，分别是x y。输出一组x y
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>比较奇偶个数</title>
-    <link href="https://github.com/liysky/liysky.github.io.git/2020/03/01/%E6%AF%94%E8%BE%83%E5%A5%87%E5%81%B6%E4%B8%AA%E6%95%B0/"/>
-    <id>https://github.com/liysky/liysky.github.io.git/2020/03/01/%E6%AF%94%E8%BE%83%E5%A5%87%E5%81%B6%E4%B8%AA%E6%95%B0/</id>
-    <published>2020-03-01T15:20:01.000Z</published>
-    <updated>2020-05-05T15:36:19.364Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>第一行输入一个数，为n，第二行输入n个数，这n个数中，如果偶数比奇数多，输出NO，否则输出YES。</p><h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入有多组数据。</span><br><span class="line">每组输入n，然后输入n个整数（1&lt;&#x3D;n&lt;&#x3D;1000）。</span><br></pre></td></tr></table></figure><h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果偶数比奇数多，输出NO，否则输出YES。</span><br></pre></td></tr></table></figure><p>示例1</p><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>复制</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1 5 2 4 3</span><br></pre></td></tr></table></figure><h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>复制</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">YES</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count;<span class="comment">//奇数的个数(净个数)</span></span><br><span class="line">    <span class="keyword">int</span> n, x;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;<span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">        count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">            <span class="keyword">if</span>(x%<span class="number">2</span>==<span class="number">1</span>) count++;</span><br><span class="line">            <span class="keyword">else</span> count--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(count&lt;<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>注意：</strong></p><p>第一个while 保证了多次测试，只要输入合法就一直在循环判断中。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h3&gt;&lt;p&gt;第一行输入一个数，为n，第二行输入n个数，这n个数中，如果偶数比奇数多，输出NO，否则输出YES。&lt;/p&gt;
-&lt;h3 id=&quot;
       
     
     </summary>
