@@ -20,23 +20,22 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="455. Assign Cookies 饼干🍪分配Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie. Each child i has a greed factor gi, which is">
+    <meta name="description" content="144. Binary Tree Preorder TraversalGiven the root of a binary tree, return the preorder traversal of its nodes’ values. Example 1: Input: root &#x3D; [1,null,2,3]Output: [1,2,3]Example 2: Input: root &#x3D; []O">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 455. Assign Cookies 饼干分配">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2020/02/19/LeetCode-455-Assign-Cookies-%E9%A5%BC%E5%B9%B2%E5%88%86%E9%85%8D/index.html">
+<meta property="og:title" content="Iteratively. 144.Binary Tree Preorder&amp;Inorder Traversal">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/02/01/Iteratively-144-Binary-Tree-Preorder-Inorder-Traversal/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="455. Assign Cookies 饼干🍪分配Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie. Each child i has a greed factor gi, which is">
-<meta property="article:published_time" content="2020-02-19T08:38:50.000Z">
-<meta property="article:modified_time" content="2020-05-05T15:36:19.414Z">
+<meta property="og:description" content="144. Binary Tree Preorder TraversalGiven the root of a binary tree, return the preorder traversal of its nodes’ values. Example 1: Input: root &#x3D; [1,null,2,3]Output: [1,2,3]Example 2: Input: root &#x3D; []O">
+<meta property="article:published_time" content="2021-02-01T15:53:55.000Z">
+<meta property="article:modified_time" content="2021-02-01T15:54:18.699Z">
 <meta property="article:author" content="jax">
-<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
     <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
     
-    <title>LeetCode 455. Assign Cookies 饼干分配 · GuoXin Li&#39;s Blog</title>
+    <title>Iteratively. 144.Binary Tree Preorder&amp;Inorder Traversal · GuoXin Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -231,7 +230,7 @@
                 <a href="/" >GuoXin Li&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">LeetCode 455. Assign Cookies 饼干分配</a>
+                <a href="#" class="post-name">Iteratively. 144.Binary Tree Preorder&Inorder Traversal</a>
             </div>
     </div>
     
@@ -261,7 +260,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            LeetCode 455. Assign Cookies 饼干分配
+            Iteratively. 144.Binary Tree Preorder&Inorder Traversal
             <!-- 404 -->
             
         </h1>
@@ -278,20 +277,14 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
-                    <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
-    
-</div>
-                
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">319</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">395</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/02/19</span>
+                    <span class="post-intro-time">2021/02/01</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -415,21 +408,21 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h4 id="455-Assign-Cookies-饼干🍪分配"><a href="#455-Assign-Cookies-饼干🍪分配" class="headerlink" title="455. Assign Cookies 饼干🍪分配"></a>455. Assign Cookies 饼干🍪分配</h4><p>Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie. Each child i has a greed factor gi, which is the minimum size of a cookie that the child will be content with; and each cookie j has a size sj. If sj &gt;= gi, we can assign the cookie j to the child i, and the child i will be content. Your goal is to maximize the number of your content children and output the maximum number.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h3><p>You may assume the greed factor is always positive.<br>You cannot assign more than one cookie to one child.</p>
-<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h3><p>Input: [1,2,3], [1,1]</p>
-<p>Output: 1</p>
-<p>Explanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3.<br>And even though you have 2 cookies, since their size is both 1, you could only make the child whose greed factor is 1 content.<br>You need to output 1.<br>Example 2:</p>
-<p>Input: [1,2], [1,2,3]</p>
-<p>Output: 2</p>
-<p>Explanation: You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2.<br>You have 3 cookies and their sizes are big enough to gratify all of the children,<br>You need to output 2.</p>
-<h3 id="Resolution"><a href="#Resolution" class="headerlink" title="Resolution"></a>Resolution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findContentChildren</span><span class="params">(<span class="keyword">int</span>[] g, <span class="keyword">int</span>[] s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">       Arrays.sort(g);</span><br><span class="line">       Arrays.sort(s);</span><br><span class="line">       <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> x : g)&#123;</span><br><span class="line">           <span class="keyword">while</span>( j &lt; s.length &amp;&amp; x &gt; s[j] )&#123;</span><br><span class="line">               ++j;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span>(j &lt; s.length &amp;&amp; s[j] &gt;= x)&#123;</span><br><span class="line">               ++num;</span><br><span class="line">               ++j;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Time Complexity: $O(nlogn)$</strong> takes time in sorting algrithm</p>
-<p><strong>Space Complexity:$O(1)$</strong></p>
-<p><strong>Note：</strong></p>
-<p>Greedy Algorithm，Control the children and set j point points to the cookies that has been sorted.</p>
-
+        <h4 id="144-Binary-Tree-Preorder-Traversal"><a href="#144-Binary-Tree-Preorder-Traversal" class="headerlink" title="144. Binary Tree Preorder Traversal"></a><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">144. Binary Tree Preorder Traversal</a></h4><p>Given the root of a binary tree, return the preorder traversal of its nodes’ values.</p>
+<p>Example 1:</p>
+<p>Input: root = [1,null,2,3]<br>Output: [1,2,3]<br>Example 2:</p>
+<p>Input: root = []<br>Output: []<br>Example 3:</p>
+<p>Input: root = [1]<br>Output: [1]<br>Example 4:</p>
+<p>Input: root = [1,2]<br>Output: [1,2]<br>Example 5:</p>
+<p>Input: root = [1,null,2]<br>Output: [1,2]</p>
+<p>Constraints:</p>
+<p>The number of nodes in the tree is in the range [0, 100].<br>-100 &lt;= Node.val &lt;= 100</p>
+<p>Follow up: Recursive solution is trivial, could you do it iteratively?</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">stack</span>&lt;TreeNode*&gt; stk;</span><br><span class="line">        TreeNode* node = root;</span><br><span class="line">        <span class="keyword">while</span> (!stk.empty() || node != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (node != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">                res.emplace_back(node-&gt;val);</span><br><span class="line">                stk.emplace(node);</span><br><span class="line">                node = node-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!stk.empty())&#123;</span><br><span class="line">                node = stk.top();</span><br><span class="line">                stk.pop();</span><br><span class="line">                node = node-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Iterative Method</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">    BinTree T = BT;</span><br><span class="line">    Stack S = CreatStack(Maxsize);	<span class="comment">//建立一个堆栈 S</span></span><br><span class="line">    While(T || !IsEmpty(S))&#123;		<span class="comment">//当 T 存在或者 S 非空时，S 为空时说明退完了</span></span><br><span class="line">        <span class="keyword">while</span>(T)&#123;					<span class="comment">//当 T 存在时</span></span><br><span class="line">            Push(S,T);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%5d"</span>, T-&gt;Data);</span><br><span class="line">            T = T-&gt;Left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!IsEmpty(S))&#123;			<span class="comment">//如果 S 非空 </span></span><br><span class="line">          	T = S.top();</span><br><span class="line">            S.pop();		</span><br><span class="line">            T = T-&gt;Right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>difference with Inorder traversal</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">    BinTree T = BT;</span><br><span class="line">    Stack S = CreatStack(Maxsize);	<span class="comment">//建立一个堆栈 S</span></span><br><span class="line">    While(T || !IsEmpty(S))&#123;		<span class="comment">//当 T 存在或者 S 非空时，S 为空时说明退完了</span></span><br><span class="line">        <span class="keyword">while</span>(T)&#123;					<span class="comment">//当 T 存在时</span></span><br><span class="line">            Push(S,T);</span><br><span class="line">            T = T-&gt;Left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!IsEmpty(S))&#123;			<span class="comment">//如果 S 非空 </span></span><br><span class="line">          	T = S.top();</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%5d"</span>, T-&gt;Data);</span><br><span class="line">            S.pop();		</span><br><span class="line">            T = T-&gt;Right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </article>
     <!-- license  -->
     
@@ -437,17 +430,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/02/20/LeetCode-404-Sum-of-Left-Leaves-%E5%B7%A6%E5%8F%B6%E5%AD%90%E7%BB%93%E7%82%B9%E5%80%BC%E4%B9%8B%E5%92%8C/" title= "LeetCode 404. Sum of Left Leaves 左叶子结点值之和">
-                    <div class="nextTitle">LeetCode 404. Sum of Left Leaves 左叶子结点值之和</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/02/18/LeetCode-461-Hamming-Distance-%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" title= "LeetCode 461 Hamming Distance 汉明距离">
-                    <div class="prevTitle">LeetCode 461 Hamming Distance 汉明距离</div>
+                <a href= "/2021/01/29/LeetCode-111-Minimum-Depth-of-Binary-Tree/" title= "LeetCode 111. Minimum Depth of Binary Tree">
+                    <div class="prevTitle">LeetCode 111. Minimum Depth of Binary Tree</div>
                 </a>
             
         </li>
@@ -549,7 +537,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#455-Assign-Cookies-饼干🍪分配"><span class="toc-number">1.</span> <span class="toc-text">455. Assign Cookies 饼干🍪分配</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Note"><span class="toc-number"></span> <span class="toc-text">Note:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example-1"><span class="toc-number"></span> <span class="toc-text">Example 1:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Resolution"><span class="toc-number"></span> <span class="toc-text">Resolution</span></a>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#144-Binary-Tree-Preorder-Traversal"><span class="toc-number">1.</span> <span class="toc-text">144. Binary Tree Preorder Traversal</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
