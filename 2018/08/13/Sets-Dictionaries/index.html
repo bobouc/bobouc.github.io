@@ -412,7 +412,6 @@ height:50vh;
 <p>Python also includes a data type for<em>sets</em>. A set is an unordered collection with no duplicate elements. Basic uses include membership testing and eliminating duplicate entries. Set objects also support mathematical operations like union, intersection, difference, and symmetric difference.</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>basket = &#123;<span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'apple'</span>, <span class="string">'pear'</span>, <span class="string">'orange'</span>, <span class="string">'banana'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(basket)                      <span class="comment"># show that duplicates have been removed</span></span><br><span class="line">&#123;<span class="string">'orange'</span>, <span class="string">'banana'</span>, <span class="string">'pear'</span>, <span class="string">'apple'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'orange'</span> <span class="keyword">in</span> basket                 <span class="comment"># fast membership testing</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'crabgrass'</span> <span class="keyword">in</span> basket</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># Demonstrate set operations on unique letters from two words</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = set(<span class="string">'abracadabra'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = set(<span class="string">'alacazam'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a                                  <span class="comment"># unique letters in a</span></span><br><span class="line">&#123;<span class="string">'a'</span>, <span class="string">'r'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a - b                              <span class="comment"># letters in a but not in b</span></span><br><span class="line">&#123;<span class="string">'r'</span>, <span class="string">'d'</span>, <span class="string">'b'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a | b                              <span class="comment"># letters in a or b or both</span></span><br><span class="line">&#123;<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'r'</span>, <span class="string">'d'</span>, <span class="string">'b'</span>, <span class="string">'m'</span>, <span class="string">'z'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a &amp; b                              <span class="comment"># letters in both a and b</span></span><br><span class="line">&#123;<span class="string">'a'</span>, <span class="string">'c'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a ^ b                              <span class="comment"># letters in a or b but not both</span></span><br><span class="line">&#123;<span class="string">'r'</span>, <span class="string">'d'</span>, <span class="string">'b'</span>, <span class="string">'m'</span>, <span class="string">'z'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#Similarly to list comprehensions, set comprehensions are also supported:</span></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = &#123;x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">'abracadabra'</span> <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> <span class="string">'abc'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">&#123;<span class="string">'r'</span>, <span class="string">'d'</span>&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="dictionaries"><a href="#dictionaries" class="headerlink" title="dictionaries"></a>dictionaries</h2><blockquote>
 <p>Dictionaries are sometimes found in other languages as “associative memories” or “associative arrays”. Unlike sequences, which are indexed by a range of numbers, dictionaries are indexed by<em>keys</em>, which can be any immutable type; strings and numbers can always be keys. Tuples can be used as keys if they contain only strings, numbers, or tuples; if a tuple contains any mutable object either directly or indirectly, it cannot be used as a key. You can’t use lists as keys, since lists can be modified in place using index assignments, slice assignments, or methods like<code>append()</code>and<code>extend()</code>.</p>
 <p>It is best to think of a dictionary as a set of<em>key: value</em>pairs, with the requirement that the keys are unique (within one dictionary). A pair of braces creates an empty dictionary:<code>{}</code>. Placing a comma-separated list of key:value pairs within the braces adds initial key:value pairs to the dictionary; this is also the way dictionaries are written on output.</p>
@@ -553,6 +552,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1794,22 +1795,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
         </li>
     
     
@@ -1911,15 +1912,15 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
-    
         <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
-    
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
@@ -1956,9 +1957,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
-    
         <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

@@ -440,7 +440,6 @@ height:50vh;
 <p>即对于大于或者小于所设定的阈值进行的不同的处理方法类型</p>
 <p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109150217758.png" alt="image-20201109150217758"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment">#read image</span></span><br><span class="line">img = cv2.imread(<span class="string">'./shot.jpg'</span>, <span class="number">0</span>)</span><br><span class="line"><span class="comment">#thredholding with different type</span></span><br><span class="line">ret,thresh1 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_BINARY)</span><br><span class="line">ret,thresh2 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_BINARY_INV)</span><br><span class="line">ret,thresh3 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_TRUNC)</span><br><span class="line">ret,thresh4 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_TOZERO)</span><br><span class="line">ret,thresh5 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_TOZERO_INV)</span><br><span class="line">titles = [<span class="string">'Original Image'</span>,<span class="string">'BINARY'</span>,<span class="string">'BINARY_INV'</span>,<span class="string">'TRUNC'</span>,<span class="string">'TOZERO'</span>,<span class="string">'TOZERO_INV'</span>]</span><br><span class="line">images = [img, thresh1, thresh2, thresh3, thresh4, thresh5]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">6</span>):</span><br><span class="line">    plt.subplot(<span class="number">2</span>,<span class="number">3</span>,i+<span class="number">1</span>),plt.imshow(images[i],<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i])</span><br><span class="line">    plt.xticks([]),plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109142140114.png" alt="image-20201109142140114"></p>
 <p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109154734991.png" alt="image-20201109154734991"></p>
 <h3 id="自适应阈值化"><a href="#自适应阈值化" class="headerlink" title="自适应阈值化"></a>自适应阈值化</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109145358273.png" alt="image-20201109145358273"></p>
@@ -455,21 +454,18 @@ height:50vh;
 <p><strong>blockSize：</strong> 决定邻域的大小</p>
 <p><strong>C：</strong> 常数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'shot.jpg'</span>,<span class="number">0</span>)</span><br><span class="line">img = cv2.medianBlur(img,<span class="number">5</span>)	<span class="comment">#</span></span><br><span class="line"></span><br><span class="line">ret,th1 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_BINARY)</span><br><span class="line">th2 = cv2.adaptiveThreshold(img,<span class="number">50</span>,cv2.ADAPTIVE_THRESH_MEAN_C,\</span><br><span class="line">            cv2.THRESH_BINARY,<span class="number">11</span>,<span class="number">2</span>)</span><br><span class="line">th3 = cv2.adaptiveThreshold(img,<span class="number">50</span>,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\</span><br><span class="line">            cv2.THRESH_BINARY,<span class="number">11</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">titles = [<span class="string">'Original Image'</span>, <span class="string">'Global Thresholding (v = 50)'</span>,</span><br><span class="line">            <span class="string">'Adaptive Mean Thresholding'</span>, <span class="string">'Adaptive Gaussian Thresholding'</span>]</span><br><span class="line">images = [img, th1, th2, th3]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    plt.subplot(<span class="number">2</span>,<span class="number">2</span>,i+<span class="number">1</span>),plt.imshow(images[i],<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i])</span><br><span class="line">    plt.xticks([]),plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109143750177.png" alt="image-20201109143750177"></p>
 <p><strong>相比较全局阈值方法，可以清晰的看到，自适应阈值化不会使得图像出现大面积的目标丢失——黑色块或者白色块，局部信息的细节更加友好，虽然不会出现大面积的目标丢失，但是对于最终目标的连结性是比较差的，通常包含有许多的噪点噪声，所以对于自适应的局部特性的自适应阈值方法，最后还会进行一些噪声去除的操作，从而消除噪声，来进一步加强对于目标物体的检测。</strong></p>
 <h3 id="Otsu-大律阈值法"><a href="#Otsu-大律阈值法" class="headerlink" title="Otsu 大律阈值法"></a>Otsu 大律阈值法</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109164629903.png" alt="image-20201109164629903"></p>
 <p>将图像按灰度阈值分为两类，分别求出两类的均值和方差，再求出两个类之间的方差，当类之间方差比类内方差最大时，所求出的阈值T，即为所求阈值。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">img = cv.imread(<span class="string">'shot.jpg'</span>,<span class="number">0</span>)</span><br><span class="line"><span class="comment"># global thresholding</span></span><br><span class="line">ret1,th1 = cv.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv.THRESH_BINARY)</span><br><span class="line"><span class="comment"># Otsu's thresholding</span></span><br><span class="line">ret2,th2 = cv.threshold(img,<span class="number">0</span>,<span class="number">255</span>,cv.THRESH_BINARY+cv.THRESH_OTSU)</span><br><span class="line"><span class="comment"># plot all the images and their histograms</span></span><br><span class="line">images = [img, <span class="number">0</span>, th1,</span><br><span class="line">          img, <span class="number">0</span>, th2]</span><br><span class="line">titles = [<span class="string">'Original Noisy Image'</span>,<span class="string">'Histogram'</span>,<span class="string">'Global Thresholding (v=50)'</span>,</span><br><span class="line">          <span class="string">'Original Noisy Image'</span>,<span class="string">'Histogram'</span>,<span class="string">"Otsu's Thresholding"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">    plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i*<span class="number">3</span>+<span class="number">1</span>),plt.imshow(images[i*<span class="number">3</span>],<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i*<span class="number">3</span>]), plt.xticks([]), plt.yticks([])</span><br><span class="line">    plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i*<span class="number">3</span>+<span class="number">2</span>),plt.hist(images[i*<span class="number">3</span>].ravel(),<span class="number">256</span>)</span><br><span class="line">    plt.title(titles[i*<span class="number">3</span>+<span class="number">1</span>]), plt.xticks([]), plt.yticks([])</span><br><span class="line">    plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i*<span class="number">3</span>+<span class="number">3</span>),plt.imshow(images[i*<span class="number">3</span>+<span class="number">2</span>],<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i*<span class="number">3</span>+<span class="number">2</span>]), plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-
 <p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109161123329.png" alt="image-20201109161123329"></p>
 <p><strong>总结</strong></p>
 <ul>
 <li>全局阈值法处理的方法较自适应阈值法，两者的区别最主要集中在噪声分布和对于均匀光照还是非均匀光照的处理上，全局阈值法适合于简单单一的均匀光照条件上进行处理，而自适应阈值法适合于不同的局部光照条件，对于细节的处理会更好，但同时也会有噪声的保留。</li>
 <li>大律法是一种更优的阈值处理方法，能够快速有效地找到类间的分割阈值，但是缺点在于对于目标的检测是单一的，如果想要检测的目标不属于同一或者接近的灰度区域，那么将会导致想要检测的目标物体的信息丢失，反映在图片上就是会有连结信息的消失（黑色块或者白色块），但是相较于普通的全局阈值处理，效果是由明显的提升对比的。</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -478,12 +474,15 @@ height:50vh;
 <th>大津法</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109142140114.png" alt="image-20201109142140114"></td>
 <td><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109143750177.png" alt="image-20201109143750177"></td>
 <td><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201110121940396.png" alt="image-20201110121940396"></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>Reference：</strong></p>
 <p><a href="https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html" target="_blank" rel="noopener">https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html</a></p>
 
@@ -619,6 +618,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1860,22 +1861,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
         </li>
     
     
@@ -1977,15 +1978,15 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
-    
         <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
-    
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
@@ -2022,9 +2023,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
-    
         <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

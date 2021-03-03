@@ -426,7 +426,6 @@ height:50vh;
 <p>Explanation: The perimeter is the 16 yellow stripes in the image below:</p>
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcex6vvgn3j306505xwe9.jpg" alt=""></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(grid.empty())    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> m = grid.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> area = <span class="number">0</span>, nei = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> y = <span class="number">0</span>; y &lt; m; ++y)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; n; ++x)&#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[y][x] == <span class="number">1</span>)&#123;</span><br><span class="line">                    area++;</span><br><span class="line">                    <span class="keyword">if</span>(y &gt; <span class="number">0</span> &amp;&amp;grid[y<span class="number">-1</span>][x] == <span class="number">1</span> )  nei++;</span><br><span class="line">                    <span class="keyword">if</span>(y &lt; m<span class="number">-1</span> &amp;&amp; grid[y+<span class="number">1</span>][x] == <span class="number">1</span>) nei++;</span><br><span class="line">                    <span class="keyword">if</span>(x &gt; <span class="number">0</span> &amp;&amp; grid[y][x<span class="number">-1</span>]==<span class="number">1</span>) nei++;</span><br><span class="line">                    <span class="keyword">if</span>(x &lt; n<span class="number">-1</span>&amp;&amp; grid[y][x+<span class="number">1</span>] == <span class="number">1</span>) nei++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> area*<span class="number">4</span> - nei;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p><strong>Time Complexity: O(m*n)</strong></p>
 <p><strong>Space Complexity: O(1)</strong></p>
 
@@ -562,6 +561,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1803,22 +1804,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
         </li>
     
     
@@ -1920,15 +1921,15 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
-    
         <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
-    
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
@@ -1965,9 +1966,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
-    
         <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

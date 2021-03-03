@@ -591,10 +591,9 @@ opencv-python 中提供了cv.threshold 方法，可以设置将大于某一个�
 
 比如在空间图像里不好找出噪声的模式，如果变换到频率域，则比较好找出噪声的模式（高频分量），并能更容易处理。
 
-
 空间域：
 有图像像素组成的空间，其物理描述的是图像的灰度 分布函数。
-频...
+频率...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -626,14 +625,13 @@ opencv-python 中提供了cv.threshold 方法，可以设置将大于某一个�
             数字图像处理作业01直方图均衡化直方图均衡化是将原图像通过某种变化，得到一幅灰度直方图为均匀分布的新图像的方法。
 这种方法通常用来增加许多图像的全局对比度。增强局部亮度的对比对而不影响整体的对比度。
 实现
-离散的灰度图像{x}，其中$$n_i$$ 表示灰度i出现的次数，有：
-$$p_x(i) = p(x = i ) = \frac{n_i}{n}$$
-关于灰度i的概率密度函数
+离散的灰度图像{x}，其中n_i 表示灰度i出现的次数，有：
+p_x(i) = p(x = i ) = \frac{n_i}{n}关于灰度i的概率密度函数
 相应对 $p_x$ 的累积分布函数，有：
-$f_x(i) = \sum_{j=0}^{i}P_x(j)$
+$fx(i) = \sum{j=0}^{i}P_x(j)$
 再创建一个形式为 $y=T(x)$ 的变换，对于原始图像中每个值产生一个y
 最后将进行值的映射和变换：
-$y...
+$y’ = y(max{x...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -665,15 +663,12 @@ $y...
             std::vector in C++
 Declaration of std::vector
 1std::vector&lt;int&gt; marks;
-
 initialization of std::vector
 1std::vector&lt;int&gt; marks = &#123;50, 45, 47, 65, 80&#125;;
-
 12std::vector&lt;int&gt; marks;marks = &#123;50, 45, 47, 65, 80&#125;;
-
 Length of std::vector
 marks.size() — function
-123456...
+123456789...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -805,8 +800,8 @@ Note:The length of the given array will be in rang...
         <div class="abstract-content">
             637. Average of Levels in Binary Tree637. Average of Levels in Binary Tree
 Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
-Example 1:Input:    3   /   9  20    /     15   7Output: [3, 14.5, 11]
-Explanation:The average value of nodes on l...
+Example 1:Input:    3   / \  9  20    /  \   15   7Output: [3, 14.5, 11]
+Explanation:The average value of nodes on...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -868,17 +863,13 @@ Grid cells are connected horizontally/vertically (not diagonally). The grid is c
         <div class="abstract-content">
             题目描述第一行输入一个数n，1 &lt;= n &lt;= 1000，下面输入n行数据，每一行有两个数，分别是x y。输出一组x y，该组数据是所有数据中x最小，且在x相等的情况下y最小的。
 输入描述:12输入有多组数据。每组输入n，然后输入n个整数对。
-
 输出描述:1输出最小的整数对。
-
 示例1
 输入复制
 12345653 32 25 52 13 6
-
 输出复制
 12 1
-
-1234567891011121314151617181920#include&lt;bits/stdc++.h&gt;using namespace std;int main()&#123;  int num; ...
+1234567891011121314151617181920#include&lt;bits/stdc++.h&gt;using namespace std;int main()&#123;  int num;  int...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -954,6 +945,8 @@ Grid cells are connected horizontally/vertically (not diagonally). The grid is c
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -2195,22 +2188,22 @@ Grid cells are connected horizontally/vertically (not diagonally). The grid is c
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
         </li>
     
     
@@ -2312,15 +2305,15 @@ Grid cells are connected horizontally/vertically (not diagonally). The grid is c
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
-    
         <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
-    
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
@@ -2357,9 +2350,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
-    
         <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

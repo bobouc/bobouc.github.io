@@ -428,44 +428,29 @@ height:50vh;
 <p>安装时请一定要勾选上面的红色部分</p>
 <h5 id="搭建虚拟环境"><a href="#搭建虚拟环境" class="headerlink" title="搭建虚拟环境"></a>搭建虚拟环境</h5><p>右键「开始键」选择 powershell（管理员），输入：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;conda create -n 环境名字 python=2.7.15</span></span><br></pre></td></tr></table></figure>
-
 <p>“环境名字”自己随意取，比如取 python ，安装过程中有一个 y/n 的判断 输入 y 并回车</p>
 <p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g6nscw83b5j30yg0hywgm.jpg" alt="image-20190113214756499"></p>
 <p>等待环境搭建成功</p>
-<h5 id="下载项目文件然后解压（下面最好把项目下载并解压在-D-盘根目录）"><a href="#下载项目文件然后解压（下面最好把项目下载并解压在-D-盘根目录）" class="headerlink" title="下载项目文件然后解压（下面最好把项目下载并解压在 D 盘根目录）"></a>下载项目文件然后解压（下面最好把项目下载并解压在 D 盘根目录）</h5><p>下载地址：<a href="https://github.com/testerSunshine/12306/archive/master.zip" target="_blank" rel="noopener">下载</a></p>
+<h5 id="下载项目文件然后解压（下面最好把项目下载并解压在-D-盘根目录）"><a href="#下载项目文件然后解压（下面最好把项目下载并解压在-D-盘根目录）" class="headerlink" title="下载项目文件然后解压（下面最好把项目下载并解压在 D 盘根目录）"></a>下载项目文件然后解压（下面最好把项目下载并解压在 D 盘根目录）</h5><p>下载地址：<a href="https://github.com/testerSunshine/12306/archive/master.zip">下载</a></p>
 <h5 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h5><h6 id="首先进入上面创建的python2-7-15的环境"><a href="#首先进入上面创建的python2-7-15的环境" class="headerlink" title="首先进入上面创建的python2.7.15的环境"></a>首先进入上面创建的python2.7.15的环境</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; activate 环境名字</span><br></pre></td></tr></table></figure>
-
 <h6 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; D:</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">cd</span> 12306-master</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="修改自己的个人信息"><a href="#修改自己的个人信息" class="headerlink" title="修改自己的个人信息"></a>修改自己的个人信息</h5><p>在项目的解压文件下修改 config/ticket_config.yaml 文件，更改为自己的个人信息，每一项作者都添加了备注和示例信息，根据自己的需要写好，下一步就可以运行了</p>
 <h5 id="运行开始抢票"><a href="#运行开始抢票" class="headerlink" title="运行开始抢票"></a>运行开始抢票</h5><p>依然是进入到下载的项目的文件夹下，比如我把项目放在了 D 盘，就应该按照下面的方法进入</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; D:</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">cd</span> 12306-master</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; python run.py</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
 <h4 id="二、使用环境：Mac、Linux-下"><a href="#二、使用环境：Mac、Linux-下" class="headerlink" title="二、使用环境：Mac、Linux 下"></a>二、使用环境：Mac、Linux 下</h4><h5 id="安装-Python"><a href="#安装-Python" class="headerlink" title="安装 Python"></a>安装 Python</h5><p>Mac 和 Linux 系统应该是自带了 python，但是这个项目用的是 Python2.x.x 的版本，所以最好是安装一下 Python</p>
 <p>用 anaconda 环境下安装比较简单</p>
 <p>首先安装 anaconda，<a href="https://repo.continuum.io/archive/Anaconda3-2018.12-MacOSX-x86_64.pkg" target="_blank" rel="noopener">anaconda 下载地址</a></p>
 <p>安装根据提示配置好</p>
 <h5 id="下载项目并搭建环境"><a href="#下载项目并搭建环境" class="headerlink" title="下载项目并搭建环境"></a>下载项目并搭建环境</h5><p>打开终端 terminal（Mac 和 Linux 的自带应用程序）</p>
 <h6 id="下载项目"><a href="#下载项目" class="headerlink" title="下载项目"></a>下载项目</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~$ cd ~/Downloads</span><br><span class="line"><span class="meta">#</span><span class="bash">这里下载完之后去下载目录解压</span></span><br><span class="line">~$ git clone git@github.com:testerSunshine/12306.git</span><br></pre></td></tr></table></figure>
-
 <h6 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ conda create -n 环境名字 python=2.7.15</span><br></pre></td></tr></table></figure>
-
 <h6 id="进入环境"><a href="#进入环境" class="headerlink" title="进入环境"></a>进入环境</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ source activate 环境名字</span><br></pre></td></tr></table></figure>
-
 <p>注：环境名字自己随意设置</p>
 <h6 id="安装依赖包-1"><a href="#安装依赖包-1" class="headerlink" title="安装依赖包"></a>安装依赖包</h6><p>首先进入到下载的项目的文件夹</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~$  cd ~/Downloads/12306-master</span><br><span class="line">~$  sudo pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt</span><br></pre></td></tr></table></figure>
-
 <h5 id="修改自己的个人信息-1"><a href="#修改自己的个人信息-1" class="headerlink" title="修改自己的个人信息"></a>修改自己的个人信息</h5><p>在项目的解压文件下修改 config/ticket_config.yaml 文件，更改为自己的个人信息，每一项作者都添加了备注和示例信息，根据自己的需要写好，下一步就可以运行了</p>
 <h5 id="运行开始抢票-1"><a href="#运行开始抢票-1" class="headerlink" title="运行开始抢票"></a>运行开始抢票</h5><p>依然是进入到下载的项目的文件夹下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~$  cd ~/Downloads/12306-master</span><br><span class="line">~$  sudo python run.py</span><br></pre></td></tr></table></figure>
-
-
-
 <p>根据配置，如果抢票成功后，会发一封邮件到自己设置的邮箱，然后在30分钟内去客户端支付就完成购票了✅</p>
 <p>寒冷的冬天希望大家能尽快买到回家的票。</p>
 <p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g6nscykwxkj313i0u012t.jpg" alt="image-20190113222504669"></p>
@@ -602,6 +587,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1843,22 +1830,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
         </li>
     
     
@@ -1960,15 +1947,15 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
-    
         <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
-    
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
@@ -2005,9 +1992,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
-    
         <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

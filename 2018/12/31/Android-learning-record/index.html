@@ -450,7 +450,6 @@ height:50vh;
 <h2 id="二、活动（Activity）"><a href="#二、活动（Activity）" class="headerlink" title="二、活动（Activity）"></a>二、活动（Activity）</h2><p><strong>概述：</strong></p>
 <p>Activity 是 Android 应用程序中最基本的组成单位。Activity 主要负责创建显示窗口，一个 Activity 对象通常就代表了一个单独的屏幕。在 Android 应用中，如果需要有显示的界面，应用中至少要包含一个 Activity 类。在具体实现时，每个 Activity 都被定义为一个独立的类，并且继承 Android 提供的 android.app.Activity。例如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span></span>&#123;</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="Activity-生命周期"><a href="#Activity-生命周期" class="headerlink" title="Activity 生命周期"></a>Activity 生命周期</h3><p><strong>Android 生命周期过程中的四种状态：</strong></p>
 <ol>
 <li>激活或者运行状态：此时 Activity 运行在屏幕的前台</li>
@@ -459,20 +458,15 @@ height:50vh;
 <li>终止状态：此时 Activity 会被系统清理出内存</li>
 </ol>
 <h4 id="Activity-类中的7各方法定义了-Activity-完整的生命周期"><a href="#Activity-类中的7各方法定义了-Activity-完整的生命周期" class="headerlink" title="Activity 类中的7各方法定义了 Activity 完整的生命周期"></a>Activity 类中的7各方法定义了 Activity 完整的生命周期</h4><ol>
-<li><p>onCreate()：Activity 初次创建时被调用，该方法一般进行一些静态设置，如创建 View 视图、进行数据绑定等。如果 Activity 是首次创建，本方法执行完后会将调用 onStart()，如果 Activity 是停止后重新显示则调用 onRestart()。下一个方法：onStart()或 onRestart()</p>
-</li>
+<li>onCreate()：Activity 初次创建时被调用，该方法一般进行一些静态设置，如创建 View 视图、进行数据绑定等。如果 Activity 是首次创建，本方法执行完后会将调用 onStart()，如果 Activity 是停止后重新显示则调用 onRestart()。下一个方法：onStart()或 onRestart()</li>
 <li><p>onStart()：当 Activity 对用户即将可见的时候调用。下一个方法：onRestart()或 onResume()</p>
 </li>
 <li><p>onRestart()：当 Activity 从停止状态重启启动时调用，下一个方法 Resume()</p>
 </li>
-<li><p>onResume()：当 Activity 将要与用户交互时调用此方法，此时 Activity 在 Activity 栈的栈顶，用户输入的信息可以传递给它，如果其他 Activity 在它的上方恢复显示，则调用 onPause()，下一个方法onPause()</p>
-</li>
-<li><p>onPause()：当系统要启动一个其他的 Activity 时（其他的 Activity 显示之前），这个方法将被调用，用于提交持久数据的改变、停止动画等。下一个方法 onResume()或 onStop()</p>
-</li>
-<li><p>onStop()：当另一个 Activity 恢复并遮盖住当前的 Activity，导致其对用户不再可见时，这个方法将被调用。下一个方法 onStart()或 onDestroy()</p>
-</li>
-<li><p>onDestroy()：在 Activity 被销毁前所调用的最后一个方法，下一个被调用的方法：无</p>
-</li>
+<li>onResume()：当 Activity 将要与用户交互时调用此方法，此时 Activity 在 Activity 栈的栈顶，用户输入的信息可以传递给它，如果其他 Activity 在它的上方恢复显示，则调用 onPause()，下一个方法onPause()</li>
+<li>onPause()：当系统要启动一个其他的 Activity 时（其他的 Activity 显示之前），这个方法将被调用，用于提交持久数据的改变、停止动画等。下一个方法 onResume()或 onStop()</li>
+<li>onStop()：当另一个 Activity 恢复并遮盖住当前的 Activity，导致其对用户不再可见时，这个方法将被调用。下一个方法 onStart()或 onDestroy()</li>
+<li>onDestroy()：在 Activity 被销毁前所调用的最后一个方法，下一个被调用的方法：无</li>
 </ol>
 <h4 id="Activity-生命周期-1"><a href="#Activity-生命周期-1" class="headerlink" title="Activity 生命周期"></a>Activity 生命周期</h4><ol>
 <li>完整生命期：从 Activity 最初调用 onCreate()方法到最终调用 onDestroy()方法的真个过程称为完整的生命周期。</li>
@@ -504,10 +498,8 @@ height:50vh;
 </li>
 <li><p>Android 中的资源是指非代码部分，是代码中使用的外部资源</p>
 </li>
-<li><p>对于字符串资源，在其他资源文件中使用“@string/资源名称”的形式访问，在代码可通过“R.string.资源名称”的形式访问</p>
-</li>
-<li><p>对于图片资源，在其他资源文件中使用“@drawable/资源名称”的形式访问，在代码可通过“R.drawable.资源名称”的形式访问</p>
-</li>
+<li>对于字符串资源，在其他资源文件中使用“@string/资源名称”的形式访问，在代码可通过“R.string.资源名称”的形式访问</li>
+<li>对于图片资源，在其他资源文件中使用“@drawable/资源名称”的形式访问，在代码可通过“R.drawable.资源名称”的形式访问</li>
 </ol>
 <h2 id="三、用户界面"><a href="#三、用户界面" class="headerlink" title="三、用户界面"></a>三、用户界面</h2><h4 id="用户界面元素分类"><a href="#用户界面元素分类" class="headerlink" title="用户界面元素分类"></a>用户界面元素分类</h4><ol>
 <li>视图组件（View）</li>
@@ -696,20 +688,18 @@ height:50vh;
 <li><p>使用 SQLite 存储数据，SQLite 相对于MySQL 数据库来说，是一个轻量级的数据库，适合移动设备中复杂数据的存储。Android 已经竭诚了 SQLite 数据库，通过这种方式进行增加、插入、删除、更新等操作。</p>
 </li>
 <li><p>使用网络存储数据：</p>
-<p>将数据通过 java.net.* 和 android.net.* 包中的类存储于网络。</p>
+<p>将数据通过 java.net.<em> 和 android.net.</em> 包中的类存储于网络。</p>
 </li>
 </ol>
 <p>Android 提供了 <strong>内容提供器</strong>（ContextProvider）以达到访问应用程序之间数据共享的目的。ContextProvider 可以使用 SQLite 数据库或者文件作为存储方式（通常使用 SQLite 数据库）</p>
 <h4 id="访问-Preference-的-API"><a href="#访问-Preference-的-API" class="headerlink" title="访问 Preference 的 API"></a>访问 Preference 的 API</h4><p>使用 Preference 方式来存取数据时，需要用到 SharedPreferences 和 SharedPreferences.Editor 接口，这两个接口在 android.content 包中。</p>
 <h4 id="使用-SharedPreferences-存储数据步骤："><a href="#使用-SharedPreferences-存储数据步骤：" class="headerlink" title="使用 SharedPreferences 存储数据步骤："></a>使用 SharedPreferences 存储数据步骤：</h4><ol>
-<li><p>使用 getSharedPreferences()得到 SharedPreferences 对象，调用 getSharedPreferences()方法</p>
-</li>
+<li>使用 getSharedPreferences()得到 SharedPreferences 对象，调用 getSharedPreferences()方法</li>
 <li><p>使用 sharedPreferences.Editor 的 putXXX()方法保存数据</p>
 </li>
 <li><p>使用 SharedPreferences.Editor 的 commit()方法将本次操作的数据写入 XML 文件中</p>
 </li>
-<li><p>使用 SaredPreferences 的 getXXX()方法获取相应的数据。</p>
-</li>
+<li>使用 SaredPreferences 的 getXXX()方法获取相应的数据。</li>
 </ol>
 <h4 id="File-存储数据"><a href="#File-存储数据" class="headerlink" title="File 存储数据"></a>File 存储数据</h4><p>不同于 Preference 存储，文件存储方式不受类型限制，可以将一些数据直接以文件的形式保存在设备中，如文本文件、PDF、音频、图片等。如果需要存储复杂的数据，可以使用文件进行存储。Android 提供了读写文件的方法。</p>
 <h4 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h4><p>和传统的 java 中实现 I/O 的程序类似，通过 Context.openFileInput()方法可以获取标准的文件输入流（FileInputStream），以读取设备上的文件。通过 Context.openFileOutput()方法可以获取标准的文件输出流（FileOutputStream）,将数据写到文件中。</p>
@@ -942,6 +932,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -2183,22 +2175,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
         </li>
     
     
@@ -2300,15 +2292,15 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
-    
         <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
-    
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
@@ -2345,9 +2337,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
-    
         <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

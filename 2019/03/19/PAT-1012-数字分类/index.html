@@ -20,12 +20,12 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="1012 数字分类 （20 分)  给定一系列正整数，请按要求对数字进行分类，并输出以下 5 个数字：  A1 &#x3D; 能被 5 整除的数字中所有偶数的和； A2 &#x3D; 将被 5 除后余 1 的数字按给出顺序进行交错求和，即计算 n1−n2+n3−n4⋯； A3 &#x3D; 被 5 除后余 2 的数字的个数； A4 &#x3D; 被 5 除后余 3 的数字的平均数，精确到小数点后 1 位； A5 &#x3D; 被 5 除后余 4">
+    <meta name="description" content="1012 数字分类 （20 分) 给定一系列正整数，请按要求对数字进行分类，并输出以下 5 个数字：  A1 &#x3D; 能被 5 整除的数字中所有偶数的和； A2 &#x3D; 将被 5 除后余 1 的数字按给出顺序进行交错求和，即计算 n1−n2+n3−n4⋯； A3 &#x3D; 被 5 除后余 2 的数字的个数； A4 &#x3D; 被 5 除后余 3 的数字的平均数，精确到小数点后 1 位； A5 &#x3D; 被 5 除后余 4 的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PAT 1012 数字分类">
 <meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="1012 数字分类 （20 分)  给定一系列正整数，请按要求对数字进行分类，并输出以下 5 个数字：  A1 &#x3D; 能被 5 整除的数字中所有偶数的和； A2 &#x3D; 将被 5 除后余 1 的数字按给出顺序进行交错求和，即计算 n1−n2+n3−n4⋯； A3 &#x3D; 被 5 除后余 2 的数字的个数； A4 &#x3D; 被 5 除后余 3 的数字的平均数，精确到小数点后 1 位； A5 &#x3D; 被 5 除后余 4">
+<meta property="og:description" content="1012 数字分类 （20 分) 给定一系列正整数，请按要求对数字进行分类，并输出以下 5 个数字：  A1 &#x3D; 能被 5 整除的数字中所有偶数的和； A2 &#x3D; 将被 5 除后余 1 的数字按给出顺序进行交错求和，即计算 n1−n2+n3−n4⋯； A3 &#x3D; 被 5 除后余 2 的数字的个数； A4 &#x3D; 被 5 除后余 3 的数字的平均数，精确到小数点后 1 位； A5 &#x3D; 被 5 除后余 4 的">
 <meta property="article:published_time" content="2019-03-19T15:24:40.000Z">
 <meta property="article:modified_time" content="2020-05-05T15:36:19.397Z">
 <meta property="article:author" content="jax">
@@ -416,7 +416,6 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <h2 id="1012-数字分类-（20-分"><a href="#1012-数字分类-（20-分" class="headerlink" title="1012 数字分类 （20 分)"></a>1012 数字分类 （20 分)</h2><!-- toc -->
-
 <p>给定一系列正整数，请按要求对数字进行分类，并输出以下 5 个数字：</p>
 <ul>
 <li>A1 = 能被 5 整除的数字中所有偶数的和；</li>
@@ -429,17 +428,10 @@ height:50vh;
 <h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>对给定的 N 个正整数，按题目要求计算 A1~A5 并在一行中顺序输出。数字间以空格分隔，但行末不得有多余空格。</p>
 <p>若其中某一类数字不存在，则在相应位置输出 <code>N</code>。</p>
 <h3 id="输入样例-1："><a href="#输入样例-1：" class="headerlink" title="输入样例 1："></a>输入样例 1：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">13 1 2 3 4 5 6 7 8 9 10 20 16 18</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出样例-1："><a href="#输出样例-1：" class="headerlink" title="输出样例 1："></a>输出样例 1：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30 11 2 9.7 9</span><br></pre></td></tr></table></figure>
-
 <h3 id="输入样例-2："><a href="#输入样例-2：" class="headerlink" title="输入样例 2："></a>输入样例 2：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8 1 2 4 5 6 7 9 16</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出样例-2："><a href="#输出样例-2：" class="headerlink" title="输出样例 2："></a>输出样例 2：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N 11 2 N 9</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="C-代码以及注释解析"><a href="#C-代码以及注释解析" class="headerlink" title="C++代码以及注释解析"></a>C++代码以及注释解析</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, num, A1 = <span class="number">0</span>, A2 = <span class="number">0</span>, A5 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">double</span> A4 = <span class="number">0.0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="comment">//vector&lt;int&gt; v[5]; //创建二维数组</span></span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; <span class="title">v</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; num;</span><br><span class="line">        v[num%<span class="number">5</span>].push_back(num);            <span class="comment">//进行按照余数分类，写入每一行的 vector 中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;           <span class="comment">//按照条件进行分类操作，并执行计量</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; v[i].<span class="built_in">size</span>(); j++) &#123;                 <span class="comment">//统着判断, 即对每一行进行 1 对 5 的判断</span></span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; v[i][j] % <span class="number">2</span> == <span class="number">0</span>) A1 += v[i][j];      <span class="comment">//余数为 0 ; 并且为 even</span></span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">1</span> &amp;&amp; j % <span class="number">2</span> == <span class="number">0</span>) A2 += v[i][j];            <span class="comment">//余数为 1 ; 从下标 0 项开始(包括0项)，偶数项执行正操作</span></span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">1</span> &amp;&amp; j % <span class="number">2</span> == <span class="number">1</span>) A2 -= v[i][j];            <span class="comment">//余数为 1 ; 奇数项执行负操作</span></span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">3</span>) A4 += v[i][j];                          <span class="comment">//余数为 3 ; 加起来</span></span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">4</span> &amp;&amp; v[i][j] &gt; A5) A5 = v[i][j];           <span class="comment">//余数为 4 ; 取最大值</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i != <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">" "</span>);                                <span class="comment">//分条进行判断输出</span></span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; A1 == <span class="number">0</span> || i != <span class="number">0</span> &amp;&amp; v[i].<span class="built_in">size</span>() == <span class="number">0</span>) &#123;  <span class="comment">//判断为空的情况，第 0 行特殊，如果为零则为空，其余只要有项则非空 </span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"N"</span>); <span class="keyword">continue</span>;                              <span class="comment">//如果为空，则此行被跳过 continue;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"%d"</span>, A1);</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%d"</span>, A2);</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">2</span>) <span class="built_in">printf</span>(<span class="string">"%d"</span>, v[<span class="number">2</span>].<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">3</span>) <span class="built_in">printf</span>(<span class="string">"%.1f"</span>, A4 / v[<span class="number">3</span>].<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">4</span>) <span class="built_in">printf</span>(<span class="string">"%d"</span>, A5);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </article>
     <!-- license  -->
@@ -573,6 +565,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1814,22 +1808,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
         </li>
     
     
@@ -1931,15 +1925,15 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
-    
         <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
-    
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
@@ -1976,9 +1970,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
-    
         <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

@@ -441,10 +441,8 @@ height:50vh;
 <p>我们点击中间的商品评价，所有的评论便都在下面了。</p>
 <h4 id="第一行代码"><a href="#第一行代码" class="headerlink" title="第一行代码"></a>第一行代码</h4><p>本次爬取数据，使用的是 Python 的一个库——<strong>Requests</strong>，在这里我们只需要明白它是一个特别强大的库就可以了，如果想要了解更多关于<strong>Requests</strong>的内容，我们只需要用搜索引擎搜索它，然后详细仔细的查看和研究，本文我们变用变学习<strong>Requests</strong> 的功能。</p>
 <h5 id="导入-Requests-库"><a href="#导入-Requests-库" class="headerlink" title="导入 Requests 库"></a>导入 Requests 库</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure>
-
 <p>上面这第一行代码意思是将<strong>Requests</strong>库导入当前python文件，只有导入后才能使用（Python 有很多的库文件，我们用哪个就需要提前导入哪个）</p>
 <h5 id="定义评论链接"><a href="#定义评论链接" class="headerlink" title="定义评论链接"></a>定义评论链接</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">"https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv2783&amp;productId=11990777&amp;score=0&amp;sortType=5&amp;page=0&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1"</span></span><br></pre></td></tr></table></figure>
-
 <p>这段代码定义一个 url 变量，并将<strong>评论链接</strong>赋值给url这个变量，但是这个<strong>评论链接</strong>是从哪里找到的呢？有了这个疑问，这也是本次教程最重要的部分。</p>
 <h4 id="找到评论链接"><a href="#找到评论链接" class="headerlink" title="找到评论链接"></a>找到评论链接</h4><p><strong>要想获得所有评论，我们要有一个概念，1. 其实评论肯定都存储在京东的服务器上，2. 当我们点击评论的时候，浏览器向服务器索要评论内容，3. 服务器会给出一个评论链接，4. 浏览器通过这个评论链接便能查看所有的评论</strong></p>
 <p>好，我们可以理解为，有一条线，这条线牵引着所有的评论内容。接下来我们的目的就是找到这条线。</p>
@@ -454,7 +452,7 @@ height:50vh;
 <p><strong>出现这个之后一定要先做一件事情：点击下图标号1，开发者框中的「Network」按钮，然后再将页面进行刷新（按 F5，或者如图点击标号2的刷新图标）如下图：</strong></p>
 <p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g5p995jo04j31bx0u0jvk.jpg" alt="image-20190802004144553"></p>
 <p>想要找到评论我们需要全文搜索<strong>评论元素</strong>，当然不要忘记了，用过 Word我们肯定知道，Control键+F 是可以全文进行搜索的，在这里当然也管用。</p>
-<p>我们试一下：先复制第一条评论*”非常不错啊！有理论，更有实践，没节都有些tips可以使用。真好。强烈推荐。”*</p>
+<p>我们试一下：先复制第一条评论<em>“非常不错啊！有理论，更有实践，没节都有些tips可以使用。真好。强烈推荐。”</em></p>
 <p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g5p98zr984j30ul0u0tbt.jpg" alt="image-20190802002742769"></p>
 <p>然后点击一下开发者区域（也就是我们之前按 F12 之后出现的区域），按下 <strong>Control + F</strong>（Mac 下面是 Command +  F），会在左边出现一个搜索框：我们将复制的评论粘贴在搜索框中，并按下<strong>回车键</strong></p>
 <p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1g5p99ahotzj31bx0u07bu.jpg" alt="image-20190802004517867"></p>
@@ -464,13 +462,13 @@ height:50vh;
 <p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g5p98txpahj325g0sigvc.jpg" alt="image-20190802004935850"></p>
 <p>我们稍微简单解释一下几条信息：</p>
 <ul>
-<li><p>Request URL：URL代表的是Uniform Resource Locator,统一资源定位符，它是WWW的统一资源定位标志，就是指网络地址。比如说“<a href="http://www.baidu.com”这就是一个" target="_blank" rel="noopener">www.baidu.com”这就是一个</a> <strong>URL</strong>。</p>
+<li><p>Request URL：URL代表的是Uniform Resource Locator,统一资源定位符，它是WWW的统一资源定位标志，就是指网络地址。比如说“www.baidu.com”这就是一个 <strong>URL</strong>。</p>
 <p>  那很显然了，这个<strong>URL</strong>请求的链接就是服务器返回给浏览器的评论的链接。</p>
 </li>
 <li><p>Request Method：GET，这个代表的是 Request 这个请求的方法。如果我们搜索 Request 这个关键词，就会发现 Request 其实是客户端用来发送请求的一个对象，而 Request 对象有好几种方法，GET 是其中一种，Request 利用这些方法向服务器发送请求。</p>
 <p>  这个在这里不重要，简单了解即可。</p>
 </li>
-<li><p>Status Code：200。字面含义就很清楚了，状态编码，我们用200来代表，请求成功，当然，还有一些其他的编码，比如我们所熟悉的 404 网页不存在，或者不到网页（如果你没有碰到过404的话，没关系，你可以在浏览器中输入”<a href="http://www.google.com&quot;，404就会出现的）" target="_blank" rel="noopener">www.google.com&quot;，404就会出现的）</a></p>
+<li><p>Status Code：200。字面含义就很清楚了，状态编码，我们用200来代表，请求成功，当然，还有一些其他的编码，比如我们所熟悉的 404 网页不存在，或者不到网页（如果你没有碰到过404的话，没关系，你可以在浏览器中输入”www.google.com”，404就会出现的）</p>
 </li>
 </ul>
 <h4 id="真正的开始"><a href="#真正的开始" class="headerlink" title="真正的开始"></a>真正的开始</h4><p>别忘了，我们的主要目的是干什么——找到评论链接，事实上我们已经找到了，就在上面的 Request URL中，我们不妨复制下来看看它有什么特征</p>
@@ -487,18 +485,14 @@ height:50vh;
 <p>事实上，当第三页，这个二者有不同的地方就变成了数字2，好了，这一切都联系起来了。从 0 开始代表了第一页，之后每增加一页，数字加1。</p>
 <p>知道了上面这些，意味着我们可以真正开始大量爬取评论数据了。</p>
 <h4 id="爬取第一页评论"><a href="#爬取第一页评论" class="headerlink" title="爬取第一页评论"></a>爬取第一页评论</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment_spider</span><span class="params">()</span>:</span></span><br><span class="line">  	url =<span class="string">"https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv2783&amp;productId=11990777&amp;score=0&amp;sortType=5&amp;page=1&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url)</span><br><span class="line">        print(r.status_code)</span><br><span class="line">        print(<span class="string">"评论数据："</span>+r.text[:<span class="number">100</span>])</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">"爬取失败"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    comment_spider()</span><br></pre></td></tr></table></figure>
-
-<p>上面我们定义了一个函数<strong>comment_spider( ) ** ，这个函数里面的</strong>URL**是我们上面费力找到的。</p>
+<p>上面我们定义了一个函数<strong>comment_spider( ) </strong> ，这个函数里面的<strong>URL</strong>是我们上面费力找到的。</p>
 <p>然后，我们通过使用try，尝试对<strong>URL</strong>进行数据爬取：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(url)</span><br></pre></td></tr></table></figure>
-
 <p>这是我们利用<strong>Requests</strong>发起一个<strong>GET</strong>请求，并把请求到的数据赋值给r。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(r.status_code)</span><br></pre></td></tr></table></figure>
-
 <p>我们利用<strong>r.status_code</strong>来查看，请求内容是否成功，我们在之前说过，如果返回200，代表请求成功，如果返回404，证明访问的内容不存在。当然，还有可能返回到其他的编码，但我们想要的显然是 200</p>
 <p><strong>如果try</strong>语句之后的内容执行失败，我们就会执行<strong>except</strong>后面的内容。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    comment_spider()</span><br></pre></td></tr></table></figure>
-
 <p>上面的代码，即为一个主函数执行函数入口，在主函数里我们执行编写的<strong>comment__spider()</strong> 函数</p>
 <p><strong>执行一下看一下</strong></p>
 <p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g5p993y9esj30u00za0vl.jpg" alt="s"></p>
@@ -508,22 +502,16 @@ height:50vh;
 <p>有一个<strong>Requests Headers</strong>，这是一个请求头，我们需要在利用<strong>requests.get</strong>方法发起请求的时候，把这个请求头加上，这样服务器就能够正常返回我们想要的内容。</p>
 <p>我们需要设置一个字典：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kv = &#123;<span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0'</span>,<span class="string">'Referer'</span>:<span class="string">'https://item.jd.com/11990777.html'</span>&#125;</span><br></pre></td></tr></table></figure>
-
 <p>这里面包含的<strong>user-agent</strong>代表发起请求的浏览器信息，<strong>Refeer</strong>用于标识请求的来源</p>
 <p>然后我们修改<strong>requests.get</strong>请求，把我们的请求头加上：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(url,headers = kv)</span><br></pre></td></tr></table></figure>
-
-
-
 <p>完整代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment_spider</span><span class="params">()</span>:</span></span><br><span class="line">    url = <span class="string">"https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv2783&amp;productId=11990777&amp;score=0&amp;sortType=5&amp;page=0&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1"</span></span><br><span class="line">    kv = &#123;<span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0'</span>,<span class="string">'Referer'</span>:<span class="string">'https://item.jd.com/11990777.html'</span>&#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url,headers = kv)</span><br><span class="line">        print(r.status_code)</span><br><span class="line">        print(<span class="string">"评论数据："</span>+r.text[:<span class="number">100</span>])</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">"爬取失败"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    comment_spider()</span><br></pre></td></tr></table></figure>
-
 <p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g5p991ztw8j30u00zaapz.jpg" alt="image-20190802185102214"></p>
 <p>可以看到打印的内容，我们可以获取到想要的想要的评论数据。</p>
 <h4 id="值得一提的小细节"><a href="#值得一提的小细节" class="headerlink" title="值得一提的小细节"></a>值得一提的小细节</h4><p>我们通过查看打印内容，真正的<strong>JSON</strong>数据是<strong>{ }</strong>里面的内容，也就是，去掉前面的<strong>“fetchJSON_comment98vv2783( “</strong> 和 后面的 <strong>“); “</strong> 的内容。</p>
 <p>我们用<strong>切片</strong>的方法，来获取这段<strong>JSON</strong>数据。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r_json_str = r.text[<span class="number">26</span>:<span class="number">-2</span>]</span><br></pre></td></tr></table></figure>
-
 <p>这段代码定义一个  <strong>r_json_str</strong> 的变量，其中<strong>[26:-2]</strong> 表示将r.text 内容的第26个到倒数第2个字符切下来。</p>
 <h4 id="数据分析与提取"><a href="#数据分析与提取" class="headerlink" title="数据分析与提取"></a>数据分析与提取</h4><p>我们上面获得到的数据，其实是<strong>JSON</strong>数据，至于<strong>JSON</strong>是什么，我们现在只需要知道，它是一种数据交换格式，可以用来传递一些数据。</p>
 <p>我们通过开发者模式中的<strong>Preview</strong>便可以稍微查看一下有什么数据，也可以百度搜索 <strong>JSON</strong>解析链接后，将 <strong>JSON</strong> 数据粘贴进去查看解析数据。</p>
@@ -533,13 +521,10 @@ height:50vh;
 <p>python 有一个库，可以方便的查看字典格式，将整个层次分割开来。</p>
 <p>我们先利用 <strong>import</strong> 导入这个库</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pprint</span><br></pre></td></tr></table></figure>
-
 <p>然后下面的代码可以查看 <strong>JSON</strong> 解析数据字典格式的层次结构</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = json.loads(r.text[<span class="number">26</span>:<span class="number">-2</span>])</span><br><span class="line">pprint.pprint(data)</span><br></pre></td></tr></table></figure>
-
 <p>完整代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment_spider</span><span class="params">()</span>:</span></span><br><span class="line">    url = <span class="string">"https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv2783&amp;productId=11990777&amp;score=0&amp;sortType=5&amp;page=0&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1"</span></span><br><span class="line">    kv = &#123;<span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0'</span>,<span class="string">'Referer'</span>:<span class="string">'https://item.jd.com/11990777.html'</span>&#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url,headers = kv,timeout = <span class="number">100</span>)</span><br><span class="line">        data = json.loads(r.text[<span class="number">26</span>:<span class="number">-2</span>])</span><br><span class="line">        pprint.pprint(data)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">"爬取失败"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    comment_spider()</span><br></pre></td></tr></table></figure>
-
 <p>打印出的字典结构：</p>
 <p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g5p996ggu4j31d50u0tdg.jpg" alt="image-20190805222738285"></p>
 <p>可以看到评论内容存在content对象中，所以我们只需要循环出所有 <strong>comments</strong> 中的 <strong>content</strong> 对象中内容，就能将所有的评论取出来。</p>
@@ -547,9 +532,6 @@ height:50vh;
 <p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g5p990di8fj31c00u0gub.jpg" alt="image-20190805223742596"></p>
 <p>完整代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment_spider</span><span class="params">()</span>:</span></span><br><span class="line">    url = <span class="string">"https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv2783&amp;productId=11990777&amp;score=0&amp;sortType=5&amp;page=0&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1"</span></span><br><span class="line">    kv = &#123;<span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0'</span>,<span class="string">'Referer'</span>:<span class="string">'https://item.jd.com/11990777.html'</span>&#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url,headers = kv,timeout = <span class="number">100</span>)</span><br><span class="line">        <span class="comment">#获取到json的字符串</span></span><br><span class="line">        r_json_str = r.text[<span class="number">26</span>:<span class="number">-2</span>]</span><br><span class="line">        <span class="comment">#字符串转换为json对象</span></span><br><span class="line">        r_json_obj = json.loads(r_json_str)        </span><br><span class="line">        <span class="comment">#获取到json字典中的comments对象</span></span><br><span class="line">        r_json_comments = r_json_obj[<span class="string">'comments'</span>]</span><br><span class="line">        <span class="comment">#循环打印出所有的评论数据</span></span><br><span class="line">        <span class="keyword">for</span> comment <span class="keyword">in</span> r_json_comments:</span><br><span class="line">            print(comment[<span class="string">'content'</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">"爬取失败"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    comment_spider()</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="翻页处理，打印多页评论"><a href="#翻页处理，打印多页评论" class="headerlink" title="翻页处理，打印多页评论"></a>翻页处理，打印多页评论</h4><p>值得注意的是，我们上面只能打印出第一页的评论数据，这是因为我们的 <strong>URL</strong> 链接只是第一页的数据链接。</p>
 <p>但我们前面已经分析过每个页码的 <strong>URL</strong> 差别其实就是 <strong>page=0</strong> 这个地方的不同，如下图：</p>
 <p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1g5koj6jwo6j31ow0u0grq.jpg" alt="image-20190802011421852"></p>
@@ -559,9 +541,6 @@ height:50vh;
 <p>首先改造一下 <strong>comment_spider</strong> 函数，使其拥有一个默认参数 <strong>page = 0</strong>，也就是默认情况下爬取第1页内容，但为什么是数字0呢？这是因为编程习惯上使用0作为开始的下标。</p>
 <p>上面这段代码，还包含一个 <strong>数据保存</strong> 的功能，其中的 <strong>FILE_PATH</strong> 就是文件路径，我们需要在开头的位置提前定义一下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FILE_PATH = <span class="string">'book_comments.txt'</span></span><br></pre></td></tr></table></figure>
-
-
-
 <p>然后，我们重复执行这个函数，每次将其参数 <strong>page</strong> 进行 <strong>+1</strong> 操作，就可以实现爬取多页数据，怎样实现这个重复呢？对，我们可以再定义一个函数来执行它啊！</p>
 <p>我们定义 <strong>loop_spider()</strong> 函数来重复执行 <strong>comment_spider(page = 0)</strong> 这个函数，这样就达到目的了。</p>
 <p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g5p9977n1tj30l60bijs3.jpg" alt="image-20190805231846821"></p>
@@ -569,22 +548,13 @@ height:50vh;
 <p>还注意到，我们使用了 <strong>time</strong> 这个 <strong>python</strong> 库，这一行代码是用来进行延时处理的，这样做的目的是为了不让我们的爬虫操作太频繁，而被系统封掉 <strong>IP</strong></p>
 <p>完整代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">FILE_PATH = <span class="string">'book_comments.txt'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment_spider</span><span class="params">(page = <span class="number">0</span>)</span>:</span></span><br><span class="line">    url = <span class="string">'https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv2783&amp;'</span> \</span><br><span class="line">    <span class="string">'productId=11990777&amp;score=0&amp;sortType=5&amp;page=%s&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1'</span>%page</span><br><span class="line">    kv = &#123;<span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0'</span>,<span class="string">'Referer'</span>:<span class="string">'https://item.jd.com/11990777.html'</span>&#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url,headers = kv,timeout = <span class="number">100</span>)</span><br><span class="line">        <span class="comment">#获取到json的字符串</span></span><br><span class="line">        r_json_str = r.text[<span class="number">26</span>:<span class="number">-2</span>]</span><br><span class="line">        <span class="comment">#字符串转换为json对象</span></span><br><span class="line">        r_json_obj = json.loads(r_json_str)        </span><br><span class="line">        <span class="comment">#获取到json字典中的comments对象</span></span><br><span class="line">        r_json_comments = r_json_obj[<span class="string">'comments'</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment">#循环打印出所有的评论数据, 并保存至指定文件</span></span><br><span class="line">        <span class="keyword">for</span> comment <span class="keyword">in</span> r_json_comments:</span><br><span class="line">            <span class="keyword">with</span> open(FILE_PATH,<span class="string">'a+'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                f.write(comment[<span class="string">'content'</span>]+<span class="string">'\n'</span>)</span><br><span class="line">            print(comment[<span class="string">'content'</span>])</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">"爬取失败"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop_spider</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">        保存爬取数据</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">if</span> os._exists(<span class="string">"FILE_PATH"</span>):</span><br><span class="line">        os.remove(<span class="string">"FILE_PATH"</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">        comment_spider(i)</span><br><span class="line">        time.sleep(random.random() * <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment">#comment_spider()</span></span><br><span class="line">    loop_spider()</span><br></pre></td></tr></table></figure>
-
-
-
 <p>这样一来，我们就能获取到很多评论数据，默认爬取10页评论，如果想要爬取更多，更改 <strong>loop_spider()</strong> 函数中的参数就能实现我们想要爬取的页数，比如改为50页：只需修改最后的主函数 <strong>loop_spider()</strong> 为 <strong>loop_spider(50)</strong></p>
 <h4 id="生成云词"><a href="#生成云词" class="headerlink" title="生成云词"></a>生成云词</h4><p>生成云词我们定义两个函数，一个是用来获取，评论内容，并进行分词处理；另一个用来生成云词。</p>
 <p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g5p998rmigj315g0u042r.jpg" alt="image-20190805232913819"></p>
 <p>其中我们需要设置两个参数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WC_MASK_IMG = <span class="string">'ky.jpg'</span>  <span class="comment">#云词的背景图片</span></span><br><span class="line">WC_FONT_PATH = <span class="string">'/Library/Fonts/Songti.ttc'</span>	<span class="comment">#云词的默认字体</span></span><br></pre></td></tr></table></figure>
-
-
-
 <p>最终的完整代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">kybook_path = <span class="string">'kybook.txt'</span></span><br><span class="line">WC_MASK_IMG = <span class="string">'ky.jpg'</span></span><br><span class="line">WC_FONT_PATH = <span class="string">'/Library/Fonts/Songti.ttc'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment_spider</span><span class="params">(page = <span class="number">0</span>)</span>:</span></span><br><span class="line">    url = <span class="string">"https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv2783&amp;productId=11990777&amp;score=0&amp;sortType=5&amp;page=%s&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1"</span>%page</span><br><span class="line">    kv = &#123;<span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0'</span>,<span class="string">'Referer'</span>:<span class="string">'https://item.jd.com/11990777.html'</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url,headers = kv)</span><br><span class="line">        r.raise_for_status()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">"spider failed."</span>)</span><br><span class="line">    r_json_str = r.text[<span class="number">26</span>:<span class="number">-2</span>]</span><br><span class="line">    r_json_obj = json.loads(r_json_str)</span><br><span class="line">    pprint.pprint(r_json_obj[<span class="string">'comments'</span>])</span><br><span class="line">    r_json_comments = r_json_obj[<span class="string">'comments'</span>]</span><br><span class="line">    <span class="keyword">for</span> r_json_comment <span class="keyword">in</span> r_json_comments:</span><br><span class="line">        <span class="keyword">with</span> open(kybook_path,<span class="string">'a+'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(r_json_comment[<span class="string">'content'</span>]+<span class="string">'\n'</span>)</span><br><span class="line">        print(r_json_comment[<span class="string">'content'</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bunch_comment_spider</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> os._exists(kybook_path):</span><br><span class="line">        os.remove(kybook_path)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>):</span><br><span class="line">        comment_spider(i)</span><br><span class="line">        time.sleep(random.random() * <span class="number">5</span>)</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cut_word</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 打开爬取的评论数据文件</span></span><br><span class="line">    <span class="keyword">with</span> open(kybook_path) <span class="keyword">as</span> file:     </span><br><span class="line">        <span class="comment"># 读取文件内容</span></span><br><span class="line">        comment_txt = file.read()       </span><br><span class="line">        <span class="comment">#分词处理</span></span><br><span class="line">        wordlist = jieba.cut(comment_txt, cut_all=<span class="literal">True</span>)  </span><br><span class="line">        <span class="comment">#json处理   </span></span><br><span class="line">        wl = <span class="string">" "</span>.join(wordlist)                             </span><br><span class="line">        print(wl)</span><br><span class="line">        <span class="keyword">return</span> wl</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_word_cloud</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 设置词云形状图片</span></span><br><span class="line">    wc_mask = np.array(Image.open(WC_MASK_IMG))</span><br><span class="line">    <span class="comment"># 设置词云的一些配置，如：字体，背景色，词云形状，大小</span></span><br><span class="line">    wc = WordCloud(background_color=<span class="string">"white"</span>, max_words=<span class="number">2000</span>, mask=wc_mask, scale=<span class="number">4</span>,</span><br><span class="line">                   max_font_size=<span class="number">50</span>, random_state=<span class="number">42</span>, font_path=WC_FONT_PATH)</span><br><span class="line">    <span class="comment"># 生成词云</span></span><br><span class="line">    wc.generate(cut_word())</span><br><span class="line">    <span class="comment"># 在只设置mask的情况下,你将会得到一个拥有图片形状的词云</span></span><br><span class="line">    plt.imshow(wc, interpolation=<span class="string">"bilinear"</span>)</span><br><span class="line">    plt.axis(<span class="string">"off"</span>)</span><br><span class="line">    plt.figure()</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment">#comment_spider()</span></span><br><span class="line">    <span class="comment">#bunch_comment_spider()</span></span><br><span class="line"></span><br><span class="line">    create_word_cloud()</span><br></pre></td></tr></table></figure>
-
-
-
 <p>生成的效果：</p>
 <p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g5p999mhymj30x90u0n4e.jpg" alt="image-20190805233245447"></p>
 <p>我们就可以看到评论里最多的词语，进而可以有一个对这本书大致的分析判断。</p>
@@ -721,6 +691,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1962,22 +1934,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
         </li>
     
     
@@ -2079,15 +2051,15 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
-    
         <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
-    
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
@@ -2124,9 +2096,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
-    
         <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

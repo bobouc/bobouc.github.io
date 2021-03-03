@@ -428,8 +428,7 @@ height:50vh;
 <li>Deepin：中国Linux 发行版，友好性和适用于中国国情开发的一款 Linux 桌面操作系统。</li>
 </ul>
 </li>
-<li><p>Linux 与 Windows 的比较</p>
-<ul>
+<li>Linux 与 Windows 的比较<ul>
 <li>相似之处：<ul>
 <li>都是多用户操作系统</li>
 <li>都支持多文件系统</li>
@@ -458,20 +457,14 @@ height:50vh;
 </li>
 <li><p>通过源码进行安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd software_folder(进入到解压的软件目录)</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-
 <p>卸载：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd software_folder(进入到解压的软件目录)</span><br><span class="line">sudo make uninstall</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过 apt-get 在线安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install 'software_name'</span><br></pre></td></tr></table></figure>
-
 <p>卸载：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get uninstall 'software_name'</span><br><span class="line">sudo apt-get remove 'software_name'</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update #更新软件软件源列表</span><br></pre></td></tr></table></figure>
-
-
-
 </li>
 </ul>
 </li>
@@ -632,6 +625,7 @@ height:50vh;
 </ul>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -639,7 +633,8 @@ height:50vh;
 <th>文件 file1转换成 file2的指令</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>L1aL2,L3</td>
 <td>在 file1第 L1行之后添加 file2的 L2行到 L3行</td>
 </tr>
@@ -653,9 +648,10 @@ height:50vh;
 </tr>
 <tr>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ul>
 <li><p>uniq：删除重复行</p>
 <ul>
@@ -681,8 +677,8 @@ height:50vh;
 <p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxtmaurt2fj30ua01g0tg.jpg" alt="1.txt 文件权限"></p>
 <p>-：普通文件（若 d 则为文件夹）</p>
 <p>rw-：用户所有者</p>
-<p>r–：同组用户</p>
-<p>r–：其他用户</p>
+<p>r—：同组用户</p>
+<p>r—：其他用户</p>
 <p>chmod命令：用于改变文件或目录的访问权限，语法格式：chmod「选项」「mode」「文件或目录」</p>
 <ul>
 <li>-v   显示权限的变更信息</li>
@@ -755,7 +751,6 @@ height:50vh;
 </ul>
 <p>e.g.:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sort -t <span class="string">' '</span> -k 1.2 companyinfo.txt    <span class="comment">#从公司 信息英文名称的第二个字母开始进行排序</span></span></span><br><span class="line">baidu 100 5000</span><br><span class="line">sohu 100 4500</span><br><span class="line">google 110 5000</span><br><span class="line">guge 50 3000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> sort -t ‘ ‘ -k 1.2,1.2 -k 3,3nr facebook.txt    <span class="comment">#只针对公司英文名称的第二个字母进行排序</span></span></span><br><span class="line">baidu 100 5000</span><br><span class="line">google 110 5000</span><br><span class="line">sohu 100 4500</span><br><span class="line">guge 50 3000</span><br></pre></td></tr></table></figure>
-
 <h2 id="文件的压缩与解压："><a href="#文件的压缩与解压：" class="headerlink" title="文件的压缩与解压："></a>文件的压缩与解压：</h2><p>gzip 命令，语法：gzip「选项」「文件列表」</p>
 <ul>
 <li>-d，将压缩文件解压</li>
@@ -836,7 +831,7 @@ height:50vh;
 <p>$ crontab -e： #创建作业的命令</p>
 <p>创建作业命令格式：</p>
 <p>分钟  小时  日期  月份  星期  命令</p>
-<p>e.g.:  20 10 * * * touch test.txt        #设定每日10点20分执行一次 touch test.txt</p>
+<p>e.g.:  20 10 <em> </em> * touch test.txt        #设定每日10点20分执行一次 touch test.txt</p>
 <h3 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h3><ul>
 <li><p>ps：查询列举进程    ps「选项」「程序名」</p>
 <ul>
@@ -926,10 +921,8 @@ height:50vh;
 <li>-w，设置用户用户密码过期前被警告修改密码的天数</li>
 </ul>
 </li>
-<li><p>groupadd 命令，语法：groupadd「组名」</p>
-</li>
-<li><p>groupdel  命令，语法：groupdel「组名」</p>
-</li>
+<li>groupadd 命令，语法：groupadd「组名」</li>
+<li>groupdel  命令，语法：groupdel「组名」</li>
 </ul>
 <p><strong>系统相关文件</strong></p>
 <p><strong>/etc/passwd</strong></p>
@@ -986,7 +979,7 @@ height:50vh;
 </li>
 <li><p>脚本的可执行性</p>
 <p>执行 shell 脚本，需要拥有其文件的可执行权限。</p>
-<p>通常为使用：”chmod u+x ***.sh” 对脚本添加可执行权限</p>
+<p>通常为使用：”chmod u+x <em>*</em>.sh” 对脚本添加可执行权限</p>
 </li>
 </ul>
 <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><ul>
@@ -1011,9 +1004,8 @@ height:50vh;
 <p>“$x”：程序将会把变量替换成它的值</p>
 <p>‘$x’ ： 程序将不会发生替换行为</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">x=hello</span><br><span class="line"><span class="built_in">echo</span> x</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$x</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'$x'</span></span><br></pre></td></tr></table></figure>
-
 <p>输出为：</p>
-<p>&gt;hello</p>
+<p>>hello</p>
 <p>   hello</p>
 <p>   $x</p>
 </li>
@@ -1099,10 +1091,6 @@ height:50vh;
 <p>esac</p>
 <p>示例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Is now morning"</span></span><br><span class="line"><span class="built_in">read</span> timeofnow</span><br><span class="line"><span class="keyword">case</span> <span class="variable">$timeofnow</span> <span class="keyword">in</span></span><br><span class="line">yes)	<span class="built_in">echo</span> <span class="string">"good morning"</span>;;</span><br><span class="line">y|n)	<span class="built_in">echo</span> <span class="string">"answer error"</span>;;</span><br><span class="line">no)		<span class="built_in">echo</span> <span class="string">"good afternoon"</span>;;</span><br><span class="line">*)		<span class="built_in">echo</span> <span class="string">"good bye"</span></span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
-
-
-
-
 </li>
 </ul>
 <h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><h4 id="Samba-服务器配置过程和特点"><a href="#Samba-服务器配置过程和特点" class="headerlink" title="Samba 服务器配置过程和特点"></a>Samba 服务器配置过程和特点</h4><p>Samba 是在 Linux 和 Unix 系统上实现 SMB 协议（实现文件共享）的一个免费软件，由服务器及客户端程序组成。</p>
@@ -1126,7 +1114,6 @@ height:50vh;
 <p><strong>安装Samba：</strong></p>
 <p>Ubuntu 命令行安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ sudo apt-get update</span><br><span class="line">&gt;$ sudo apt-get install samba</span><br></pre></td></tr></table></figure>
-
 <p><strong>配置 Samba：</strong></p>
 <p>使用“system-config-samba”程序实现 Samba 配置</p>
 <ul>
@@ -1144,13 +1131,11 @@ height:50vh;
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ <span class="built_in">cd</span> ~</span><br><span class="line">&gt;$ mkdir smb_share</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>启动 Samba 配置程序</li>
 </ul>
 <p>在终端输入以下命令进行启动 Samba 配置程序（或者点击桌面菜单“系统-&gt;系统管理-&gt;Samba”）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ sudo system-config-samba</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>设置 Samba 用户</p>
 <ul>
@@ -1174,7 +1159,6 @@ height:50vh;
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ sudo /etc/init.d/smbd restart</span><br></pre></td></tr></table></figure>
-
 <p><strong>使用 Samba 服务</strong></p>
 <ul>
 <li><p>从 Ubuntu 机器进行访问</p>
@@ -1213,7 +1197,6 @@ height:50vh;
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp 192.168.xxx.xxx</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>输入 FTP 服务的用户名和密码即可登陆成功</p>
 </li>
@@ -1234,65 +1217,49 @@ height:50vh;
 <p>vsftpd 的配置文件为：/etc/vsftpd.conf</p>
 <p>在服务器端命令行输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ sudo gedit /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
-
 <p><em>常用的配置有：</em></p>
 <ul>
 <li>匿名支持</li>
 </ul>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=YEs</span><br><span class="line">anon_upload_enable=NO</span><br><span class="line">anon_mkdir_write_enable=NO</span><br><span class="line">anon_other_write_enable=NO</span><br><span class="line">anon_root=/var/ftp</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>用户权限配置</li>
 </ul>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">write_enable=NO</span><br><span class="line">download_enable=YES</span><br><span class="line">dirlist_enable=YES</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">可写为否</span><br><span class="line">可下载为允许</span><br><span class="line">可以进行 <span class="keyword">ls</span> 列表查看为允许</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>系统用户常规配置</li>
 </ul>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local_root=/home/test</span><br><span class="line">local_umask=<span class="number">022</span></span><br><span class="line">chmod_enable=NO</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户登录后直接进入的目录/home/test</span><br><span class="line">通过八进制数值通过权限掩码控制<span class="string">"系统用户"</span>上传文件所具有的权限</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>系统用户列表配置</li>
 </ul>
 <p>顾名思义就是通过“系统用户列表文件”进行控制哪些用户可以登陆到 FTP 服务器。</p>
 <p>编辑<em>/etc/vsftpd.userlist</em> 文件</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test1</span><br><span class="line">test2</span><br></pre></td></tr></table></figure>
-
 <p>然后在<em>/etc/vsftpd.conf</em> 文件中增加或修改使能“系统用户列表文件”</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">userlist_enable=YES</span><br><span class="line">userlist_deny=NO</span><br><span class="line">userlist_file=/etc/vsftpd.userlist</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>系统用户根目录配置</li>
 </ul>
 <p>为了安全性的考虑，vsftpd 可以进行限制用户访问 FTP 服务器的其他目录</p>
 <p>首先建立一个“根目录用户列表文件”<em>/etc/vsftpd.chrootlist</em></p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test1</span><br><span class="line">test2</span><br></pre></td></tr></table></figure>
-
 <p>然后修改或者增加 <em>/etc/vsftpd.conf</em> 文件</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chroot_list_enable=YES</span><br><span class="line">chroot_local_user=NO</span><br><span class="line">chroot_list_file=/etc/vsftpd.chroot_list</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>启动和停止 vsftpd</li>
 </ul>
 <p>在 Ubuntu 上，当修改系统文件后或者一些其他需要的情况下，需要重启 vsftpd </p>
 <p>停止：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ sudo service vsftpd stop</span><br></pre></td></tr></table></figure>
-
 <p>启动：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ sudo service vsftpd start</span><br></pre></td></tr></table></figure>
-
 <p>重启：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ sudo service vsftpd restart</span><br></pre></td></tr></table></figure>
-
 <p>查看 vsftpd 的状态命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ sudo service vsftpd status</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="NFS-服务"><a href="#NFS-服务" class="headerlink" title="NFS 服务"></a>NFS 服务</h4><p><strong>安装</strong></p>
 <ul>
 <li><p>可使用 Ubuntu 自带的包管理工具，进行商店式的安装</p>
@@ -1301,30 +1268,23 @@ height:50vh;
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ apt-get install nfs-kernel-server</span><br></pre></td></tr></table></figure>
-
 <p>在服务器端，配置 nfs 只需要修改 <em>/etc/exports</em> 文件中对于 nfs 允许挂载的目录及权限进行定义配置</p>
 <p>安装完成 nfs 后，使用 gedit 或者 vim 打开 <em>/etc/exports</em> 文件进行修改</p>
 <p>格式如下：</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;共享目录&gt; &lt;主机名或者 IP ([参数<span class="number">1</span>，参数<span class="number">2</span>，...])&gt;</span><br><span class="line">例如：</span><br><span class="line">/home/dh/work *(ro,root_squash)</span><br><span class="line">将服务器端 /home/dh/work进行共享，允许网络中的机器进行只读访问，当登陆用户是 root 时，自动映射成 anonymous 权限</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>重启 nfs 服务</li>
 </ul>
 <p>nfs 安装完毕后，需要服务器端进行配置编辑 <em>/etc/exports</em> 文件，然后再进行 nfs 服务重启</p>
 <p>重启命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ sudo /etc/init.d/nfs-kernel-server restart</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>mount 挂载</li>
 </ul>
 <p>挂载命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ sudo mount &lt;IP:dir1&gt; &lt;dir2&gt;</span><br><span class="line">IP：对应 NFS 服务器端的 IP 地址</span><br><span class="line">dir1：NFS服务器上，nfs配置下的可共享目录</span><br><span class="line">dir2：要挂载到本机的目录</span><br></pre></td></tr></table></figure>
-
 <p>卸载命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ sudo mount &lt;dir&gt;</span><br><span class="line">dir：本机中挂载的目录</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="Samba、FTP、NFS-比较"><a href="#Samba、FTP、NFS-比较" class="headerlink" title="Samba、FTP、NFS 比较"></a>Samba、FTP、NFS 比较</h4><ul>
 <li><p>Samba 主要用于局域网中 Windows 和 Linux 系统之间的文件共享</p>
 </li>
@@ -1466,6 +1426,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -2707,22 +2669,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
         </li>
     
     
@@ -2824,15 +2786,15 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
-    
         <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
-    
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
@@ -2869,9 +2831,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
-    
         <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

@@ -430,14 +430,13 @@ height:50vh;
 <li><p>要匹配的长度在正则表达式中，可以用 * 来表示人一个字符（包括0个），用 + 来表示至少一个字符，用 ？来表示0个或1个字符，用 {n} 来表示 n 个字符，用 {n,m} 来表示 n-m 个字符：</p>
 <p>e.g.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># * : occur 0 or more times</span></span><br><span class="line">print(re.search(<span class="string">r"ab*"</span>, <span class="string">"a"</span>))             <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 1), match='a'&gt;</span></span><br><span class="line">print(re.search(<span class="string">r"ab*"</span>, <span class="string">"abbbbb"</span>))        <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 6), match='abbbbb'&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># + : occur 1 or more times</span></span><br><span class="line">print(re.search(<span class="string">r"ab+"</span>, <span class="string">"a"</span>))             <span class="comment"># None</span></span><br><span class="line">print(re.search(<span class="string">r"ab+"</span>, <span class="string">"abbbbb"</span>))        <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 6), match='abbbbb'&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># &#123;n, m&#125; : occur n to m times</span></span><br><span class="line">print(re.search(<span class="string">r"ab&#123;2,10&#125;"</span>, <span class="string">"a"</span>))        <span class="comment"># None</span></span><br><span class="line">print(re.search(<span class="string">r"ab&#123;2,10&#125;"</span>, <span class="string">"abbbbb"</span>))   <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 6), match='abbbbb'&gt;</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>\d{3} 表示匹配 3 个数字， e.g. ‘111’</p>
 </li>
 <li><p>\s 匹配一个空格（也可以包括 Tab 等空白符），所以 \s+ 表示至少匹配一个空白符，e.g. 匹配 ‘ ‘，‘ ‘等；</p>
 </li>
 <li><p>\d{3,8} 表示匹配3-8个数字，e.g. ‘1234567‘。</p>
-<p>如果要匹配 ‘010-12345‘ 这样的号码：由于 ‘-‘ 是特殊字符，所以在正则表达式中要用 ‘&#39; 来进行转义，所以正确的匹配应该是：\d{3}-\d{3,8}</p>
+<p>如果要匹配 ‘010-12345‘ 这样的号码：由于 ‘-‘ 是特殊字符，所以在正则表达式中要用 ‘\’ 来进行转义，所以正确的匹配应该是：\d{3}-\d{3,8}</p>
 </li>
 </ul>
 </li>
@@ -474,41 +473,30 @@ height:50vh;
 </ul>
 </blockquote>
 <h3 id="按类型匹配示例"><a href="#按类型匹配示例" class="headerlink" title="按类型匹配示例"></a>按类型匹配示例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># \d : decimal digit</span></span><br><span class="line">print(re.search(<span class="string">r"r\dn"</span>, <span class="string">"run r4n"</span>))           <span class="comment"># &lt;_sre.SRE_Match object; span=(4, 7), match='r4n'&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># \D : any non-decimal digit</span></span><br><span class="line">print(re.search(<span class="string">r"r\Dn"</span>, <span class="string">"run r4n"</span>))           <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 3), match='run'&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># \s : any white space [\t\n\r\f\v]</span></span><br><span class="line">print(re.search(<span class="string">r"r\sn"</span>, <span class="string">"r\nn r4n"</span>))          <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 3), match='r\nn'&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># \S : opposite to \s, any non-white space</span></span><br><span class="line">print(re.search(<span class="string">r"r\Sn"</span>, <span class="string">"r\nn r4n"</span>))          <span class="comment"># &lt;_sre.SRE_Match object; span=(4, 7), match='r4n'&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># \w : [a-zA-Z0-9_]</span></span><br><span class="line">print(re.search(<span class="string">r"r\wn"</span>, <span class="string">"r\nn r4n"</span>))          <span class="comment"># &lt;_sre.SRE_Match object; span=(4, 7), match='r4n'&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># \W : opposite to \w</span></span><br><span class="line">print(re.search(<span class="string">r"r\Wn"</span>, <span class="string">"r\nn r4n"</span>))          <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 3), match='r\nn'&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># \b : empty string (only at the start or end of the word)</span></span><br><span class="line">print(re.search(<span class="string">r"\bruns\b"</span>, <span class="string">"dog runs to cat"</span>))    <span class="comment"># &lt;_sre.SRE_Match object; span=(4, 8), match='runs'&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># \B : empty string (but not at the start or end of a word)</span></span><br><span class="line">print(re.search(<span class="string">r"\B runs \B"</span>, <span class="string">"dog   runs  to cat"</span>))  <span class="comment"># &lt;_sre.SRE_Match object; span=(8, 14), match=' runs '&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># \ : match \</span></span><br><span class="line">print(re.search(<span class="string">r"runs\", "</span>runs\ to me<span class="string">"))     # &lt;_sre.SRE_Match object; span=(0, 5), match='runs\'&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># . : match anything (except \n)</span></span><br><span class="line"><span class="string">print(re.search(r"</span>r.n<span class="string">", "</span>r[ns to me<span class="string">"))         # &lt;_sre.SRE_Match object; span=(0, 3), match='r[n'&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ^ : match line beginning</span></span><br><span class="line"><span class="string">print(re.search(r"</span>^dog<span class="string">", "</span>dog runs to cat<span class="string">"))   # &lt;_sre.SRE_Match object; span=(0, 3), match='dog'&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># $ : match line ending</span></span><br><span class="line"><span class="string">print(re.search(r"</span>cat$<span class="string">", "</span>dog runs to cat<span class="string">"))   # &lt;_sre.SRE_Match object; span=(12, 15), match='cat'&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ? : may or may not occur</span></span><br><span class="line">print(re.search(r"Mon(day)?", "Monday"))       # &lt;_sre.SRE_Match object; span=(0, 6), match='Monday'&gt;</span><br><span class="line">print(re.search(<span class="string">r"Mon(day)?"</span>, <span class="string">"Mon"</span>))          <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 3), match='Mon'&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>如果一个字符串有很多行, 我们想使用<code>^</code>形式来匹配行开头的字符, 如果用通常的形式是不成功的. 比如下面的 “I” 出现在第二行开头, 但是使用<code>r&quot;^I&quot;</code>却匹配不到第二行, 这时候, 我们要使用 另外一个参数, 让<code>re.search()</code>可以对每一行单独处理. 这个参数就是<code>flags=re.M</code>, 或者这样写也行<code>flags=re.MULTILINE</code>.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string &#x3D; &quot;&quot;&quot;</span><br><span class="line">dog runs to cat.</span><br><span class="line">I run to dog.</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">print(re.search(r&quot;^I&quot;, string))                 # None</span><br><span class="line">print(re.search(r&quot;^I&quot;, string, flags&#x3D;re.M))     # &lt;_sre.SRE_Match object; span&#x3D;(18, 19), match&#x3D;&#39;I&#39;&gt;</span><br></pre></td></tr></table></figure>
-
 <p>使用正则表达式，需要调用python中的一个内置模块 “re”.</p>
 <ul>
 <li>re.search( ) 的使用：re.search 是 re 模块中一个功能</li>
 </ul>
 <p>功能介绍：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">a = <span class="string">"cat"</span></span><br><span class="line">b = <span class="string">"bird"</span></span><br><span class="line">stirng = <span class="string">"dog runs to cat"</span></span><br><span class="line">print(re.search(a,string))        <span class="comment">#&lt;_sre.SRE_Match object; span=(12, 15), match='cat'&gt;</span></span><br><span class="line">print(re.search(b,string))        <span class="comment">#None</span></span><br></pre></td></tr></table></figure>
-
 <p>以上，re.search(a,string) : 就是在string 中进行配置寻找 a 的内容，如果匹配到，则返回 Match 到的对象。如果没有匹配得到，则返回 None</p>
 <h2 id="灵活匹配方法"><a href="#灵活匹配方法" class="headerlink" title="灵活匹配方法"></a>灵活匹配方法</h2><p>e.g.：</p>
 <p>多个元素进行匹配：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># multiple patterns ("run" or "ran")</span></span><br><span class="line">ptn = <span class="string">r"r[au]n"</span>       <span class="comment"># start with "r" means raw string</span></span><br><span class="line">print(re.search(ptn, <span class="string">"dog runs to cat"</span>))    <span class="comment"># &lt;_sre.SRE_Match object; span=(4, 7), match='run'&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>组合匹配：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(re.search(<span class="string">r"r[A-Z]n"</span>, <span class="string">"dog runs to cat"</span>))     <span class="comment"># None</span></span><br><span class="line">print(re.search(<span class="string">r"r[a-z]n"</span>, <span class="string">"dog runs to cat"</span>))     <span class="comment"># &lt;_sre.SRE_Match object; span=(4, 7), match='run'&gt;</span></span><br><span class="line">print(re.search(<span class="string">r"r[0-9]n"</span>, <span class="string">"dog r2ns to cat"</span>))     <span class="comment"># &lt;_sre.SRE_Match object; span=(4, 7), match='r2n'&gt;</span></span><br><span class="line">print(re.search(<span class="string">r"r[0-9a-z]n"</span>, <span class="string">"dog runs to cat"</span>))  <span class="comment"># &lt;_sre.SRE_Match object; span=(4, 7), match='run'&gt;</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">^(\d&#123;<span class="number">3</span>&#125;)-(\d&#123;<span class="number">3</span>,<span class="number">8</span>&#125;)$分别定义了两个组，可以直接从匹配的字符串中提 取出区号和本地号码:</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = re.match(<span class="string">r'^(\d&#123;3&#125;)\-(\d&#123;3,8&#125;)$'</span>, <span class="string">'010-12345'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m</span><br><span class="line">&lt;_sre.SRE_Match object; span=(<span class="number">0</span>, <span class="number">9</span>), match=<span class="string">'010-12345'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">0</span>)</span><br><span class="line"><span class="string">'010-12345'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">1</span>)</span><br><span class="line"><span class="string">'010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">2</span>)</span><br><span class="line"><span class="string">'12345'</span></span><br><span class="line">如果正则表达式中定义了组，就可以在 Match 对象上用 group()方法提取 出子串来。</span><br><span class="line">注意到 group(<span class="number">0</span>)永远是原始字符串，group(<span class="number">1</span>)、group(<span class="number">2</span>)......表示第 <span class="number">1</span>、 <span class="number">2</span>、......个子串。</span><br></pre></td></tr></table></figure>
-
 <h2 id="findall"><a href="#findall" class="headerlink" title="findall"></a>findall</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># findall</span></span><br><span class="line">print(re.findall(<span class="string">r"r[ua]n"</span>, <span class="string">"run ran ren"</span>))    <span class="comment"># ['run', 'ran']</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># | : or</span></span><br><span class="line">print(re.findall(<span class="string">r"(run|ran)"</span>, <span class="string">"run ran ren"</span>)) <span class="comment"># ['run', 'ran']</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h2><p>我们还能通过正则表达式匹配上一些形式的字符串然后再替代掉这些字符串. 使用这种匹配<code>re.sub()</code>, 将会比 python 自带的<code>string.replace()</code>要灵活多变.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(re.sub(<span class="string">r"r[au]ns"</span>, <span class="string">"catches"</span>, <span class="string">"dog runs to cat"</span>))     <span class="comment"># dog catches to cat</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><p>再来我们 Python 中有个字符串的分割功能, 比如想获取一句话中所有的单词. 比如<code>&quot;a is b&quot;.split(&quot; &quot;)</code>, 这样它就会产生一个列表来保存所有单词. 但是在正则中, 这种普通的分割也可以做的淋漓精致.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(re.split(<span class="string">r"[,;\.]"</span>, <span class="string">"a;b,c.d;e"</span>))             <span class="comment"># ['a', 'b', 'c', 'd', 'e']</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="compile"><a href="#compile" class="headerlink" title="compile"></a>compile</h2><p>最后, 我们还能使用 compile 过后的正则, 来对这个正则重复使用. 先将正则 compile 进一个变量, 比如<code>compiled_re</code>, 然后直接使用这个<code>compiled_re</code>来搜索.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compiled_re = re.compile(<span class="string">r"r[ua]n"</span>)</span><br><span class="line">print(compiled_re.search(<span class="string">"dog ran to cat"</span>))  <span class="comment"># &lt;_sre.SRE_Match object; span=(4, 7), match='ran'&gt;</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h2><p>最后需要特别指出的是，正则匹配默认是贪婪匹配，也就是匹配尽可能 多的字符。举例如下，匹配出数字后面的 0:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.match(<span class="string">r'^(\d+)(0*)$'</span>, <span class="string">'102300'</span>).groups()</span><br><span class="line">(<span class="string">'102300'</span>, <span class="string">''</span>)</span><br></pre></td></tr></table></figure>
-
 <p>由于\d+采用贪婪匹配，直接把后面的 0 全部匹配了，结果 0*只能匹配 空字符串了。<br>必须让\d+采用非贪婪匹配(也就是尽可能少匹配)，才能把后面的 0 匹配出来，加个?就可以让\d+采用非贪婪匹配:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.match(<span class="string">r'^(\d+?)(0*)$'</span>, <span class="string">'102300'</span>).groups()</span><br><span class="line">(<span class="string">'1023'</span>, <span class="string">'00'</span>)</span><br></pre></td></tr></table></figure>
 
@@ -644,6 +632,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1885,22 +1875,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
         </li>
     
     
@@ -2002,15 +1992,15 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
-    
         <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
-    
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
@@ -2047,9 +2037,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
-    
         <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
