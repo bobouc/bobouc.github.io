@@ -20,37 +20,23 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="比较不同的阈值处理方法对生成二值图像的影响全局阈值法   opencv-python 中提供了cv.threshold 方法，可以设置将大于某一个阈值或者小于某一个阈值为临界，将其设置为0或者最大值。 第一个参数：原图像 第二个参数：阈值 第三个参数：最大值 第四个参数：阈值类型 即对于大于或者小于所设定的阈值进行的不同的处理方法类型  12345678910111213141516171819i">
+    <meta name="description" content="Docker基本概念镜像操作系统分为 内核 和 用户空降。Linux 系统内核启动后，会挂载 root 文件系统为其提供用户空间支持。 Docker 镜像相当于一个 root 文件系统，如 官方镜像 ubuntu:18:04 就包含了完整的一套 ubuntu18.04最小系统 root 文件系统。 Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需要的程序、库、资源、配置等文件外，还包">
 <meta property="og:type" content="article">
-<meta property="og:title" content="不同阈值处理方法对于二值图像的影响">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2020/11/10/threshouldeffecton2valueimg/index.html">
+<meta property="og:title" content="Docker notes">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/03/21/Docker-notes/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="比较不同的阈值处理方法对生成二值图像的影响全局阈值法   opencv-python 中提供了cv.threshold 方法，可以设置将大于某一个阈值或者小于某一个阈值为临界，将其设置为0或者最大值。 第一个参数：原图像 第二个参数：阈值 第三个参数：最大值 第四个参数：阈值类型 即对于大于或者小于所设定的阈值进行的不同的处理方法类型  12345678910111213141516171819i">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109133450051.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109133533603.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109141042899.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109150217758.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109142140114.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109154734991.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109145358273.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109143750177.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109164629903.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109161123329.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109142140114.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109143750177.png">
-<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201110121940396.png">
-<meta property="article:published_time" content="2020-11-10T04:22:00.000Z">
-<meta property="article:modified_time" content="2020-11-16T08:29:28.401Z">
+<meta property="og:description" content="Docker基本概念镜像操作系统分为 内核 和 用户空降。Linux 系统内核启动后，会挂载 root 文件系统为其提供用户空间支持。 Docker 镜像相当于一个 root 文件系统，如 官方镜像 ubuntu:18:04 就包含了完整的一套 ubuntu18.04最小系统 root 文件系统。 Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需要的程序、库、资源、配置等文件外，还包">
+<meta property="article:published_time" content="2021-03-21T15:18:15.000Z">
+<meta property="article:modified_time" content="2021-03-21T15:19:15.856Z">
 <meta property="article:author" content="jax">
-<meta property="article:tag" content="BuaaAssignments">
+<meta property="article:tag" content="learning-note">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109133450051.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
     <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
     
-    <title>不同阈值处理方法对于二值图像的影响 · GuoXin Li&#39;s Blog</title>
+    <title>Docker notes · GuoXin Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -245,7 +231,7 @@
                 <a href="/" >GuoXin Li&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">不同阈值处理方法对于二值图像的影响</a>
+                <a href="#" class="post-name">Docker notes</a>
             </div>
     </div>
     
@@ -275,7 +261,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            不同阈值处理方法对于二值图像的影响
+            Docker notes
             <!-- 404 -->
             
         </h1>
@@ -294,18 +280,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "BuaaAssignments">BuaaAssignments</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.1k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.8k</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/11/10</span>
+                    <span class="post-intro-time">2021/03/21</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -429,62 +415,77 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="比较不同的阈值处理方法对生成二值图像的影响"><a href="#比较不同的阈值处理方法对生成二值图像的影响" class="headerlink" title="比较不同的阈值处理方法对生成二值图像的影响"></a>比较不同的阈值处理方法对生成二值图像的影响</h2><h3 id="全局阈值法"><a href="#全局阈值法" class="headerlink" title="全局阈值法"></a>全局阈值法</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109133450051.png" alt="image-20201109133450051"></p>
-<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109133533603.png" alt="image-20201109133533603"></p>
-<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109141042899.png" alt="image-20201109141042899"></p>
-<p>opencv-python 中提供了cv.threshold 方法，可以设置将大于某一个阈值或者小于某一个阈值为临界，将其设置为0或者最大值。</p>
-<p>第一个参数：原图像</p>
-<p>第二个参数：阈值</p>
-<p>第三个参数：最大值</p>
-<p>第四个参数：阈值类型</p>
-<p>即对于大于或者小于所设定的阈值进行的不同的处理方法类型</p>
-<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109150217758.png" alt="image-20201109150217758"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment">#read image</span></span><br><span class="line">img = cv2.imread(<span class="string">'./shot.jpg'</span>, <span class="number">0</span>)</span><br><span class="line"><span class="comment">#thredholding with different type</span></span><br><span class="line">ret,thresh1 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_BINARY)</span><br><span class="line">ret,thresh2 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_BINARY_INV)</span><br><span class="line">ret,thresh3 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_TRUNC)</span><br><span class="line">ret,thresh4 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_TOZERO)</span><br><span class="line">ret,thresh5 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_TOZERO_INV)</span><br><span class="line">titles = [<span class="string">'Original Image'</span>,<span class="string">'BINARY'</span>,<span class="string">'BINARY_INV'</span>,<span class="string">'TRUNC'</span>,<span class="string">'TOZERO'</span>,<span class="string">'TOZERO_INV'</span>]</span><br><span class="line">images = [img, thresh1, thresh2, thresh3, thresh4, thresh5]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">6</span>):</span><br><span class="line">    plt.subplot(<span class="number">2</span>,<span class="number">3</span>,i+<span class="number">1</span>),plt.imshow(images[i],<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i])</span><br><span class="line">    plt.xticks([]),plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109142140114.png" alt="image-20201109142140114"></p>
-<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109154734991.png" alt="image-20201109154734991"></p>
-<h3 id="自适应阈值化"><a href="#自适应阈值化" class="headerlink" title="自适应阈值化"></a>自适应阈值化</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109145358273.png" alt="image-20201109145358273"></p>
-<p>使用统一的全局阈值法有缺陷在于，有的图像在不同的地方有不同的光照条件，在这种条件下，自适应阈值化能够提供帮助。</p>
-<p>opencv-python 中提供了 cv.adptiveThreshold 方法</p>
-<p>cv2.adaptiveThreshold(src, maxValue, adaptiveMethod, thresholdType, blockSize, C[, dst])</p>
-<p>其中，又提供了两种不同的阈值计算方法：</p>
+        <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>操作系统分为 <strong>内核</strong> 和 <strong>用户空降</strong>。Linux 系统内核启动后，会挂载 root 文件系统为其提供用户空间支持。</p>
+<p>Docker 镜像相当于一个 root 文件系统，如 官方镜像 ubuntu:18:04 就包含了完整的一套 ubuntu18.04最小系统 root 文件系统。</p>
+<p>Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需要的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（匿名卷、环境变量、用户等）。镜像 不包含 任何动态数据，其内容在构建之后也不会被改变。</p>
+<p>镜像只是一个虚拟的概念，其实际体现并非由一个文件组成，而是由一组文件系统组成，或者说是由多层文件系统联合组成。</p>
+<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><p>镜像（<code>Image</code>）和容器（<code>Container</code>）的关系，就像是面向对象程序设计中的 <code>类</code> 和 <code>实例</code> 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
+<p>容器的实质是进程，但是与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的命名空间。</p>
+<p>容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，自己的用户 ID 空间。</p>
+<p>容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。</p>
+<p>每一个容器运行时，是以镜像为基础层，在其上创建一个当前容器的存储层，我们可以称这个为容器运行时读写而准备的存储层为 <strong>容器存储层</strong>。</p>
+<p>容器存储层的生存周期和容器一样，容器消亡时，容器存储层也随之消亡，所以任何保存于容器存储层的信息都会随着容器的删除而删除。</p>
+<p>按照 Docker 最佳实践的要求，容器不应该向其存储层内写入任何数据，容器存储层要保持无状态化。所有的文件写入操作，都应该使用 <a href="">数据卷（Volume）</a>、或者 <a href="">绑定宿主目录</a>，在这些位置的读写会跳过容器存储层，直接对宿主（或网络存储）发生读写，其性能和稳定性更高。</p>
 <ul>
-<li>cv.ADPTIVE_THRESH_MEAN_C: 阈值为邻域的平均值减去一个常数C</li>
-<li>cv.ADPTIVE_THRESH_GASSIAN_C: 阈值为邻域高斯加权和减去一个常数C</li>
-</ul>
-<p><strong>blockSize：</strong> 决定邻域的大小</p>
-<p><strong>C：</strong> 常数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'shot.jpg'</span>,<span class="number">0</span>)</span><br><span class="line">img = cv2.medianBlur(img,<span class="number">5</span>)	<span class="comment">#</span></span><br><span class="line"></span><br><span class="line">ret,th1 = cv2.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv2.THRESH_BINARY)</span><br><span class="line">th2 = cv2.adaptiveThreshold(img,<span class="number">50</span>,cv2.ADAPTIVE_THRESH_MEAN_C,\</span><br><span class="line">            cv2.THRESH_BINARY,<span class="number">11</span>,<span class="number">2</span>)</span><br><span class="line">th3 = cv2.adaptiveThreshold(img,<span class="number">50</span>,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\</span><br><span class="line">            cv2.THRESH_BINARY,<span class="number">11</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">titles = [<span class="string">'Original Image'</span>, <span class="string">'Global Thresholding (v = 50)'</span>,</span><br><span class="line">            <span class="string">'Adaptive Mean Thresholding'</span>, <span class="string">'Adaptive Gaussian Thresholding'</span>]</span><br><span class="line">images = [img, th1, th2, th3]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    plt.subplot(<span class="number">2</span>,<span class="number">2</span>,i+<span class="number">1</span>),plt.imshow(images[i],<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i])</span><br><span class="line">    plt.xticks([]),plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109143750177.png" alt="image-20201109143750177"></p>
-<p><strong>相比较全局阈值方法，可以清晰的看到，自适应阈值化不会使得图像出现大面积的目标丢失——黑色块或者白色块，局部信息的细节更加友好，虽然不会出现大面积的目标丢失，但是对于最终目标的连结性是比较差的，通常包含有许多的噪点噪声，所以对于自适应的局部特性的自适应阈值方法，最后还会进行一些噪声去除的操作，从而消除噪声，来进一步加强对于目标物体的检测。</strong></p>
-<h3 id="Otsu-大律阈值法"><a href="#Otsu-大律阈值法" class="headerlink" title="Otsu 大律阈值法"></a>Otsu 大律阈值法</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109164629903.png" alt="image-20201109164629903"></p>
-<p>将图像按灰度阈值分为两类，分别求出两类的均值和方差，再求出两个类之间的方差，当类之间方差比类内方差最大时，所求出的阈值T，即为所求阈值。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">img = cv.imread(<span class="string">'shot.jpg'</span>,<span class="number">0</span>)</span><br><span class="line"><span class="comment"># global thresholding</span></span><br><span class="line">ret1,th1 = cv.threshold(img,<span class="number">50</span>,<span class="number">255</span>,cv.THRESH_BINARY)</span><br><span class="line"><span class="comment"># Otsu's thresholding</span></span><br><span class="line">ret2,th2 = cv.threshold(img,<span class="number">0</span>,<span class="number">255</span>,cv.THRESH_BINARY+cv.THRESH_OTSU)</span><br><span class="line"><span class="comment"># plot all the images and their histograms</span></span><br><span class="line">images = [img, <span class="number">0</span>, th1,</span><br><span class="line">          img, <span class="number">0</span>, th2]</span><br><span class="line">titles = [<span class="string">'Original Noisy Image'</span>,<span class="string">'Histogram'</span>,<span class="string">'Global Thresholding (v=50)'</span>,</span><br><span class="line">          <span class="string">'Original Noisy Image'</span>,<span class="string">'Histogram'</span>,<span class="string">"Otsu's Thresholding"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">    plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i*<span class="number">3</span>+<span class="number">1</span>),plt.imshow(images[i*<span class="number">3</span>],<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i*<span class="number">3</span>]), plt.xticks([]), plt.yticks([])</span><br><span class="line">    plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i*<span class="number">3</span>+<span class="number">2</span>),plt.hist(images[i*<span class="number">3</span>].ravel(),<span class="number">256</span>)</span><br><span class="line">    plt.title(titles[i*<span class="number">3</span>+<span class="number">1</span>]), plt.xticks([]), plt.yticks([])</span><br><span class="line">    plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i*<span class="number">3</span>+<span class="number">3</span>),plt.imshow(images[i*<span class="number">3</span>+<span class="number">2</span>],<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i*<span class="number">3</span>+<span class="number">2</span>]), plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109161123329.png" alt="image-20201109161123329"></p>
-<p><strong>总结</strong></p>
+<li><p>数据卷：</p>
 <ul>
-<li>全局阈值法处理的方法较自适应阈值法，两者的区别最主要集中在噪声分布和对于均匀光照还是非均匀光照的处理上，全局阈值法适合于简单单一的均匀光照条件上进行处理，而自适应阈值法适合于不同的局部光照条件，对于细节的处理会更好，但同时也会有噪声的保留。</li>
-<li>大律法是一种更优的阈值处理方法，能够快速有效地找到类间的分割阈值，但是缺点在于对于目标的检测是单一的，如果想要检测的目标不属于同一或者接近的灰度区域，那么将会导致想要检测的目标物体的信息丢失，反映在图片上就是会有连结信息的消失（黑色块或者白色块），但是相较于普通的全局阈值处理，效果是由明显的提升对比的。</li>
+<li>数据卷可以在容器之间共享和重用</li>
+<li>对数据卷的修改会立马生效</li>
+<li>对数据卷的更新，不会影响镜像</li>
+<li>数据卷默认会一直存在，即使容器被删除</li>
 </ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>全局阀值法</th>
-<th>自适应阀值法</th>
-<th>大津法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109142140114.png" alt="image-20201109142140114"></td>
-<td><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201109143750177.png" alt="image-20201109143750177"></td>
-<td><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20201110121940396.png" alt="image-20201110121940396"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Reference：</strong></p>
-<p><a href="https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html" target="_blank" rel="noopener">https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html</a></p>
+<p>数据卷的使用，类似于 Linux 下对目录或文件进行 mount，镜像中被置顶为挂载点的目录中的文件会复制到数据卷中（仅数据卷为空时会被复制）。</p>
+<ul>
+<li><p>创建数据卷<br><code>docker volume create my-vol</code></p>
+<p>查看所有 <code>数据卷</code></p>
+<p><code>docker volume ls</code></p>
+<p>在主机里使用一下命令可以查看指定的 数据卷 的信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume inspect my-vol</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Labels&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Mountpoint&quot;: &quot;&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;my-vol&#x2F;_data&quot;,</span><br><span class="line">        &quot;Name&quot;: &quot;my-vol&quot;,</span><br><span class="line">        &quot;Options&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>*   启动一个挂载数据卷的容器
+
+    在用 `docker run` 命令时，使用 `--mount ` 标记来将 数据卷挂载到容器里，在一次 `docker run` 中可以挂载多个 数据卷。
+</code></pre><p>数据卷的生存周期独立于容器，容器消亡，数据卷不会消亡。因此，使用数据卷后，容器删除或者重新运行之后，数据却不会丢失。</p>
+<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><p>Docker Registry 就是一个集中的存储、分发镜像的服务。</p>
+<p>通常，一个仓库会包含同一个软件不同版本的镜像，而标签就常用于对应该软件的各个版本。我们可以通过 <code>&lt;仓库名&gt;:&lt;标签&gt;</code> 的格式来指定具体是这个软件哪个版本的镜像。如果不给出标签，将以 <code>latest</code> 作为默认标签。</p>
+<p>最常使用的 Registry 公开服务是官方的 <a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a>，这也是默认的 Registry，并拥有大量的高质量的 <a href="https://hub.docker.com/search?q=&amp;type=image&amp;image_filter=official" target="_blank" rel="noopener">官方镜像</a>。除此以外，还有 Red Hat 的 <a href="https://quay.io/repository/" target="_blank" rel="noopener">Quay.io</a>；Google 的 <a href="https://cloud.google.com/container-registry/" target="_blank" rel="noopener">Google Container Registry</a>，<a href="https://kubernetes.io/" target="_blank" rel="noopener">Kubernetes</a> 的镜像使用的就是这个服务；代码托管平台 <a href="https://github.com/">GitHub</a> 推出的 <a href="https://docs.github.com/cn/packages/guides/about-github-container-registry" target="_blank" rel="noopener">ghcr.io</a>。</p>
+<p>国内的一些云服务商提供了针对 Docker Hub 的镜像服务（<code>Registry Mirror</code>），这些镜像服务被称为 <strong>加速器</strong>。常见的有 <a href="https://www.aliyun.com/product/acr?source=5176.11533457&amp;userCode=8lx5zmtu" target="_blank" rel="noopener">阿里云加速器</a>、<a href="https://www.daocloud.io/mirror#accelerator-doc" target="_blank" rel="noopener">DaoCloud 加速器</a> 等。使用加速器会直接从国内的地址下载 Docker Hub 的镜像，比直接从 Docker Hub 下载速度会提高很多。</p>
+<p>除此之外，Docker 还提供搭建私有仓库。</p>
+<h2 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h2><h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><p>首先卸载旧版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get remove docker \</span><br><span class="line">               docker-engine \</span><br><span class="line">               docker.io</span><br></pre></td></tr></table></figure>
+<p>可以使用 APT 安装，整个过程由 apt 使用 https 确保下载过程中不被篡改。</p>
+<p>当然最便捷的方法是使用 Docker 官方提供的脚本进行安装简化流程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># $ curl -fsSL test.docker.com -o get-docker.sh</span><br><span class="line">$ curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">$ sudo sh get-docker.sh --mirror Aliyun</span><br><span class="line"># $ sudo sh get-docker.sh --mirror AzureChinaCloud</span><br></pre></td></tr></table></figure>
+<h4 id="启动-Docker"><a href="#启动-Docker" class="headerlink" title="启动 Docker"></a>启动 Docker</h4><p><code>$ sudo systemctl enable docker
+$ sudo systemctl start docker</code></p>
+<h4 id="建立-Docker-用户组"><a href="#建立-Docker-用户组" class="headerlink" title="建立 Docker 用户组"></a>建立 Docker 用户组</h4><p>默认情况下，<code>docker</code> 命令会使用 <a href="https://en.wikipedia.org/wiki/Unix_domain_socket" target="_blank" rel="noopener">Unix socket</a> 与 Docker 引擎通讯。而只有 <code>root</code> 用户和 <code>docker</code> 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 <code>root</code> 用户。因此，更好地做法是将需要使用 <code>docker</code> 的用户加入 <code>docker</code> 用户组。</p>
+<p><strong>建立 docker 用户组</strong></p>
+<p><code>$ sudo groupadd docker</code></p>
+<p><strong>将当前用户加入 docker 组</strong></p>
+<p><code>$ sudo usermod -aG docker $USER</code></p>
+<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><ul>
+<li>使用 Homebrew</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask docker</span><br></pre></td></tr></table></figure>
+<ul>
+<li>手动下载 package 进行安装，下载<a href="https://desktop.docker.com/mac/stable/Docker.dmg" target="_blank" rel="noopener">链接</a></li>
+</ul>
+<p>检查 Docker 版本</p>
+<p><code>docker --version</code></p>
+<p>安装 Nginx 测试 Docker 服务</p>
+<p><code>$ docker run -d -p 80:80 --name webserver nginx</code></p>
+<p>之后访问 <a href="http://localhost" target="_blank" rel="noopener">http://localhost</a> 即可进入到 nginx</p>
+<p>停止 Nginx 并删除命令</p>
+<p><code>$ docker stop webserver</code></p>
+<p><code>$ docker rm webserver</code></p>
+<h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p>获取镜像命令 <code>docker pull</code></p>
+<p><code>$ docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</code></p>
+<p>Docker 镜像仓库地址：地址的格式一般是 <code>&lt;域名/IP&gt;[:端口号]</code>。默认地址是 Docker Hub(<code>docker.io</code>)。</p>
+<p>仓库名：如之前所说，这里的仓库名是两段式名称，即 <code>&lt;用户名&gt;/&lt;软件名&gt;</code>。对于 Docker Hub，如果不给出用户名，则默认为 <code>library</code>，也就是官方镜像。</p>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it --rm ubuntu:18.04 bash</span><br><span class="line"></span><br><span class="line">root@e7009c6ce357:&#x2F;# cat &#x2F;etc&#x2F;os-release</span><br><span class="line">NAME&#x3D;&quot;Ubuntu&quot;</span><br><span class="line">VERSION&#x3D;&quot;18.04.1 LTS (Bionic Beaver)&quot;</span><br><span class="line">ID&#x3D;ubuntu</span><br><span class="line">ID_LIKE&#x3D;debian</span><br><span class="line">PRETTY_NAME&#x3D;&quot;Ubuntu 18.04.1 LTS&quot;</span><br><span class="line">VERSION_ID&#x3D;&quot;18.04&quot;</span><br><span class="line">HOME_URL&#x3D;&quot;https:&#x2F;&#x2F;www.ubuntu.com&#x2F;&quot;</span><br><span class="line">SUPPORT_URL&#x3D;&quot;https:&#x2F;&#x2F;help.ubuntu.com&#x2F;&quot;</span><br><span class="line">BUG_REPORT_URL&#x3D;&quot;https:&#x2F;&#x2F;bugs.launchpad.net&#x2F;ubuntu&#x2F;&quot;</span><br><span class="line">PRIVACY_POLICY_URL&#x3D;&quot;https:&#x2F;&#x2F;www.ubuntu.com&#x2F;legal&#x2F;terms-and-policies&#x2F;privacy-policy&quot;</span><br><span class="line">VERSION_CODENAME&#x3D;bionic</span><br><span class="line">UBUNTU_CODENAME&#x3D;bionic</span><br></pre></td></tr></table></figure>
 
     </article>
     <!-- license  -->
@@ -493,17 +494,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/11/14/region-growsplitmerge-watershed/" title= "区域生长&区域分割与合成&分水岭算法">
-                    <div class="nextTitle">区域生长&区域分割与合成&分水岭算法</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/10/23/%E9%A2%91%E7%8E%87%E5%9F%9F%E9%AB%98%E9%80%9A%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2-%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/" title= "频率域高通低通滤波&同态滤波">
-                    <div class="prevTitle">频率域高通低通滤波&同态滤波</div>
+                <a href= "/2021/03/17/Self-Learning-OF-Hongyi-Lee-Machine-Learning-Spring-Mandarin/" title= "Hongyi-Lee Machine Learning Spring 2021 Mandarin">
+                    <div class="prevTitle">Hongyi-Lee Machine Learning Spring 2021 Mandarin</div>
                 </a>
             
         </li>
@@ -605,7 +601,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#比较不同的阈值处理方法对生成二值图像的影响"><span class="toc-number">1.</span> <span class="toc-text">比较不同的阈值处理方法对生成二值图像的影响</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局阈值法"><span class="toc-number">1.1.</span> <span class="toc-text">全局阈值法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自适应阈值化"><span class="toc-number">1.2.</span> <span class="toc-text">自适应阈值化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Otsu-大律阈值法"><span class="toc-number">1.3.</span> <span class="toc-text">Otsu 大律阈值法</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-number">1.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#镜像"><span class="toc-number">1.1.1.</span> <span class="toc-text">镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器"><span class="toc-number">1.1.2.</span> <span class="toc-text">容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仓库"><span class="toc-number">1.1.3.</span> <span class="toc-text">仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-Docker"><span class="toc-number">1.2.</span> <span class="toc-text">安装 Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu"><span class="toc-number">1.2.1.</span> <span class="toc-text">Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#启动-Docker"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">启动 Docker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建立-Docker-用户组"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">建立 Docker 用户组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac"><span class="toc-number">1.2.2.</span> <span class="toc-text">Mac</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取镜像"><span class="toc-number">1.3.</span> <span class="toc-text">获取镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#运行"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">运行</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
