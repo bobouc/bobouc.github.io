@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/liysky/liysky.github.io.git/"/>
-  <updated>2021-03-21T15:19:15.856Z</updated>
+  <updated>2021-03-23T13:52:10.634Z</updated>
   <id>https://github.com/liysky/liysky.github.io.git/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Important Conception In CG</title>
+    <link href="https://github.com/liysky/liysky.github.io.git/2021/03/23/Important-Conception-In-CG/"/>
+    <id>https://github.com/liysky/liysky.github.io.git/2021/03/23/Important-Conception-In-CG/</id>
+    <published>2021-03-23T13:50:57.000Z</published>
+    <updated>2021-03-23T13:52:10.634Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-03-22%20at%2017.06.20.png" alt="Screen Shot 2021-03-23 at 15.26.53"></p><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-03-23%20at%2015.26.53.png" alt="Screen Shot 2021-03-23 at 15.26.53"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-03-22%20at%2017.06.20.png&quot; alt=&quot;Screen Shot 2
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Docker notes</title>
@@ -447,30 +469,6 @@
       
         &lt;p&gt; &lt;a href=&quot;https://leetcode-cn.com/problems/reverse-integer/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;7. Reverse Integer&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Given a 32-bit 
-      
-    
-    </summary>
-    
-    
-    
-      <category term="LeetCode" scheme="https://github.com/liysky/liysky.github.io.git/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode4. Median of Two Sorted Arrays</title>
-    <link href="https://github.com/liysky/liysky.github.io.git/2020/03/10/LeetCode4-Median-of-Two-Sorted-Arrays/"/>
-    <id>https://github.com/liysky/liysky.github.io.git/2020/03/10/LeetCode4-Median-of-Two-Sorted-Arrays/</id>
-    <published>2020-03-10T15:09:06.000Z</published>
-    <updated>2020-05-05T15:36:19.398Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="4-Median-of-Two-Sorted-Arrays"><a href="#4-Median-of-Two-Sorted-Arrays" class="headerlink" title="4. Median of Two Sorted Arrays"></a>4. Median of Two Sorted Arrays</h3><p><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. Median of Two Sorted Arrays</a></p><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p><p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p><p>You may assume nums1 and nums2 cannot be both empty.</p><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h3><p>nums1 = [1, 3]<br>nums2 = [2]</p><p>The median is 2.0<br>Example 2:</p><p>nums1 = [1, 2]<br>nums2 = [3, 4]</p><p>The median is (2 + 3)/2 = 2.5</p><h3 id="solution-1"><a href="#solution-1" class="headerlink" title="solution 1"></a>solution 1</h3><p>merge array1 and array2, then return the median.</p><p><strong>Time complexity: O(m+n)</strong></p><p><strong>Space complexity: O( m+n )</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = nums1.length;</span><br><span class="line">        <span class="keyword">int</span> n = nums2.length;</span><br><span class="line">        <span class="keyword">int</span>[] nums = <span class="keyword">new</span> <span class="keyword">int</span>[m+n];</span><br><span class="line">        <span class="keyword">if</span>(m == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> (nums2[n/<span class="number">2</span> - <span class="number">1</span>] + nums2[n/<span class="number">2</span>]) / <span class="number">2.0</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> nums2[n/<span class="number">2</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>( n == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(m % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> (nums1[m/<span class="number">2</span> -<span class="number">1</span>] + nums1[m/<span class="number">2</span>]) / <span class="number">2.0</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> nums1[m/<span class="number">2</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(count != (m+n))&#123;</span><br><span class="line">            <span class="keyword">if</span>(i == m)&#123;</span><br><span class="line">                <span class="keyword">while</span>( j != n)&#123;</span><br><span class="line">                    nums[count++] = nums2[j++];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(j == n)&#123;</span><br><span class="line">                <span class="keyword">while</span>(i != m)&#123;</span><br><span class="line">                    nums[count++] = nums1[i++];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(nums1[i] &lt; nums2[j])&#123;</span><br><span class="line">                nums[count++] = nums1[i++];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                nums[count++] = nums2[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(count %<span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> (nums[count/<span class="number">2</span> - <span class="number">1</span>] + nums[count/<span class="number">2</span>]) / <span class="number">2.0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> nums[count/<span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;4-Median-of-Two-Sorted-Arrays&quot;&gt;&lt;a href=&quot;#4-Median-of-Two-Sorted-Arrays&quot; class=&quot;headerlink&quot; title=&quot;4. Median of Two Sorted Arrays&quot;&gt;&lt;/
       
     
     </summary>
