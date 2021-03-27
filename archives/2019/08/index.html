@@ -359,7 +359,7 @@
     <article class="index-post">
         <a class="abstract-title" href = "/2019/08/06/Spider-for-a-Book-Secrets-from-the-New-Science-of-Expertise-comments-on-JD-com/" >
             
-                <span>Spider for a Book &#34;Secrets from the New Science of Expertise&#34; comments on JD.com</span>
+                <span>Spider for a Book &quot;Secrets from the New Science of Expertise&quot; comments on JD.com</span>
         </a>
         <div class="abstract-content">
             爬取京东《刻意练习》图书评论并生成图词前言：
@@ -1872,8 +1872,6 @@
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
-        <span class="sidebar-tag-name" data-tags="learning_note"><span class="iconfont-archer">&#xe606;</span>learning_note</span>
-    
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -1944,7 +1942,23 @@ jsonContent:
     </div>
     <!-- async load share.js -->
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
 </html>
 
 
