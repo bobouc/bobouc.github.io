@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/liysky/liysky.github.io.git/"/>
-  <updated>2021-03-23T13:52:10.634Z</updated>
+  <updated>2021-03-28T16:07:03.240Z</updated>
   <id>https://github.com/liysky/liysky.github.io.git/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Analysis of &lt;&lt;Dual Attention Network for Scene Segmentation&gt;&gt;</title>
+    <link href="https://github.com/liysky/liysky.github.io.git/2021/03/29/Analysis-of-Dual-Attention-Network-for-Scene-Segmentation/"/>
+    <id>https://github.com/liysky/liysky.github.io.git/2021/03/29/Analysis-of-Dual-Attention-Network-for-Scene-Segmentation/</id>
+    <published>2021-03-28T16:06:29.000Z</published>
+    <updated>2021-03-28T16:07:03.240Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Dual-Attention-Network-for-Scene-Segmentation"><a href="#Dual-Attention-Network-for-Scene-Segmentation" class="headerlink" title="Dual Attention Network for Scene Segmentation"></a>Dual Attention Network for Scene Segmentation</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>Unlike previous works that capture contexts by multi-scale feature fusion.</p><p>Author propose Dual attention:</p><ul><li><p>adaptively integrate local fetures with their global dependecies</p></li><li><p>two types of attention model</p><ul><li><p>spatial dimension</p><p>selectively aggregates the feature at each position by a weighted sum of the features at all positions.</p><p>通过对所有位置上的特征进行加权和，来选择性地聚合每个位置上的特征。</p></li><li><p>channel dimension</p><p>selectively emphasizes interdependent channel maps by integrating associated features among all channel maps.</p><p>通过整合所有通道图中的相关特征，选择性地强调相互依赖的通道图。</p></li></ul></li></ul><p>在公开的有挑战性的三个数据集上获得了 state-of-the-art 的水平：</p><ul><li>Cityscapes</li><li>PASCAL Context</li><li>COCO Stuff dataset</li></ul><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>（需求）</p><p>场景分割目标就是进行解析不同的图像区域，包括连续的物体（天空、道路、草地）和离散的物体（人、汽车、自行车）。</p><p><strong>前人工作</strong></p><ul><li><p>CNN 方法在这上面的表现</p><p>通过结合不同的扩张卷积和池化操作生成的特征图来聚合多尺度上下文。</p><p>通过扩大卷积核，编解码器结构。</p><p>他们可以进行目标检测，但缺点：</p><p>它们不能在全局试图中利用对象或者视图之间的关系，这也是场景分割的必要条件。</p></li><li><p>RNN 方面</p><p>提高了场景分割精度。利用了 2D 长短期记忆 LSTM 网络来捕捉标签复杂的空间依赖关系。用定向无环图的循环神经网络来捕捉局部特征上丰富的上下文依赖性。</p><p>缺点：这些方法捕捉的全局关系隐含在循环神经网络中，其有效性依赖于长期记忆的学习结果。</p><p>RNN</p><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210328223755548.png" alt="image-20210328223755548"></p><p><strong>RNN 缺点：</strong></p><p>梯度消失</p><ul><li>误差反向传播时很容易消失</li><li>特征正向传播时也容易消失</li></ul><p>梯度爆炸</p></li></ul><p><strong>解决方法</strong></p><p>双注意力网络</p><p>重点是使用了注意力机制，注意力机制在 CNN 和 RNN 中也有，但是具体来说它们的注意力机制太弱了。不够把握宏观大局，在细分局部把握上也具有一定的距离等的局限性。</p><ul><li><p>位置注意力模块</p><p>捕捉任意两个位置之间的依赖关系。</p><p>对某个位置的特征，通过对所有位置的特征进行加权求和聚合更新，权重由对应两个位置之间的特征相似度决定。</p><p>任意两个位置都可以进行相互改善，不必考虑它们在空间维度上的距离。</p><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210328225301495.png" alt="image-20210328225301495"></p><p>不必考虑空间距离上的关系，这也是 attention 机制所具有的特点。</p></li></ul><ul><li><p>通道注意力模块</p><p>使用相似的自注意力机制捕捉任意两个通道图之间的通道依赖性，并以所有通道图的加权和更新每个通道图。</p></li></ul><p><strong>最后将上面的两个注意力模块的输出进行融合，进一步增强特征表示。</strong></p><p>在处理复杂场景时比前人工作更好。</p><p>对于不明显的对象的特征提取会更好（例如突出对象（汽车、建筑）的上下文会损害不明显对象的标签），注意力机制有选择的聚合不明显对象的相似特征，来突出其特征的表现，避免突出对象对其的影响，以至于其特征会被忽略掉。</p><p>不同位置的特征应该对予以相同对待。</p><p>模型对于任何尺度的相似特征从全局上予以适应性的整合。</p><p>将空间和通道相关行予以整合考虑，场景能够在长距离的依赖中获利。</p><p><strong>主要贡献总结</strong></p><ul><li>提出了双注意力机制，空间上的和通道上的，提高场景的特征区分度能力。</li><li><p>位置注意力模块通过对于空间和通道模块的特征提取，对于通过模型的丰富的上下文依赖进行局部特征提取，显著提高分割的结果。</p></li><li><p>在流行的数据集上取得了 state-of-the-art 的结果。</p></li></ul><h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><p>CNN 在语义分割方面取得的巨大进展。</p><p>对于增强上下文的已有模型：</p><ul><li><p>Deeplab2/3 提出的空间金字塔池化，由不同的扩张率的平行扩张卷积组成。</p></li><li><p>PSP-Net 设计了金字塔池化模块来收集有效的上下文先导，包含不同尺度的信息。</p></li><li><p>编解码器结构融合了中高水平的语义特征获取不同尺度的上下文信息。</p></li><li><p>DAG-RNN 用循环神经网络建立有向无环图模型，捕捉了丰富的上下文依赖性。</p></li><li><p>PSANet 通过卷机层和空间维度的相对位置信息来捕获像素间的关系。</p></li><li><p>OCNet 采用了具有 ASPP 的自注意力机制探索上下文的依赖性。</p></li><li><p>EncNet 引入了通道注意力机制来捕获全局上下文。</p></li></ul><p><strong>自注意力机制</strong></p><p>Google 的 <strong>Attention is all you need </strong> 将 attention 机制发扬光大。</p><p>GAN 生成式对抗网络对于 attention 机制的应用学习有了更好的图像生成器。</p><p>Non-Local Neural Networks 与attention 相关的工作，探索了视频和图像在时空维度上非局部操作的有效性。</p><h2 id="Dual-Attention-Network-双重注意力网络"><a href="#Dual-Attention-Network-双重注意力网络" class="headerlink" title="Dual Attention Network 双重注意力网络"></a>Dual Attention Network 双重注意力网络</h2><p>此份工作注意是在语义分割领域对于 attention 机制的应用，在空间和通道维度上对于更长的上下文信息获取，首次提出了一个通用的网络架构。</p><p>引用自注意力机制解决传统的 CNN 卷机网络对于 receptive field 局部接受场在相同标签的像素上所对应的特征可能会产生差异的问题，即 CNN 不能很好的把握相同的局部信息，这会影响某些情况下的识别精度。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Dual-Attention-Network-for-Scene-Segmentation&quot;&gt;&lt;a href=&quot;#Dual-Attention-Network-for-Scene-Segmentation&quot; class=&quot;headerlink&quot; title=&quot;Du
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Paper-reading" scheme="https://github.com/liysky/liysky.github.io.git/tags/Paper-reading/"/>
+    
+  </entry>
   
   <entry>
     <title>Important Conception In CG</title>
@@ -444,31 +468,6 @@
         &lt;p&gt;std::vector in C++&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Declaration of std::vector&lt;/strong&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr
-      
-    
-    </summary>
-    
-    
-    
-      <category term="LeetCode" scheme="https://github.com/liysky/liysky.github.io.git/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 7.Reverse Integer</title>
-    <link href="https://github.com/liysky/liysky.github.io.git/2020/09/22/Reverse-Integer/"/>
-    <id>https://github.com/liysky/liysky.github.io.git/2020/09/22/Reverse-Integer/</id>
-    <published>2020-09-22T14:29:14.000Z</published>
-    <updated>2020-10-09T15:39:32.543Z</updated>
-    
-    <content type="html"><![CDATA[<p> <a href="https://leetcode-cn.com/problems/reverse-integer/" target="_blank" rel="noopener">7. Reverse Integer</a></p><p>Given a 32-bit signed integer, reverse digits of an integer.</p><p><strong>Example 1:</strong></p><p>Input: 123<br>Output: 321<br><strong>Example 2:</strong></p><p>Input: -123<br>Output: -321<br><strong>Example 3:</strong></p><p>Input: 120<br>Output: 21<br>Note:<br>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">while</span>(x != <span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">int</span> pop = x % <span class="number">10</span>;</span><br><span class="line">           x /= <span class="number">10</span>;</span><br><span class="line">           <span class="keyword">if</span>(ans &gt; INT_MAX / <span class="number">10</span> || ans == INT_MAX / <span class="number">10</span> &amp;&amp; pop &gt; <span class="number">7</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">           <span class="keyword">if</span>(ans &lt; INT_MIN / <span class="number">10</span> || ans == INT_MIN / <span class="number">10</span> &amp;&amp; pop &lt; <span class="number">-8</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">           ans = ans * <span class="number">10</span> + pop;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><strong>Explanation：</strong></p><blockquote><p>  #define INT_MAX = 2147483647</p><p>  #define INT_MAX = -INT_MAX-1</p></blockquote><p>也就是关于int的最大值和最小值的说明</p><p>将一个数字进行反转，从个位数进行取，使用取余的方法，再使用“余数X10”进行往高位移动。</p><p>这个过程中需要注意溢出时的条件即可。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt; &lt;a href=&quot;https://leetcode-cn.com/problems/reverse-integer/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;7. Reverse Integer&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Given a 32-bit 
       
     
     </summary>
