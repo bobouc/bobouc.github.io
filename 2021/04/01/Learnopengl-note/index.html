@@ -20,23 +20,22 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="455. Assign Cookies 饼干🍪分配Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie. Each child i has a greed factor gi, which is">
+    <meta name="description" content="Learnopengl-note 顶点着色器 vertex shader 如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。 #version 330 core layout (location &#x3D; 0) in vec3 aPos;  void main() {     gl_Position &#x3D; vec4(aPos.x, aPos.y, aPos.z, 1.0);">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 455. Assign Cookies 饼干分配">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2020/02/19/LeetCode-455-Assign-Cookies-%E9%A5%BC%E5%B9%B2%E5%88%86%E9%85%8D/index.html">
+<meta property="og:title" content="Learnopengl-note">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/04/01/Learnopengl-note/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="455. Assign Cookies 饼干🍪分配Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie. Each child i has a greed factor gi, which is">
-<meta property="article:published_time" content="2020-02-19T08:38:50.000Z">
-<meta property="article:modified_time" content="2020-05-05T15:36:19.414Z">
+<meta property="og:description" content="Learnopengl-note 顶点着色器 vertex shader 如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。 #version 330 core layout (location &#x3D; 0) in vec3 aPos;  void main() {     gl_Position &#x3D; vec4(aPos.x, aPos.y, aPos.z, 1.0);">
+<meta property="article:published_time" content="2021-04-01T15:16:18.000Z">
+<meta property="article:modified_time" content="2021-04-01T15:26:38.261Z">
 <meta property="article:author" content="jax">
-<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
     <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
     
-    <title>LeetCode 455. Assign Cookies 饼干分配 · GuoXin Li&#39;s Blog</title>
+    <title>Learnopengl-note · GuoXin Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -231,7 +230,7 @@
                 <a href="/" >GuoXin Li&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">LeetCode 455. Assign Cookies 饼干分配</a>
+                <a href="#" class="post-name">Learnopengl-note</a>
             </div>
     </div>
     
@@ -261,7 +260,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            LeetCode 455. Assign Cookies 饼干分配
+            Learnopengl-note
             <!-- 404 -->
             
         </h1>
@@ -278,20 +277,14 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
-                    <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
-    
-</div>
-                
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">319</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">253</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/02/19</span>
+                    <span class="post-intro-time">2021/04/01</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -415,19 +408,23 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h4 id="455-Assign-Cookies-饼干🍪分配"><a href="#455-Assign-Cookies-饼干🍪分配" class="headerlink" title="455. Assign Cookies 饼干🍪分配"></a>455. Assign Cookies 饼干🍪分配</h4><p>Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie. Each child i has a greed factor gi, which is the minimum size of a cookie that the child will be content with; and each cookie j has a size sj. If sj &gt;= gi, we can assign the cookie j to the child i, and the child i will be content. Your goal is to maximize the number of your content children and output the maximum number.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h3><p>You may assume the greed factor is always positive.<br>You cannot assign more than one cookie to one child.</p>
-<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h3><p>Input: [1,2,3], [1,1]</p>
-<p>Output: 1</p>
-<p>Explanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3.<br>And even though you have 2 cookies, since their size is both 1, you could only make the child whose greed factor is 1 content.<br>You need to output 1.<br>Example 2:</p>
-<p>Input: [1,2], [1,2,3]</p>
-<p>Output: 2</p>
-<p>Explanation: You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2.<br>You have 3 cookies and their sizes are big enough to gratify all of the children,<br>You need to output 2.</p>
-<h3 id="Resolution"><a href="#Resolution" class="headerlink" title="Resolution"></a>Resolution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findContentChildren</span><span class="params">(<span class="keyword">int</span>[] g, <span class="keyword">int</span>[] s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">       Arrays.sort(g);</span><br><span class="line">       Arrays.sort(s);</span><br><span class="line">       <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> x : g)&#123;</span><br><span class="line">           <span class="keyword">while</span>( j &lt; s.length &amp;&amp; x &gt; s[j] )&#123;</span><br><span class="line">               ++j;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span>(j &lt; s.length &amp;&amp; s[j] &gt;= x)&#123;</span><br><span class="line">               ++num;</span><br><span class="line">               ++j;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Time Complexity: $O(nlogn)$</strong> takes time in sorting algrithm</p>
-<p><strong>Space Complexity:$O(1)$</strong></p>
-<p><strong>Note：</strong></p>
-<p>Greedy Algorithm，Control the children and set j point points to the cookies that has been sorted.</p>
+        <p>Learnopengl-note</p>
+<p>顶点着色器</p>
+<p>vertex shader</p>
+<p>如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。</p>
+<pre><code>#version 330 core
+layout (location = 0) in vec3 aPos;
+
+void main()
+{
+    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+}
+</code></pre><h1 id="version-330-core-声明版本和核心模式"><a href="#version-330-core-声明版本和核心模式" class="headerlink" title="version 330 core 声明版本和核心模式"></a>version 330 core 声明版本和核心模式</h1><p>in , out关键字，每个着色器都有输入和输出进行数据交换。</p>
+<p>layout (location = 0) 设定了输入变量的位置值。</p>
+<p>着色器的开头总是要声明版本，接着是输入和输出变量、uniform和main函数。每个着色器的入口点都是main函数，在这个函数中我们处理所有的输入变量，并将结果输出到输出变量中。</p>
+<p>每个输入变量也叫做 顶点属性 vertex attribute，OpenGL 取保至少 16 个包含 4 分量的顶点属性可用。</p>
+<p>GLSL中包含C等其它语言大部分的默认基础数据类型：int、float、double、uint和bool。</p>
+<p>GLSL两种容器类型：vector 和 matrix</p>
 
     </article>
     <!-- license  -->
@@ -436,17 +433,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/02/20/LeetCode-404-Sum-of-Left-Leaves-%E5%B7%A6%E5%8F%B6%E5%AD%90%E7%BB%93%E7%82%B9%E5%80%BC%E4%B9%8B%E5%92%8C/" title= "LeetCode 404. Sum of Left Leaves 左叶子结点值之和">
-                    <div class="nextTitle">LeetCode 404. Sum of Left Leaves 左叶子结点值之和</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/02/18/LeetCode-461-Hamming-Distance-%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" title= "LeetCode 461 Hamming Distance 汉明距离">
-                    <div class="prevTitle">LeetCode 461 Hamming Distance 汉明距离</div>
+                <a href= "/2021/03/29/Analysis-of-Dual-Attention-Network-for-Scene-Segmentation/" title= "Analysis of <<Dual Attention Network for Scene Segmentation>>">
+                    <div class="prevTitle">Analysis of <<Dual Attention Network for Scene Segmentation>></div>
                 </a>
             
         </li>
@@ -548,7 +540,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#455-Assign-Cookies-饼干🍪分配"><span class="toc-number">1.</span> <span class="toc-text">455. Assign Cookies 饼干🍪分配</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Note"><span class="toc-number"></span> <span class="toc-text">Note:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example-1"><span class="toc-number"></span> <span class="toc-text">Example 1:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Resolution"><span class="toc-number"></span> <span class="toc-text">Resolution</span></a>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#version-330-core-声明版本和核心模式"><span class="toc-number">1.</span> <span class="toc-text">version 330 core 声明版本和核心模式</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>

@@ -357,6 +357,42 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2021/04/01/Learnopengl-note/" >
+            
+                <span>Learnopengl-note</span>
+        </a>
+        <div class="abstract-content">
+            Learnopengl-note
+顶点着色器
+vertex shader
+如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。
+#version 330 core
+layout (location = 0) in vec3 aPos;
+
+void main()
+{
+    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+}
+version 330 core 声明版本和核心模式in , out关键字，每个着色器都有输入和输出进行数据交换。
+layout (location = 0) 设定了输入变量的位置值。
+着...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/04/01</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2021/03/29/Analysis-of-Dual-Attention-Network-for-Scene-Segmentation/" >
             
                 <span>Analysis of &lt;&lt;Dual Attention Network for Scene Segmentation&gt;&gt;</span>
@@ -1771,9 +1807,18 @@ HybridSN: Exploring 3D-2D CNN Feature Hierarchy for Hyperspectral Image Classifi
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 70
+        Total : 71
         </div>
         <!-- search  -->
         
@@ -1786,6 +1831,11 @@ HybridSN: Exploring 3D-2D CNN Feature Hierarchy for Hyperspectral Image Classifi
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2021/04/01/Learnopengl-note/" >Learnopengl-note</a>
+        </li>
     
     
         <li class="archive-post-item">
