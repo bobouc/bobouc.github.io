@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
 <meta property="og:description" content="Learnopengl-note 顶点着色器 vertex shader 如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。 #version 330 core layout (location &#x3D; 0) in vec3 aPos;  void main() {     gl_Position &#x3D; vec4(aPos.x, aPos.y, aPos.z, 1.0);">
 <meta property="article:published_time" content="2021-04-01T15:16:18.000Z">
-<meta property="article:modified_time" content="2021-04-01T15:26:38.261Z">
+<meta property="article:modified_time" content="2021-04-02T14:05:54.515Z">
 <meta property="article:author" content="jax">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
@@ -279,7 +279,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">253</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">399</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -425,6 +425,10 @@ void main()
 <p>每个输入变量也叫做 顶点属性 vertex attribute，OpenGL 取保至少 16 个包含 4 分量的顶点属性可用。</p>
 <p>GLSL中包含C等其它语言大部分的默认基础数据类型：int、float、double、uint和bool。</p>
 <p>GLSL两种容器类型：vector 和 matrix</p>
+<p><strong>顶点着色器</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#version 330 core</span><br><span class="line">layout (location &#x3D; 0) in vec3 aPos; &#x2F;&#x2F; 位置变量的属性位置值为0</span><br><span class="line"></span><br><span class="line">out vec4 vertexColor; &#x2F;&#x2F; 为片段着色器指定一个颜色输出</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    gl_Position &#x3D; vec4(aPos, 1.0); &#x2F;&#x2F; 注意我们如何把一个vec3作为vec4的构造器的参数</span><br><span class="line">    vertexColor &#x3D; vec4(0.5, 0.0, 0.0, 1.0); &#x2F;&#x2F; 把输出变量设置为暗红色</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>片段着色器</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#version 330 core</span><br><span class="line">out vec4 FragColor;</span><br><span class="line"></span><br><span class="line">in vec4 vertexColor; &#x2F;&#x2F; 从顶点着色器传来的输入变量（名称相同、类型相同）</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    FragColor &#x3D; vertexColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </article>
     <!-- license  -->
