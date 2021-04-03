@@ -357,6 +357,48 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2021/04/01/Learnopengl-note/" >
+            
+                <span>Learnopengl-note</span>
+        </a>
+        <div class="abstract-content">
+            着色器Learnopengl-note
+顶点着色器
+vertex shader
+如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。
+#version 330 core
+layout (location = 0) in vec3 aPos;
+
+void main()
+{
+    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+}
+#version 330 core 声明版本和核心模式
+in , out关键字，每个着色器都有输入和输出进行数据交换。
+layout (location = 0) 设定了输入变...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/04/01</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2021/03/21/Docker-notes/" >
             
                 <span>Docker notes</span>
