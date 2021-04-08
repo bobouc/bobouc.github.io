@@ -362,7 +362,7 @@
                 <span>Learnopengl-note</span>
         </a>
         <div class="abstract-content">
-            着色器Learnopengl-note
+            着色器
 顶点着色器
 vertex shader
 如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。
@@ -373,9 +373,9 @@ void main()
 {
     gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
 }
-#version 330 core 声明版本和核心模式
-in , out关键字，每个着色器都有输入和输出进行数据交换。
-layout (location = 0) 设定了输入变量的位...
+version 330 core 声明版本和核心模式in , out关键字，每个着色器都有输入和输出进行数据交换。
+layout (location = 0) 设定了输入变量的位置值。
+着色器的开头总是要声明版本，...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1993,23 +1993,7 @@ jsonContent:
     </div>
     <!-- async load share.js -->
      
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-</body>
+    </body>
 </html>
 
 
