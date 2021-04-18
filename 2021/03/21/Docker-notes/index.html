@@ -28,7 +28,7 @@
 <meta property="og:description" content="Docker基本概念镜像操作系统分为 内核 和 用户空降。Linux 系统内核启动后，会挂载 root 文件系统为其提供用户空间支持。 Docker 镜像相当于一个 root 文件系统，如 官方镜像 ubuntu:18:04 就包含了完整的一套 ubuntu18.04最小系统 root 文件系统。 Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需要的程序、库、资源、配置等文件外，还包">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-04-15%20at%2023.22.28.png">
 <meta property="article:published_time" content="2021-03-21T15:18:15.000Z">
-<meta property="article:modified_time" content="2021-04-16T16:14:21.467Z">
+<meta property="article:modified_time" content="2021-04-18T15:58:50.663Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="learning-note">
 <meta name="twitter:card" content="summary">
@@ -288,7 +288,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2.1k</span>阅读时长: <span class="post-count reading-time">8 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -496,6 +496,12 @@ $ sudo systemctl start docker</code></p>
 <h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><p><code>docker image ls</code></p>
 <p>然后使用</p>
 <p><code>docker image rm **</code></p>
+<h3 id="操作容器"><a href="#操作容器" class="headerlink" title="操作容器"></a>操作容器</h3><p><code>docker run -it ubuntu:18.04 /bin/sh</code></p>
+<p>-t 让dock儿分配一个伪终端，并绑定到容器的标准输入上，-i 则让容器的标准输入保持打开。</p>
+<p>docker run 创建容器时，Docker 后台运行操作包括：</p>
+<ul>
+<li>检查本地是否存在指定镜像，如果不存在就从 registry 上下载</li>
+</ul>
 
     </article>
     <!-- license  -->
@@ -616,7 +622,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-number">1.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#镜像"><span class="toc-number">1.1.1.</span> <span class="toc-text">镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器"><span class="toc-number">1.1.2.</span> <span class="toc-text">容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仓库"><span class="toc-number">1.1.3.</span> <span class="toc-text">仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-Docker"><span class="toc-number">1.2.</span> <span class="toc-text">安装 Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu"><span class="toc-number">1.2.1.</span> <span class="toc-text">Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#启动-Docker"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">启动 Docker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建立-Docker-用户组"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">建立 Docker 用户组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac"><span class="toc-number">1.2.2.</span> <span class="toc-text">Mac</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取镜像"><span class="toc-number">1.3.</span> <span class="toc-text">获取镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#运行"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">运行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列出镜像"><span class="toc-number">1.3.1.</span> <span class="toc-text">列出镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚悬镜像"><span class="toc-number">1.3.2.</span> <span class="toc-text">虚悬镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除镜像"><span class="toc-number">1.3.3.</span> <span class="toc-text">删除镜像</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-number">1.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#镜像"><span class="toc-number">1.1.1.</span> <span class="toc-text">镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器"><span class="toc-number">1.1.2.</span> <span class="toc-text">容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仓库"><span class="toc-number">1.1.3.</span> <span class="toc-text">仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-Docker"><span class="toc-number">1.2.</span> <span class="toc-text">安装 Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu"><span class="toc-number">1.2.1.</span> <span class="toc-text">Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#启动-Docker"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">启动 Docker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建立-Docker-用户组"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">建立 Docker 用户组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac"><span class="toc-number">1.2.2.</span> <span class="toc-text">Mac</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取镜像"><span class="toc-number">1.3.</span> <span class="toc-text">获取镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#运行"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">运行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列出镜像"><span class="toc-number">1.3.1.</span> <span class="toc-text">列出镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚悬镜像"><span class="toc-number">1.3.2.</span> <span class="toc-text">虚悬镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除镜像"><span class="toc-number">1.3.3.</span> <span class="toc-text">删除镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作容器"><span class="toc-number">1.3.4.</span> <span class="toc-text">操作容器</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
