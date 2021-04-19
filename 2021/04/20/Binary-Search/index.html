@@ -20,23 +20,22 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="404. Sum of Left Leaves 左叶子结点值之和Find the sum of all left leaves in a given binary tree. Example:3    &#x2F; \  9  20    &#x2F;  \   15   7 There are two left leaves in the binary tree, with values 9 and 15 resp">
+    <meta name="description" content="12345678910111213141516171819202122232425262728#include &lt;iostream&gt;#include &lt;vector&gt;int binarysear(std::vector&lt;int&gt; &amp;nums, int target)&amp;#123;    int left &#x3D; 0;    int right &#x3D; nums.s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 404. Sum of Left Leaves 左叶子结点值之和">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2020/02/20/LeetCode-404-Sum-of-Left-Leaves-%E5%B7%A6%E5%8F%B6%E5%AD%90%E7%BB%93%E7%82%B9%E5%80%BC%E4%B9%8B%E5%92%8C/index.html">
+<meta property="og:title" content="Binary Search">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/04/20/Binary-Search/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="404. Sum of Left Leaves 左叶子结点值之和Find the sum of all left leaves in a given binary tree. Example:3    &#x2F; \  9  20    &#x2F;  \   15   7 There are two left leaves in the binary tree, with values 9 and 15 resp">
-<meta property="article:published_time" content="2020-02-20T14:38:25.000Z">
-<meta property="article:modified_time" content="2020-05-05T15:36:19.393Z">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728#include &lt;iostream&gt;#include &lt;vector&gt;int binarysear(std::vector&lt;int&gt; &amp;nums, int target)&amp;#123;    int left &#x3D; 0;    int right &#x3D; nums.s">
+<meta property="article:published_time" content="2021-04-19T16:54:28.000Z">
+<meta property="article:modified_time" content="2021-04-19T17:46:37.928Z">
 <meta property="article:author" content="jax">
-<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
     <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
     
-    <title>LeetCode 404. Sum of Left Leaves 左叶子结点值之和 · GuoXin Li&#39;s Blog</title>
+    <title>Binary Search · GuoXin Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -231,7 +230,7 @@
                 <a href="/" >GuoXin Li&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">LeetCode 404. Sum of Left Leaves 左叶子结点值之和</a>
+                <a href="#" class="post-name">Binary Search</a>
             </div>
     </div>
     
@@ -261,7 +260,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            LeetCode 404. Sum of Left Leaves 左叶子结点值之和
+            Binary Search
             <!-- 404 -->
             
         </h1>
@@ -278,20 +277,14 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
-                    <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
-    
-</div>
-                
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">288</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">187</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/02/20</span>
+                    <span class="post-intro-time">2021/04/20</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -415,17 +408,9 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h4 id="404-Sum-of-Left-Leaves-左叶子结点值之和"><a href="#404-Sum-of-Left-Leaves-左叶子结点值之和" class="headerlink" title="404. Sum of Left Leaves 左叶子结点值之和"></a>404. Sum of Left Leaves 左叶子结点值之和</h4><p>Find the sum of all left leaves in a given binary tree.</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h3><pre><code>3
-</code></pre><p>   / \<br>  9  20<br>    /  \<br>   15   7</p>
-<p>There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.</p>
-<h3 id="Resolution"><a href="#Resolution" class="headerlink" title="Resolution"></a>Resolution</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * C++</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left &amp;&amp; !root-&gt;left-&gt;left &amp;&amp; !root-&gt;left-&gt;right)&#123;</span><br><span class="line">            <span class="keyword">return</span> root-&gt;left-&gt;val + sumOfLeftLeaves(root-&gt;right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum + sumOfLeftLeaves(root-&gt;left) + sumOfLeftLeaves(root-&gt;right);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Java</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.left != <span class="keyword">null</span> &amp;&amp; root.left.left == <span class="keyword">null</span> &amp;&amp; root.left.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> root.left.val + sumOfLeftLeaves(root.right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Time Complexity: $O(n)$</strong></p>
-<p><strong>Space Complexity: $O(h)$</strong></p>
-<p><strong>note：recursion</strong></p>
-<p>The algrithm above is based on how to sum value of all nodes.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfTrees</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  //get all value of leaves.</span></span><br><span class="line"><span class="comment">  int sum = 0;</span></span><br><span class="line"><span class="comment">  if(root.left == null &amp;&amp; root.right == null)&#123;</span></span><br><span class="line"><span class="comment">  sum = root.val;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">  <span class="keyword">int</span> sum = root.val;</span><br><span class="line">  <span class="keyword">int</span> left = sumOfTrees(root.left);</span><br><span class="line">  <span class="keyword">int</span> right = sumOfTrees(root.right);</span><br><span class="line">  <span class="keyword">return</span> sum + left + right;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarysear</span><span class="params">(std::vector&lt;<span class="keyword">int</span>&gt; &amp;nums, <span class="keyword">int</span> target)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right = nums.size();</span><br><span class="line">    <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = left+(right - left) / <span class="number">2</span> ;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] == target)</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">            left = mid +<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target)</span><br><span class="line">            right = mid -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    std::vector&lt;<span class="keyword">int</span>&gt; arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> rest = binarysear(arr, <span class="number">2</span>);</span><br><span class="line">    std::cout&lt;&lt;rest&lt;&lt;std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此算法的缺陷：</p>
+<p>比如说给你有序数组 <code>nums = [1,2,2,2,3]</code>，<code>target</code> 为 2，此算法返回的索引是 2，没错。但是如果我想得到 <code>target</code> 的左侧边界，即索引 1，或者我想得到 <code>target</code> 的右侧边界，即索引 3，这样的话此算法是无法处理的。</p>
 
     </article>
     <!-- license  -->
@@ -434,17 +419,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/02/23/LeetCode174-Dungeon-Game%F0%9F%A4%B4%E5%9C%B0%E7%8B%B1%E6%95%91%F0%9F%91%B8/" title= "LeetCode174. Dungeon Game🤴地狱救👸">
-                    <div class="nextTitle">LeetCode174. Dungeon Game🤴地狱救👸</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/02/19/LeetCode-455-Assign-Cookies-%E9%A5%BC%E5%B9%B2%E5%88%86%E9%85%8D/" title= "LeetCode 455. Assign Cookies 饼干分配">
-                    <div class="prevTitle">LeetCode 455. Assign Cookies 饼干分配</div>
+                <a href= "/2021/04/17/logofapplegeniusbar/" title= "记一次苹果天才吧维修记录">
+                    <div class="prevTitle">记一次苹果天才吧维修记录</div>
                 </a>
             
         </li>
@@ -546,7 +526,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#404-Sum-of-Left-Leaves-左叶子结点值之和"><span class="toc-number">1.</span> <span class="toc-text">404. Sum of Left Leaves 左叶子结点值之和</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example"><span class="toc-number"></span> <span class="toc-text">Example:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Resolution"><span class="toc-number"></span> <span class="toc-text">Resolution</span></a>
+        
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
