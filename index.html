@@ -370,6 +370,47 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2021/04/23/Sliding-Window/" >
+            
+                <span>Sliding Window </span>
+        </a>
+        <div class="abstract-content">
+            滑动窗口
+
+窗口右端不断向前，直到包含所有的所需元素
+
+（注意，刚刚直到包含所有元素就是窗口开始缩小的条件）。
+
+然后窗口左端开始向前（即进行了窗口的缩小），直到开始不包含所有元素（比如ABC，就少了 A，窗口中只包含了BC）
+
+然后窗口右边再次向右前进，重复上述过程。
+
+最后返回最小的窗口即可（在这里，可以得出，在缩小窗口之前通常需要进行预备份上一次的最合适的窗口）
+
+12345678910111213int left = 0, right = 0;// t  为所需要的匹配元素while(right &lt; t.size())&#123;  windows.add[s[right]...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/04/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "slidingwindow">slidingwindow</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2021/04/20/Binary-Search/" >
             
                 <span>Binary Search</span>
@@ -813,46 +854,6 @@ F(0) = 0,   F(1) = 1F(N) = F(N - 1) + F(N - 2), for N &gt; 1.Given N, calculate 
             <!-- date  -->
             <div class="abstract-date">
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/12/05</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/11/28/Learn-AndrewNg-Ai-notes/" >
-            
-                <span>Learn AndrewNg-MachineLearning notes</span>
-        </a>
-        <div class="abstract-content">
-            Supervised Leaning:e.g.
-
-Housing price prediction. (Regression) 房屋租价预测
-
-Breast cancer(maligant, benign). (Classification) 乳腺癌的恶性良性预测
-
-
-Unsupervised Leaning:e.g.
-
-Google news. 谷歌新闻的分类（采用聚类的方法）
-
-DNA Classification. DNA的分类，聚类算法
-
-组织计算机集群（什么样的机器易于协同工作，进而高效）
-
-Facebook、Google+ 的圈子分类
-
-大公司大型数据，存储消费者信息进行，市...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/11/28</span>
             </div>
             <!-- tags  -->
             
@@ -2047,9 +2048,38 @@ Facebook、Google+ 的圈子分类
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 73
+        Total : 74
         </div>
         <!-- search  -->
         
@@ -2062,6 +2092,11 @@ Facebook、Google+ 的圈子分类
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2021/04/23/Sliding-Window/" >Sliding Window </a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2473,6 +2508,8 @@ Facebook、Google+ 的圈子分类
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
         <span class="sidebar-tag-name" data-tags="Paper-reading"><span class="iconfont-archer">&#xe606;</span>Paper-reading</span>
+    
+        <span class="sidebar-tag-name" data-tags="slidingwindow"><span class="iconfont-archer">&#xe606;</span>slidingwindow</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
