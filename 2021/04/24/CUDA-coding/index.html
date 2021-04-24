@@ -20,17 +20,20 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="CUDA 编程桌面应用 轻量级进程，少量线程 分之和交互操作 大量存储器访问 用于数值运算的指令很少  现代 CPU 架构和性能优化流水线分支预测超标量乱序之行存储器层次矢量操作多核处理">
+    <meta name="description" content="CUDA 编程现代 CPU 架构和性能优化CPU的概念： 执行指令，处理数据的器件——完成基本的逻辑和算术指令  增加了复杂的接口  内存接口 外部设备接口   包含大量静晶体管  桌面应用 轻量级进程，少量线程 分之和交互操作 大量存储器访问 用于数值运算的指令很少  CPU结构图 取指 译码 执行 访问 写回 流水线 利用指令级的并行 极大的减小时钟周期 但是增加了延迟和芯片面积    分支预">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CUDA coding">
 <meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/04/24/CUDA-coding/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="CUDA 编程桌面应用 轻量级进程，少量线程 分之和交互操作 大量存储器访问 用于数值运算的指令很少  现代 CPU 架构和性能优化流水线分支预测超标量乱序之行存储器层次矢量操作多核处理">
+<meta property="og:description" content="CUDA 编程现代 CPU 架构和性能优化CPU的概念： 执行指令，处理数据的器件——完成基本的逻辑和算术指令  增加了复杂的接口  内存接口 外部设备接口   包含大量静晶体管  桌面应用 轻量级进程，少量线程 分之和交互操作 大量存储器访问 用于数值运算的指令很少  CPU结构图 取指 译码 执行 访问 写回 流水线 利用指令级的并行 极大的减小时钟周期 但是增加了延迟和芯片面积    分支预">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/01g5HiwPZLWQ.jpeg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-04-25%20at%2006.19.27.png">
 <meta property="article:published_time" content="2021-04-24T11:27:56.000Z">
-<meta property="article:modified_time" content="2021-04-24T11:28:44.644Z">
+<meta property="article:modified_time" content="2021-04-24T22:52:27.511Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="CUDA">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/01g5HiwPZLWQ.jpeg">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
@@ -286,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">78</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">642</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -415,13 +418,119 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="CUDA-编程"><a href="#CUDA-编程" class="headerlink" title="CUDA 编程"></a>CUDA 编程</h1><h3 id="桌面应用"><a href="#桌面应用" class="headerlink" title="桌面应用"></a>桌面应用</h3><ul>
+        <h1 id="CUDA-编程"><a href="#CUDA-编程" class="headerlink" title="CUDA 编程"></a>CUDA 编程</h1><h2 id="现代-CPU-架构和性能优化"><a href="#现代-CPU-架构和性能优化" class="headerlink" title="现代 CPU 架构和性能优化"></a>现代 CPU 架构和性能优化</h2><h3 id="CPU的概念："><a href="#CPU的概念：" class="headerlink" title="CPU的概念："></a>CPU的概念：</h3><ul>
+<li><p>执行指令，处理数据的器件——完成基本的逻辑和算术指令</p>
+</li>
+<li><p>增加了复杂的接口</p>
+<ul>
+<li>内存接口</li>
+<li>外部设备接口</li>
+</ul>
+</li>
+<li>包含大量静晶体管</li>
+</ul>
+<h3 id="桌面应用"><a href="#桌面应用" class="headerlink" title="桌面应用"></a>桌面应用</h3><ul>
 <li>轻量级进程，少量线程</li>
 <li>分之和交互操作</li>
 <li>大量存储器访问</li>
 <li>用于数值运算的指令很少</li>
 </ul>
-<h2 id="现代-CPU-架构和性能优化"><a href="#现代-CPU-架构和性能优化" class="headerlink" title="现代 CPU 架构和性能优化"></a>现代 CPU 架构和性能优化</h2><h3 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h3><h3 id="分支预测"><a href="#分支预测" class="headerlink" title="分支预测"></a>分支预测</h3><h3 id="超标量"><a href="#超标量" class="headerlink" title="超标量"></a>超标量</h3><h3 id="乱序之行"><a href="#乱序之行" class="headerlink" title="乱序之行"></a>乱序之行</h3><h3 id="存储器层次"><a href="#存储器层次" class="headerlink" title="存储器层次"></a>存储器层次</h3><h3 id="矢量操作"><a href="#矢量操作" class="headerlink" title="矢量操作"></a>矢量操作</h3><h3 id="多核处理"><a href="#多核处理" class="headerlink" title="多核处理"></a>多核处理</h3>
+<h3 id="CPU结构图"><a href="#CPU结构图" class="headerlink" title="CPU结构图"></a>CPU结构图</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/01g5HiwPZLWQ.jpeg" alt="enter image description here"></p>
+<p>取指 译码 执行 访问 写回</p>
+<h3 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h3><ul>
+<li>利用指令级的并行<ul>
+<li>极大的减小时钟周期</li>
+<li>但是增加了延迟和芯片面积</li>
+</ul>
+</li>
+</ul>
+<h3 id="分支预测"><a href="#分支预测" class="headerlink" title="分支预测"></a>分支预测</h3><p>猜测下一条指令</p>
+<p>基于过去的分支记录</p>
+<p>如：基于全局记录的两层预测</p>
+<p>现代预测器准确度大于 90%</p>
+<ul>
+<li>提升性能以及能量效率</li>
+</ul>
+<p>但是会导致面积增加和延迟</p>
+<hr>
+<p>提升 IPC （instructions cycle）即 CPU 一个时钟周期能够处理的指令数</p>
+<p>为了处理更多的数据—&gt; 提出了超标量 — 增加流水线宽度</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-04-25%20at%2006.19.27.png" alt="Screen Shot 2021-04-25 at 06.19.27"></p>
+<hr>
+<h3 id="超标量"><a href="#超标量" class="headerlink" title="超标量"></a>超标量</h3><p>峰值 IPC 为N（N路超标量）</p>
+<p>Peak IPC now at N( for N-way superscalar)</p>
+<ul>
+<li><p>分支调度会产生开销</p>
+</li>
+<li><p>需要一些技巧来逼近峰值</p>
+</li>
+</ul>
+<p>增加了面积</p>
+<p>Area increase</p>
+<ul>
+<li>N 倍资源使用</li>
+<li>旁路网络</li>
+<li>需要更多的寄存器的存储器宽度</li>
+</ul>
+<h3 id="乱序执行-Out-of-Order-—-OoO"><a href="#乱序执行-Out-of-Order-—-OoO" class="headerlink" title="乱序执行 Out-of-Order — OoO"></a>乱序执行 Out-of-Order — OoO</h3><p>重排指令，获得最大的吞吐量</p>
+<p>重排缓冲区</p>
+<p>发射队列/调度器</p>
+<p>使得 IPC 接近理想状态</p>
+<ul>
+<li>但使得面积增加、功耗增加</li>
+</ul>
+<h3 id="存储器架构-层次"><a href="#存储器架构-层次" class="headerlink" title="存储器架构/层次"></a>存储器架构/层次</h3><p>存储器越大越慢</p>
+<p>缓存：</p>
+<ul>
+<li>将数据放在尽可能接近的位置</li>
+<li>利用<ul>
+<li>时间临近性：刚刚使用过的数据很可能会被再次使用</li>
+<li>空间临近性：倾向于使用周围临近的数据</li>
+</ul>
+</li>
+<li>对于L1, L2, L3级别的缓存，其级别越小容量越小，速度越快</li>
+</ul>
+<p>分区：</p>
+<ul>
+<li>避免多端口</li>
+</ul>
+<p>一致性</p>
+<p>控制器：</p>
+<ul>
+<li>多个通道，增加带宽</li>
+</ul>
+<p>CPU内部的并行性</p>
+<ul>
+<li>指令级并行<ul>
+<li>超标量</li>
+<li>乱序之行</li>
+</ul>
+</li>
+<li>数据级并行<ul>
+<li>矢量计算</li>
+</ul>
+</li>
+<li>线程级并行<ul>
+<li>同步多线程</li>
+<li>多核</li>
+</ul>
+</li>
+</ul>
+<h3 id="矢量操作"><a href="#矢量操作" class="headerlink" title="矢量操作"></a>矢量操作</h3><p>同时处理多个指令</p>
+<h3 id="多核处理"><a href="#多核处理" class="headerlink" title="多核处理"></a>多核处理</h3><p>将流水线完整复制</p>
+<p>Sandy Bridge-E：6 cores</p>
+<ul>
+<li>完整的核，除了最后一级缓存外，不共享其他资源</li>
+<li>继续保持摩尔定律</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>CPU 为串行程序优化</p>
+<ul>
+<li>pipelines， branch prediction， superscalar， OoO</li>
+<li>Reduce execution time with high clock speeds and high utilization</li>
+</ul>
+<p>缓慢的内存带宽将会是大问题</p>
+<p>并行处理是一个方向</p>
+
     </article>
     <!-- license  -->
     
@@ -536,7 +645,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CUDA-编程"><span class="toc-number">1.</span> <span class="toc-text">CUDA 编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#桌面应用"><span class="toc-number">1.0.1.</span> <span class="toc-text">桌面应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#现代-CPU-架构和性能优化"><span class="toc-number">1.1.</span> <span class="toc-text">现代 CPU 架构和性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流水线"><span class="toc-number">1.1.1.</span> <span class="toc-text">流水线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支预测"><span class="toc-number">1.1.2.</span> <span class="toc-text">分支预测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超标量"><span class="toc-number">1.1.3.</span> <span class="toc-text">超标量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乱序之行"><span class="toc-number">1.1.4.</span> <span class="toc-text">乱序之行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储器层次"><span class="toc-number">1.1.5.</span> <span class="toc-text">存储器层次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矢量操作"><span class="toc-number">1.1.6.</span> <span class="toc-text">矢量操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多核处理"><span class="toc-number">1.1.7.</span> <span class="toc-text">多核处理</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CUDA-编程"><span class="toc-number">1.</span> <span class="toc-text">CUDA 编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#现代-CPU-架构和性能优化"><span class="toc-number">1.1.</span> <span class="toc-text">现代 CPU 架构和性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU的概念："><span class="toc-number">1.1.1.</span> <span class="toc-text">CPU的概念：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#桌面应用"><span class="toc-number">1.1.2.</span> <span class="toc-text">桌面应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU结构图"><span class="toc-number">1.1.3.</span> <span class="toc-text">CPU结构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流水线"><span class="toc-number">1.1.4.</span> <span class="toc-text">流水线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支预测"><span class="toc-number">1.1.5.</span> <span class="toc-text">分支预测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超标量"><span class="toc-number">1.1.6.</span> <span class="toc-text">超标量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乱序执行-Out-of-Order-—-OoO"><span class="toc-number">1.1.7.</span> <span class="toc-text">乱序执行 Out-of-Order — OoO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储器架构-层次"><span class="toc-number">1.1.8.</span> <span class="toc-text">存储器架构&#x2F;层次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矢量操作"><span class="toc-number">1.1.9.</span> <span class="toc-text">矢量操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多核处理"><span class="toc-number">1.1.10.</span> <span class="toc-text">多核处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.1.11.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
