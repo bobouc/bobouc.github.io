@@ -20,20 +20,23 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="Help myself">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GuoXin Li&#39;s Blog">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/archives/2019/08/index.html">
+    <meta name="description" content="CUDA 编程桌面应用 轻量级进程，少量线程 分之和交互操作 大量存储器访问 用于数值运算的指令很少  现代 CPU 架构和性能优化流水线分支预测超标量乱序之行存储器层次矢量操作多核处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUDA coding">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/04/24/CUDA-coding/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="Help myself">
+<meta property="og:description" content="CUDA 编程桌面应用 轻量级进程，少量线程 分之和交互操作 大量存储器访问 用于数值运算的指令很少  现代 CPU 架构和性能优化流水线分支预测超标量乱序之行存储器层次矢量操作多核处理">
+<meta property="article:published_time" content="2021-04-24T11:27:56.000Z">
+<meta property="article:modified_time" content="2021-04-24T11:28:44.644Z">
 <meta property="article:author" content="jax">
+<meta property="article:tag" content="CUDA">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
     <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
     
-    <title>GuoXin Li&#39;s Blog</title>
+    <title>CUDA coding · GuoXin Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -214,12 +217,23 @@
 <meta name="generator" content="Hexo 4.2.0"></head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >GuoXin Li&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">CUDA coding</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>GuoXin Li's Blog</a>
 </header>
@@ -231,24 +245,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random/1600x500)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            CUDA coding
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CUDA">CUDA</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">78</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2021/04/24</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -349,39 +413,66 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/08/06/Spider-for-a-Book-Secrets-from-the-New-Science-of-Expertise-comments-on-JD-com/" >
-            
-                <span>Spider for a Book &quot;Secrets from the New Science of Expertise&quot; comments on JD.com</span>
-        </a>
-        <div class="abstract-content">
-            爬取京东《刻意练习》图书评论并生成图词前言：
-
-本文主要为爬虫入门篇，通过简单的 requests 模块，爬取京东销售的图书《刻意练习》的评论，并生成云图词，体验爬虫的小乐趣。
-
-实现的目的《刻意练习》这本书是一本非常棒的书，作者通过长时间的观察和亲身实践，研究和讲述学习的过程，以及从新手到大师 master 的必经之路，和刻意练习之方法。
-如果非常喜欢这本书，想看一下买这本书的人对于这本书的评价是什么样的，当然可以自己去看评论区，但是只能草略的看，想全面的评论统计，那么就需要爬虫出马了。
-通过爬虫可以快速地，大量地爬取到有关这本图书的几乎所有的评论，然后统计所有评论中的关键词，生成词图...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/06</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="CUDA-编程"><a href="#CUDA-编程" class="headerlink" title="CUDA 编程"></a>CUDA 编程</h1><h3 id="桌面应用"><a href="#桌面应用" class="headerlink" title="桌面应用"></a>桌面应用</h3><ul>
+<li>轻量级进程，少量线程</li>
+<li>分之和交互操作</li>
+<li>大量存储器访问</li>
+<li>用于数值运算的指令很少</li>
+</ul>
+<h2 id="现代-CPU-架构和性能优化"><a href="#现代-CPU-架构和性能优化" class="headerlink" title="现代 CPU 架构和性能优化"></a>现代 CPU 架构和性能优化</h2><h3 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h3><h3 id="分支预测"><a href="#分支预测" class="headerlink" title="分支预测"></a>分支预测</h3><h3 id="超标量"><a href="#超标量" class="headerlink" title="超标量"></a>超标量</h3><h3 id="乱序之行"><a href="#乱序之行" class="headerlink" title="乱序之行"></a>乱序之行</h3><h3 id="存储器层次"><a href="#存储器层次" class="headerlink" title="存储器层次"></a>存储器层次</h3><h3 id="矢量操作"><a href="#矢量操作" class="headerlink" title="矢量操作"></a>矢量操作</h3><h3 id="多核处理"><a href="#多核处理" class="headerlink" title="多核处理"></a>多核处理</h3>
     </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2021/04/23/Sliding-Window/" title= "Sliding Window ">
+                    <div class="prevTitle">Sliding Window </div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "XrooY1MX6dtgMUvz2AVrhunW-gzGzoHsz",
+        appKey: "snUQS6fyCLRFVlEmNmlJnYtb",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -429,6 +520,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CUDA-编程"><span class="toc-number">1.</span> <span class="toc-text">CUDA 编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#桌面应用"><span class="toc-number">1.0.1.</span> <span class="toc-text">桌面应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#现代-CPU-架构和性能优化"><span class="toc-number">1.1.</span> <span class="toc-text">现代 CPU 架构和性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流水线"><span class="toc-number">1.1.1.</span> <span class="toc-text">流水线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支预测"><span class="toc-number">1.1.2.</span> <span class="toc-text">分支预测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超标量"><span class="toc-number">1.1.3.</span> <span class="toc-text">超标量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乱序之行"><span class="toc-number">1.1.4.</span> <span class="toc-text">乱序之行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储器层次"><span class="toc-number">1.1.5.</span> <span class="toc-text">存储器层次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矢量操作"><span class="toc-number">1.1.6.</span> <span class="toc-text">矢量操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多核处理"><span class="toc-number">1.1.7.</span> <span class="toc-text">多核处理</span></a></li></ol></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -2069,6 +2178,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
