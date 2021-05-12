@@ -21,11 +21,13 @@
     
     <meta name="description" content="Help myself">
     <meta name="description" content="Help myself">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GuoXin Li&#39;s Blog">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/page/5/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OS-Learning: Linux Homebrew">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/05/12/OS-Learning-Linux-Homebrew/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
 <meta property="og:description" content="Help myself">
+<meta property="article:published_time" content="2021-05-12T14:38:14.000Z">
+<meta property="article:modified_time" content="2021-05-12T14:38:14.559Z">
 <meta property="article:author" content="jax">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
@@ -33,7 +35,7 @@
     
     <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
     
-    <title>GuoXin Li&#39;s Blog</title>
+    <title>OS-Learning: Linux Homebrew · GuoXin Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -88,6 +90,8 @@
 
     <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -212,14 +216,23 @@
 <meta name="generator" content="Hexo 4.2.0"></head>
 
     
-        <body class="home-body">
+        <body class="post-body">
     
     
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >GuoXin Li&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">OS-Learning: Linux Homebrew</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>GuoXin Li's Blog</a>
 </header>
@@ -238,17 +251,17 @@ height:50vh;
     <!-- 主页  -->
     
     
-    <!-- 文章页  -->
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg.png)"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random/1600x500)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            GuoXin Li's Blog
-            <!-- 文章页  -->
+            OS-Learning: Linux Homebrew
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
@@ -256,12 +269,43 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                
-            
-            <!-- 文章页  -->
+            <!-- 404 -->
             
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">0</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2021/05/12</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -362,505 +406,62 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/12/04/Linux-learning-record/" >
-            
-                <span>Linux_learning_record</span>
-        </a>
-        <div class="abstract-content">
-            Linux概述：
-简介：是一种自由的、开放源码的、类似 Unix 的操作系统，目前存在着许多的发行版，他们都使用率 Linux 内核，严格的讲，Linux 这个词本身只表示 Linux 内核
-
-诞生：1991年，由林纳斯•托瓦兹编写的一款类Unix 操作系统内核
-
-Linux 发行版：Linux 发行版一般包括 Linux 内核、安装工具、GUI、各种 GNU 软件和其它自由软件
-
-Ubuntu：一个以桌面应用为生的 Linux 操作系统，由南非马克•沙特尔沃斯床笠，首个发行版于2004年10月20日发布
-RedHat：红帽子，于1995年发布，2004年 RedHat 公司正式停止对 ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/29/Data-Structure-C/" >
-            
-                <span>Data Structure(C)</span>
-        </a>
-        <div class="abstract-content">
-            Data Structure概述 基本概念
-数据：是对客观事物的符号表示，所有能输入到计算机中，并背被算机程序处理的符号总称
-数据元素：是数据的基本单位（有时，数据元素可由若干个数据项组成，例如一本书的书目信息作为一个数据元素，书目信息中的每一项，如书名、作者等为数据项）
-数据结构：
-
-集合
-线性结构
-树形结构
-图形或者网状结构
-
-
-数据结构的
-
-逻辑结构：抽象的，与实现无关
-物理结构（存储结构）：
-顺序映像：顺序存储结构（位置相邻）
-非顺序映像：链式存储结构，指针表示
-
-
-
-
-数据类型：是一个值的集合和定义在这个值集上的一组操作的总称。例如，C 语言中整形变量，其值集为某个区间上的整数...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/29</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/21/Cortex-STM32F107-learning-record/" >
-            
-                <span>Cortex-M3(STM32F107)_Learning_Notes</span>
-        </a>
-        <div class="abstract-content">
-            Cortex-M3概述
-ARM 是一个公司，一种技术，一类处理器
-CM3 内核采用哈佛结构，拥有独立的32位指令总线和数据总线
-CM3 内核不再支持  ARM  指令集，而只支持  Thumb-2 和 Thumb 指令集
-STM32 系列 MCU 由意法半导体 （ST）公司设计和制造
-CMSIS 是 ARM 公司和一些编译器厂家以及半导体厂家共同遵循的一套标准，是由 ARM 公司提出，专门针对 Cortex-M 系列的标准
-STM32 固件库是一个函数包，它由程序、数据结构和宏组成，包括了 STM32 系列 MCU 标准外设的性能特征
-采用调用 STM32 固件库的编程方法，既可以较快地...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/10/05/The-method-of-get-in-Requests-lib/" >
-            
-                <span>The method of get() in Requests lib</span>
-        </a>
-        <div class="abstract-content">
-            The method of get( ) in Requests librequests.get(url, params = None, **kwargs)
-
-url : the link of the pages
-
-params: the extra params in the url, such as dict, optional
-
-**kwargs: there are 12 params.
-
-
-The properties of Response Object
-let r = requests.get(‘’https:///www.baidu.com‘’)
- There are ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/05</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/17/Basic-Matrix-knowledge/" >
-            
-                <span>Basic Matrix knowledge</span>
-        </a>
-        <div class="abstract-content">
-            The property of Matrix 矩阵性质\begin{bmatrix}a&b&c\\\\d&e&f\end{bmatrix}{A}\times{B} \neq {B}\times{A}{E}\times{A}={A}\times{E}(E is a constant 如果E为常数)
-
-{A}\times{({B}\times{C})}={({A}\times{B})}\times{C}
-summary（总结）：
-
-
-The all multiplication rules are true when E is a constatnt matrix except commut...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/17</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/14/Numpy-generate-array/" >
-            
-                <span>Numpy generate array</span>
-        </a>
-        <div class="abstract-content">
-            Create array12345a = np.array([[1,2,3,4],[5,6,7,8]])print(a)'''array([[1, 2, 3, 4],       [5, 6, 7, 8]])'''
-
-ndarray.ndim: show the dimensionality of array
-
-12a.ndim# 2
-
-ndarray.shape: show the length of array in every direction
-
-12a.shape# (2,4)
-
-ndarray.size: show the size of array(the value = ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Numpy">Numpy</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/08/24/Parse-web-pages-using-CSS-class-by-BeautifulSoup/" >
-            
-                <span>Parse web pages using CSS class by BeautifulSoup</span>
-        </a>
-        <div class="abstract-content">
-            Parse web pages using CSS by BeautifulSoup
-This essay refer to BeautifulSoup 解析网页: CSS
-
-Get the content using CSS classIn ther source pages of web writing by html, it uses CSS to decorate the web. We can use the different class of CSS and the tag in it to get the content that we want.
-
-Demo
-
-1234...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/24</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/08/17/Regular-Expression/" >
-            
-                <span>Regular Expression</span>
-        </a>
-        <div class="abstract-content">
-            正则表达式(Regular Expression)
-正则是一种用来匹配字符串的的工具🔧，简称RegEx，在大量的字符串中寻找出所需要的字符。e.g. 在网络爬虫中寻找出需要的关键字、关键内容；在进行数据筛选时使用。
-
-简单匹配简单的匹配类型规则：
-\d 可以匹配一个数字，\w 可以匹配一个字母或者数字：
-
-‘00\d’ 可以匹配 ‘007’ 但无法匹配 ‘00A’；
-
-‘\d\d\d’ 可以匹配’010’；
-
-‘\w\w\d’ 可以匹配 ‘py3’；
-
-
-
-. 是可以匹配任意字符的，有：
-
-‘py.’ 可以匹配 ‘pyc’; ‘pya’; ‘pyb’ ……
-
-
-要匹配的长度在正则表达式...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/17</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/08/13/Sets-Dictionaries/" >
-            
-                <span>Sets &amp; Dictionaries</span>
-        </a>
-        <div class="abstract-content">
-            sets
-Python also includes a data type forsets. A set is an unordered collection with no duplicate elements. Basic uses include membership testing and eliminating duplicate entries. Set objects also support mathematical operations like union, intersection, difference, and symmetric difference.
-
-12...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/13</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/08/11/Character-string-and-Data-type/" >
-            
-                <span>Character string and Data type</span>
-        </a>
-        <div class="abstract-content">
-            Character String e.g.:1234567891011121314151617&gt;&gt;&gt; str1 = 'abcdefg'&gt;&gt;&gt; str1[2]'c'&gt;&gt;&gt; str1[1]'b'&gt;&gt;&gt; str1[-0]		#the first one'a'&gt;&gt;&gt; str1[-1]		#the last one'g'&gt;&gt;&gt; str1[1:4]		#from the second to the fifth, but not contain the fifth'bcd'&gt;&gt;&gt...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/11</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/08/10/Requests-details-of-Python/" >
-            
-                <span>Requests&#39; details of Python</span>
-        </a>
-        <div class="abstract-content">
-            The methods of Requests
-
-
-
-requests.*
-details
-
-
-
-
-requests.request()
-Construct a request to support the following basel methods
-
-
-requests.get(url,params=None,**kwargs)
-url: links; params: url中的额外参数，字典或者字节流格式，可选； **kwargs: 12个控制访问的参数，可选；
-
-
-requests.head()
-get the head info of HTML, to HTTP’s HEAD...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/10</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/20/Virtual-Environment-For-Different-Projects/" >
-            
-                <span>Virtual Environment For Different Projects</span>
-        </a>
-        <div class="abstract-content">
-            The virtualenv
-First, install virtualenv on linux
-1$sudo apt-get install virtualenv
-
-Second, create a virtualenv
-1$sudo virtualenv	youenvname
-
-Then, activating an environment
-12$cd youenvname$source ./bin/activate
-
-Deactivaing an environment
-1$deactivate
-
-
-Using conda to create an environment
-Fir...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/16/20180416starspaceXtougao/" >
-            
-                <span>我们一起数月亮，看星星。</span>
-        </a>
-        <div class="abstract-content">
-            今天要了解的一个人，是埃隆·马克思（Elon Musk）在了解他之前，我们先要了解一下当下的自己
-很小很小的时候的我们都喜欢看星星一个有意思的现象就是，大部分人越长大就越对周围的事物缺乏了好奇心，小时候，一个星星能琢磨一晚上，看到一个虫子都会小心翼翼的去观察，看到一只蚂蚁都要跟着它走好远好远。
-我们越长大，收获了越多，与此同时，我们失去的是一些永远纯真纯粹的梦境般的好奇心，还有想象力。陪伴我们增长的除了对这个世界的理解，还有烦恼和忧愁，不开心。
-但我们不是要批判什么，埋怨什么不要批判，也不要埋怨。我们失去了好奇心，失去了想象力，失去了一些我们做认为的原本美好的纯粹的东西。这无可厚非，更不...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "essay">essay</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2021/05/11/Dynamic-Programming-Analysis/" title= "Dynamic Programming Analysis">
+                    <div class="prevTitle">Dynamic Programming Analysis</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/4/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
-    </nav>
     
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "3z31za5tyuogWzU86rydsH0h-gzGzoHsz",
+        appKey: "YeLtmtT5U8NP5GXTUesonkhB",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= /avatar/lipsky.png >
-    <div class="profile-name">Jax</div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:liylipsky@gmail.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/bobouc" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
-            
-        
-    
-
-    </div>
-    
-    
-    
-        <div class="about-me">
-            <a href = "/about" >ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">
@@ -906,6 +507,24 @@ Fir...
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -2592,6 +2211,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

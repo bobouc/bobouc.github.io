@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/liysky/liysky.github.io.git/"/>
-  <updated>2021-05-11T15:23:18.905Z</updated>
+  <updated>2021-05-12T14:38:14.559Z</updated>
   <id>https://github.com/liysky/liysky.github.io.git/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OS-Learning: Linux Homebrew</title>
+    <link href="https://github.com/liysky/liysky.github.io.git/2021/05/12/OS-Learning-Linux-Homebrew/"/>
+    <id>https://github.com/liysky/liysky.github.io.git/2021/05/12/OS-Learning-Linux-Homebrew/</id>
+    <published>2021-05-12T14:38:14.000Z</published>
+    <updated>2021-05-12T14:38:14.559Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Dynamic Programming Analysis</title>
@@ -449,30 +464,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-Hanota LCCI</title>
-    <link href="https://github.com/liysky/liysky.github.io.git/2020/11/20/LeetCode-Hanota-LCCI/"/>
-    <id>https://github.com/liysky/liysky.github.io.git/2020/11/20/LeetCode-Hanota-LCCI/</id>
-    <published>2020-11-19T16:01:32.000Z</published>
-    <updated>2020-11-29T16:11:33.511Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="08-06-Hanota-LCCI"><a href="#08-06-Hanota-LCCI" class="headerlink" title="08.06. Hanota LCCI"></a><a href="https://leetcode-cn.com/problems/hanota-lcci/" target="_blank" rel="noopener">08.06. Hanota LCCI</a></h3><p>In the classic problem of the Towers of Hanoi, you have 3 towers and N disks of different sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending order of size from top to bottom (i.e., each disk sits on top of an even larger one). You have the following constraints:</p><p>(1) Only one disk can be moved at a time.<br>(2) A disk is slid off the top of one tower onto another tower.<br>(3) A disk cannot be placed on top of a smaller disk.</p><p>Write a program to move the disks from the first tower to the last using stacks.</p><h4 id="Example1"><a href="#Example1" class="headerlink" title="Example1:"></a>Example1:</h4><p> Input: A = [2, 1, 0], B = [], C = []<br> Output: C = [2, 1, 0]</p><h4 id="Example2"><a href="#Example2" class="headerlink" title="Example2:"></a>Example2:</h4><p> Input: A = [1, 0], B = [], C = []<br> Output: C = [1, 0]<br>Note:</p><p><strong>A.length &lt;= 14</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">hanota</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; C)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = A.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">move</span>(n, A, B, C);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">int</span> n, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; C)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">            C.push_back(A.back());</span><br><span class="line">            A.pop_back();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">move</span>(n<span class="number">-1</span>, A, C, B);</span><br><span class="line">        C.push_back(A.back());</span><br><span class="line">        A.pop_back();</span><br><span class="line">        <span class="built_in">move</span>(n<span class="number">-1</span>, B, A, C);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><strong>time complexity: $O(2^n-1)$</strong> . It’s the moving times.</p><p><strong>space complexity:</strong> $O(1)$</p><p><strong>Key Solution:</strong></p><ul><li>wanna resolve n number, first to resolve n-1</li><li>put <strong>n-1</strong> number of A into B using C</li><li>push_back A.back into C. (It’s a half answer that A.back must be at the bottum of C)</li><li>pop A.back(). (=delete A.back)</li><li>put <strong>n-1</strong> number of B into C using A</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;08-06-Hanota-LCCI&quot;&gt;&lt;a href=&quot;#08-06-Hanota-LCCI&quot; class=&quot;headerlink&quot; title=&quot;08.06. Hanota LCCI&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/p
-      
-    
-    </summary>
-    
-    
-    
-      <category term="LeetCode" scheme="https://github.com/liysky/liysky.github.io.git/tags/LeetCode/"/>
     
   </entry>
   
