@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/liysky/liysky.github.io.git/"/>
-  <updated>2021-05-12T14:38:14.559Z</updated>
+  <updated>2021-05-13T12:52:11.952Z</updated>
   <id>https://github.com/liysky/liysky.github.io.git/</id>
   
   <author>
@@ -21,13 +21,22 @@
     <link href="https://github.com/liysky/liysky.github.io.git/2021/05/12/OS-Learning-Linux-Homebrew/"/>
     <id>https://github.com/liysky/liysky.github.io.git/2021/05/12/OS-Learning-Linux-Homebrew/</id>
     <published>2021-05-12T14:38:14.000Z</published>
-    <updated>2021-05-12T14:38:14.559Z</updated>
+    <updated>2021-05-13T12:52:11.952Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="OS-Learning-Linux-Homebrew"><a href="#OS-Learning-Linux-Homebrew" class="headerlink" title="OS-Learning: Linux Homebrew"></a>OS-Learning: Linux Homebrew</h3><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p><strong>程序编译过程</strong></p><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/f2b10135ed52436888a793327e4d5a4a.jpg" alt="img" style="zoom:50%;" /></p><p><code>gcc helloworld.c -E -o helloworld.i</code> 预处理：加入头文件，替换宏。</p><p><code>gcc helloworld.c -s -c helloworld.s</code> 编译：包含预处理，将 C 程序转换成汇编程序</p><p><code>gcc helloworld.c -c helloworld.o</code> 汇编：将汇编程序转换成可链接的二进制程序</p><p><code>gcc helloworld.c -o helloworld</code> 链接：包含了以上的所有操作，直接将可链接的二进制程序和其他别的库链接在一起，形成可执行的程序文件。</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;OS-Learning-Linux-Homebrew&quot;&gt;&lt;a href=&quot;#OS-Learning-Linux-Homebrew&quot; class=&quot;headerlink&quot; title=&quot;OS-Learning: Linux Homebrew&quot;&gt;&lt;/a&gt;OS-Lear
+      
     
     </summary>
     
     
+    
+      <category term="OS-Linux" scheme="https://github.com/liysky/liysky.github.io.git/tags/OS-Linux/"/>
     
   </entry>
   
