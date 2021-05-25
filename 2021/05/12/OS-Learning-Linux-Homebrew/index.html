@@ -35,8 +35,11 @@
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/92ec3d008c77bb66a148772d3c5ea9cb.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/5e9bd6dd86fba5482fab14b6b292aa8d.jpg">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/c547b6252736375fcdb1456e6dfaa3c9.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/f837811192730cc9c152afbcccf4eff8.jpeg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/14633ea933972e19f3439eb6aeab3d13.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/e8876e8561b949b8af5d5237e48f8757.jpg">
 <meta property="article:published_time" content="2021-05-12T14:38:14.000Z">
-<meta property="article:modified_time" content="2021-05-24T14:35:54.008Z">
+<meta property="article:modified_time" content="2021-05-25T15:12:38.867Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="OS-Linux">
 <meta name="twitter:card" content="summary">
@@ -296,7 +299,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2.9k</span>阅读时长: <span class="post-count reading-time">11 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">3.4k</span>阅读时长: <span class="post-count reading-time">12 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -534,6 +537,26 @@ height:50vh;
 <p><strong>实模式</strong></p>
 <p>又称地址模式，一方面是运行真正的指令，对指令的动作不作区分，直接执行指令的真实功能，另一方面是发往内存的地址是真实的，对任何地址不加限制地发往内存。</p>
 <p><strong>实模式寄存器</strong></p>
+<p>x86 CPU 在实模式下的寄存器。</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/f837811192730cc9c152afbcccf4eff8.jpeg" alt="img" style="zoom:50%;" /></p>
+<p><strong>实模式下访问内存</strong></p>
+<p>通常情况下，需要把数据装载进寄存器中才能操作，还要获取指令的动作，这些操作都需要访问内存，而访问内存靠的是地址值。而地址值的计算方法：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/14633ea933972e19f3439eb6aeab3d13.jpg" alt="img" style="zoom:50%;" /></p>
+<p>所有的内存地址都是由段寄存器左移 4 位，再加上一个通用寄存器中的值或者常数形成地址，然后由这个地址去访问内存。这就是大名鼎鼎的分段内存管理模型。</p>
+<p><strong>实模式中断</strong></p>
+<p>中断即终止执行当前程序，转而跳转到另一个特定的地址上，去运行特定的代码。在实模式下它的实现过程是先保存 CS 和 IP寄存器，然后装载新的 CS 和 IP 寄存器。</p>
+<p>中断的产生：</p>
+<ul>
+<li><p>硬件中断：中断控制器 CPU 发送一个电子信号，CPU 会对这个信号作出应答，随后中断控制器会将中断号发送给 CPU 。</p>
+</li>
+<li><p>软件中断，INT 指令中断：CPU 执行一个 INT 指令，这个指令后面会跟随一个常数，这个常数即为软中断号。</p>
+</li>
+</ul>
+<p>实现中断，需要内存中的一个中断向量表，表地址和长度由 CPU 特定寄存器 IDTR 指向，实模式下，表中的一个条目由代码地址和段内偏移组成：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/e8876e8561b949b8af5d5237e48f8757.jpg" alt="img" style="zoom:50%;" /></p>
+<p>有了中断号以后， CPU 就能根据 IDTR 寄存器中的信息，计算出中断向量中的条目，进而装载 CS（装入代码段基地址）、IP（装入代码段内偏移）寄存器，最终响应中断。</p>
+<p><strong>保护模式</strong></p>
+<p>由于 CPU 的特性，CPU 对任何指令不加区分地执行；CPU 对访问内存的地址不加限制。</p>
 
     </article>
     <!-- license  -->
