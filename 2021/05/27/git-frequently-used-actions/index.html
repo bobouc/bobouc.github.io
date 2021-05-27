@@ -20,20 +20,26 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="Help myself">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GuoXin Li&#39;s Blog">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/archives/index.html">
+    <meta name="description" content="git 记要 git add , git checkoutgit add 后修改文件，可以再使用 git checkout 使得 work dir 返回到 stage 区的刚刚 git add 的状态  保存 git commit -m ’xxx’ , git commit —amend将 stage 区文件提交到 history 区，进入history 后的修改将永远不会丢失。 反悔之小悔 gi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git frequently used actions">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/05/27/git-frequently-used-actions/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="Help myself">
+<meta property="og:description" content="git 记要 git add , git checkoutgit add 后修改文件，可以再使用 git checkout 使得 work dir 返回到 stage 区的刚刚 git add 的状态  保存 git commit -m ’xxx’ , git commit —amend将 stage 区文件提交到 history 区，进入history 后的修改将永远不会丢失。 反悔之小悔 gi">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210527110137668.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210527110510521.png">
+<meta property="article:published_time" content="2021-05-27T04:37:33.000Z">
+<meta property="article:modified_time" content="2021-05-27T04:37:55.945Z">
 <meta property="article:author" content="jax">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210527110137668.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
     <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
     
-    <title>GuoXin Li&#39;s Blog</title>
+    <title>git frequently used actions · GuoXin Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -214,12 +220,23 @@
 <meta name="generator" content="Hexo 4.2.0"></head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >GuoXin Li&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">git frequently used actions</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>GuoXin Li's Blog</a>
 </header>
@@ -231,24 +248,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random/1600x500)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            git frequently used actions
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "git">git</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">343</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2021/05/27</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -349,559 +416,73 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/05/27/git-frequently-used-actions/" >
-            
-                <span>git frequently used actions</span>
-        </a>
-        <div class="abstract-content">
-            git 记要
-git add , git checkoutgit add 后修改文件，可以再使用 git checkout 使得 work dir 返回到 stage 区的刚刚 git add 的状态
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="git-记要"><a href="#git-记要" class="headerlink" title="git 记要"></a>git 记要</h2><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210527110137668.png" alt="image-20210527110137668" style="zoom:50%;" /></p>
+<h3 id="git-add-git-checkout"><a href="#git-add-git-checkout" class="headerlink" title="git add , git checkout"></a>git add , git checkout</h3><p>git add 后修改文件，可以再使用 git checkout 使得 work dir 返回到 stage 区的刚刚 git add 的状态</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210527110510521.png" alt="image-20210527110510521"></p>
+<h3 id="保存-git-commit-m-’xxx’-git-commit-—amend"><a href="#保存-git-commit-m-’xxx’-git-commit-—amend" class="headerlink" title="保存 git commit -m ’xxx’ , git commit —amend"></a>保存 git commit -m ’xxx’ , git commit —amend</h3><p>将 stage 区文件提交到 history 区，进入history 后的修改将永远不会丢失。</p>
+<h3 id="反悔之小悔-git-reset"><a href="#反悔之小悔-git-reset" class="headerlink" title="反悔之小悔 git reset"></a>反悔之小悔 git reset</h3><p>git reset a.txt 可以将已经使用 git add 命令将其添加到 stage 区的 a.txt 还原到 work dir。</p>
+<h3 id="从-work-dir-区提交到-history区"><a href="#从-work-dir-区提交到-history区" class="headerlink" title="从 work dir 区提交到 history区"></a>从 work dir 区提交到 history区</h3><p>git add . 然后使用 git commit -m ‘xxxx’</p>
+<p>简略写法：git commit -a</p>
+<h3 id="反悔之大悔-git-checkout-HEAD"><a href="#反悔之大悔-git-checkout-HEAD" class="headerlink" title="反悔之大悔 git checkout HEAD ."></a>反悔之大悔 git checkout HEAD .</h3><p>使用 git checkout HEAD . 可以恢复文件到最初的未修改的状态。</p>
+<p>如果想要恢复到任何一个状态，可以使用 git checkout hashvalue。</p>
+<p>风险：<code>高风险</code>，这个操作会将 work dir 的数据恢复指定成为 commit 的样子，且会删除 stage 中的数据，无法恢复。</p>
+<h3 id="合并多个-commit，git-reset-hashxxx"><a href="#合并多个-commit，git-reset-hashxxx" class="headerlink" title="合并多个 commit，git reset hashxxx"></a>合并多个 commit，git reset hashxxx</h3><p>如果有多个 commit，可以通过 git reset 来将它们合并为一个 commit 。</p>
+<p>使用 git reset hashvaluexxx ，相当于 HEAD 移动到了某一个 commit，且不会修改 work dir 中的数据，所以只要再次 git add. 和 git commit 之后就相当于把之前的多个 commit 合并到了一个。</p>
+<p>这样之后之前所有的 commit 都无法看到了，可以通过使用 <code>git reflog</code> 来查看之前所有的历史记录。</p>
 
-保存 git commit -m ’xxx’ , git commit —amend将 stage 区文件提交到 history 区，进入history 后的修改将永远不会丢失。
-反悔之小悔 git resetgit reset a.txt 可以将已经使用 git add 命令将其添加到 stage 区的 a.txt 还原到 work dir。
-从 work dir 区提交到 histo...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/27</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "git">git</a>
-    
-</div>
-            
-        </div>
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/05/12/OS-Learning-Linux-Homebrew/" >
-            
-                <span>OS-Learning: Linux Homebrew</span>
-        </a>
-        <div class="abstract-content">
-            OS-Learning: Linux Homebrew准备工作程序编译过程
-
-gcc helloworld.c -E -o helloworld.i 预处理：加入头文件，替换宏。
-gcc helloworld.c -s -c helloworld.s 编译：包含预处理，将 C 程序转换成汇编程序
-gcc helloworld.c -c helloworld.o 汇编：将汇编程序转换成可链接的二进制程序
-gcc helloworld.c -o helloworld 链接：包含了以上的所有操作，直接将可链接的二进制程序和其他别的库链接在一起，形成可执行的程序文件。
-PC OS 引导流程
-
-P...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "OS-Linux">OS-Linux</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/05/11/Dynamic-Programming-Analysis/" >
-            
-                <span>Dynamic Programming Analysis</span>
-        </a>
-        <div class="abstract-content">
-            Dynamic Programming Analysis
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/11</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/04/24/CUDA-coding/" >
-            
-                <span>CUDA coding</span>
-        </a>
-        <div class="abstract-content">
-            CUDA 编程现代 CPU 架构和性能优化CPU的概念：
-执行指令，处理数据的器件——完成基本的逻辑和算术指令
-
-增加了复杂的接口
-
-内存接口
-外部设备接口
-
-
-包含大量静晶体管
-
-桌面应用
-轻量级进程，少量线程
-分之和交互操作
-大量存储器访问
-用于数值运算的指令很少
-
-CPU结构图
-取指 译码 执行 访问 写回
-流水线
-利用指令级的并行
-极大的减小时钟周期
-但是增加了延迟和芯片面积
-
-
-
-分支预测猜测下一条指令
-基于过去的分支记录
-如：基于全局记录的两层预测
-现代预测器准确度大于 90%
-
-提升性能以及能量效率
-
-但是会导致面积增加和延迟
-
-提升 IPC （instructions c...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/04/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CUDA">CUDA</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/04/23/Sliding-Window/" >
-            
-                <span>Sliding Window </span>
-        </a>
-        <div class="abstract-content">
-            滑动窗口
-
-窗口右端不断向前，直到包含所有的所需元素
-
-（注意，刚刚直到包含所有元素就是窗口开始缩小的条件）。
-
-然后窗口左端开始向前（即进行了窗口的缩小），直到开始不包含所有元素（比如ABC，就少了 A，窗口中只包含了BC）
-
-然后窗口右边再次向右前进，重复上述过程。
-
-最后返回最小的窗口即可（在这里，可以得出，在缩小窗口之前通常需要进行预备份上一次的最合适的窗口）
-
-12345678910111213int left = 0, right = 0;// t  为所需要的匹配元素while(right &lt; t.size())&#123;  windows.add[s[right]...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/04/23</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "slidingwindow">slidingwindow</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/04/20/Binary-Search/" >
-            
-                <span>Binary Search</span>
-        </a>
-        <div class="abstract-content">
-            12345678910111213141516171819202122232425262728#include &lt;iostream&gt;#include &lt;vector&gt;int binarysear(std::vector&lt;int&gt; &amp;nums, int target)&#123;    int left = 0;    int right = nums.size();    while(left &lt;= right)&#123;        int mid = left+(right - left) / 2 ;        if(nums...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/04/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/04/17/logofapplegeniusbar/" >
-            
-                <span>记一次苹果天才吧维修记录</span>
-        </a>
-        <div class="abstract-content">
-            记一次苹果天才吧维修记录因为我用了3年的 MBP 笔记本电脑的键盘有两个键松动了并且有粘连响应（就是按一个字母的时候会输入两个），这种情况发生了大概有半年多的时间了，并且我也知道是我买的这个系列的笔记本有这种设计缺陷，苹果也提出了对应的维修计划：https://support.apple.com/zh-cn/keyboard-service-program-for-mac-notebooks 但我一直懒的去修，直到最近频繁的影响到我的使用，我预约了天才吧的服务。（强烈建议如果有类似的问题，维修之类的，最好去苹果官方的零售店，而不是第三方合作的。）
-
-预约流程预约到天才吧大概有两种方式：
-...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/04/17</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/04/01/Learnopengl-note/" >
-            
-                <span>Learnopengl-note</span>
-        </a>
-        <div class="abstract-content">
-            着色器顶点着色器
-vertex shader
-如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。
-#version 330 core
-layout (location = 0) in vec3 aPos;
-
-void main()
-{
-    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
-}
-#version 330 core 声明版本和核心模式
-in , out关键字，每个着色器都有输入和输出进行数据交换。
-layout (location = 0) 设定了输入变量的位置值。
-着色器的开头总是要声明版本...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/04/01</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/03/29/Analysis-of-Dual-Attention-Network-for-Scene-Segmentation/" >
-            
-                <span>Analysis of &quot;Dual Attention Network for Scene Segmentation&quot;</span>
-        </a>
-        <div class="abstract-content">
-            Dual Attention Network for Scene SegmentationAbstractUnlike previous works that capture contexts by multi-scale feature fusion.
-Author propose Dual attention:
-
-adaptively integrate local fetures with their global dependecies
-
-two types of attention model
-
-spatial dimension
-selectively aggregates ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Paper-reading">Paper-reading</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/03/23/Important-Conception-In-CG/" >
-            
-                <span>Important Conception In CG</span>
-        </a>
-        <div class="abstract-content">
-            
-
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/23</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/03/21/Docker-notes/" >
-            
-                <span>Docker notes</span>
-        </a>
-        <div class="abstract-content">
-            Docker基本概念镜像操作系统分为 内核 和 用户空降。Linux 系统内核启动后，会挂载 root 文件系统为其提供用户空间支持。
-Docker 镜像相当于一个 root 文件系统，如 官方镜像 ubuntu:18:04 就包含了完整的一套 ubuntu18.04最小系统 root 文件系统。
-Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需要的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（匿名卷、环境变量、用户等）。镜像 不包含 任何动态数据，其内容在构建之后也不会被改变。
-镜像只是一个虚拟的概念，其实际体现并非由一个文件组成，而是由一组文件系...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/03/17/Self-Learning-OF-Hongyi-Lee-Machine-Learning-Spring-Mandarin/" >
-            
-                <span>Hongyi-Lee Machine Learning Spring 2021 Mandarin</span>
-        </a>
-        <div class="abstract-content">
-            Hongyi-Lee Machine Learning Spring Mandarin —NotesLesson 1Basic Conceptions OF MLDifferent type of FunctionsRegression: The function outputs a scalar
-
-Classification: Given options(classes), the function outputs the correct one.
-
-
-How to find the FunctionThree steps
-Function with Unknown Paramete...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/02/22/CPP-refresh/" >
-            
-                <span>CPP refresh</span>
-        </a>
-        <div class="abstract-content">
-            CPP refresh内存模型代码区存放函数体的二进制代码，由操作系统进行管理
-全局区存放全局变量和静态变量以及常量.
-栈区
-由编译器自动分配释放
-存放函数的参数值
-存放局部变量
-
-堆区由程序员分配和释放，若不手动释放，最后将由操作系统回收
-程序运行前程序编译后，生成 exe 可执行程序，未执行该程序前分为两个区域
-
-代码区：
-存放 CPU 执行的机器指令
-代码区是共享的，共享的的目的是对于频繁被执行的程序，只需要在内存中由一份代码即可
-代码区为 只读，防止程序意外地修改了它的指令
-
-
-全局区
-全局变量和静态变量存放在此
-常量区
-字符串
-其他常量
-
-
-
-==该区域的数据在程序结束后由操作...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/02/22</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/02/03/752-Open-the-Lock/" >
-            
-                <span>752. Open the Lock</span>
-        </a>
-        <div class="abstract-content">
-            752. Open the LockYou have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: ‘0’, ‘1’, ‘2’, ‘3’, ‘4’, ‘5’, ‘6’, ‘7’, ‘8’, ‘9’. The wheels can rotate freely and wrap around: for example we can turn ‘9’ to be ‘0’, or ‘0’ to be ‘9’. Each move consists of turning one wheel one s...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/02/03</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/02/01/Iteratively-144-Binary-Tree-Preorder-Inorder-Traversal/" >
-            
-                <span>Iteratively. 144.Binary Tree Preorder&amp;Inorder Traversal</span>
-        </a>
-        <div class="abstract-content">
-            144. Binary Tree Preorder TraversalGiven the root of a binary tree, return the preorder traversal of its nodes’ values.
-Example 1:
-Input: root = [1,null,2,3]Output: [1,2,3]Example 2:
-Input: root = []Output: []Example 3:
-Input: root = [1]Output: [1]Example 4:
-Input: root = [1,2]Output: [1,2]Exampl...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/02/01</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/01/29/LeetCode-111-Minimum-Depth-of-Binary-Tree/" >
-            
-                <span>LeetCode 111. Minimum Depth of Binary Tree</span>
-        </a>
-        <div class="abstract-content">
-            111. Minimum Depth of Binary TreeGiven a binary tree, find its minimum depth.
-The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
-Note: A leaf is a node with no children.
-Example 1:
-Input: root = [3,9,20,null,null,15,7]Output: 2Exampl...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/01/29</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2021/05/12/OS-Learning-Linux-Homebrew/" title= "OS-Learning: Linux Homebrew">
+                    <div class="prevTitle">OS-Learning: Linux Homebrew</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
-    </nav>
     
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "3z31za5tyuogWzU86rydsH0h-gzGzoHsz",
+        appKey: "YeLtmtT5U8NP5GXTUesonkhB",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -949,6 +530,24 @@ Input: root = [3,9,20,null,null,15,7]Output: 2Exampl...
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-记要"><span class="toc-number">1.</span> <span class="toc-text">git 记要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-add-git-checkout"><span class="toc-number">1.1.</span> <span class="toc-text">git add , git checkout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保存-git-commit-m-’xxx’-git-commit-—amend"><span class="toc-number">1.2.</span> <span class="toc-text">保存 git commit -m ’xxx’ , git commit —amend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反悔之小悔-git-reset"><span class="toc-number">1.3.</span> <span class="toc-text">反悔之小悔 git reset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从-work-dir-区提交到-history区"><span class="toc-number">1.4.</span> <span class="toc-text">从 work dir 区提交到 history区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反悔之大悔-git-checkout-HEAD"><span class="toc-number">1.5.</span> <span class="toc-text">反悔之大悔 git checkout HEAD .</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并多个-commit，git-reset-hashxxx"><span class="toc-number">1.6.</span> <span class="toc-text">合并多个 commit，git reset hashxxx</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -2683,6 +2282,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
