@@ -40,8 +40,18 @@
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/e8876e8561b949b8af5d5237e48f8757.jpg">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/d582ff647549b8yy986d90e697d33499.jpg">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/9b19677448ee973c4f3yya6b3af7b4d0.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/b41a2bb00e19e662b34a1b7b7c0ae288.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/2df904c8ba75065e1491138d63820yyf.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/00b7f1ef4a1c4f6fc9e6b69109ae0bf8.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/361c48e1876a412f9ff9f29bf2dbecc9.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/76932c52a7b6109854f2de72d71bba52.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/9a4afdc60b790c3e2b7e94b0c7fd4208.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/ecdea93c2544cf9c1d84461b602b03c9.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/e342246f5cfa21c5b5173b9e494bdc55.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/68bf70d8bcae7802e5291140ac1ec6ea.jpg">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/457f6965d0f25bf64bfb9ec698ab7e0b.jpg">
 <meta property="article:published_time" content="2021-05-12T14:38:14.000Z">
-<meta property="article:modified_time" content="2021-06-11T15:32:36.389Z">
+<meta property="article:modified_time" content="2021-06-12T13:59:36.417Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="OS-Linux">
 <meta name="twitter:card" content="summary">
@@ -301,7 +311,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">5.1k</span>阅读时长: <span class="post-count reading-time">18 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">7.5k</span>阅读时长: <span class="post-count reading-time">27 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -591,6 +601,75 @@ height:50vh;
 <p>MMU 即内存管理单元，使用硬件电路逻辑实现的一个地址转换器件。它负责接收虚拟地址和地址关系转换表，以及输出物理地址。</p>
 <p>根据实现方式的不同，MMU 可以是独立的芯片，也可以是集成在其它芯片内部的，比如集成在 CPU 内部，x86、ARM 系列的 CPU 就是将 MMU 集成在 CPU 核心中的。</p>
 <p>SUN 公司的 CPU 将独立的 MMU芯片卡在总线上。x86 CPU 要想开启 MMU，就必须先开启保护模式或者长模式，实模式下是不能开启 MMU 的。</p>
+<p>由于保护模式的内存模型是分段模型，它不适合于MMU的分页模型，要使用保护模式的平坦模式，这样就绕过了分段模型。平潭模型和长模式下忽略段基址和段长度是异曲同工的。</p>
+<p>CPU 地址转换图：<br><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/b41a2bb00e19e662b34a1b7b7c0ae288.jpg" alt="img"></p>
+<p>程序代码中的虚拟地址经过 CPU 的分段机制产生了线性地址，平坦模式和长模式下线性地址和虚拟地址是相等的。</p>
+<p>如果不开启 MMU，在保护模式下可以关闭 MMU，这个线性地址就是物理地址。因为长模式下的分段 <strong>弱化了地址空间的隔离</strong>，所以开启 MMU 是必须要做的，开启 MMU 才能访问内存地址空间。</p>
+<p><strong>MMU页表</strong></p>
+<p>地址关系转换表有一个更加专业的名字——页表，它描述了虚拟地址到物理地址的转换关系，可以说是虚拟页到物理页的映射关系。</p>
+<p>为了增加灵活性和节约物理内存空间（因为页表是放在物理内存中的），所以页表中并不存放虚拟地址和物理地址的对应关系，只存放物理页面的地址，MMU 以虚拟地址为索引去查表返回物理页面地址，而且页表是分级的，总体分为三个部分：一个顶级页目录，多个中级页目录，最后才是页表，逻辑结构图如下.</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/2df904c8ba75065e1491138d63820yyf.jpg" alt="img"></p>
+<p>虚拟地址被分成从左到右四个位段：</p>
+<p>第一位索引顶级目录中的一项  ——&gt; 中级页目录，第二位段去索引中页级目录中的一项 ——&gt; 一个页目录，第三个位段去索引页目录中的项 ——&gt; 物理页地址，最后用第四位段作该物理页内的偏移去访问物理内存。</p>
+<p><strong>保护模式下的分页</strong></p>
+<p>分页模式的灵活性、通用性、安全性是现代操作系统内存管理的基石，更是事实上的标准内存管理模型，现代商用操作系统必须都以此为基础实现虚拟内存功能模块。</p>
+<p><strong>保护模式下的分页</strong></p>
+<p>保护模式下只有32位地址空间，最多4GB - 1 大小的空间。</p>
+<p>保护模式下的分页大小通常有两种，一种是 4KB 大小的页，一种是 4MB 大小的页。分页大小的不同会导致虚拟地址位段的分隔和页目录的层级不同，但虚拟页和物理页的大小始终是相同的。</p>
+<p><strong>保护模式下的分页 —— 4KB 页</strong></p>
+<p>该分页方式下，32 位虚拟地址被分为三个位段：<strong>页目录索引、页表索引、页内偏移</strong>，只有一级页目录，其中包含 1024 个条目 ，每个条目指向一个页表，每个页表中有 1024 个条目。其中一个条目就指向一个物理页，每个物理页 4KB。这正好是 4GB 地址空间。如下图所示。</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/00b7f1ef4a1c4f6fc9e6b69109ae0bf8.jpg" alt="img"></p>
+<p>CR3 为 CPU 的一个32位寄存器，MMU 就是根据这个寄存器找到页目录。</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/361c48e1876a412f9ff9f29bf2dbecc9.jpg" alt="img"></p>
+<p>页目录项、页表项都是4字节32位，1024项正好是4KB（一个页），因此它们的地址始终都是4KB对齐的，所以低12位才可以另作他用，形成页面的相关属性，如是否存在、是否可读可写、是用户页还是内核页、是否已写入、是否已访问等。</p>
+<p><strong>保护模式下的分页——4MB页</strong></p>
+<p>该分页方式下，32 位虚拟地址被分为两个位段：页表索引、页内偏移，只有一级页目录，其中包含 1024 个条目。其中一个条目指向一个物理页，每个物理页 4MB，正好为 4GB 地址空间，如下图所示。</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/76932c52a7b6109854f2de72d71bba52.jpg" alt="img"></p>
+<p>CR3 32位寄存器，不再只想顶级页目录，而是指向一个4KB大小的页表，这个页表依然要4KB地址对齐，其中包含1024个页表项：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/9a4afdc60b790c3e2b7e94b0c7fd4208.jpg" alt="img"></p>
+<p>4MB 大小的页面下，页表项还是 4 字节 32 位，但只需要用高 10 位来保存物理页面的基地址就可以。因为每个物理页面都是 4MB，所以低 22 位始终为 0，为了兼容 4MB 页表项低 8 位和 4KB 页表项一样，只不过第 7 位变成了 PS 位，且必须为 1，而 PAT 位移到了 12 位。</p>
+<p><strong>长模式下的分页</strong></p>
+<p>如果开启长模式，则必须开启分页模式，因为长模式弱化了分页模式，而分段模型也有很多不足，不适应现在操作系统和应用软件的发展。<br>同时，长模式也拓展了 CPU 的位宽，使得 CPU 能使用64位的超大内存地址空间。所以长模式下的虚拟地址必须等于线性地址且为64位。<br>长模式下的分页通常也有两种，4KB大小的页和2MB大小的页。</p>
+<p><strong>长模式下的分页——4KB</strong></p>
+<p>该分页方式下，64位虚拟地址被分为6个位段，分别是：保留位段，顶级页目录索引、页目录指针索引、页目录索引、页表索引、页内便宜、顶级页目录、页目录指针、页目录、页表各占有4KB大小，其中各有512个条目，每个条目8字节，64位大小。<br><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/ecdea93c2544cf9c1d84461b602b03c9.jpg" alt="img"></p>
+<p>CR3 变为64 位的64位的CPU寄存器，它指向一个顶级页目录，里面的顶级页目录项指向目录指针，依次类推。<br>需要注意的是，虚拟地址 48 到 63 这 16 位是根据第 47 位来决定的，47 位为 1，它们就为 1，反之为 0，这是因为 x86 CPU 并没有实现全 64 位的地址总线，而是只实现了 48 位，但是 CPU 的寄存器却是 64 位的。<br>这种最高有效位填充的方式，即使后面拓展CPU的地址总线也不会有任何影响。</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/e342246f5cfa21c5b5173b9e494bdc55.jpg" alt="img"></p>
+<p>长模式下的4KB分页下，由一个顶层目录、二级中间层目录和一层页表组成了 64 位地址翻译过程。</p>
+<p><strong>长模式下的分页——2MB</strong><br>在这种分页方式下，64 位虚拟地址被分为 5 个位段 ：保留位段、顶级页目录索引、页目录指针索引、页目录索引，页内偏移，顶级页目录、页目录指针、页目录各占有 4KB 大小，其中各有 512 个条目，每个条目 8 字节 64 位大小。</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/68bf70d8bcae7802e5291140ac1ec6ea.jpg" alt="img"></p>
+<p>长模式下 2MB 和 4KB 分页的区别是，2MB 分页下是页目录项直接指向了 2MB 大小的物理页面，放弃了页表项，然后把虚拟地址的低 21 位作为页内偏移，21 位正好索引 2MB 大小的地址空间。<br>2MB 分页模式下的 CR3、顶级页目录项、页目录指针项、页目录项的格式，格式如下图：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/457f6965d0f25bf64bfb9ec698ab7e0b.jpg" alt="img"></p>
+<p>上图中没有了页表项，取而代之的是，页目录项中直接存放了 2MB 物理页基地址。由于物理页始终 2MB 对齐，所以其地址的低 21 位为 0，用于存放页面属性位。</p>
+<p><strong>开启MMU</strong><br>要使用分页模式就必须先开启MMU，但开启MMU的前提是CPU进入保护模式或者长模式，开启CPU这两种模式的方法：</p>
+<ul>
+<li><p>使 CPU 进入保护模式或者长模式</p>
+</li>
+<li><p>准备好页表数据，这包含顶级页目录，中间层页目录，页表，物理内存中会生成这些数据</p>
+</li>
+<li><p>顶级页目录的物理内存地址赋值给 CR3 寄存器</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov eax, PAGE_TLB_BADR ;页表物理地址</span><br><span class="line">mov cr3, eax</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>设置 CPU 的 CR0 的 PE 为 1 即可开启 MMU</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">;开启 保护模式和分页模式</span><br><span class="line">mov eax, cr0</span><br><span class="line">bts eax, <span class="number">0</span>    ;CR0.PE =<span class="number">1</span></span><br><span class="line">bts eax, <span class="number">31</span>   ;CR0.P = <span class="number">1</span></span><br><span class="line">mov cr0, eax</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>MMU地址转换失败</strong></p>
+<p>MMU 主要功能即根据页表数据把虚拟地址转换为物理地址，失败的情况：页表项中的数据为空，用户程序访问了超级管理者的页面，向只读页面中写入了数据，这些都会导致 MMU 地址转换失败。</p>
+<p>MMU 地址转换失败的操作：</p>
+<ul>
+<li>MMU 停止转换地址</li>
+<li>MMU 把转换失败的虚拟地址写入 CPU 的 CR2 寄存器</li>
+<li>MMU 触发 CPU 的14号中断，使 CPU 停止执行当前指令</li>
+<li>CPU 开始执行14号中断的处理代码，代码会检查原因，处理好页表数据返回</li>
+<li>CPU 中断返回继续执行 MMU 地址转换失败时的指令</li>
+</ul>
+<p><strong>总结</strong></p>
+<p>多道程序同时运行有很多问题，内存需要隔离和保护，从而提出了虚拟地址与物理地址分离，让应用程序从实际物理内存中解耦出来。</p>
+<p>MMU（内存管理单元），增加了转换的灵活性，实现方式是硬件执行转换过程，但又依赖于软件提供的地址转换表。</p>
+<p><strong>操作系统是如何对应用程序的地址空间进行隔离的？</strong></p>
+<p>多个进程隔离应该是操作系统进行任务切换时会改写CPU的页表基地址寄存器为当前被运行进程的页表基地址。对于每个进程而言，它会误认为（被操作系统欺骗）自己独有占用的地址空间，因此它访问地址是不会考虑任何问题的，但这个地址是虚拟地址，待被 MMU 翻译后会得到对应的页表，而这个页表由操作系统管理，不同的进程拥有不同的页表，因此产生了进程地址空间隔离，但是多个进程也是可以共享某个页表，这也是进程通信（IPC）的根本手段。</p>
 
     </article>
     <!-- license  -->
@@ -2450,7 +2529,23 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
 </html>
 
 
