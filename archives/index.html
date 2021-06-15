@@ -362,8 +362,7 @@
                 <span>A Little bit of Summary Of Deep Learning</span>
         </a>
         <div class="abstract-content">
-            深度学习技术与理论(2021 年春季)
-一、简答题(50 分)。 1、Sigmoid, Tanh, Relu 这三个激活函数有什么缺点和不足?有哪些最新改进的激活函数?(10 分)
+            深度学习技术与理论一、简答题(50 分)。 1、Sigmoid, Tanh, Relu 这三个激活函数有什么缺点和不足?有哪些最新改进的激活函数?(10 分)
 
 
 
@@ -385,7 +384,7 @@ $\sigma(x) = 1/(1+e^{-x})$
 Tanh
 $tanh(x) = 2\sigma(2x)-1$
 梯度弥散没有解决
-1...
+1. 解决了原点对称的问...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -702,7 +701,7 @@ layout (location = 0) 设定了输入变量的位置值。
     <article class="index-post">
         <a class="abstract-title" href = "/2021/03/29/Analysis-of-Dual-Attention-Network-for-Scene-Segmentation/" >
             
-                <span>Analysis of &#34;Dual Attention Network for Scene Segmentation&#34;</span>
+                <span>Analysis of &quot;Dual Attention Network for Scene Segmentation&quot;</span>
         </a>
         <div class="abstract-content">
             Dual Attention Network for Scene SegmentationAbstractUnlike previous works that capture contexts by multi-scale feature fusion.
@@ -2697,7 +2696,23 @@ jsonContent:
     </div>
     <!-- async load share.js -->
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
 </html>
 
 
