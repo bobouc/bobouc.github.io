@@ -20,23 +20,23 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="08.06. Hanota LCCIIn the classic problem of the Towers of Hanoi, you have 3 towers and N disks of different sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending order">
+    <meta name="description" content="Slam: Simultaneous localization and mapping 同时定位🌧️地图构建，概念为希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（如墙角，柱子）定位自身的位置和姿态，再根据自身位置增量式的构建地图，从而同时定位和地图构建的目的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-Hanota LCCI">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2020/11/20/LeetCode-Hanota-LCCI/index.html">
+<meta property="og:title" content="SLAM Learning">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/07/13/Slam-Learning/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="08.06. Hanota LCCIIn the classic problem of the Towers of Hanoi, you have 3 towers and N disks of different sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending order">
-<meta property="article:published_time" content="2020-11-19T16:01:32.000Z">
-<meta property="article:modified_time" content="2021-05-27T09:31:44.353Z">
+<meta property="og:description" content="Slam: Simultaneous localization and mapping 同时定位🌧️地图构建，概念为希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（如墙角，柱子）定位自身的位置和姿态，再根据自身位置增量式的构建地图，从而同时定位和地图构建的目的。">
+<meta property="article:published_time" content="2021-07-13T12:45:34.000Z">
+<meta property="article:modified_time" content="2021-07-13T13:12:01.265Z">
 <meta property="article:author" content="jax">
-<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="learning-note">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
     <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
     
-    <title>LeetCode-Hanota LCCI · GuoXin Li&#39;s Blog</title>
+    <title>SLAM Learning · GuoXin Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -231,7 +231,7 @@
                 <a href="/" >GuoXin Li&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">LeetCode-Hanota LCCI</a>
+                <a href="#" class="post-name">SLAM Learning</a>
             </div>
     </div>
     
@@ -261,7 +261,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            LeetCode-Hanota LCCI
+            SLAM Learning
             <!-- 404 -->
             
         </h1>
@@ -280,18 +280,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">328</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">95</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/11/20</span>
+                    <span class="post-intro-time">2021/07/13</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -415,24 +415,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h3 id="08-06-Hanota-LCCI"><a href="#08-06-Hanota-LCCI" class="headerlink" title="08.06. Hanota LCCI"></a><a href="https://leetcode-cn.com/problems/hanota-lcci/" target="_blank" rel="noopener">08.06. Hanota LCCI</a></h3><p>In the classic problem of the Towers of Hanoi, you have 3 towers and N disks of different sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending order of size from top to bottom (i.e., each disk sits on top of an even larger one). You have the following constraints:</p>
-<p>(1) Only one disk can be moved at a time.<br>(2) A disk is slid off the top of one tower onto another tower.<br>(3) A disk cannot be placed on top of a smaller disk.</p>
-<p>Write a program to move the disks from the first tower to the last using stacks.</p>
-<h4 id="Example1"><a href="#Example1" class="headerlink" title="Example1:"></a>Example1:</h4><p> Input: A = [2, 1, 0], B = [], C = []<br> Output: C = [2, 1, 0]</p>
-<h4 id="Example2"><a href="#Example2" class="headerlink" title="Example2:"></a>Example2:</h4><p> Input: A = [1, 0], B = [], C = []<br> Output: C = [1, 0]<br>Note:</p>
-<p><strong>A.length &lt;= 14</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">hanota</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; C)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = A.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">move</span>(n, A, B, C);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">int</span> n, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; C)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">            C.push_back(A.back());</span><br><span class="line">            A.pop_back();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">move</span>(n<span class="number">-1</span>, A, C, B);</span><br><span class="line">        C.push_back(A.back());</span><br><span class="line">        A.pop_back();</span><br><span class="line">        <span class="built_in">move</span>(n<span class="number">-1</span>, B, A, C);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>time complexity: $O(2^n-1)$</strong> . It’s the moving times.</p>
-<p><strong>space complexity:</strong> $O(1)$</p>
-<p><strong>Key Solution:</strong></p>
-<ul>
-<li>wanna resolve n number, first to resolve n-1</li>
-<li>put <strong>n-1</strong> number of A into B using C</li>
-<li>push_back A.back into C. (It’s a half answer that A.back must be at the bottum of C)</li>
-<li>pop A.back(). (=delete A.back)</li>
-<li>put <strong>n-1</strong> number of B into C using A</li>
-</ul>
-<p><strong>For count how times of Hanota</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calculateHanota</span><span class="params">(count)</span>:</span></span><br><span class="line">    stepForOnlyCurrent = <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> count==<span class="number">1</span>:</span><br><span class="line">    	<span class="keyword">return</span> stepForOnlyCurrent</span><br><span class="line">    totalCount =  stepForOnlyCurrent + calculateHanota(count<span class="number">-1</span>)*<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> totalCount</span><br><span class="line"></span><br><span class="line">print(calculateHanota(<span class="number">64</span>))</span><br></pre></td></tr></table></figure></p>
+        <p>Slam: Simultaneous localization and mapping 同时定位🌧️地图构建，概念为希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（如墙角，柱子）定位自身的位置和姿态，再根据自身位置增量式的构建地图，从而同时定位和地图构建的目的。</p>
 
     </article>
     <!-- license  -->
@@ -441,17 +424,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/11/28/Learn-AndrewNg-Ai-notes/" title= "Learn AndrewNg-MachineLearning notes">
-                    <div class="nextTitle">Learn AndrewNg-MachineLearning notes</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/11/18/DogsVSCats/" title= "DogsVSCats">
-                    <div class="prevTitle">DogsVSCats</div>
+                <a href= "/2021/06/13/A-Little-bit-of-Summary-Of-Deep-Learning/" title= "A Little bit of Summary Of Deep Learning">
+                    <div class="prevTitle">A Little bit of Summary Of Deep Learning</div>
                 </a>
             
         </li>
@@ -553,7 +531,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#08-06-Hanota-LCCI"><span class="toc-number">1.</span> <span class="toc-text">08.06. Hanota LCCI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Example1"><span class="toc-number">1.1.</span> <span class="toc-text">Example1:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Example2"><span class="toc-number">1.2.</span> <span class="toc-text">Example2:</span></a></li></ol></li></ol>
+        
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
