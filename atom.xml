@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/liysky/liysky.github.io.git/"/>
-  <updated>2021-07-13T13:12:01.265Z</updated>
+  <updated>2021-07-14T14:42:38.112Z</updated>
   <id>https://github.com/liysky/liysky.github.io.git/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://github.com/liysky/liysky.github.io.git/2021/07/13/Slam-Learning/"/>
     <id>https://github.com/liysky/liysky.github.io.git/2021/07/13/Slam-Learning/</id>
     <published>2021-07-13T12:45:34.000Z</published>
-    <updated>2021-07-13T13:12:01.265Z</updated>
+    <updated>2021-07-14T14:42:38.112Z</updated>
     
-    <content type="html"><![CDATA[<p>Slam: Simultaneous localization and mapping 同时定位🌧️地图构建，概念为希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（如墙角，柱子）定位自身的位置和姿态，再根据自身位置增量式的构建地图，从而同时定位和地图构建的目的。</p>]]></content>
+    <content type="html"><![CDATA[<p>Slam: Simultaneous localization and mapping 同时定位🌧️地图构建，概念为希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（如墙角，柱子）定位自身的位置和姿态，再根据自身位置增量式的构建地图，从而同时定位和地图构建的目的。</p><h3 id="SLAM发展"><a href="#SLAM发展" class="headerlink" title="SLAM发展"></a>SLAM发展</h3><p>上世纪80年代SLAM概念的提出，从早期的声呐，到后来的2D/3D激光雷达，再到单目、双目、RGBD、ToF等各种相机，以及与惯性测量单元IMU等传感器的融合；SLAM的算法也从<strong>开始的基于滤波器的方法（EKF、PF等）向基于优化的方法转变</strong>，技术框架也从开始的单一线程向多线程演进。</p><ul><li>激光雷达 SLAM 发展</li></ul><p>基于激光雷达的 SLAM （LIDAR SLAM）采用2D或3D激光雷达（单线或多线激光雷达），室内一般使用 2D 激光雷达，在无人驾驶领域，一般使用 3D 激光雷达。</p><p>激光雷达有点测量精准，提供精准角度和距离信息，可达 &lt;1角度的角度精度以及 cm 级别的测距精度，能够覆盖平面内 270度 以上的范围，基于扫描振镜式的固态激光雷达（sick、hokuyo）可以达到较高的数据刷新率（20Hz以上）缺点价格昂贵。</p><ul><li><p>视觉 SLAM 发展</p><ul><li><p>视觉 SLAM 传感器更加便宜、轻便，而且随处可得（如手机上的摄像头）</p></li><li><p>且图像能够提供更加丰富的信息，特征区分度更高，缺点是图像的实时处理需要很高的计算能力</p></li><li><p>小型 PC 和 嵌入式设备，移动设备上实现视觉 SLAM 已经成为可能</p></li><li><p>目前视觉 SLAM 的传感器有单目、双目、RGBD 三种相机，RGBD深度信息通过结构光原理计算，也有通过投射红外 pattern 并利用双目红外相机来计算，也有通过 TOF 相机实现。</p></li><li><p><strong>目前流行的视觉 SLAM 系统可以分为前后端</strong></p><ul><li>前端完成数据关联，研究帧之间的变换关系，完成实时位姿跟踪，对输入图像进行计算，同时检测并处理闭环。</li><li>后端对前端的输出结果进行优化，利用滤波理论（EKF、PF）或者优化理论进行树或图的优化，得到最优的位姿估计和地图。</li></ul></li></ul></li></ul><pre><code>* 采用滤波的 SLAM （下图a）  估计 n 时刻的相机位姿 Tn 需要使用地图中所有路标的信息，且每帧都需要更新这些路标的状态，随着新的路标的不断加入，状态矩阵的规模增长迅速，导致计算和求解时耗严重，因此不适宜长时间大场景的操作；*   采用优化算法的 SLAM （下图b）    通常结合关键帧使用，估计 n 时刻的相机位姿 Tn 可以使用整个地图的一个子集，不需要在每幅图像都更新地图数据，因此现代成功的实时 SLAM 系统大部分都采用优化的方法。</code></pre><p><img src="https://d3i71xaburhd42.cloudfront.net/262307914e99e5a397cce1cdbe346d11bcb2b3dd/2-Figure1-1.png" style="zoom:67%;" /></p><ul><li><p>SLAM 发展历程</p><ul><li><p>MonoSLAM[5]是2007年由Davison 等开发的第一个成功基于单目摄像头的纯视觉SLAM 系统：</p><ul><li>使用了扩展卡尔曼滤波</li></ul></li><li><p>同年，Davison在Oxford的师父Murray和Klein发表了实时SLAM系统PTAM（Parallel Tracking and Mapping）：<br>首个基于关键帧BA的单目视觉SLAM 系统，随后移植至手机端，PTAM在架构上做出了创新，将姿态跟踪（Tracking）和建图（Mapping）两个线程分开并行运行，<strong>这种架构设计为后来的实时SLAM（如ORB-SLAM）所效仿，成为了现代SLAM系统的标配</strong>。</p></li><li><p>2011年，Newcombe 等人提出了单目DTAM 系统, 其最显著的特点是能实时恢复场景三维模型</p><p>基于三维模型，DTAM 既能允许AR应用中的虚拟物体与场景发生物理碰撞，又能保证在特征缺失、图像模糊等情况下稳定地直接跟踪。</p></li><li><p>2013年，TUM机器视觉组的Engel 等人提出了一套同样也是基于直接法的视觉里程计(visual odometry, VO)系统，该系统2014年扩展为视觉SLAM 系统LSD-SLAM。</p><ul><li>2015年，Engel等人对LSD-SLAM进行了功能拓展，使其能够支持双目相机和全景相机</li></ul></li><li><p>2014年，苏黎世大学机器人感知组的Forster等人提出开源的SVO系统</p><ul><li>该系统对稀疏的特征块使用直接法配准（Sparse Model-based Image Alignment），获取相机位姿</li><li>根据光度不变假设构造优化方程对预测的特征位置进行优化（Feature Alignment）</li><li>对位姿和结构进行优化（Motion-only BA和Structure-only BA）</li></ul></li><li><p>2016年，Forster对SVO进行改进，形成SVO2.0</p><ul><li>增加了边缘的跟踪</li><li>考虑了IMU的运动先验信息</li><li>支持大视场角相机（如鱼眼相机和反射式全景相机）和多相机系统</li></ul></li><li><p>2015年，Mur-Artal 等提出了开源的单目ORB-SLAM，并于2016年拓展为支持双目和RGBD传感器的ORB-SLAM2，它是目前支持传感器最全且性能最好的视觉SLAM系统之一。</p></li><li><p>2016年，LSD-SLAM的作者，TUM机器视觉组的Engel等人又提出了DSO系统</p><ul><li>基于直接法和稀疏法的视觉里程计</li><li>不进行关键点检测和特征描述子计算，而是在整个图像内采样具有强度梯度的像素点</li><li>提出了完整的光度标定方法，考虑了曝光时间，透镜晕影和非线性响应函数的影响</li></ul></li><li><p>2017年，香港科技大学的沈绍劼老师课题组提出了融合IMU和视觉信息的VINS系统</p><ul><li>首个直接开源手机平台代码的视觉IMU融合SLAM系统</li><li>可以运行在iOS设备上，为手机端的增强现实应用提供精确的定位功能，同时该系统也在应用在了无人机控制上，并取得了较好的效果</li><li>VINS-Mobile使用滑动窗口优化方法，采用四元数姿态的方式完成视觉和IMU融合，并带有基于BoW的闭环检测模块，累计误差通过全局位姿图得到实时校正</li></ul></li></ul></li></ul>]]></content>
     
     <summary type="html">
     
