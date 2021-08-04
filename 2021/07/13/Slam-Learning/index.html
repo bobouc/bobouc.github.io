@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://d3i71xaburhd42.cloudfront.net/262307914e99e5a397cce1cdbe346d11bcb2b3dd/2-Figure1-1.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-07-20%20at%2023.15.43.png">
 <meta property="article:published_time" content="2021-07-13T12:45:34.000Z">
-<meta property="article:modified_time" content="2021-07-28T16:07:49.376Z">
+<meta property="article:modified_time" content="2021-08-04T14:52:07.929Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="learning-note">
 <meta name="twitter:card" content="summary">
@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2.5k</span>阅读时长: <span class="post-count reading-time">8 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2.9k</span>阅读时长: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -578,6 +578,16 @@ height:50vh;
 <p>强调地图元素之间的关系，考虑连通性。</p>
 </li>
 </ul>
+<h3 id="SLAM-问题数学表述"><a href="#SLAM-问题数学表述" class="headerlink" title="SLAM 问题数学表述"></a>SLAM 问题数学表述</h3><p>机器人各个时刻的位置 $X_1, X_2…X_k$</p>
+<p>路标N个，$y_1,…y_N$</p>
+<p><strong>运动方程</strong>：$X<em>{k} = f(X</em>{k-1}, u<em>{k},w</em>{k})$</p>
+<p>运动方程为机器人读入 <strong>运动传感器读数或者输入</strong>，<strong>噪声</strong>等，使得这个那个函数可以指代人意的运动传感器/输入，成为一个通用的方程。</p>
+<p><strong>观测方程</strong>：$Z<em>{k} = h(y</em>{i}, x<em>k,v</em>{k,j})$</p>
+<p>观测方程为，机器人在某个 $X<em>{k}$ 位置看到某个 路标 $y_j$ 时产生的一个观测数据 $Z</em>{k,j}$ </p>
+<p>SLAM 过程可以总结为 <strong>运动方程</strong> 与 <strong>观测方程</strong>，其描述的基本 SLAM 问题为：当知道运功测量的读数 u，以及传感器的读数 z，如何求解定位问题（估计x）和建图问题（估计y），此时 SLAM 问题为一个状态估计问题。</p>
+<p>状态估计的问题的求解，与两个方程的具体形式，以及噪声服从哪种分布（线性/非线形/高斯/非高斯）有关系。</p>
+<p>线性高斯为最简单，它的无偏可以用卡尔曼滤波器（Kalman Filter）给出。</p>
+<p>非线形高斯系统（Non-Linear No-Gaussian) 会使用拓展卡尔曼滤波器（Extended Kalman Filter）和非线形优化两类方法去求解。</p>
 <h3 id="SLAM-编程基础"><a href="#SLAM-编程基础" class="headerlink" title="SLAM 编程基础"></a>SLAM 编程基础</h3><h4 id="安装-Linux-操作系统"><a href="#安装-Linux-操作系统" class="headerlink" title="安装 Linux 操作系统"></a>安装 Linux 操作系统</h4><p>推荐使用 ubuntu 操作系统。</p>
 <h4 id="使用编译器g"><a href="#使用编译器g" class="headerlink" title="使用编译器g++"></a>使用编译器g++</h4><p>安装g++</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudu apt-<span class="built_in">get</span> install g++</span><br></pre></td></tr></table></figure>
@@ -701,7 +711,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM发展"><span class="toc-number">1.</span> <span class="toc-text">SLAM发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM-感知入门"><span class="toc-number">2.</span> <span class="toc-text">SLAM 感知入门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#传感器相机"><span class="toc-number">2.1.</span> <span class="toc-text">传感器相机</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#经典视觉-SLAM-框架"><span class="toc-number">3.</span> <span class="toc-text">经典视觉 SLAM 框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM-编程基础"><span class="toc-number">4.</span> <span class="toc-text">SLAM 编程基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-Linux-操作系统"><span class="toc-number">4.1.</span> <span class="toc-text">安装 Linux 操作系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用编译器g"><span class="toc-number">4.2.</span> <span class="toc-text">使用编译器g++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-cmake"><span class="toc-number">4.3.</span> <span class="toc-text">使用 cmake</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM发展"><span class="toc-number">1.</span> <span class="toc-text">SLAM发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM-感知入门"><span class="toc-number">2.</span> <span class="toc-text">SLAM 感知入门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#传感器相机"><span class="toc-number">2.1.</span> <span class="toc-text">传感器相机</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#经典视觉-SLAM-框架"><span class="toc-number">3.</span> <span class="toc-text">经典视觉 SLAM 框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM-问题数学表述"><span class="toc-number">4.</span> <span class="toc-text">SLAM 问题数学表述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM-编程基础"><span class="toc-number">5.</span> <span class="toc-text">SLAM 编程基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-Linux-操作系统"><span class="toc-number">5.1.</span> <span class="toc-text">安装 Linux 操作系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用编译器g"><span class="toc-number">5.2.</span> <span class="toc-text">使用编译器g++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-cmake"><span class="toc-number">5.3.</span> <span class="toc-text">使用 cmake</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
