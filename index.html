@@ -370,6 +370,37 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2021/08/07/ListNode-Data-Structure/" >
+            
+                <span>ListNode-Data Structure</span>
+        </a>
+        <div class="abstract-content">
+            ListNode递归反转反转一个链表（用递归的方式）：
+1234567ListNode reverse(ListNode head)&#123;  if(head.next == null) return head;  ListNode last = reverse(head.next);  head.next.next = head;  head.next = null;  return last;&#125;
+关键的重点在于：ListNode last = reverse(head.next)，此句在于将 head 之后的链表进行反转，反转之后，head 仍然指向 head 之后的第...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/07</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "DataStructure">DataStructure</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2021/07/13/Slam-Learning/" >
             
                 <span>SLAM Learning</span>
@@ -914,33 +945,10 @@ Function with Unknown Paramete...
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/02/03/752-Open-the-Lock/" >
-            
-                <span>752. Open the Lock</span>
-        </a>
-        <div class="abstract-content">
-            752. Open the LockYou have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: ‘0’, ‘1’, ‘2’, ‘3’, ‘4’, ‘5’, ‘6’, ‘7’, ‘8’, ‘9’. The wheels can rotate freely and wrap around: for example we can turn ‘9’ to be ‘0’, or ‘0’ to be ‘9’. Each move consists of turning one wheel one s...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/02/03</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">NEXT &gt;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -2258,9 +2266,14 @@ Function with Unknown Paramete...
     
     
     
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 80
+        Total : 81
         </div>
         <!-- search  -->
         
@@ -2273,6 +2286,11 @@ Function with Unknown Paramete...
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/07</span><a class="archive-post-title" href= "/2021/08/07/ListNode-Data-Structure/" >ListNode-Data Structure</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2729,6 +2747,8 @@ Function with Unknown Paramete...
         <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
     
         <span class="sidebar-tag-name" data-tags="Deep Learning"><span class="iconfont-archer">&#xe606;</span>Deep Learning</span>
+    
+        <span class="sidebar-tag-name" data-tags="DataStructure"><span class="iconfont-archer">&#xe606;</span>DataStructure</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
