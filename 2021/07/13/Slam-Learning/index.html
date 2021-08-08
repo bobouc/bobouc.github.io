@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://d3i71xaburhd42.cloudfront.net/262307914e99e5a397cce1cdbe346d11bcb2b3dd/2-Figure1-1.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-07-20%20at%2023.15.43.png">
 <meta property="article:published_time" content="2021-07-13T12:45:34.000Z">
-<meta property="article:modified_time" content="2021-08-04T14:52:07.929Z">
+<meta property="article:modified_time" content="2021-08-08T15:53:26.676Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="learning-note">
 <meta name="twitter:card" content="summary">
@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2.9k</span>阅读时长: <span class="post-count reading-time">10 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">3k</span>阅读时长: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -596,6 +596,9 @@ height:50vh;
 <li>使用 cmake 命令生成一个 makefile 文件</li>
 <li>然后用 make 命令根据这个 makefile 文件的内容编译整个工程。</li>
 </ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># declare lowest version of cmake</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>( VERSION <span class="number">2.8</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># declare a project of cmake</span></span><br><span class="line"><span class="keyword">project</span>( HELLOSLAM)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add an exe program</span></span><br><span class="line"><span class="comment"># grammar: add_executable ( programName sourceFile )</span></span><br><span class="line"><span class="keyword">add_executable</span> ( helloSLAM helloSLAM.cpp )</span><br></pre></td></tr></table></figure>
+<p>cmake.txt 用于告诉 cmake 对此目录文件做什么事情。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cmake . 会用 cmake 对该工程进行 cmake 编译</span></span><br><span class="line"><span class="comment">#cmake 会输出编译信息，在当前文件目录下生成一些中间文件，最重要的是 MakeFile，MakeFile 是自动生成的。</span></span><br><span class="line">cmake . </span><br><span class="line"><span class="comment"># cmake . 之后就是使用 make 进行对工程的编译。</span></span><br></pre></td></tr></table></figure>
 
     </article>
     <!-- license  -->
