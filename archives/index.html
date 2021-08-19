@@ -357,6 +357,50 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2021/08/18/golang-specific-notes/" >
+            
+                <span>golang specific notes</span>
+        </a>
+        <div class="abstract-content">
+            安装基础及概念安装：
+GO 安装官网：https://golang.org/dl/
+GO 的三个环境变量重要概念：
+
+GOROOT：GO语言安装目录
+GOPATH：若干自定义的工作空间，也就是传统的工作区 （Workspace）
+GOBIN：GO 程序生成的可执行文件路径
+
+HelloWorld
+go run helloworld.go 命令
+
+编译模式：
+在源码目录下进行 go install
+会自动生成 bin 文件夹，里面会有编译的 hello 可执行程序
+
+go 编译程序时，会自动在 GOROOT/src 文件夹下 或者在 GOPATH/src文件夹下程序包里自动寻找 main ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "golang">golang</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2021/08/07/ListNode-Data-Structure/" >
             
                 <span>ListNode-Data Structure</span>
@@ -886,53 +930,6 @@ Function with Unknown Paramete...
         <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
     
 </div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/02/22/CPP-refresh/" >
-            
-                <span>CPP refresh</span>
-        </a>
-        <div class="abstract-content">
-            CPP refresh内存模型代码区存放函数体的二进制代码，由操作系统进行管理
-全局区存放全局变量和静态变量以及常量.
-栈区
-由编译器自动分配释放
-存放函数的参数值
-存放局部变量
-
-堆区由程序员分配和释放，若不手动释放，最后将由操作系统回收
-程序运行前程序编译后，生成 exe 可执行程序，未执行该程序前分为两个区域
-
-代码区：
-存放 CPU 执行的机器指令
-代码区是共享的，共享的的目的是对于频繁被执行的程序，只需要在内存中由一份代码即可
-代码区为 只读，防止程序意外地修改了它的指令
-
-
-全局区
-全局变量和静态变量存放在此
-常量区
-字符串
-其他常量
-
-
-
-==该区域的数据在程序结束后由操作...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/02/22</span>
-            </div>
-            <!-- tags  -->
             
         </div>
     </article>
@@ -2226,9 +2223,46 @@ Function with Unknown Paramete...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 81
+        Total : 82
         </div>
         <!-- search  -->
         
@@ -2241,6 +2275,11 @@ Function with Unknown Paramete...
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/18</span><a class="archive-post-title" href= "/2021/08/18/golang-specific-notes/" >golang specific notes</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2704,6 +2743,8 @@ Function with Unknown Paramete...
         <span class="sidebar-tag-name" data-tags="Deep Learning"><span class="iconfont-archer">&#xe606;</span>Deep Learning</span>
     
         <span class="sidebar-tag-name" data-tags="DataStructure"><span class="iconfont-archer">&#xe606;</span>DataStructure</span>
+    
+        <span class="sidebar-tag-name" data-tags="golang"><span class="iconfont-archer">&#xe606;</span>golang</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

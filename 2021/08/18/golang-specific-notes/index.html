@@ -20,20 +20,23 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="Help myself">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GuoXin Li&#39;s Blog">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/tags/LeetCode/page/2/index.html">
+    <meta name="description" content="安装基础及概念安装： GO 安装官网：https:&#x2F;&#x2F;golang.org&#x2F;dl&#x2F; GO 的三个环境变量重要概念：  GOROOT：GO语言安装目录 GOPATH：若干自定义的工作空间，也就是传统的工作区 （Workspace） GOBIN：GO 程序生成的可执行文件路径  HelloWorld go run helloworld.go 命令  编译模式： 在源码目录下进行 go install">
+<meta property="og:type" content="article">
+<meta property="og:title" content="golang specific notes">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/08/18/golang-specific-notes/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="Help myself">
+<meta property="og:description" content="安装基础及概念安装： GO 安装官网：https:&#x2F;&#x2F;golang.org&#x2F;dl&#x2F; GO 的三个环境变量重要概念：  GOROOT：GO语言安装目录 GOPATH：若干自定义的工作空间，也就是传统的工作区 （Workspace） GOBIN：GO 程序生成的可执行文件路径  HelloWorld go run helloworld.go 命令  编译模式： 在源码目录下进行 go install">
+<meta property="article:published_time" content="2021-08-18T08:49:29.000Z">
+<meta property="article:modified_time" content="2021-08-19T13:31:26.689Z">
 <meta property="article:author" content="jax">
+<meta property="article:tag" content="golang">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
     <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
     
-    <title>GuoXin Li&#39;s Blog</title>
+    <title>golang specific notes · GuoXin Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -214,12 +217,23 @@
 <meta name="generator" content="Hexo 4.2.0"></head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >GuoXin Li&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">golang specific notes</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>GuoXin Li's Blog</a>
 </header>
@@ -231,24 +245,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random/1600x500)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            golang specific notes
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "golang">golang</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">163</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2021/08/18</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -349,109 +413,79 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/18/LeetCode-461-Hamming-Distance-%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" >
-            
-                <span>LeetCode 461 Hamming Distance 汉明距离</span>
-        </a>
-        <div class="abstract-content">
-            461. Hamming Distance 汉明距离The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
-Given two integers x and y, calculate the Hamming distance.
-Note:0 ≤ x, y &lt; 231.
-Example:Input: x = 1, y = 4
-Output: 2
-Explanation:1   (0 0 0 1)4   (0 1...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="安装基础及概念"><a href="#安装基础及概念" class="headerlink" title="安装基础及概念"></a>安装基础及概念</h2><p><strong>安装：</strong></p>
+<p>GO 安装官网：<a href="https://golang.org/dl/" target="_blank" rel="noopener">https://golang.org/dl/</a></p>
+<p>GO 的三个环境变量重要概念：</p>
+<ul>
+<li>GOROOT：GO语言安装目录</li>
+<li>GOPATH：若干自定义的工作空间，也就是传统的工作区 （Workspace）</li>
+<li>GOBIN：GO 程序生成的可执行文件路径</li>
+</ul>
+<h3 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h3><ul>
+<li><p><code>go run helloworld.go</code> 命令</p>
+</li>
+<li><p>编译模式：</p>
+<p>在源码目录下进行 <code>go install</code></p>
+<p>会自动生成 <code>bin</code> 文件夹，里面会有编译的 hello 可执行程序</p>
+<ul>
+<li>go 编译程序时，会自动在 <code>GOROOT/src 文件夹下</code> 或者在 <code>GOPATH/src</code>文件夹下程序包里自动寻找 main 包的 main 函数入口函数进行编译。</li>
+</ul>
+</li>
+</ul>
+
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/LeetCode-657-Judge-Route-Cricle-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%98%AF%E5%90%A6%E8%BF%94%E5%9B%9E%E5%8E%9F%E7%82%B9/" >
-            
-                <span>LeetCode 657 Judge Route Cricle 机器人是否返回原点</span>
-        </a>
-        <div class="abstract-content">
-            Judge Route Circle 机器人是否返回原点Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.
-The move sequence is represented by a string. And each move is represent by a character. The valid robot ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/LeetCode-1-Two-Sum/" >
-            
-                <span>LeetCode 1 Two Sum</span>
-        </a>
-        <div class="abstract-content">
-            Two Sum 两数之和Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-You may assume that each input would have exactly one solution, and you may not use the sameelement twice.
-Example:1234Given nums &#x3D; [2, 7, 11, 15], target &#x3D; 9,Because nu...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2021/08/07/ListNode-Data-Structure/" title= "ListNode-Data Structure">
+                    <div class="prevTitle">ListNode-Data Structure</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/tags/LeetCode/">&lt; PREV</a><a class="page-number" href="/tags/LeetCode/">1</a><span class="page-number current">2</span>
-    </nav>
     
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "3z31za5tyuogWzU86rydsH0h-gzGzoHsz",
+        appKey: "YeLtmtT5U8NP5GXTUesonkhB",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -499,6 +533,24 @@ Example:1234Given nums &#x3D; [2, 7, 11, 15], target &#x3D; 9,Because nu...
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装基础及概念"><span class="toc-number">1.</span> <span class="toc-text">安装基础及概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HelloWorld"><span class="toc-number">1.1.</span> <span class="toc-text">HelloWorld</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -2327,6 +2379,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

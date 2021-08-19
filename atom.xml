@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/liysky/liysky.github.io.git/"/>
-  <updated>2021-08-07T12:59:32.425Z</updated>
+  <updated>2021-08-19T13:31:26.689Z</updated>
   <id>https://github.com/liysky/liysky.github.io.git/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>golang specific notes</title>
+    <link href="https://github.com/liysky/liysky.github.io.git/2021/08/18/golang-specific-notes/"/>
+    <id>https://github.com/liysky/liysky.github.io.git/2021/08/18/golang-specific-notes/</id>
+    <published>2021-08-18T08:49:29.000Z</published>
+    <updated>2021-08-19T13:31:26.689Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装基础及概念"><a href="#安装基础及概念" class="headerlink" title="安装基础及概念"></a>安装基础及概念</h2><p><strong>安装：</strong></p><p>GO 安装官网：<a href="https://golang.org/dl/" target="_blank" rel="noopener">https://golang.org/dl/</a></p><p>GO 的三个环境变量重要概念：</p><ul><li>GOROOT：GO语言安装目录</li><li>GOPATH：若干自定义的工作空间，也就是传统的工作区 （Workspace）</li><li>GOBIN：GO 程序生成的可执行文件路径</li></ul><h3 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h3><ul><li><p><code>go run helloworld.go</code> 命令</p></li><li><p>编译模式：</p><p>在源码目录下进行 <code>go install</code></p><p>会自动生成 <code>bin</code> 文件夹，里面会有编译的 hello 可执行程序</p><ul><li>go 编译程序时，会自动在 <code>GOROOT/src 文件夹下</code> 或者在 <code>GOPATH/src</code>文件夹下程序包里自动寻找 main 包的 main 函数入口函数进行编译。</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;安装基础及概念&quot;&gt;&lt;a href=&quot;#安装基础及概念&quot; class=&quot;headerlink&quot; title=&quot;安装基础及概念&quot;&gt;&lt;/a&gt;安装基础及概念&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;安装：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;GO 安装官网：&lt;a href=&quot;https
+      
+    
+    </summary>
+    
+    
+    
+      <category term="golang" scheme="https://github.com/liysky/liysky.github.io.git/tags/golang/"/>
+    
+  </entry>
   
   <entry>
     <title>ListNode-Data Structure</title>
@@ -457,31 +482,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>full permutation with backtracking</title>
-    <link href="https://github.com/liysky/liysky.github.io.git/2021/01/14/full-permutation-with-backtracking/"/>
-    <id>https://github.com/liysky/liysky.github.io.git/2021/01/14/full-permutation-with-backtracking/</id>
-    <published>2021-01-14T11:55:32.000Z</published>
-    <updated>2021-03-31T13:25:31.011Z</updated>
-    
-    <content type="html"><![CDATA[<p>1, 2, 3 full permutation example in conventional “for circle” full permutation. </p><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210114195633990.png" alt="image-20210114195633990"></p><p>with vector path.</p><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210114195922265.png" alt="image-20210114195922265"></p><p>then backtracking method.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> level, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;path )</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(level == path.<span class="built_in">size</span>())&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:path)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;num&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(path[level] = <span class="number">1</span>; path[level] &lt;= path.<span class="built_in">size</span>(); path[level]++)&#123;</span><br><span class="line">        <span class="comment">// before enter into next layer decision tree,</span></span><br><span class="line">        <span class="comment">// checking whether path contains item contained or not.</span></span><br><span class="line">        <span class="comment">// std::count: Returns the number of elements in the range [first,last) that compare equal to val.</span></span><br><span class="line">        <span class="keyword">if</span>( count(path.<span class="built_in">begin</span>(), <span class="built_in">begin</span>(path) + level, path[level] ) != <span class="number">0</span> ) <span class="keyword">continue</span>;</span><br><span class="line">        fun(level+<span class="number">1</span>, path);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">path</span><span class="params">(<span class="number">4</span>)</span></span>;</span><br><span class="line">    fun(<span class="number">0</span>, path);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>reference: <a href="https://www.youtube.com/watch?v=nrHTtjkYEyQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=nrHTtjkYEyQ</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;1, 2, 3 full permutation example in conventional “for circle” full permutation. &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://jaximage-1253102271.cos.ap-beij
-      
-    
-    </summary>
-    
-    
-    
-      <category term="learning-note" scheme="https://github.com/liysky/liysky.github.io.git/tags/learning-note/"/>
     
   </entry>
   

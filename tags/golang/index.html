@@ -23,7 +23,7 @@
     <meta name="description" content="Help myself">
 <meta property="og:type" content="website">
 <meta property="og:title" content="GuoXin Li&#39;s Blog">
-<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/tags/LeetCode/page/2/index.html">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/tags/golang/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
 <meta property="og:description" content="Help myself">
 <meta property="article:author" content="jax">
@@ -357,89 +357,38 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/18/LeetCode-461-Hamming-Distance-%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" >
+        <a class="abstract-title" href = "/2021/08/18/golang-specific-notes/" >
             
-                <span>LeetCode 461 Hamming Distance 汉明距离</span>
+                <span>golang specific notes</span>
         </a>
         <div class="abstract-content">
-            461. Hamming Distance 汉明距离The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
-Given two integers x and y, calculate the Hamming distance.
-Note:0 ≤ x, y &lt; 231.
-Example:Input: x = 1, y = 4
-Output: 2
-Explanation:1   (0 0 0 1)4   (0 1...
+            安装基础及概念安装：
+GO 安装官网：https://golang.org/dl/
+GO 的三个环境变量重要概念：
+
+GOROOT：GO语言安装目录
+GOPATH：若干自定义的工作空间，也就是传统的工作区 （Workspace）
+GOBIN：GO 程序生成的可执行文件路径
+
+HelloWorld
+go run helloworld.go 命令
+
+编译模式：
+在源码目录下进行 go install
+会自动生成 bin 文件夹，里面会有编译的 hello 可执行程序
+
+go 编译程序时，会自动在 GOROOT/src 文件夹下 或者在 GOPATH/src文件夹下程序包里自动寻找 main ...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/18</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/18</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/LeetCode-657-Judge-Route-Cricle-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%98%AF%E5%90%A6%E8%BF%94%E5%9B%9E%E5%8E%9F%E7%82%B9/" >
-            
-                <span>LeetCode 657 Judge Route Cricle 机器人是否返回原点</span>
-        </a>
-        <div class="abstract-content">
-            Judge Route Circle 机器人是否返回原点Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.
-The move sequence is represented by a string. And each move is represent by a character. The valid robot ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/LeetCode-1-Two-Sum/" >
-            
-                <span>LeetCode 1 Two Sum</span>
-        </a>
-        <div class="abstract-content">
-            Two Sum 两数之和Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-You may assume that each input would have exactly one solution, and you may not use the sameelement twice.
-Example:1234Given nums &#x3D; [2, 7, 11, 15], target &#x3D; 9,Because nu...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "golang">golang</a>
     
 </div>
             
@@ -447,10 +396,6 @@ Example:1234Given nums &#x3D; [2, 7, 11, 15], target &#x3D; 9,Because nu...
     </article>
     
     <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/tags/LeetCode/">&lt; PREV</a><a class="page-number" href="/tags/LeetCode/">1</a><span class="page-number current">2</span>
-    </nav>
     
 </main>
             <!-- profile -->
