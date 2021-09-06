@@ -28,8 +28,9 @@
 <meta property="og:description" content="git 记要 git add , git checkoutgit add 后修改文件，可以再使用 git checkout 使得 work dir 返回到 stage 区的刚刚 git add 的状态  保存 git commit -m ’xxx’ , git commit —amend将 stage 区文件提交到 history 区，进入history 后的修改将永远不会丢失。 反悔之小悔 gi">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210527110137668.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210527110510521.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210907002051867.png">
 <meta property="article:published_time" content="2021-05-27T04:37:33.000Z">
-<meta property="article:modified_time" content="2021-05-27T04:37:55.945Z">
+<meta property="article:modified_time" content="2021-09-06T16:24:05.965Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
@@ -289,7 +290,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">343</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">479</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -431,6 +432,17 @@ height:50vh;
 <h3 id="合并多个-commit，git-reset-hashxxx"><a href="#合并多个-commit，git-reset-hashxxx" class="headerlink" title="合并多个 commit，git reset hashxxx"></a>合并多个 commit，git reset hashxxx</h3><p>如果有多个 commit，可以通过 git reset 来将它们合并为一个 commit 。</p>
 <p>使用 git reset hashvaluexxx ，相当于 HEAD 移动到了某一个 commit，且不会修改 work dir 中的数据，所以只要再次 git add. 和 git commit 之后就相当于把之前的多个 commit 合并到了一个。</p>
 <p>这样之后之前所有的 commit 都无法看到了，可以通过使用 <code>git reflog</code> 来查看之前所有的历史记录。</p>
+<h3 id="将本地原有仓库添加到远程已有仓库时出现的问题"><a href="#将本地原有仓库添加到远程已有仓库时出现的问题" class="headerlink" title="将本地原有仓库添加到远程已有仓库时出现的问题"></a>将本地原有仓库添加到远程已有仓库时出现的问题</h3><p>如果本地和远程仓库有不相关的历史记录，无法合并，如：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210907002051867.png" alt="image-20210907002051867" style="zoom:67%;" /></p>
+<p>可以使用：</p>
+<p><code>git pull origin main --allow-unrelated-histories</code> 即，添加<code>--allow-unrelated-histories</code> 参数</p>
+<ul>
+<li><p>然后会自动进入 vim ，编辑完冲突部分，选择该留下哪些，再 <code>:wq</code> 保存</p>
+</li>
+<li><p>然后使用 <code>git add xxx</code> 添加修改文件，使用 <code>git commit xxx</code> 添加commit</p>
+</li>
+<li>再次使用 <code>git push -u origin main</code> 将本地仓库与远程仓库进行合并即可。</li>
+</ul>
 
     </article>
     <!-- license  -->
@@ -551,7 +563,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-记要"><span class="toc-number">1.</span> <span class="toc-text">git 记要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-add-git-checkout"><span class="toc-number">1.1.</span> <span class="toc-text">git add , git checkout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保存-git-commit-m-’xxx’-git-commit-—amend"><span class="toc-number">1.2.</span> <span class="toc-text">保存 git commit -m ’xxx’ , git commit —amend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反悔之小悔-git-reset"><span class="toc-number">1.3.</span> <span class="toc-text">反悔之小悔 git reset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从-work-dir-区提交到-history区"><span class="toc-number">1.4.</span> <span class="toc-text">从 work dir 区提交到 history区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反悔之大悔-git-checkout-HEAD"><span class="toc-number">1.5.</span> <span class="toc-text">反悔之大悔 git checkout HEAD .</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并多个-commit，git-reset-hashxxx"><span class="toc-number">1.6.</span> <span class="toc-text">合并多个 commit，git reset hashxxx</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-记要"><span class="toc-number">1.</span> <span class="toc-text">git 记要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-add-git-checkout"><span class="toc-number">1.1.</span> <span class="toc-text">git add , git checkout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保存-git-commit-m-’xxx’-git-commit-—amend"><span class="toc-number">1.2.</span> <span class="toc-text">保存 git commit -m ’xxx’ , git commit —amend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反悔之小悔-git-reset"><span class="toc-number">1.3.</span> <span class="toc-text">反悔之小悔 git reset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从-work-dir-区提交到-history区"><span class="toc-number">1.4.</span> <span class="toc-text">从 work dir 区提交到 history区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反悔之大悔-git-checkout-HEAD"><span class="toc-number">1.5.</span> <span class="toc-text">反悔之大悔 git checkout HEAD .</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并多个-commit，git-reset-hashxxx"><span class="toc-number">1.6.</span> <span class="toc-text">合并多个 commit，git reset hashxxx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将本地原有仓库添加到远程已有仓库时出现的问题"><span class="toc-number">1.7.</span> <span class="toc-text">将本地原有仓库添加到远程已有仓库时出现的问题</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
