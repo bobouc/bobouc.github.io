@@ -20,12 +20,12 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="Slam: Simultaneous localization and mapping 同时定位🌧️地图构建，概念为希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（如墙角，柱子）定位自身的位置和姿态，再根据自身位置增量式的构建地图，从而同时定位和地图构建的目的。 SLAM发展上世纪80年代SLAM概念的提出，从早期的声呐，到后来的2D&#x2F;3D激光雷达，再到单目、双目、RG">
+    <meta name="description" content="本文内容参考自 「高翔-SLAM14讲」 Slam: Simultaneous localization and mapping 同时定位🌧️地图构建，概念为希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（如墙角，柱子）定位自身的位置和姿态，再根据自身位置增量式的构建地图，从而同时定位和地图构建的目的。 SLAM发展上世纪80年代SLAM概念的提出，从早期的声呐，到后来">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SLAM Learning">
 <meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/07/13/Slam-Learning/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="Slam: Simultaneous localization and mapping 同时定位🌧️地图构建，概念为希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（如墙角，柱子）定位自身的位置和姿态，再根据自身位置增量式的构建地图，从而同时定位和地图构建的目的。 SLAM发展上世纪80年代SLAM概念的提出，从早期的声呐，到后来的2D&#x2F;3D激光雷达，再到单目、双目、RG">
+<meta property="og:description" content="本文内容参考自 「高翔-SLAM14讲」 Slam: Simultaneous localization and mapping 同时定位🌧️地图构建，概念为希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（如墙角，柱子）定位自身的位置和姿态，再根据自身位置增量式的构建地图，从而同时定位和地图构建的目的。 SLAM发展上世纪80年代SLAM概念的提出，从早期的声呐，到后来">
 <meta property="og:image" content="https://d3i71xaburhd42.cloudfront.net/262307914e99e5a397cce1cdbe346d11bcb2b3dd/2-Figure1-1.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-07-20%20at%2023.15.43.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210816231511145.png">
@@ -35,8 +35,9 @@
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20211024234416227.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-10-25%20at%2023.22.10.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-10-25%20at%2023.22.29.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20211026225238811.png">
 <meta property="article:published_time" content="2021-07-13T12:45:34.000Z">
-<meta property="article:modified_time" content="2021-10-25T15:23:29.621Z">
+<meta property="article:modified_time" content="2021-10-26T15:27:43.119Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="learning-note">
 <meta name="twitter:card" content="summary">
@@ -296,7 +297,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">3.6k</span>阅读时长: <span class="post-count reading-time">13 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">3.8k</span>阅读时长: <span class="post-count reading-time">14 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -425,7 +426,8 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Slam: Simultaneous localization and mapping 同时定位🌧️地图构建，概念为希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（如墙角，柱子）定位自身的位置和姿态，再根据自身位置增量式的构建地图，从而同时定位和地图构建的目的。</p>
+        <p>本文内容参考自 <strong>「高翔-SLAM14讲」</strong></p>
+<p>Slam: Simultaneous localization and mapping 同时定位🌧️地图构建，概念为希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（如墙角，柱子）定位自身的位置和姿态，再根据自身位置增量式的构建地图，从而同时定位和地图构建的目的。</p>
 <h3 id="SLAM发展"><a href="#SLAM发展" class="headerlink" title="SLAM发展"></a>SLAM发展</h3><p>上世纪80年代SLAM概念的提出，从早期的声呐，到后来的2D/3D激光雷达，再到单目、双目、RGBD、ToF等各种相机，以及与惯性测量单元IMU等传感器的融合；SLAM的算法也从<strong>开始的基于滤波器的方法（EKF、PF等）向基于优化的方法转变</strong>，技术框架也从开始的单一线程向多线程演进。</p>
 <ul>
 <li>激光雷达 SLAM 发展</li>
@@ -622,7 +624,7 @@ height:50vh;
 <li>行列式为1的正交矩阵也是一个旋转矩阵</li>
 </ul>
 <p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20211024234416227.png" alt="image-20211024234416227"></p>
-<h3 id="Eigen实践"><a href="#Eigen实践" class="headerlink" title="Eigen实践"></a>Eigen实践</h3><p><strong>第三方库安装</strong>：</p>
+<h4 id="Eigen实践"><a href="#Eigen实践" class="headerlink" title="Eigen实践"></a>Eigen实践</h4><p><strong>第三方库安装</strong>：</p>
 <p>首先使用 <code>git submodule init</code> <code>git submodule update</code> 来同步相关的第三方库。</p>
 <ul>
 <li>Pangolin库的安装：</li>
@@ -637,7 +639,7 @@ height:50vh;
 <hr>
 <p>task.json</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"tasks"</span>: [&#123;</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"compile"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"g++"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"-g"</span>,</span><br><span class="line">                <span class="string">"$&#123;file&#125;"</span>,</span><br><span class="line">                <span class="string">"-o"</span>,</span><br><span class="line">                <span class="string">"$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"problemMatcher"</span>: &#123;</span><br><span class="line">                <span class="attr">"owner"</span>: <span class="string">"cpp"</span>,</span><br><span class="line">                <span class="attr">"fileLocation"</span>: [</span><br><span class="line">                    <span class="string">"relative"</span>,</span><br><span class="line">                    <span class="string">"$&#123;workspaceRoot&#125;"</span></span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"pattern"</span>: &#123;</span><br><span class="line">                    <span class="attr">"regexp"</span>: <span class="string">"^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$"</span>,</span><br><span class="line">                    <span class="attr">"file"</span>: <span class="number">1</span>,</span><br><span class="line">                    <span class="attr">"line"</span>: <span class="number">2</span>,</span><br><span class="line">                    <span class="attr">"column"</span>: <span class="number">3</span>,</span><br><span class="line">                    <span class="attr">"severity"</span>: <span class="number">4</span>,</span><br><span class="line">                    <span class="attr">"message"</span>: <span class="number">5</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"group"</span>: &#123;</span><br><span class="line">                <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">                <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="旋转向量和欧拉角"><a href="#旋转向量和欧拉角" class="headerlink" title="旋转向量和欧拉角"></a>旋转向量和欧拉角</h3><p>旋转向量：</p>
+<h4 id="旋转向量和欧拉角"><a href="#旋转向量和欧拉角" class="headerlink" title="旋转向量和欧拉角"></a>旋转向量和欧拉角</h4><p>旋转向量：</p>
 <p>即利用一个三维向量表达出旋转矩阵SO(3) 所能表达的事情：任意旋转都可以用一个旋转轴和一个旋转角来刻画。</p>
 <p>一个三维向量来描述一个旋转：</p>
 <ul>
@@ -647,8 +649,24 @@ height:50vh;
 <p>旋转矩阵和旋转向量可以进行相互转化。</p>
 <p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-10-25%20at%2023.22.10.png" alt="Screen Shot 2021-10-25 at 23.22.10"></p>
 <p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-10-25%20at%2023.22.29.png" alt="Screen Shot 2021-10-25 at 23.22.29"></p>
-<p>旋转轴n，旋转轴上的向量在旋转后不发生改变：Rn = n.</p>
-
+<p>旋转轴n，旋转轴上的向量在旋转后不发生改变：<strong>Rn = n</strong>.</p>
+<h4 id="欧拉角"><a href="#欧拉角" class="headerlink" title="欧拉角"></a>欧拉角</h4><p>航空、航模中会有：</p>
+<p>“俯仰角”，pitch ——绕 Y 轴，</p>
+<p>“偏航角”，yam ——绕 Z 轴，</p>
+<p>“滚转角”，roll —— 绕 X 轴。</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20211026225238811.png" alt="image-20211026225238811" style="zoom:67%;" /></p>
+<p>欧拉角会产生 <strong>万向节死锁的问题</strong>： 在俯仰角为 $\pm 90^\circ$时，第一次旋转和第三次旋转将使用同一个轴，这样就会使得系统丢掉一个自由度，这种称为奇异性问题。</p>
+<h4 id="四元数"><a href="#四元数" class="headerlink" title="四元数"></a>四元数</h4><p>为了解决 <strong>万向节死锁的问题</strong>，因为找不到不带奇异的三维向量描述方式，用一种类似复数的代数：四元数，来解决旋转的问题。</p>
+<p>一个四元数q有一个实部三个虚部：</p>
+<script type="math/tex; mode=display">
+q = q_0 + q_1i+q_2j+q_3k</script><p>其中，i，j，k 为四元数的三个虚部：</p>
+<script type="math/tex; mode=display">F^{HLLC}=\left\{
+\begin{array}{rcl}
+i^2=j^2=k^2=-1       &      & \\
+ij=k, ji= -k    &      & \\
+jk=i, kj=-i     &      & \\
+ki=j, ik=-j       &      & \\
+\end{array} \right.</script>
     </article>
     <!-- license  -->
     
@@ -768,7 +786,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM发展"><span class="toc-number">1.</span> <span class="toc-text">SLAM发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM-感知入门"><span class="toc-number">2.</span> <span class="toc-text">SLAM 感知入门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#传感器相机"><span class="toc-number">2.1.</span> <span class="toc-text">传感器相机</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#经典视觉-SLAM-框架"><span class="toc-number">3.</span> <span class="toc-text">经典视觉 SLAM 框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM-问题数学表述"><span class="toc-number">4.</span> <span class="toc-text">SLAM 问题数学表述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM-编程基础"><span class="toc-number">5.</span> <span class="toc-text">SLAM 编程基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-Linux-操作系统"><span class="toc-number">5.1.</span> <span class="toc-text">安装 Linux 操作系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用编译器g"><span class="toc-number">5.2.</span> <span class="toc-text">使用编译器g++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-cmake"><span class="toc-number">5.3.</span> <span class="toc-text">使用 cmake</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三维空间刚体运动"><span class="toc-number">6.</span> <span class="toc-text">三维空间刚体运动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内外积与反对称矩阵"><span class="toc-number">6.1.</span> <span class="toc-text">内外积与反对称矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#坐标系间的欧式变换"><span class="toc-number">6.2.</span> <span class="toc-text">坐标系间的欧式变换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eigen实践"><span class="toc-number">7.</span> <span class="toc-text">Eigen实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#旋转向量和欧拉角"><span class="toc-number">8.</span> <span class="toc-text">旋转向量和欧拉角</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM发展"><span class="toc-number">1.</span> <span class="toc-text">SLAM发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM-感知入门"><span class="toc-number">2.</span> <span class="toc-text">SLAM 感知入门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#传感器相机"><span class="toc-number">2.1.</span> <span class="toc-text">传感器相机</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#经典视觉-SLAM-框架"><span class="toc-number">3.</span> <span class="toc-text">经典视觉 SLAM 框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM-问题数学表述"><span class="toc-number">4.</span> <span class="toc-text">SLAM 问题数学表述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SLAM-编程基础"><span class="toc-number">5.</span> <span class="toc-text">SLAM 编程基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-Linux-操作系统"><span class="toc-number">5.1.</span> <span class="toc-text">安装 Linux 操作系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用编译器g"><span class="toc-number">5.2.</span> <span class="toc-text">使用编译器g++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-cmake"><span class="toc-number">5.3.</span> <span class="toc-text">使用 cmake</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三维空间刚体运动"><span class="toc-number">6.</span> <span class="toc-text">三维空间刚体运动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内外积与反对称矩阵"><span class="toc-number">6.1.</span> <span class="toc-text">内外积与反对称矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#坐标系间的欧式变换"><span class="toc-number">6.2.</span> <span class="toc-text">坐标系间的欧式变换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Eigen实践"><span class="toc-number">6.3.</span> <span class="toc-text">Eigen实践</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#旋转向量和欧拉角"><span class="toc-number">6.4.</span> <span class="toc-text">旋转向量和欧拉角</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#欧拉角"><span class="toc-number">6.5.</span> <span class="toc-text">欧拉角</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四元数"><span class="toc-number">6.6.</span> <span class="toc-text">四元数</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
