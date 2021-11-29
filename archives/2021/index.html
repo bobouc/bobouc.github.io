@@ -357,6 +357,47 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2021/11/29/LeetCode-TIPS/" >
+            
+                <span>LeetCode TIPS</span>
+        </a>
+        <div class="abstract-content">
+            LeetCode OWNTIPS
+快慢指针
+bool isLoop(ListNode *head){
+  ListNode *slow, *fast;
+  slow = fast = head;
+  while(fast != nullptr &amp;&amp; fast-&gt;next-&gt;next != nullptr ){
+        slow = slow-&gt;next;
+    fast = fast-&gt;next-&gt;next;
+    if(slow == fast){
+      return true;
+    }
+  }
+  return fa...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/11/29</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2021/08/18/golang-specific-notes/" >
             
                 <span>golang specific notes</span>
@@ -886,41 +927,6 @@ Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需�
             <!-- date  -->
             <div class="abstract-date">
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/03/17/Self-Learning-OF-Hongyi-Lee-Machine-Learning-Spring-Mandarin/" >
-            
-                <span>Hongyi-Lee Machine Learning Spring 2021 Mandarin</span>
-        </a>
-        <div class="abstract-content">
-            Hongyi-Lee Machine Learning Spring Mandarin —NotesLesson 1Basic Conceptions OF MLDifferent type of FunctionsRegression: The function outputs a scalar
-
-Classification: Given options(classes), the function outputs the correct one.
-
-
-How to find the FunctionThree steps
-Function with Unknown Paramete...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/17</span>
             </div>
             <!-- tags  -->
             
@@ -2245,9 +2251,28 @@ Function with Unknown Paramete...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 82
+        Total : 83
         </div>
         <!-- search  -->
         
@@ -2260,6 +2285,11 @@ Function with Unknown Paramete...
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2021/11/29/LeetCode-TIPS/" >LeetCode TIPS</a>
+        </li>
     
     
         <li class="archive-post-item">
