@@ -20,14 +20,14 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="LeetCode OWNTIPS 快慢指针 bool isLoop(ListNode *head){   ListNode *slow, *fast;   slow &#x3D; fast &#x3D; head;   while(fast !&#x3D; nullptr &amp;&amp; fast-&gt;next-&gt;next !&#x3D; nullptr ){         slow &#x3D; slow-&gt;next;">
+    <meta name="description" content="LeetCode OWNTIPS快慢指针123456789101112bool isLoop(ListNode *head)&amp;#123;  ListNode *slow, *fast;  slow &#x3D; fast &#x3D; head;  while(fast !&#x3D; nullptr &amp;&amp; fast-&gt;next-&gt;next !&#x3D; nullptr )&amp;#123;		slow &#x3D; sl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode TIPS">
 <meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/11/29/LeetCode-TIPS/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="LeetCode OWNTIPS 快慢指针 bool isLoop(ListNode *head){   ListNode *slow, *fast;   slow &#x3D; fast &#x3D; head;   while(fast !&#x3D; nullptr &amp;&amp; fast-&gt;next-&gt;next !&#x3D; nullptr ){         slow &#x3D; slow-&gt;next;">
+<meta property="og:description" content="LeetCode OWNTIPS快慢指针123456789101112bool isLoop(ListNode *head)&amp;#123;  ListNode *slow, *fast;  slow &#x3D; fast &#x3D; head;  while(fast !&#x3D; nullptr &amp;&amp; fast-&gt;next-&gt;next !&#x3D; nullptr )&amp;#123;		slow &#x3D; sl">
 <meta property="article:published_time" content="2021-11-29T14:58:13.000Z">
-<meta property="article:modified_time" content="2021-11-29T14:59:05.117Z">
+<meta property="article:modified_time" content="2021-12-02T15:18:58.501Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -286,7 +286,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">368</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">815</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -415,89 +415,34 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>LeetCode OWNTIPS</p>
-<p>快慢指针</p>
-<pre><code>bool isLoop(ListNode *head){
-  ListNode *slow, *fast;
-  slow = fast = head;
-  while(fast != nullptr &amp;&amp; fast-&gt;next-&gt;next != nullptr ){
-        slow = slow-&gt;next;
-    fast = fast-&gt;next-&gt;next;
-    if(slow == fast){
-      return true;
-    }
-  }
-  return false;
-}
-</code></pre><p>合并两个链表</p>
-<p>dump 指针的妙用。</p>
-<pre><code>ListNode* mergeTwoList( ListNode* l1, ListNode* l2){
-  ListNode* dump = new ListNode(-1);
-  while(l1 != nullptr &amp;&amp; l2 != nullptr){
-    if(l1-&gt;val &lt; l2-&gt;val){
-      dump-&gt;next = l1;
-      l1 = l1-&gt;next;
-    }else{
-      dump-&gt;next = l2;
-      l2 = l2-&gt;next;
-    }
-  }
-  dump-&gt;next = l1 == nullptr ? l2 : l1;
-  return dump-&gt;next;
-}
-</code></pre><p>滑动窗口</p>
-<ul>
+        <h1 id="LeetCode-OWNTIPS"><a href="#LeetCode-OWNTIPS" class="headerlink" title="LeetCode OWNTIPS"></a>LeetCode OWNTIPS</h1><h2 id="快慢指针"><a href="#快慢指针" class="headerlink" title="快慢指针"></a>快慢指针</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isLoop</span><span class="params">(ListNode *head)</span></span>&#123;</span><br><span class="line">  ListNode *slow, *fast;</span><br><span class="line">  slow = fast = head;</span><br><span class="line">  <span class="keyword">while</span>(fast != <span class="literal">nullptr</span> &amp;&amp; fast-&gt;next-&gt;next != <span class="literal">nullptr</span> )&#123;</span><br><span class="line">		slow = slow-&gt;next;</span><br><span class="line">    fast = fast-&gt;next-&gt;next;</span><br><span class="line">    <span class="keyword">if</span>(slow == fast)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="合并两个链表"><a href="#合并两个链表" class="headerlink" title="合并两个链表"></a>合并两个链表</h2><p>dump 指针的妙用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">mergeTwoList</span><span class="params">( ListNode* l1, ListNode* l2)</span></span>&#123;</span><br><span class="line">  ListNode* dump = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">while</span>(l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(l1-&gt;val &lt; l2-&gt;val)&#123;</span><br><span class="line">      dump-&gt;next = l1;</span><br><span class="line">      l1 = l1-&gt;next;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      dump-&gt;next = l2;</span><br><span class="line">      l2 = l2-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  dump-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line">  <span class="keyword">return</span> dump-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><ul>
 <li><p>通常多是循环整个流水线</p>
 <ul>
-<li>右窗口移动时的条件：<br>窗口未满足条件<br>右窗口移动时，该做什么？添加谁，删除谁？</li>
-<li>左窗口移动的条件：<br>窗口满了？<br>需要删除什么元素？</li>
-<li>什么时间添加 ans 结果。</li>
-</ul>
-<p>class Solution {<br>public:</p>
-<pre><code>vector&lt;int&gt; maxSlidingWindow(vector&lt;int&gt;&amp; nums, int k) {
-    vector&lt;int&gt; ans;
-    deque&lt;int&gt; q;
-    for(int right = 0; right &lt; nums.size(); right++){
-        while(!q.empty() &amp;&amp; nums[right] &gt;= nums[q.back()] ){
-            q.pop_back();
-        }
-        q.push_back(right);
-
-        int left = right - k + 1;
-        while(!q.empty() &amp;&amp; left &gt; q.front() ){
-            q.pop_front();
-        }
-        if(right + 1 &gt;= k){
-            ans.push_back(nums[q.front()]);
-        }
-    }
-    return ans;
-}
-</code></pre><p>};</p>
+<li><p>右窗口移动时的条件：</p>
+<p>窗口未满足条件</p>
+<p>右窗口移动时，该做什么？添加谁，删除谁？</p>
+</li>
+<li><p>左窗口移动的条件：</p>
+<p>窗口满了？</p>
+<p>需要删除什么元素？</p>
+</li>
+<li><p>什么时间添加 ans 结果。</p>
 </li>
 </ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">maxSlidingWindow</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> right = <span class="number">0</span>; right &lt; nums.<span class="built_in">size</span>(); right++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(!q.empty() &amp;&amp; nums[right] &gt;= nums[q.back()] )&#123;</span><br><span class="line">                q.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">            q.push_back(right);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> left = right - k + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(!q.empty() &amp;&amp; left &gt; q.front() )&#123;</span><br><span class="line">                q.pop_front();</span><br><span class="line">            &#125;</span><br><span class="line">          <span class="comment">// right + 1 &gt;= k 时，代表窗口已经形成，即已经满足窗口大小，再往后移动每一步都会满足一个窗口的大小。</span></span><br><span class="line">            <span class="keyword">if</span>(right + <span class="number">1</span> &gt;= k)&#123;</span><br><span class="line">                ans.push_back(nums[q.front()]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>优先队列</p>
-<pre><code>class Solution {
-public:
-    vector&lt;int&gt; maxSlidingWindow(vector&lt;int&gt;&amp; nums, int k) {
-        int n = nums.size();
-      //priority_queue 容器默认为按照元素值从大到小进行排序
-        priority_queue&lt;pair&lt;int, int&gt;&gt; q;
-        for (int i = 0; i &lt; k; ++i) {
-            q.emplace(nums[i], i);
-        }
-        vector&lt;int&gt; ans = {q.top().first};
-        for (int i = k; i &lt; n; ++i) {
-            q.emplace(nums[i], i);
-            while (q.top().second &lt; i - k + 1) {
-                q.pop();
-            }
-            ans.push_back(q.top().first);
-        }
-        return ans;
-    }
-};
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">maxSlidingWindow</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">      <span class="comment">//priority_queue 容器默认为按照元素值从大到小进行排序</span></span><br><span class="line">        priority_queue&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; q;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; ++i) &#123;</span><br><span class="line">            q.emplace(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans = &#123;q.top().first&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = k; i &lt; n; ++i) &#123;</span><br><span class="line">            q.emplace(nums[i], i);</span><br><span class="line">            <span class="keyword">while</span> (q.top().second &lt; i - k + <span class="number">1</span>) &#123;</span><br><span class="line">                q.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            ans.push_back(q.top().first);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="二叉树的迭代-非递归遍历"><a href="#二叉树的迭代-非递归遍历" class="headerlink" title="二叉树的迭代-非递归遍历"></a>二叉树的迭代-非递归遍历</h2><p>思想即：</p>
+<p>中左右，左中右，左右中。</p>
+<p>利用 stack 来先入后出，即入栈的顺序与上述相反，记住此即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreePrint</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">		<span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">preTreeorder</span><span class="params">(TreeNode* root)</span></span>&#123;</span><br><span class="line">      	<span class="built_in">std</span>::<span class="built_in">stack</span>&lt;TreeNode *&gt; mystack;</span><br><span class="line">      	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">      	<span class="keyword">if</span>( root != <span class="literal">nullptr</span> )&#123;</span><br><span class="line">        		mystack.emplace(root);</span><br><span class="line">     		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        		<span class="keyword">return</span> ans;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">while</span>( !mystack.empty() )&#123;</span><br><span class="line">          TreeNode* p = mystack.top();</span><br><span class="line">          mystack.pop();</span><br><span class="line">          <span class="keyword">if</span>(p!=<span class="literal">nullptr</span>)&#123;</span><br><span class="line">              <span class="keyword">if</span>(p-&gt;right)&#123;</span><br><span class="line">                	mystack.emplace(p-&gt;right);</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span>(p-&gt;left)&#123;</span><br><span class="line">                	mystack.emplace(p-&gt;left);</span><br><span class="line">              &#125;</span><br><span class="line">              mystack.emplace(p);</span><br><span class="line">              mystack.emplace(<span class="literal">nullptr</span>);</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            	p = mystack.top();</span><br><span class="line">            	mystack.pop();</span><br><span class="line">            	ans.push_back(p-&gt;val);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">inOrder</span><span class="params">(TreeNode* root)</span></span>&#123;</span><br><span class="line">    	<span class="built_in">std</span>::<span class="built_in">stack</span>&lt;TreeNode *&gt; mystack;</span><br><span class="line">    	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">    	<span class="keyword">if</span>(root != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">        	mystack.emplace(root);</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        	<span class="keyword">return</span> ans;</span><br><span class="line">      &#125;</span><br><span class="line">    	<span class="keyword">while</span>(!mystack.empty())&#123;</span><br><span class="line">        	TreeNode* p = mystack.top();</span><br><span class="line">        	mystack.pop();</span><br><span class="line">        	<span class="keyword">if</span>(p != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            	<span class="keyword">if</span>(p-&gt;right != <span class="literal">nullptr</span> )&#123;</span><br><span class="line">                	mystack.emplace(p-&gt;right);</span><br><span class="line">              &#125;</span><br><span class="line">            	mystack.emplace(p);</span><br><span class="line">            	mystack.emplace(<span class="literal">nullptr</span>);</span><br><span class="line">            	<span class="keyword">if</span>(p-&gt;left != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                	mystack.emplace(p-&gt;left);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            	p = mystack.top();</span><br><span class="line">            	mystack.pop();</span><br><span class="line">            	ans.push_back(p-&gt;val);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    	<span class="keyword">return</span> ans;</span><br><span class="line">  	&#125;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">postOrder</span><span class="params">(TreeNode* root)</span></span>&#123;</span><br><span class="line">    	<span class="built_in">std</span>::<span class="built_in">stack</span>&lt;TreeNode *&gt; mystack;</span><br><span class="line">    	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">    	<span class="keyword">if</span>(root != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">        	mystack.emplace(root);</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        	<span class="keyword">return</span> ans;</span><br><span class="line">      &#125;</span><br><span class="line">    	<span class="keyword">while</span>(!mystack.empty())&#123;</span><br><span class="line">        	TreeNode* p = mystack.top();</span><br><span class="line">        	mystack.pop();</span><br><span class="line">        	<span class="keyword">if</span>(p != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">              mystack.emplace(p);</span><br><span class="line">            	mystack.emplace(<span class="literal">nullptr</span>);</span><br><span class="line">              <span class="keyword">if</span>(p-&gt;right != <span class="literal">nullptr</span> )&#123;</span><br><span class="line">                	mystack.emplace(p-&gt;right);</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span>(p-&gt;left != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                	mystack.emplace(p-&gt;left);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            	p = mystack.top();</span><br><span class="line">            	mystack.pop();</span><br><span class="line">            	ans.push_back(p-&gt;val);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    	<span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p><strong>二叉树题目的一个难点就是，如何把题目的要求细化成每个节点需要做的事情</strong></p>
+
     </article>
     <!-- license  -->
     
@@ -612,7 +557,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode-OWNTIPS"><span class="toc-number">1.</span> <span class="toc-text">LeetCode OWNTIPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#快慢指针"><span class="toc-number">1.1.</span> <span class="toc-text">快慢指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#合并两个链表"><span class="toc-number">1.2.</span> <span class="toc-text">合并两个链表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滑动窗口"><span class="toc-number">1.3.</span> <span class="toc-text">滑动窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的迭代-非递归遍历"><span class="toc-number">1.4.</span> <span class="toc-text">二叉树的迭代-非递归遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉树"><span class="toc-number">1.4.1.</span> <span class="toc-text">二叉树</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
