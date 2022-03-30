@@ -357,6 +357,38 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2022/03/30/Cmake-common-syntax/" >
+            
+                <span>Cmake common syntax</span>
+        </a>
+        <div class="abstract-content">
+            以一个 OpenGL 程序为例：
+1234567//文件目录./├── CMakeLists.txt├── build├── lib│   └── glad.c└── main.cpp
+CMakeLists.txt文件：
+1234567891011121314151617181920212223242526272829303132333435363738# cmake的版本号cmake_minimum_required(VERSION 3.17)# project 的名字project(OpenglDemo)# C++ versionset(CMAKE_CXX_STANDARD 14)#...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/03/30</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "cmake">cmake</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2021/11/29/LeetCode-TIPS/" >
             
                 <span>LeetCode TIPS</span>
@@ -891,38 +923,6 @@ selectively aggregates ...
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/23</span>
             </div>
             <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/03/21/Docker-notes/" >
-            
-                <span>Docker notes</span>
-        </a>
-        <div class="abstract-content">
-            Docker基本概念镜像操作系统分为 内核 和 用户空降。Linux 系统内核启动后，会挂载 root 文件系统为其提供用户空间支持。
-Docker 镜像相当于一个 root 文件系统，如 官方镜像 ubuntu:18:04 就包含了完整的一套 ubuntu18.04最小系统 root 文件系统。
-Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需要的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（匿名卷、环境变量、用户等）。镜像 不包含 任何动态数据，其内容在构建之后也不会被改变。
-镜像只是一个虚拟的概念，其实际体现并非由一个文件组成，而是由一组文件系...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
-    
-</div>
             
         </div>
     </article>
@@ -2258,9 +2258,30 @@ Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 83
+        Total : 84
         </div>
         <!-- search  -->
         
@@ -2270,6 +2291,20 @@ Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需�
     
     
     
+    
+    <div class="archive-year"> 2022 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2022/03/30/Cmake-common-syntax/" >Cmake common syntax</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
@@ -2748,6 +2783,8 @@ Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需�
         <span class="sidebar-tag-name" data-tags="golang"><span class="iconfont-archer">&#xe606;</span>golang</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
+    
+        <span class="sidebar-tag-name" data-tags="cmake"><span class="iconfont-archer">&#xe606;</span>cmake</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
