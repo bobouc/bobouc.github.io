@@ -20,18 +20,18 @@
     <meta name="keywords" content="hexo,lipsky,lipsky-blog">
     
     <meta name="description" content="Help myself">
-    <meta name="description" content="LeetCode OWNTIPS快慢指针123456789101112bool isLoop(ListNode *head)&amp;#123;  ListNode *slow, *fast;  slow &#x3D; fast &#x3D; head;  while(fast !&#x3D; nullptr &amp;&amp; fast-&gt;next-&gt;next !&#x3D; nullptr )&amp;#123;		slow &#x3D; sl">
+    <meta name="description" content="LeetCode OWNTIPS    Type C++ Java     array T dirs[n] T[] dirs &#x3D; new T[n]   dynamic array vector\ ArrayList\   list list\ LinkedList\   OrderedSet \ OrderedMap set\, map\ TreeSet\, TreeMap\   HashSet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode TIPS">
 <meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/11/29/LeetCode-TIPS/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
-<meta property="og:description" content="LeetCode OWNTIPS快慢指针123456789101112bool isLoop(ListNode *head)&amp;#123;  ListNode *slow, *fast;  slow &#x3D; fast &#x3D; head;  while(fast !&#x3D; nullptr &amp;&amp; fast-&gt;next-&gt;next !&#x3D; nullptr )&amp;#123;		slow &#x3D; sl">
+<meta property="og:description" content="LeetCode OWNTIPS    Type C++ Java     array T dirs[n] T[] dirs &#x3D; new T[n]   dynamic array vector\ ArrayList\   list list\ LinkedList\   OrderedSet \ OrderedMap set\, map\ TreeSet\, TreeMap\   HashSet">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20211212212719158.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-12-12%20at%2021.27.29.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/xogrid.jpg">
 <meta property="og:image" content="https://mmbiz.qpic.cn/sz_mmbiz_png/gibkIz0MVqdHMiaIZgKPc3aZYW2WIfQUViaJR5ux8oibricEckxYKDCicLviaNwpbpXU27psp8mx358L1ibjCO0QCbo1Ng/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="article:published_time" content="2021-11-29T14:58:13.000Z">
-<meta property="article:modified_time" content="2022-03-31T14:52:56.218Z">
+<meta property="article:modified_time" content="2022-04-01T15:02:55.324Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -291,7 +291,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">7.3k</span>阅读时长: <span class="post-count reading-time">39 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">7.4k</span>阅读时长: <span class="post-count reading-time">39 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -420,7 +420,70 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="LeetCode-OWNTIPS"><a href="#LeetCode-OWNTIPS" class="headerlink" title="LeetCode OWNTIPS"></a>LeetCode OWNTIPS</h1><h2 id="快慢指针"><a href="#快慢指针" class="headerlink" title="快慢指针"></a>快慢指针</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isLoop</span><span class="params">(ListNode *head)</span></span>&#123;</span><br><span class="line">  ListNode *slow, *fast;</span><br><span class="line">  slow = fast = head;</span><br><span class="line">  <span class="keyword">while</span>(fast != <span class="literal">nullptr</span> &amp;&amp; fast-&gt;next-&gt;next != <span class="literal">nullptr</span> )&#123;</span><br><span class="line">		slow = slow-&gt;next;</span><br><span class="line">    fast = fast-&gt;next-&gt;next;</span><br><span class="line">    <span class="keyword">if</span>(slow == fast)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="LeetCode-OWNTIPS"><a href="#LeetCode-OWNTIPS" class="headerlink" title="LeetCode OWNTIPS"></a>LeetCode OWNTIPS</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">C++</th>
+<th style="text-align:center">Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">array</td>
+<td style="text-align:center">T dirs[n]</td>
+<td style="text-align:center">T[] dirs = new T[n]</td>
+</tr>
+<tr>
+<td style="text-align:center">dynamic array</td>
+<td style="text-align:center">vector\<T\></td>
+<td style="text-align:center">ArrayList\<T\></td>
+</tr>
+<tr>
+<td style="text-align:center">list</td>
+<td style="text-align:center">list\<T\></td>
+<td style="text-align:center">LinkedList\<T\></td>
+</tr>
+<tr>
+<td style="text-align:center">OrderedSet \ OrderedMap</td>
+<td style="text-align:center">set\<T\>, map\<T1,T2\></td>
+<td style="text-align:center">TreeSet\<T\>, TreeMap\<T1,T2\></td>
+</tr>
+<tr>
+<td style="text-align:center">HashSet  \ HashMap</td>
+<td style="text-align:center">unordered_set\<T\>, unordered_map\<T1,T2\></td>
+<td style="text-align:center">HashSet\<T\>, HashMap\<T1,T2\></td>
+</tr>
+<tr>
+<td style="text-align:center">heap</td>
+<td style="text-align:center">priority_queue\<T\></td>
+<td style="text-align:center">PriorityQueue\<T\></td>
+</tr>
+<tr>
+<td style="text-align:center">queue, deque</td>
+<td style="text-align:center">queue\<T\>, deque\<T></td>
+<td style="text-align:center">Queue\<T\>, Deque\<T></td>
+</tr>
+<tr>
+<td style="text-align:center">stack</td>
+<td style="text-align:center">stack\<T></td>
+<td style="text-align:center">Stack\<T></td>
+</tr>
+<tr>
+<td style="text-align:center">pair \ tuple</td>
+<td style="text-align:center">pair\<T1,T2>, tuple\<T1, T2, T3></td>
+<td style="text-align:center">N/A</td>
+</tr>
+<tr>
+<td style="text-align:center">customized</td>
+<td style="text-align:center">struct , class , long</td>
+<td style="text-align:center">class</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="快慢指针"><a href="#快慢指针" class="headerlink" title="快慢指针"></a>快慢指针</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isLoop</span><span class="params">(ListNode *head)</span></span>&#123;</span><br><span class="line">  ListNode *slow, *fast;</span><br><span class="line">  slow = fast = head;</span><br><span class="line">  <span class="keyword">while</span>(fast != <span class="literal">nullptr</span> &amp;&amp; fast-&gt;next-&gt;next != <span class="literal">nullptr</span> )&#123;</span><br><span class="line">		slow = slow-&gt;next;</span><br><span class="line">    fast = fast-&gt;next-&gt;next;</span><br><span class="line">    <span class="keyword">if</span>(slow == fast)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="合并两个链表"><a href="#合并两个链表" class="headerlink" title="合并两个链表"></a>合并两个链表</h2><p>dump 指针的妙用。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">mergeTwoList</span><span class="params">( ListNode* l1, ListNode* l2)</span></span>&#123;</span><br><span class="line">  ListNode* dump = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">while</span>(l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(l1-&gt;val &lt; l2-&gt;val)&#123;</span><br><span class="line">      dump-&gt;next = l1;</span><br><span class="line">      l1 = l1-&gt;next;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      dump-&gt;next = l2;</span><br><span class="line">      l2 = l2-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  dump-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line">  <span class="keyword">return</span> dump-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><ul>
