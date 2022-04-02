@@ -357,6 +357,43 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2022/04/02/C-Smart-pointer/" >
+            
+                <span>C++ Smart pointer</span>
+        </a>
+        <div class="abstract-content">
+            C++ 智能指针实际的C++开发过程中存在程序崩溃、程序运行所需内存越来越多的问题等，主要原因有：
+
+内存资源已经释放，但它的指针并没有改变指向（未指向nullptr，成为了野指针），并且后续还在使用。
+有些内存资源已经释放，后期又试图再次释放（重复释放会导致程序运行崩溃）。
+没有及时释放不再使用的内存资源，造成内存泄漏。
+
+C++在 98/03 标准时支持使用 auto_ptr 智能指针来实现堆内存的自动回收，C++11标准在废弃 auto_ptr 同时添加了 unique_ptr，shared_ptr 以及 weak_ptr 3个智能指针来实现堆内存的自动回收。
+
+C++ 智能指针底...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/04/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2022/03/30/Cmake-common-syntax/" >
             
                 <span>Cmake common syntax</span>
@@ -936,31 +973,6 @@ selectively aggregates ...
         <a class="post-tag" href="javascript:void(0);" data-tags = "Paper-reading">Paper-reading</a>
     
 </div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/03/23/Important-Conception-In-CG/" >
-            
-                <span>Important Conception In CG</span>
-        </a>
-        <div class="abstract-content">
-            
-
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/03/23</span>
-            </div>
-            <!-- tags  -->
             
         </div>
     </article>
@@ -2312,14 +2324,9 @@ selectively aggregates ...
     
     
     
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 84
+        Total : 85
         </div>
         <!-- search  -->
         
@@ -2332,6 +2339,11 @@ selectively aggregates ...
     
     <div class="archive-year"> 2022 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2022/04/02/C-Smart-pointer/" >C++ Smart pointer</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2823,6 +2835,8 @@ selectively aggregates ...
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
     
         <span class="sidebar-tag-name" data-tags="cmake"><span class="iconfont-archer">&#xe606;</span>cmake</span>
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
