@@ -26,17 +26,18 @@
 <meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/11/29/LeetCode-TIPS/index.html">
 <meta property="og:site_name" content="GuoXin Li&#39;s Blog">
 <meta property="og:description" content="LeetCode OWNTIPS    Type C++ Java     array T dirs[n] T[] dirs &#x3D; new T[n]   dynamic array vector\ ArrayList\   list list\ LinkedList\   OrderedSet \ OrderedMap set\, map\ TreeSet\, TreeMap\   HashSet">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202022-04-04%20at%2011.15.00.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20211212212719158.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-12-12%20at%2021.27.29.png">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/xogrid.jpg">
 <meta property="og:image" content="https://mmbiz.qpic.cn/sz_mmbiz_png/gibkIz0MVqdHMiaIZgKPc3aZYW2WIfQUViaJR5ux8oibricEckxYKDCicLviaNwpbpXU27psp8mx358L1ibjCO0QCbo1Ng/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20220403202829151.png">
 <meta property="article:published_time" content="2021-11-29T14:58:13.000Z">
-<meta property="article:modified_time" content="2022-04-03T13:41:48.195Z">
+<meta property="article:modified_time" content="2022-04-04T03:58:36.000Z">
 <meta property="article:author" content="jax">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20211212212719158.png">
+<meta name="twitter:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202022-04-04%20at%2011.15.00.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
@@ -484,6 +485,7 @@ height:50vh;
 </tbody>
 </table>
 </div>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202022-04-04%20at%2011.15.00.png" alt="Screen Shot 2022-04-04 at 11.15.00" style="zoom:67%;" /></p>
 <h2 id="快慢指针"><a href="#快慢指针" class="headerlink" title="快慢指针"></a>快慢指针</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isLoop</span><span class="params">(ListNode *head)</span></span>&#123;</span><br><span class="line">  ListNode *slow, *fast;</span><br><span class="line">  slow = fast = head;</span><br><span class="line">  <span class="keyword">while</span>(fast != <span class="literal">nullptr</span> &amp;&amp; fast-&gt;next-&gt;next != <span class="literal">nullptr</span> )&#123;</span><br><span class="line">		slow = slow-&gt;next;</span><br><span class="line">    fast = fast-&gt;next-&gt;next;</span><br><span class="line">    <span class="keyword">if</span>(slow == fast)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="合并两个链表"><a href="#合并两个链表" class="headerlink" title="合并两个链表"></a>合并两个链表</h2><p>dump 指针的妙用。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">mergeTwoList</span><span class="params">( ListNode* l1, ListNode* l2)</span></span>&#123;</span><br><span class="line">  ListNode* dump = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">while</span>(l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(l1-&gt;val &lt; l2-&gt;val)&#123;</span><br><span class="line">      dump-&gt;next = l1;</span><br><span class="line">      l1 = l1-&gt;next;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      dump-&gt;next = l2;</span><br><span class="line">      l2 = l2-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  dump-&gt;next = l1 == <span class="literal">nullptr</span> ? l2 : l1;</span><br><span class="line">  <span class="keyword">return</span> dump-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2053,9 +2055,34 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 85
+        Total : 86
         </div>
         <!-- search  -->
         
@@ -2068,6 +2095,11 @@ top:50vh;
     
     <div class="archive-year"> 2022 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2022/04/04/Thread-Process-and-Parallel-computing/" >Thread, Process and Parallel computing</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2537,35 +2569,35 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
     
-        <span class="sidebar-tag-name" data-tags="Paper-reading"><span class="iconfont-archer">&#xe606;</span>Paper-reading</span>
-    
         <span class="sidebar-tag-name" data-tags="Deep Learning"><span class="iconfont-archer">&#xe606;</span>Deep Learning</span>
+    
+        <span class="sidebar-tag-name" data-tags="Paper-reading"><span class="iconfont-archer">&#xe606;</span>Paper-reading</span>
     
         <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
     
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
         <span class="sidebar-tag-name" data-tags="CUDA"><span class="iconfont-archer">&#xe606;</span>CUDA</span>
+    
+        <span class="sidebar-tag-name" data-tags="cmake"><span class="iconfont-archer">&#xe606;</span>cmake</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="DataStructure"><span class="iconfont-archer">&#xe606;</span>DataStructure</span>
-    
         <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
     
-        <span class="sidebar-tag-name" data-tags="OS-Linux"><span class="iconfont-archer">&#xe606;</span>OS-Linux</span>
+        <span class="sidebar-tag-name" data-tags="DataStructure"><span class="iconfont-archer">&#xe606;</span>DataStructure</span>
     
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
     
-        <span class="sidebar-tag-name" data-tags="slidingwindow"><span class="iconfont-archer">&#xe606;</span>slidingwindow</span>
+        <span class="sidebar-tag-name" data-tags="OS-Linux"><span class="iconfont-archer">&#xe606;</span>OS-Linux</span>
     
         <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="slidingwindow"><span class="iconfont-archer">&#xe606;</span>slidingwindow</span>
     
         <span class="sidebar-tag-name" data-tags="golang"><span class="iconfont-archer">&#xe606;</span>golang</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
-    
-        <span class="sidebar-tag-name" data-tags="cmake"><span class="iconfont-archer">&#xe606;</span>cmake</span>
-    
-        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
