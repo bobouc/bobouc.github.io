@@ -1,0 +1,2583 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="jax">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="jax">
+    
+    <meta name="keywords" content="hexo,lipsky,lipsky-blog">
+    
+    <meta name="description" content="Help myself">
+    <meta name="description" content="着色器顶点着色器 vertex shader 如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。 #version 330 core layout (location &#x3D; 0) in vec3 aPos;  void main() {     gl_Position &#x3D; vec4(aPos.x, aPos.y, aPos.z, 1.0); } #version 33">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learnopengl-note">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2021/04/01/Learnopengl-note/index.html">
+<meta property="og:site_name" content="GuoXin Li&#39;s Blog">
+<meta property="og:description" content="着色器顶点着色器 vertex shader 如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。 #version 330 core layout (location &#x3D; 0) in vec3 aPos;  void main() {     gl_Position &#x3D; vec4(aPos.x, aPos.y, aPos.z, 1.0); } #version 33">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210404230945377.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-04-10%20at%2022.31.44.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-04-12%20at%2023.34.50.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210412233726028.png">
+<meta property="article:published_time" content="2021-04-01T15:16:18.000Z">
+<meta property="article:modified_time" content="2021-04-12T15:38:26.000Z">
+<meta property="article:author" content="jax">
+<meta property="article:tag" content="learning-note">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210404230945377.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    
+    <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
+    
+    <title>Learnopengl-note · GuoXin Li&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >GuoXin Li&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Learnopengl-note</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>GuoXin Li's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random/1600x500)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Learnopengl-note
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">2.2k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2021/04/01</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="着色器"><a href="#着色器" class="headerlink" title="着色器"></a>着色器</h2><p>顶点着色器</p>
+<p>vertex shader</p>
+<p>如果我们打算做渲染的话，现代OpenGL需要我们至少设置一个顶点和一个片段着色器。</p>
+<pre><code>#version 330 core
+layout (location = 0) in vec3 aPos;
+
+void main()
+{
+    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+}
+</code></pre><p>#version 330 core 声明版本和核心模式</p>
+<p>in , out关键字，每个着色器都有输入和输出进行数据交换。</p>
+<p>layout (location = 0) 设定了输入变量的位置值。</p>
+<p>着色器的开头总是要声明版本，接着是输入和输出变量、uniform和main函数。每个着色器的入口点都是main函数，在这个函数中我们处理所有的输入变量，并将结果输出到输出变量中。</p>
+<p>每个输入变量也叫做 顶点属性 vertex attribute，OpenGL 取保至少 16 个包含 4 分量的顶点属性可用。</p>
+<p>GLSL中包含C等其它语言大部分的默认基础数据类型：int、float、double、uint和bool。</p>
+<p>GLSL两种容器类型：vector 和 matrix</p>
+<p><strong>如果打算从一个着色器向另一个着色器发送数据，必须在发送方着色器中声明一个输出，在接收方着色器中声明一个类似的输入。</strong></p>
+<h3 id="顶点着色器"><a href="#顶点着色器" class="headerlink" title="顶点着色器"></a><strong>顶点着色器</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#version 330 core</span><br><span class="line">layout (location &#x3D; 0) in vec3 aPos; &#x2F;&#x2F; 位置变量的属性位置值为0</span><br><span class="line"></span><br><span class="line">out vec4 vertexColor; &#x2F;&#x2F; 为片段着色器指定一个颜色输出</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    gl_Position &#x3D; vec4(aPos, 1.0);</span><br><span class="line">    vertexColor &#x3D; vec4(0.5, 0.0, 0.0, 1.0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="片段着色器"><a href="#片段着色器" class="headerlink" title="片段着色器"></a><strong>片段着色器</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#version 330 core</span><br><span class="line">out vec4 FragColor;</span><br><span class="line"></span><br><span class="line">in vec4 vertexColor; &#x2F;&#x2F; 从顶点着色器传来的输入变量（名称相同、类型相同）</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    FragColor &#x3D; vertexColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Uniform"><a href="#Uniform" class="headerlink" title="Uniform"></a><strong>Uniform</strong></h3><p>uniform 是一种从 CPU 中的应用向 GPU 中的着色器发送数据的方式。</p>
+<p>uniform 是全局的，全局意味着 uniform 变量：</p>
+<ul>
+<li>必须在每个着色器程序对象中都是独一无二的</li>
+<li>它可以被着色器程序的任意着色器在任意阶段访问</li>
+<li>无论 uniform 被设置为什么，uniform 会一直保存它们的数据，直到它们被重置或者更新。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#version 330 core</span><br><span class="line">out vec4 FragColor;</span><br><span class="line"></span><br><span class="line">uniform vec4 ourColor;</span><br><span class="line">void main()&#123;</span><br><span class="line">	FragColor &#x3D; ourColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>声明一个 uniform vec4 的ourColor 全局变量，并在片段着色器的输出颜色设置为 uniform 的值。</p>
+<p><strong>因为 uniform 是全局变量，而无需通过顶点着色器作为中介</strong></p>
+<p><strong>如果声明了 uniform却未曾使用，编译器会默认移除此变量，导致最后编译出的版本中不会包含它</strong></p>
+<p><strong>给着色器中的 uniform 属性添加索引/位置，和数据</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">float timeValue &#x3D; glfwGetTime();</span><br><span class="line">float greenValue &#x3D; (sin(timeValue) &#x2F; 2.0f) + 0.5f;</span><br><span class="line">int vertexColorLocation &#x3D; glGetUniformLocation(shaderProgram, &quot;ourColor&quot;);</span><br><span class="line">glUseProgram(shaderProgram);</span><br><span class="line">glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);</span><br></pre></td></tr></table></figure>
+<p><code>glfwGetTime()</code>获取运行的秒数。</p>
+<p><code>glGetUniformLocation</code> 查询 uniform 中  <code>ourColor</code> 的位置值，如果返回 -1 代表没有找到这个值。</p>
+<p><code>glUniform4f</code> 函数设置 uniform 的值。</p>
+<p><strong>注意：在更新 uniform 之前必须首先使用此着色器程序，通过调用<code>glUseProgram</code> </strong></p>
+<p><strong>实例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">while(!glfwWindowShouldClose(window))</span><br><span class="line">&#123;</span><br><span class="line">	&#x2F;&#x2F;input</span><br><span class="line">	processInput(window);</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;render</span><br><span class="line">	&#x2F;&#x2F; clear color buffer</span><br><span class="line">	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);</span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;activate shader</span><br><span class="line">	glUseProgram(shaderProgram);</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;update uniform color</span><br><span class="line">	float timeValue &#x3D; glfwGetTime();</span><br><span class="line">	float greenValue &#x3D; sin(timeValue) &#x2F; 2.0f + 0.5f;</span><br><span class="line">	int vertexColorLocation &#x3D; glGetUniformLocation(shaderProgram, &quot;ourColor&quot;);</span><br><span class="line">	glUnifrom4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;draw triangle</span><br><span class="line">	glBindVertexArray(VAO);</span><br><span class="line">	glDrawArrays(GL_TRIANGLES, 0, 3);</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;exchange buffer and look up IO event</span><br><span class="line">	glfwSwapBuffers(window);</span><br><span class="line">	glfwPollEvents();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="多个属性"><a href="#多个属性" class="headerlink" title="多个属性"></a>多个属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">float vertices[] &#x3D; &#123;</span><br><span class="line">	&#x2F;&#x2F; 位置              &#x2F;&#x2F; 颜色</span><br><span class="line">     0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   &#x2F;&#x2F; 右下</span><br><span class="line">    -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   &#x2F;&#x2F; 左下</span><br><span class="line">     0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    &#x2F;&#x2F; 顶部</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设置 <code>layout</code> 标识符将 aColor 属性位置设置为1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#version 330 core</span><br><span class="line">layout(location &#x3D; 0) in vec3 aPos;&#x2F;&#x2F;位置变量属性位置值为0</span><br><span class="line">layout(location &#x3D; 1) in vec3 aColor;&#x2F;&#x2F;颜色变量属性位置为1</span><br><span class="line"></span><br><span class="line">out vec3 ourColor; &#x2F;&#x2F; 向片段着色器输出一个颜色</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    gl_Position &#x3D; vec4(aPos, 1.0);</span><br><span class="line">    ourColor &#x3D; aColor; &#x2F;&#x2F; 将ourColor设置为我们从顶点数据那里得到的输入颜色</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210404230945377.png" alt="image-20210404230945377"></p>
+<p><strong>glVertexAttribPointer 来更新顶点格式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;position property</span><br><span class="line">glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)0);</span><br><span class="line">glEnableVertexAttribArray(0);</span><br><span class="line">&#x2F;&#x2F;color property</span><br><span class="line">glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)(3*sizeof(float)));</span><br><span class="line">glEnableVertexAttribArray(1);</span><br></pre></td></tr></table></figure>
+<p>自己的着色器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#ifndef SHADER_H</span><br><span class="line">#define SHADER_H</span><br><span class="line"></span><br><span class="line">#include &lt;glad&#x2F;glad.h&gt;; &#x2F;&#x2F; 包含glad来获取所有的必须OpenGL头文件</span><br><span class="line"></span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;fstream&gt;</span><br><span class="line">#include &lt;sstream&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Shader</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    &#x2F;&#x2F; 程序ID</span><br><span class="line">    unsigned int ID;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 构造器读取并构建着色器</span><br><span class="line">    Shader(const GLchar* vertexPath, const GLchar* fragmentPath);</span><br><span class="line">    &#x2F;&#x2F; 使用&#x2F;激活程序</span><br><span class="line">    void use();</span><br><span class="line">    &#x2F;&#x2F; uniform工具函数</span><br><span class="line">    void setBool(const std::string &amp;name, bool value) const;</span><br><span class="line">    void setInt(const std::string &amp;name, int value) const;</span><br><span class="line">    void setFloat(const std::string &amp;name, float value) const;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>工具函数：use 来激活着色器程序，set 函数能够查询一个 unform 的位置并设置它的值。</p>
+<h3 id="从文件读取"><a href="#从文件读取" class="headerlink" title="从文件读取"></a>从文件读取</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Shader(const char* vertexPath, const char* fragmentPath)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 1. 从文件路径中获取顶点&#x2F;片段着色器</span><br><span class="line">    std::string vertexCode;</span><br><span class="line">    std::string fragmentCode;</span><br><span class="line">    std::ifstream vShaderFile;</span><br><span class="line">    std::ifstream fShaderFile;</span><br><span class="line">    &#x2F;&#x2F; 保证ifstream对象可以抛出异常：</span><br><span class="line">    vShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);</span><br><span class="line">    fShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F; 打开文件</span><br><span class="line">        vShaderFile.open(vertexPath);</span><br><span class="line">        fShaderFile.open(fragmentPath);</span><br><span class="line">        std::stringstream vShaderStream, fShaderStream;</span><br><span class="line">        &#x2F;&#x2F; 读取文件的缓冲内容到数据流中</span><br><span class="line">        vShaderStream &lt;&lt; vShaderFile.rdbuf();</span><br><span class="line">        fShaderStream &lt;&lt; fShaderFile.rdbuf();</span><br><span class="line">        &#x2F;&#x2F; 关闭文件处理器</span><br><span class="line">        vShaderFile.close();</span><br><span class="line">        fShaderFile.close();</span><br><span class="line">        &#x2F;&#x2F; 转换数据流到string</span><br><span class="line">        vertexCode   &#x3D; vShaderStream.str();</span><br><span class="line">        fragmentCode &#x3D; fShaderStream.str();</span><br><span class="line">    &#125;</span><br><span class="line">    catch(std::ifstream::failure e)</span><br><span class="line">    &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ&quot; &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; vertexCode 转为 char *</span><br><span class="line">    &#x2F;&#x2F; c_str()</span><br><span class="line">    const char* vShaderCode &#x3D; vertexCode.c_str();</span><br><span class="line">    const char* fShaderCode &#x3D; fragmentCode.c_str();</span><br><span class="line">    [...]</span><br></pre></td></tr></table></figure>
+<p><strong>编译和链接着色器</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2. 编译着色器</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> vertex, fragment;</span><br><span class="line"><span class="keyword">int</span> success;</span><br><span class="line"><span class="keyword">char</span> infoLog[<span class="number">512</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顶点着色器</span></span><br><span class="line">vertex = glCreateShader(GL_VERTEX_SHADER);</span><br><span class="line"></span><br><span class="line">glShaderSource(vertex, <span class="number">1</span>, &amp;vShaderCode, <span class="literal">NULL</span>);</span><br><span class="line">glCompileShader(vertex);</span><br><span class="line"><span class="comment">// 打印编译错误（如果有的话）</span></span><br><span class="line">glGetShaderiv(vertex, GL_COMPILE_STATUS, &amp;success);</span><br><span class="line"><span class="keyword">if</span>(!success)</span><br><span class="line">&#123;</span><br><span class="line">    glGetShaderInfoLog(vertex, <span class="number">512</span>, <span class="literal">NULL</span>, infoLog);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"</span> &lt;&lt; infoLog &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 片段着色器也类似</span></span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 着色器程序</span></span><br><span class="line">ID = glCreateProgram();</span><br><span class="line">glAttachShader(ID, vertex);</span><br><span class="line">glAttachShader(ID, fragment);</span><br><span class="line">glLinkProgram(ID);</span><br><span class="line"><span class="comment">// 打印连接错误（如果有的话）</span></span><br><span class="line">glGetProgramiv(ID, GL_LINK_STATUS, &amp;success);</span><br><span class="line"><span class="keyword">if</span>(!success)</span><br><span class="line">&#123;</span><br><span class="line">    glGetProgramInfoLog(ID, <span class="number">512</span>, <span class="literal">NULL</span>, infoLog);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::PROGRAM::LINKING_FAILED\n"</span> &lt;&lt; infoLog &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除着色器，它们已经链接到我们的程序中了，已经不再需要了</span></span><br><span class="line">glDeleteShader(vertex);</span><br><span class="line">glDeleteShader(fragment);</span><br></pre></td></tr></table></figure>
+<h2 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h2><p>我们可以为每个顶点添加颜色来增加图形细节，但是如果想要指定足够多的顶点，就需要足够多的颜色，开销会很大。</p>
+<p><strong>纹理环绕方式</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">环绕方式</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">GL_REPEAT</td>
+<td style="text-align:left">对纹理的默认行为。重复纹理图像。</td>
+</tr>
+<tr>
+<td style="text-align:left">GL_MIRRORED_REPEAT</td>
+<td style="text-align:left">和GL_REPEAT一样，但每次重复图片是镜像放置的。</td>
+</tr>
+<tr>
+<td style="text-align:left">GL_CLAMP_TO_EDGE</td>
+<td style="text-align:left">纹理坐标会被约束在0到1之间，超出的部分会重复纹理坐标的边缘，产生一种边缘被拉伸的效果。</td>
+</tr>
+<tr>
+<td style="text-align:left">GL_CLAMP_TO_BORDER</td>
+<td style="text-align:left">超出的坐标为用户指定的边缘颜色。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-04-10%20at%2022.31.44.png" alt="Screen Shot 2021-04-10 at 22.31.44"></p>
+<h3 id="纹理加载使用stb-image-h库进行加载"><a href="#纹理加载使用stb-image-h库进行加载" class="headerlink" title="纹理加载使用stb_image.h库进行加载"></a>纹理加载使用stb_image.h库进行加载</h3><p>要使用stb_image.h加载图片，需要使用它的stbi_load函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int width, height, nrChannels;</span><br><span class="line">unsigned char *data &#x3D; stbi_load(&quot;image.jpg&quot;, &amp;width, &amp;height, &amp;nrChannels, 0);</span><br></pre></td></tr></table></figure>
+<h3 id="生成纹理"><a href="#生成纹理" class="headerlink" title="生成纹理"></a>生成纹理</h3><p>与生成的OpenGL对象一样，纹理也是使用ID进行引用的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unsigned int texture;</span><br><span class="line">glGenTextures(1, &amp;texture);</span><br></pre></td></tr></table></figure>
+<p>之后就是绑定纹理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">glBindTexture(GL_TEXTURE_2D, texture);</span><br></pre></td></tr></table></figure>
+<p>然后使用之前载入的图片数据生成一个纹理，纹理可以通过glTexImage2D来生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">glTexImage2D(GL_TEXTURE2D, 0, GL_RGB, width, height, 0, GL_RGB,GL_UNSIGNED_BYTE,data);</span><br><span class="line">glGenerateMipmap(GL_TEXTURE_2D);</span><br></pre></td></tr></table></figure>
+<p>参数含义：</p>
+<ul>
+<li>指定纹理目标</li>
+<li>为纹理置顶多级渐远纹理的级别，0为基本级别</li>
+<li>告诉OpenGL我们希望纹理储存为何种格式，我们的图像为RGB值格式</li>
+<li>宽</li>
+<li>高</li>
+<li>图源格式和数据类型，并把它们储存为 char(byte) 数组</li>
+<li>真正的图像数据</li>
+</ul>
+<p>生成了纹理和相应的多级渐远纹理后，释放图像的内存是一个好的习惯。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stbi_image_free(data);</span><br></pre></td></tr></table></figure>
+<h3 id="完整的纹理生成代码"><a href="#完整的纹理生成代码" class="headerlink" title="完整的纹理生成代码"></a>完整的纹理生成代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">unsigned int texture;</span><br><span class="line">glGenTextures(1, &amp;texture);</span><br><span class="line">glBindTexture(GL_TEXTURE_2D, texture);</span><br><span class="line">&#x2F;&#x2F; 为当前绑定的纹理对象设置环绕、过滤方式</span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);</span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);</span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);</span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);</span><br><span class="line">&#x2F;&#x2F; 加载并生成纹理</span><br><span class="line">int width, height, nrChannels;</span><br><span class="line">unsigned char *data &#x3D; stbi_load(&quot;container.jpg&quot;, &amp;width, &amp;height, &amp;nrChannels, 0);</span><br><span class="line">if (data)</span><br><span class="line">&#123;</span><br><span class="line">    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);</span><br><span class="line">    glGenerateMipmap(GL_TEXTURE_2D);</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    std::cout &lt;&lt; &quot;Failed to load texture&quot; &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line">stbi_image_free(data);</span><br></pre></td></tr></table></figure>
+<h2 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h2><h3 id="叉乘"><a href="#叉乘" class="headerlink" title="叉乘"></a>叉乘</h3><p>叉乘只在3D空间中有定义，它需要两个不平行向量作为输入，生成一个正交于两个输入向量的第三个向量。如果输入的两个向量也是正交的，那么叉乘之后将会产生3个互相正交的向量。</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-04-12%20at%2023.34.50.png" alt="Screen Shot 2021-04-12 at 23.34.50"></p>
+<p>向量A和B的叉积：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/image-20210412233726028.png" alt="image-20210412233726028"></p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2021/04/17/logofapplegeniusbar/" title= "记一次苹果天才吧维修记录">
+                    <div class="nextTitle">记一次苹果天才吧维修记录</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2021/03/29/Analysis-of-Dual-Attention-Network-for-Scene-Segmentation/" title= "Analysis of "Dual Attention Network for Scene Segmentation"">
+                    <div class="prevTitle">Analysis of "Dual Attention Network for Scene Segmentation"</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "3z31za5tyuogWzU86rydsH0h-gzGzoHsz",
+        appKey: "YeLtmtT5U8NP5GXTUesonkhB",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:liylipsky@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/bobouc" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#着色器"><span class="toc-number">1.</span> <span class="toc-text">着色器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#顶点着色器"><span class="toc-number">1.1.</span> <span class="toc-text">顶点着色器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#片段着色器"><span class="toc-number">1.2.</span> <span class="toc-text">片段着色器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Uniform"><span class="toc-number">1.3.</span> <span class="toc-text">Uniform</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个属性"><span class="toc-number">1.4.</span> <span class="toc-text">多个属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从文件读取"><span class="toc-number">1.5.</span> <span class="toc-text">从文件读取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#纹理"><span class="toc-number">2.</span> <span class="toc-text">纹理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#纹理加载使用stb-image-h库进行加载"><span class="toc-number">2.1.</span> <span class="toc-text">纹理加载使用stb_image.h库进行加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成纹理"><span class="toc-number">2.2.</span> <span class="toc-text">生成纹理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整的纹理生成代码"><span class="toc-number">2.3.</span> <span class="toc-text">完整的纹理生成代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变换"><span class="toc-number">3.</span> <span class="toc-text">变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#叉乘"><span class="toc-number">3.1.</span> <span class="toc-text">叉乘</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 86
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2022 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2022/04/04/Thread-Process-and-Parallel-computing/" >Thread, Process and Parallel computing</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2022/04/02/C-Smart-pointer/" >C++ Smart pointer</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2022/03/30/Cmake-common-syntax/" >Cmake common syntax</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2021/11/29/LeetCode-TIPS/" >LeetCode TIPS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/18</span><a class="archive-post-title" href= "/2021/08/18/golang-specific-notes/" >golang specific notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/07</span><a class="archive-post-title" href= "/2021/08/07/ListNode-Data-Structure/" >ListNode-Data Structure</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/13</span><a class="archive-post-title" href= "/2021/07/13/Slam-Learning/" >SLAM Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/13</span><a class="archive-post-title" href= "/2021/06/13/A-Little-bit-of-Summary-Of-Deep-Learning/" >A Little bit of Summary Of Deep Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2021/05/27/git-frequently-used-actions/" >git frequently used actions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2021/05/12/OS-Learning-Linux-Homebrew/" >OS-Learning: Linux Homebrew</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2021/05/11/Dynamic-Programming-Analysis/" >Dynamic Programming Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2021/04/24/CUDA-coding/" >CUDA coding</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2021/04/23/Sliding-Window/" >Sliding Window </a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2021/04/20/Binary-Search/" >Binary Search</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2021/04/17/logofapplegeniusbar/" >记一次苹果天才吧维修记录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2021/04/01/Learnopengl-note/" >Learnopengl-note</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2021/03/29/Analysis-of-Dual-Attention-Network-for-Scene-Segmentation/" >Analysis of "Dual Attention Network for Scene Segmentation"</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2021/03/23/Important-Conception-In-CG/" >Important Conception In CG</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2021/03/21/Docker-notes/" >Docker notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2021/03/17/Self-Learning-OF-Hongyi-Lee-Machine-Learning-Spring-Mandarin/" >Hongyi-Lee Machine Learning Spring 2021 Mandarin</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href= "/2021/02/22/CPP-refresh/" >CPP refresh</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/03</span><a class="archive-post-title" href= "/2021/02/03/752-Open-the-Lock/" >752. Open the Lock</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2021/02/01/Iteratively-144-Binary-Tree-Preorder-Inorder-Traversal/" >Iteratively. 144.Binary Tree Preorder&Inorder Traversal</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/29</span><a class="archive-post-title" href= "/2021/01/29/LeetCode-111-Minimum-Depth-of-Binary-Tree/" >LeetCode 111. Minimum Depth of Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2021/01/14/full-permutation-with-backtracking/" >full permutation with backtracking</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/04</span><a class="archive-post-title" href= "/2021/01/04/Hyperspectral-Classification/" >高光谱分类-Hyperspectral Classification</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/06</span><a class="archive-post-title" href= "/2020/12/06/LeetCode-322-Coin-Change/" >LeetCode 322. Coin Change</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/05</span><a class="archive-post-title" href= "/2020/12/05/LeetCode509-Fibonacci-Number/" >LeetCode509. Fibonacci Number</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2020/11/28/Learn-AndrewNg-Ai-notes/" >Learn AndrewNg-MachineLearning notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span><a class="archive-post-title" href= "/2020/11/20/LeetCode-Hanota-LCCI/" >LeetCode-Hanota LCCI</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href= "/2020/11/18/DogsVSCats/" >DogsVSCats</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/14</span><a class="archive-post-title" href= "/2020/11/14/region-growsplitmerge-watershed/" >区域生长&区域分割与合成&分水岭算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span><a class="archive-post-title" href= "/2020/11/10/threshouldeffecton2valueimg/" >不同阈值处理方法对于二值图像的影响</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span><a class="archive-post-title" href= "/2020/10/23/%E9%A2%91%E7%8E%87%E5%9F%9F%E9%AB%98%E9%80%9A%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2-%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/" >频率域高通低通滤波&同态滤波</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span><a class="archive-post-title" href= "/2020/10/19/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86work-%E7%A9%BA%E9%97%B4%E5%9F%9F-%E5%9B%BE%E5%83%8F%E5%9F%9F-%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96-%E5%B9%B3%E6%BB%91%E7%A9%BA%E9%97%B4%E6%BB%A4%E6%B3%A2-%E9%94%90%E5%8C%96%E6%BB%A4%E6%B3%A2%E5%99%A8/" >数字图像处理work-空间域/图像域-直方图均衡化/平滑空间滤波/锐化滤波器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/23</span><a class="archive-post-title" href= "/2020/09/23/std-vector-in-c/" >std::vector in c++</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/22</span><a class="archive-post-title" href= "/2020/09/22/Reverse-Integer/" >LeetCode 7.Reverse Integer</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/LeetCode4-Median-of-Two-Sorted-Arrays/" >LeetCode4. Median of Two Sorted Arrays</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2020/03/07/LeetCode628-Maximum-Product-of-Three-Numbers/" >LeetCode628. Maximum Product of Three Numbers</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/LeetCode637-Average-of-Levels-in-Binary-Tree/" >LeetCode637. Average of Levels in Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2020/03/02/LeetCode463-Island-Perimeter/" >LeetCode463. Island Perimeter</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/%E6%9C%80%E5%B0%8F%E6%95%B0%E7%BB%84/" >最小数组</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/%E6%AF%94%E8%BE%83%E5%A5%87%E5%81%B6%E4%B8%AA%E6%95%B0/" >比较奇偶个数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/29</span><a class="archive-post-title" href= "/2020/02/29/LeetCode504-Base-7/" >LeetCode504. Base 7</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href= "/2020/02/27/LeetCode551-Student-Attendance-Record-I/" >LeetCode551. Student Attendance Record I</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2020/02/26/LeetCode-303-Range-Sum-Query-Immutable/" >LeetCode 303. Range Sum Query - Immutable</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2020/02/26/LeetCode655-Print-Binary-Tree/" >LeetCode655. Print Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/24</span><a class="archive-post-title" href= "/2020/02/24/LeetCode561-Array-Partition-I/" >LeetCode561. Array Partition I </a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2020/02/23/LeetCode566-Reshape-the-Matrix-%E9%87%8D%E7%BD%AE%E7%9F%A9%E9%98%B5/" >LeetCode566.Reshape the Matrix 重置矩阵</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2020/02/23/LeetCode174-Dungeon-Game%F0%9F%A4%B4%E5%9C%B0%E7%8B%B1%E6%95%91%F0%9F%91%B8/" >LeetCode174. Dungeon Game🤴地狱救👸</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/LeetCode-404-Sum-of-Left-Leaves-%E5%B7%A6%E5%8F%B6%E5%AD%90%E7%BB%93%E7%82%B9%E5%80%BC%E4%B9%8B%E5%92%8C/" >LeetCode 404. Sum of Left Leaves 左叶子结点值之和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2020/02/19/LeetCode-455-Assign-Cookies-%E9%A5%BC%E5%B9%B2%E5%88%86%E9%85%8D/" >LeetCode 455. Assign Cookies 饼干分配</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/18</span><a class="archive-post-title" href= "/2020/02/18/LeetCode-461-Hamming-Distance-%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" >LeetCode 461 Hamming Distance 汉明距离</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/LeetCode-657-Judge-Route-Cricle-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%98%AF%E5%90%A6%E8%BF%94%E5%9B%9E%E5%8E%9F%E7%82%B9/" >LeetCode 657 Judge Route Cricle 机器人是否返回原点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/LeetCode-1-Two-Sum/" >LeetCode 1 Two Sum</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/23</span><a class="archive-post-title" href= "/2020/01/23/Python-Error-Handing/" >Python_Error_Handing</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/2020/01/12/Python-Functional-Programming/" >Python_Functional_Programming</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/25</span><a class="archive-post-title" href= "/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE%E7%9A%84%E6%A6%82%E5%BF%B5/" >数据结构-图的概念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href= "/2019/08/06/Spider-for-a-Book-Secrets-from-the-New-Science-of-Expertise-comments-on-JD-com/" >Spider for a Book "Secrets from the New Science of Expertise" comments on JD.com</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href= "/2019/07/17/%E7%89%A9%E8%81%94%E7%BD%91%E6%96%B0%E5%9E%8B%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82%E7%9A%84%E5%8F%91%E5%B1%95/" >物联网新型智慧城市的发展</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2019/05/27/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" >树和二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2019/03/27/PAT-1016-%E9%83%A8%E5%88%86A-B/" >PAT 1016 部分A+B</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2019/03/27/C-C-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-%E8%AF%AD%E6%B3%95%E9%80%9F%E9%80%92/" >C/C++快速入门-语法速递</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2019/03/24/PAT-1014%E7%A6%8F%E5%B0%94%E6%91%A9%E6%96%AF%E7%9A%84%E7%BA%A6%E4%BC%9A/" >PAT 1014福尔摩斯的约会</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2019/03/21/PAT-1013-%E6%95%B0%E7%B4%A0%E6%95%B0/" >PAT 1013 数素数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/2019/03/20/Character-String-C/" >C语言字符串浅析 Character String (C)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/13</span><a class="archive-post-title" href= "/2019/01/13/12306-Python-%E6%8A%A2%E8%BD%A6%E7%A5%A8%E5%BC%80%E6%BA%90%E7%A8%8B%E5%BA%8F%EF%BC%88%E7%AE%80%E6%98%93%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%EF%BC%89/" >12306 Python 抢车票开源程序（简易使用教程）</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href= "/2018/12/31/Android-learning-record/" >Android_learning_record</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/08</span><a class="archive-post-title" href= "/2018/12/08/%E5%8F%99%E8%BF%B0%E4%B8%80%E4%BA%9B%E7%AE%80%E7%BA%A6%E7%9A%84%E4%BA%8B/" >叙述一些简约的事</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/2018/12/04/Linux-learning-record/" >Linux_learning_record</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2018/11/29/Data-Structure-C/" >Data Structure(C)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2018/11/21/Cortex-STM32F107-learning-record/" >Cortex-M3(STM32F107)_Learning_Notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2018/10/05/The-method-of-get-in-Requests-lib/" >The method of get() in Requests lib</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/17</span><a class="archive-post-title" href= "/2018/09/17/Basic-Matrix-knowledge/" >Basic Matrix knowledge</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/14</span><a class="archive-post-title" href= "/2018/09/14/Numpy-generate-array/" >Numpy generate array</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/24</span><a class="archive-post-title" href= "/2018/08/24/Parse-web-pages-using-CSS-class-by-BeautifulSoup/" >Parse web pages using CSS class by BeautifulSoup</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/17</span><a class="archive-post-title" href= "/2018/08/17/Regular-Expression/" >Regular Expression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span><a class="archive-post-title" href= "/2018/08/13/Sets-Dictionaries/" >Sets & Dictionaries</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/11</span><a class="archive-post-title" href= "/2018/08/11/Character-string-and-Data-type/" >Character string and Data type</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span><a class="archive-post-title" href= "/2018/08/10/Requests-details-of-Python/" >Requests' details of Python</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2018/04/20/Virtual-Environment-For-Different-Projects/" >Virtual Environment For Different Projects</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2018/04/16/20180416starspaceXtougao/" >我们一起数月亮，看星星。</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="Deep Learning"><span class="iconfont-archer">&#xe606;</span>Deep Learning</span>
+    
+        <span class="sidebar-tag-name" data-tags="Paper-reading"><span class="iconfont-archer">&#xe606;</span>Paper-reading</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
+    
+        <span class="sidebar-tag-name" data-tags="CUDA"><span class="iconfont-archer">&#xe606;</span>CUDA</span>
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="cmake"><span class="iconfont-archer">&#xe606;</span>cmake</span>
+    
+        <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
+    
+        <span class="sidebar-tag-name" data-tags="DataStructure"><span class="iconfont-archer">&#xe606;</span>DataStructure</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
+    
+        <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="OS-Linux"><span class="iconfont-archer">&#xe606;</span>OS-Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="slidingwindow"><span class="iconfont-archer">&#xe606;</span>slidingwindow</span>
+    
+        <span class="sidebar-tag-name" data-tags="golang"><span class="iconfont-archer">&#xe606;</span>golang</span>
+    
+        <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "jax"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
+
+
