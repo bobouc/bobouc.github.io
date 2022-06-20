@@ -1,0 +1,2638 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="jax">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="jax">
+    
+    <meta name="keywords" content="hexo,lipsky,lipsky-blog">
+    
+    <meta name="description" content="Help myself">
+    <meta name="description" content="Supervised Leaning:e.g.  Housing price prediction. (Regression) 房屋租价预测  Breast cancer(maligant, benign). (Classification) 乳腺癌的恶性良性预测   Unsupervised Leaning:e.g.  Google news. 谷歌新闻的分类（采用聚类的方法）  DNA Cla">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learn AndrewNg-MachineLearning notes">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2020/11/28/Learn-AndrewNg-Ai-notes/index.html">
+<meta property="og:site_name" content="GuoXin Li&#39;s Blog">
+<meta property="og:description" content="Supervised Leaning:e.g.  Housing price prediction. (Regression) 房屋租价预测  Breast cancer(maligant, benign). (Classification) 乳腺癌的恶性良性预测   Unsupervised Leaning:e.g.  Google news. 谷歌新闻的分类（采用聚类的方法）  DNA Cla">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128001043034.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128001208038.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128001331719.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002225309.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128001331719.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002225309.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002355980.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002539163.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002714684.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002714684.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002952837.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128003530397.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128003554240.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128003757283.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128004027942.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128004409451.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128005531564.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128005730763.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128005854145.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128010156987.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128010407579.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128010902400.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128011023572.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128011404831.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128011618967.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128233000407.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128233000407.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129005158320.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129010025788.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129010226792.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201204103320335.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129110527040.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129110633901.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129111023093.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129111307808.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129111744934.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129111744934.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201170055672.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201170317073.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201171035772.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201171819775.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201172029595.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201172322418.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203100047476.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203100412974.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203100603941.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203101955873.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203102336345.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201204111655518.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203102908070.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203103213877.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203124741104.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201205111311855.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201205111805487.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201205112012525.png">
+<meta property="og:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201205112347863.png">
+<meta property="article:published_time" content="2020-11-28T14:28:31.000Z">
+<meta property="article:modified_time" content="2020-12-05T06:03:38.000Z">
+<meta property="article:author" content="jax">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128001043034.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    
+    <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
+    
+    <title>Learn AndrewNg-MachineLearning notes · GuoXin Li&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >GuoXin Li&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Learn AndrewNg-MachineLearning notes</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>GuoXin Li's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random/1600x500)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Learn AndrewNg-MachineLearning notes
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">877</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/11/28</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="Supervised-Leaning"><a href="#Supervised-Leaning" class="headerlink" title="Supervised Leaning:"></a>Supervised Leaning:</h3><p>e.g.</p>
+<ul>
+<li><p>Housing price prediction. (Regression) 房屋租价预测</p>
+</li>
+<li><p>Breast cancer(maligant, benign). (Classification) 乳腺癌的恶性良性预测</p>
+</li>
+</ul>
+<h3 id="Unsupervised-Leaning"><a href="#Unsupervised-Leaning" class="headerlink" title="Unsupervised Leaning:"></a>Unsupervised Leaning:</h3><p>e.g.</p>
+<ul>
+<li><p>Google news. 谷歌新闻的分类（采用聚类的方法）</p>
+</li>
+<li><p>DNA Classification. DNA的分类，聚类算法</p>
+</li>
+<li><p>组织计算机集群（什么样的机器易于协同工作，进而高效）</p>
+</li>
+<li><p>Facebook、Google+ 的圈子分类</p>
+</li>
+<li><p>大公司大型数据，存储消费者信息进行，市场分类，细分市场</p>
+</li>
+<li><p>cocktail party 鸡尾酒🍸的酒宴中麦克风记录不同的声音，通过机器学习进行分辨出不同的声音（人声，歌声，噪声）</p>
+</li>
+</ul>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128001043034.png" alt="image-20201128001043034" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128001208038.png" alt="image-20201128001208038" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128001331719.png" alt="image-20201128001331719"  /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002225309.png" alt="image-20201128002225309"></p>
+<p>代价函数 theta</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128001331719.png" alt="image-20201128001331719"  /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002225309.png" alt="image-20201128002225309"></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002355980.png" alt="image-20201128002355980"  /></p>
+<p><strong>代价函数的作用</strong></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002539163.png" alt="image-20201128002539163" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002714684.png" alt="image-20201128002714684"></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002714684.png" alt="image-20201128002714684"></p>
+<p><strong>使用等高线来代表代价函数</strong></p>
+<p>contour plot 等高线图</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128002952837.png" alt="image-20201128002952837" style="zoom:80%;" /></p>
+<p>想象一下，这个等高线上长出一个碗来</p>
+<p><strong>不同的代价函数对应不同的假设函数</strong></p>
+<h3 id="梯度下降-Gradient-Decent"><a href="#梯度下降-Gradient-Decent" class="headerlink" title="梯度下降 Gradient Decent"></a>梯度下降 Gradient Decent</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128003530397.png" alt="image-20201128003530397" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128003554240.png" alt="image-20201128003554240" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128003757283.png" alt="image-20201128003757283" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128004027942.png" alt="image-20201128004027942" style="zoom:80%;" /></p>
+<p>阿尔法是一个学习率，来控制梯度下降的速度</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128004409451.png" alt="image-20201128004409451" style="zoom:80%;" /></p>
+<p>左边的是正确的 simultaneous 同步更新</p>
+<p>右边更新在更新时使用了更新的值，无同步</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128005531564.png" alt="image-20201128005531564" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128005730763.png" alt="image-20201128005730763" style="zoom:80%;" /></p>
+<p>如果步伐过大，将会越过最小值点</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128005854145.png" alt="image-20201128005854145"></p>
+<p>如果已经在最低点了，那么梯度下降算法将不会做任何事情</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128010156987.png" alt="image-20201128010156987" style="zoom:80%;" /></p>
+<h3 id="线性回归的梯度下降算法"><a href="#线性回归的梯度下降算法" class="headerlink" title="线性回归的梯度下降算法"></a>线性回归的梯度下降算法</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128010407579.png" alt="image-20201128010407579" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128010902400.png" alt="image-20201128010902400" style="zoom:80%;" /></p>
+<p>将梯度下降算法应用到线性回归函数中后：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128011023572.png" alt="image-20201128011023572" style="zoom:80%;" /></p>
+<p>当代价值越来越小时，将会最终到达最符合的拟合曲线</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128011404831.png" alt="image-20201128011404831" style="zoom: 67%;" /></p>
+<p>因为在每次计算代价函数的时候，都进行了对于m个数据集的计算，所以称之为batch，批处理</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128011618967.png" alt="image-20201128011618967" style="zoom:80%;" /></p>
+<p>除了梯度下降算法来求解代价函数的最小值，还有一个交做正规方程组方法可以使用。</p>
+<p>梯度下降算法更适合于数据量大的计算。</p>
+<h3 id="矩阵乘法的妙用"><a href="#矩阵乘法的妙用" class="headerlink" title="矩阵乘法的妙用"></a>矩阵乘法的妙用</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128233000407.png" alt="image-20201128233000407" style="zoom:80%;" /></p>
+<p>python 中有关矩阵的乘法和转置</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201128233000407.png" alt="image-20201128233000407" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129005158320.png" alt="image-20201129005158320" style="zoom: 67%;" /></p>
+<p>求逆时，如果为奇异矩阵-singular matrix ，将会有提示：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129010025788.png" alt="image-20201129010025788" style="zoom: 67%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129010226792.png" alt="image-20201129010226792" style="zoom: 67%;" /></p>
+<p><strong>python中可以使用 pinv 的来计算奇异矩阵的伪逆矩阵</strong></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201204103320335.png" alt="image-20201204103320335" style="zoom:80%;" /></p>
+<h3 id="Multivariate-linear-regression-多元线性回归"><a href="#Multivariate-linear-regression-多元线性回归" class="headerlink" title="Multivariate linear regression 多元线性回归"></a>Multivariate linear regression 多元线性回归</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129110527040.png" alt="image-20201129110527040" style="zoom:80%;" /></p>
+<p>New Hypothesis：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129110633901.png" alt="image-20201129110633901" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129111023093.png" alt="image-20201129111023093" style="zoom:80%;" /></p>
+<h3 id="Gradient-descent多元梯度下降方法"><a href="#Gradient-descent多元梯度下降方法" class="headerlink" title="Gradient descent多元梯度下降方法"></a>Gradient descent多元梯度下降方法</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129111307808.png" alt="image-20201129111307808" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129111744934.png" alt="image-20201129111744934"></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201129111744934.png" alt="image-20201129111744934"></p>
+<h3 id="多元梯度下降-feature-scaling"><a href="#多元梯度下降-feature-scaling" class="headerlink" title="多元梯度下降  feature scaling"></a>多元梯度下降  feature scaling</h3><p>divide max  除以最大值方法</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201170055672.png" alt="image-20201201170055672" style="zoom:80%;" /></p>
+<p>feature scaling 之后更容易梯度下降至找到一个局部最小值</p>
+<p>feature scaling 条件</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201170317073.png" alt="image-20201201170317073"></p>
+<p>除以平均值方法</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201171035772.png" alt="image-20201201171035772" style="zoom:80%;" /></p>
+<h3 id="多元梯度下降中的学习率-——阿尔法"><a href="#多元梯度下降中的学习率-——阿尔法" class="headerlink" title="多元梯度下降中的学习率 ——阿尔法"></a>多元梯度下降中的学习率 ——阿尔法</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201171819775.png" alt="image-20201201171819775" style="zoom:80%;" /></p>
+<p>代价函数逐渐收敛</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201172029595.png" alt="image-20201201172029595" style="zoom:80%;" /></p>
+<p>学习率 阿尔法 的选择：</p>
+<p>通常情况下是选择一个较小的学习率，但太小也会导致收敛速度变慢。</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201201172322418.png" alt="image-20201201172322418" style="zoom:80%;" /></p>
+<p>选取学习率的方法</p>
+<h3 id="特征和多项式回归"><a href="#特征和多项式回归" class="headerlink" title="特征和多项式回归"></a>特征和多项式回归</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203100047476.png" alt="image-20201203100047476" style="zoom:80%;" /></p>
+<p>将 frontage  和 depth 重新定义为 area </p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203100412974.png" alt="image-20201203100412974" style="zoom:80%;" /></p>
+<p>更好二特征模型：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203100603941.png" alt="image-20201203100603941" style="zoom:80%;" /></p>
+<h3 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h3><p>通常使用梯度下降的方法来求代价函数的最小值</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203101955873.png" alt="image-20201203101955873" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203102336345.png" alt="image-20201203102336345" style="zoom:80%;" /></p>
+<p>例如：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201204111655518.png" alt="image-20201204111655518" style="zoom: 67%;" /></p>
+<p>正规方程求代价函数最小值点</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203102908070.png" alt="image-20201203102908070" style="zoom:80%;" /></p>
+<p>如果使用正规方程发就不需要进行缩放操作。</p>
+<p>正规方程解与梯度下降方法的对比：</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203103213877.png" alt="image-20201203103213877" style="zoom:80%;" /></p>
+<p>特征n数量多时，通常会选择梯度下降算法。</p>
+<h3 id="When-matrix-is-non-invertible"><a href="#When-matrix-is-non-invertible" class="headerlink" title="When matrix is non-invertible"></a>When matrix is non-invertible</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201203124741104.png" alt="image-20201203124741104" style="zoom:80%;" /></p>
+<p>看特征里是否有相关特征，对应到线性代数即为是否为线性相关的</p>
+<h3 id="Logistic-Regression-Classification-逻辑回归分类"><a href="#Logistic-Regression-Classification-逻辑回归分类" class="headerlink" title="Logistic Regression Classification  逻辑回归分类"></a>Logistic Regression Classification  逻辑回归分类</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201205111311855.png" alt="image-20201205111311855"  /></p>
+<p>线性回归应用于分类问题，通常不能永远的到一个好的结果。所以才有了后面的逻辑回归，得出一个永远的 h(theta) 函数的值在 0 ~ 1 之间。</p>
+<h3 id="Logistic-Regression-Hypothesis-Representation-假设逻辑回归"><a href="#Logistic-Regression-Hypothesis-Representation-假设逻辑回归" class="headerlink" title="Logistic Regression Hypothesis Representation  假设逻辑回归"></a>Logistic Regression Hypothesis Representation  假设逻辑回归</h3><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201205111805487.png" alt="image-20201205111805487" style="zoom:80%;" /></p>
+<p>sigmod function == logistic function</p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201205112012525.png" alt="image-20201205112012525" style="zoom:80%;" /></p>
+<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/picgo/image-20201205112347863.png" alt="image-20201205112347863" style="zoom:80%;" /></p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/12/05/LeetCode509-Fibonacci-Number/" title= "LeetCode509. Fibonacci Number">
+                    <div class="nextTitle">LeetCode509. Fibonacci Number</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/11/20/LeetCode-Hanota-LCCI/" title= "LeetCode-Hanota LCCI">
+                    <div class="prevTitle">LeetCode-Hanota LCCI</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "3z31za5tyuogWzU86rydsH0h-gzGzoHsz",
+        appKey: "YeLtmtT5U8NP5GXTUesonkhB",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:liylipsky@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/bobouc" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Supervised-Leaning"><span class="toc-number">1.</span> <span class="toc-text">Supervised Leaning:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unsupervised-Leaning"><span class="toc-number">2.</span> <span class="toc-text">Unsupervised Leaning:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代价函数"><span class="toc-number">3.</span> <span class="toc-text">代价函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降-Gradient-Decent"><span class="toc-number">4.</span> <span class="toc-text">梯度下降 Gradient Decent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线性回归的梯度下降算法"><span class="toc-number">5.</span> <span class="toc-text">线性回归的梯度下降算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵乘法的妙用"><span class="toc-number">6.</span> <span class="toc-text">矩阵乘法的妙用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Multivariate-linear-regression-多元线性回归"><span class="toc-number">7.</span> <span class="toc-text">Multivariate linear regression 多元线性回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradient-descent多元梯度下降方法"><span class="toc-number">8.</span> <span class="toc-text">Gradient descent多元梯度下降方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多元梯度下降-feature-scaling"><span class="toc-number">9.</span> <span class="toc-text">多元梯度下降  feature scaling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多元梯度下降中的学习率-——阿尔法"><span class="toc-number">10.</span> <span class="toc-text">多元梯度下降中的学习率 ——阿尔法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征和多项式回归"><span class="toc-number">11.</span> <span class="toc-text">特征和多项式回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正规方程"><span class="toc-number">12.</span> <span class="toc-text">正规方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#When-matrix-is-non-invertible"><span class="toc-number">13.</span> <span class="toc-text">When matrix is non-invertible</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Logistic-Regression-Classification-逻辑回归分类"><span class="toc-number">14.</span> <span class="toc-text">Logistic Regression Classification  逻辑回归分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Logistic-Regression-Hypothesis-Representation-假设逻辑回归"><span class="toc-number">15.</span> <span class="toc-text">Logistic Regression Hypothesis Representation  假设逻辑回归</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 86
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2022 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2022/04/04/Thread-Process-and-Parallel-computing/" >Thread, Process and Parallel computing</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2022/04/02/C-Smart-pointer/" >C++ Smart pointer</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2022/03/30/Cmake-common-syntax/" >Cmake common syntax</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2021/11/29/LeetCode-TIPS/" >LeetCode TIPS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/18</span><a class="archive-post-title" href= "/2021/08/18/golang-specific-notes/" >golang specific notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/07</span><a class="archive-post-title" href= "/2021/08/07/ListNode-Data-Structure/" >ListNode-Data Structure</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/13</span><a class="archive-post-title" href= "/2021/07/13/Slam-Learning/" >SLAM Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/13</span><a class="archive-post-title" href= "/2021/06/13/A-Little-bit-of-Summary-Of-Deep-Learning/" >A Little bit of Summary Of Deep Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2021/05/27/git-frequently-used-actions/" >git frequently used actions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2021/05/12/OS-Learning-Linux-Homebrew/" >OS-Learning: Linux Homebrew</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2021/05/11/Dynamic-Programming-Analysis/" >Dynamic Programming Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2021/04/24/CUDA-coding/" >CUDA coding</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2021/04/23/Sliding-Window/" >Sliding Window </a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2021/04/20/Binary-Search/" >Binary Search</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2021/04/17/logofapplegeniusbar/" >记一次苹果天才吧维修记录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2021/04/01/Learnopengl-note/" >Learnopengl-note</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2021/03/29/Analysis-of-Dual-Attention-Network-for-Scene-Segmentation/" >Analysis of "Dual Attention Network for Scene Segmentation"</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2021/03/23/Important-Conception-In-CG/" >Important Conception In CG</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2021/03/21/Docker-notes/" >Docker notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2021/03/17/Self-Learning-OF-Hongyi-Lee-Machine-Learning-Spring-Mandarin/" >Hongyi-Lee Machine Learning Spring 2021 Mandarin</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href= "/2021/02/22/CPP-refresh/" >CPP refresh</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/03</span><a class="archive-post-title" href= "/2021/02/03/752-Open-the-Lock/" >752. Open the Lock</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2021/02/01/Iteratively-144-Binary-Tree-Preorder-Inorder-Traversal/" >Iteratively. 144.Binary Tree Preorder&Inorder Traversal</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/29</span><a class="archive-post-title" href= "/2021/01/29/LeetCode-111-Minimum-Depth-of-Binary-Tree/" >LeetCode 111. Minimum Depth of Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2021/01/14/full-permutation-with-backtracking/" >full permutation with backtracking</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/04</span><a class="archive-post-title" href= "/2021/01/04/Hyperspectral-Classification/" >高光谱分类-Hyperspectral Classification</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/06</span><a class="archive-post-title" href= "/2020/12/06/LeetCode-322-Coin-Change/" >LeetCode 322. Coin Change</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/05</span><a class="archive-post-title" href= "/2020/12/05/LeetCode509-Fibonacci-Number/" >LeetCode509. Fibonacci Number</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2020/11/28/Learn-AndrewNg-Ai-notes/" >Learn AndrewNg-MachineLearning notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span><a class="archive-post-title" href= "/2020/11/20/LeetCode-Hanota-LCCI/" >LeetCode-Hanota LCCI</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href= "/2020/11/18/DogsVSCats/" >DogsVSCats</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/14</span><a class="archive-post-title" href= "/2020/11/14/region-growsplitmerge-watershed/" >区域生长&区域分割与合成&分水岭算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span><a class="archive-post-title" href= "/2020/11/10/threshouldeffecton2valueimg/" >不同阈值处理方法对于二值图像的影响</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span><a class="archive-post-title" href= "/2020/10/23/%E9%A2%91%E7%8E%87%E5%9F%9F%E9%AB%98%E9%80%9A%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2-%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/" >频率域高通低通滤波&同态滤波</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span><a class="archive-post-title" href= "/2020/10/19/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86work-%E7%A9%BA%E9%97%B4%E5%9F%9F-%E5%9B%BE%E5%83%8F%E5%9F%9F-%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96-%E5%B9%B3%E6%BB%91%E7%A9%BA%E9%97%B4%E6%BB%A4%E6%B3%A2-%E9%94%90%E5%8C%96%E6%BB%A4%E6%B3%A2%E5%99%A8/" >数字图像处理work-空间域/图像域-直方图均衡化/平滑空间滤波/锐化滤波器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/23</span><a class="archive-post-title" href= "/2020/09/23/std-vector-in-c/" >std::vector in c++</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/22</span><a class="archive-post-title" href= "/2020/09/22/Reverse-Integer/" >LeetCode 7.Reverse Integer</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/LeetCode4-Median-of-Two-Sorted-Arrays/" >LeetCode4. Median of Two Sorted Arrays</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2020/03/07/LeetCode628-Maximum-Product-of-Three-Numbers/" >LeetCode628. Maximum Product of Three Numbers</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/LeetCode637-Average-of-Levels-in-Binary-Tree/" >LeetCode637. Average of Levels in Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2020/03/02/LeetCode463-Island-Perimeter/" >LeetCode463. Island Perimeter</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/%E6%9C%80%E5%B0%8F%E6%95%B0%E7%BB%84/" >最小数组</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/%E6%AF%94%E8%BE%83%E5%A5%87%E5%81%B6%E4%B8%AA%E6%95%B0/" >比较奇偶个数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/29</span><a class="archive-post-title" href= "/2020/02/29/LeetCode504-Base-7/" >LeetCode504. Base 7</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href= "/2020/02/27/LeetCode551-Student-Attendance-Record-I/" >LeetCode551. Student Attendance Record I</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2020/02/26/LeetCode-303-Range-Sum-Query-Immutable/" >LeetCode 303. Range Sum Query - Immutable</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2020/02/26/LeetCode655-Print-Binary-Tree/" >LeetCode655. Print Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/24</span><a class="archive-post-title" href= "/2020/02/24/LeetCode561-Array-Partition-I/" >LeetCode561. Array Partition I </a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2020/02/23/LeetCode566-Reshape-the-Matrix-%E9%87%8D%E7%BD%AE%E7%9F%A9%E9%98%B5/" >LeetCode566.Reshape the Matrix 重置矩阵</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2020/02/23/LeetCode174-Dungeon-Game%F0%9F%A4%B4%E5%9C%B0%E7%8B%B1%E6%95%91%F0%9F%91%B8/" >LeetCode174. Dungeon Game🤴地狱救👸</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/LeetCode-404-Sum-of-Left-Leaves-%E5%B7%A6%E5%8F%B6%E5%AD%90%E7%BB%93%E7%82%B9%E5%80%BC%E4%B9%8B%E5%92%8C/" >LeetCode 404. Sum of Left Leaves 左叶子结点值之和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2020/02/19/LeetCode-455-Assign-Cookies-%E9%A5%BC%E5%B9%B2%E5%88%86%E9%85%8D/" >LeetCode 455. Assign Cookies 饼干分配</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/18</span><a class="archive-post-title" href= "/2020/02/18/LeetCode-461-Hamming-Distance-%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" >LeetCode 461 Hamming Distance 汉明距离</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/LeetCode-657-Judge-Route-Cricle-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%98%AF%E5%90%A6%E8%BF%94%E5%9B%9E%E5%8E%9F%E7%82%B9/" >LeetCode 657 Judge Route Cricle 机器人是否返回原点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/LeetCode-1-Two-Sum/" >LeetCode 1 Two Sum</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/23</span><a class="archive-post-title" href= "/2020/01/23/Python-Error-Handing/" >Python_Error_Handing</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/2020/01/12/Python-Functional-Programming/" >Python_Functional_Programming</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/25</span><a class="archive-post-title" href= "/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE%E7%9A%84%E6%A6%82%E5%BF%B5/" >数据结构-图的概念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href= "/2019/08/06/Spider-for-a-Book-Secrets-from-the-New-Science-of-Expertise-comments-on-JD-com/" >Spider for a Book "Secrets from the New Science of Expertise" comments on JD.com</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href= "/2019/07/17/%E7%89%A9%E8%81%94%E7%BD%91%E6%96%B0%E5%9E%8B%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82%E7%9A%84%E5%8F%91%E5%B1%95/" >物联网新型智慧城市的发展</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2019/05/27/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" >树和二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2019/03/27/PAT-1016-%E9%83%A8%E5%88%86A-B/" >PAT 1016 部分A+B</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2019/03/27/C-C-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-%E8%AF%AD%E6%B3%95%E9%80%9F%E9%80%92/" >C/C++快速入门-语法速递</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2019/03/24/PAT-1014%E7%A6%8F%E5%B0%94%E6%91%A9%E6%96%AF%E7%9A%84%E7%BA%A6%E4%BC%9A/" >PAT 1014福尔摩斯的约会</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2019/03/21/PAT-1013-%E6%95%B0%E7%B4%A0%E6%95%B0/" >PAT 1013 数素数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/2019/03/20/Character-String-C/" >C语言字符串浅析 Character String (C)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/13</span><a class="archive-post-title" href= "/2019/01/13/12306-Python-%E6%8A%A2%E8%BD%A6%E7%A5%A8%E5%BC%80%E6%BA%90%E7%A8%8B%E5%BA%8F%EF%BC%88%E7%AE%80%E6%98%93%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%EF%BC%89/" >12306 Python 抢车票开源程序（简易使用教程）</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href= "/2018/12/31/Android-learning-record/" >Android_learning_record</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/08</span><a class="archive-post-title" href= "/2018/12/08/%E5%8F%99%E8%BF%B0%E4%B8%80%E4%BA%9B%E7%AE%80%E7%BA%A6%E7%9A%84%E4%BA%8B/" >叙述一些简约的事</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/2018/12/04/Linux-learning-record/" >Linux_learning_record</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2018/11/29/Data-Structure-C/" >Data Structure(C)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2018/11/21/Cortex-STM32F107-learning-record/" >Cortex-M3(STM32F107)_Learning_Notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2018/10/05/The-method-of-get-in-Requests-lib/" >The method of get() in Requests lib</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/17</span><a class="archive-post-title" href= "/2018/09/17/Basic-Matrix-knowledge/" >Basic Matrix knowledge</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/14</span><a class="archive-post-title" href= "/2018/09/14/Numpy-generate-array/" >Numpy generate array</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/24</span><a class="archive-post-title" href= "/2018/08/24/Parse-web-pages-using-CSS-class-by-BeautifulSoup/" >Parse web pages using CSS class by BeautifulSoup</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/17</span><a class="archive-post-title" href= "/2018/08/17/Regular-Expression/" >Regular Expression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span><a class="archive-post-title" href= "/2018/08/13/Sets-Dictionaries/" >Sets & Dictionaries</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/11</span><a class="archive-post-title" href= "/2018/08/11/Character-string-and-Data-type/" >Character string and Data type</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span><a class="archive-post-title" href= "/2018/08/10/Requests-details-of-Python/" >Requests' details of Python</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2018/04/20/Virtual-Environment-For-Different-Projects/" >Virtual Environment For Different Projects</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2018/04/16/20180416starspaceXtougao/" >我们一起数月亮，看星星。</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="Deep Learning"><span class="iconfont-archer">&#xe606;</span>Deep Learning</span>
+    
+        <span class="sidebar-tag-name" data-tags="Paper-reading"><span class="iconfont-archer">&#xe606;</span>Paper-reading</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
+    
+        <span class="sidebar-tag-name" data-tags="CUDA"><span class="iconfont-archer">&#xe606;</span>CUDA</span>
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="cmake"><span class="iconfont-archer">&#xe606;</span>cmake</span>
+    
+        <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
+    
+        <span class="sidebar-tag-name" data-tags="DataStructure"><span class="iconfont-archer">&#xe606;</span>DataStructure</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
+    
+        <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="OS-Linux"><span class="iconfont-archer">&#xe606;</span>OS-Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="slidingwindow"><span class="iconfont-archer">&#xe606;</span>slidingwindow</span>
+    
+        <span class="sidebar-tag-name" data-tags="golang"><span class="iconfont-archer">&#xe606;</span>golang</span>
+    
+        <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "jax"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
+
+
