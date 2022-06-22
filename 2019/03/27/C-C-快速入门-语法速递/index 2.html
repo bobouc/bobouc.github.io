@@ -1,0 +1,2937 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="jax">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="jax">
+    
+    <meta name="keywords" content="hexo,lipsky,lipsky-blog">
+    
+    <meta name="description" content="Help myself">
+    <meta name="description" content="c&#x2F;c++快速入门 [TOC] 变量类型：整型：短整型（short）、整型（int）和长整型（long long），其中短整型（short）一般用不到。int 也被称为 long int，long long 也被称为 long long int  对于整型 int 来说，一个整数占用 32 bit，即 4Byte，取值为（-2^31~+2^31-1）。一般10^9范围内的整数都可以定义成 int">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C&#x2F;C++快速入门-语法速递">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2019/03/27/C-C-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-%E8%AF%AD%E6%B3%95%E9%80%9F%E9%80%92/index.html">
+<meta property="og:site_name" content="GuoXin Li&#39;s Blog">
+<meta property="og:description" content="c&#x2F;c++快速入门 [TOC] 变量类型：整型：短整型（short）、整型（int）和长整型（long long），其中短整型（short）一般用不到。int 也被称为 long int，long long 也被称为 long long int  对于整型 int 来说，一个整数占用 32 bit，即 4Byte，取值为（-2^31~+2^31-1）。一般10^9范围内的整数都可以定义成 int">
+<meta property="article:published_time" content="2019-03-27T12:59:00.000Z">
+<meta property="article:modified_time" content="2020-05-05T15:36:20.000Z">
+<meta property="article:author" content="jax">
+<meta property="article:tag" content="learning-note">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    
+    <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
+    
+    <title>C/C++快速入门-语法速递 · GuoXin Li&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >GuoXin Li&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">C/C++快速入门-语法速递</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>GuoXin Li's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random/1600x500)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            C/C++快速入门-语法速递
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">5.2k</span>阅读时长: <span class="post-count reading-time">23 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/03/27</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="c-c-快速入门"><a href="#c-c-快速入门" class="headerlink" title="c/c++快速入门"></a>c/c++快速入门</h2><!--toc-->
+<p>[TOC]</p>
+<h3 id="变量类型："><a href="#变量类型：" class="headerlink" title="变量类型："></a>变量类型：</h3><h4 id="整型："><a href="#整型：" class="headerlink" title="整型："></a>整型：</h4><p>短整型（short）、整型（int）和长整型（long long），其中短整型（short）一般用不到。int 也被称为 long int，long long 也被称为 long long int</p>
+<ul>
+<li>对于整型 int 来说，一个整数占用 32 bit，即 4Byte，取值为（-2^31~+2^31-1）。一般10^9范围内的整数都可以定义成 int 型。</li>
+<li>long long 占用64bit，即8Byte，取值范围（-2^63~+2^63-1）超过10^9数量级的一般用 long long 进行定义。</li>
+<li><strong>注意：</strong>如果 long long 型赋值大于2^31-1 则需要在初值后面加上 LL</li>
+</ul>
+<h4 id="浮点型："><a href="#浮点型：" class="headerlink" title="浮点型："></a>浮点型：</h4><ul>
+<li>单精度 float：浮点数占用32 bit，有6~7位有效精度</li>
+<li>双精度 double：浮点数占用 64 bit，有效精度15~16位</li>
+</ul>
+<p>double 类型的变量在精度方面比 float 类型的高很多，对于一些精度要求比较高的地方，推荐使用 double 类型</p>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><h4 id="字符型："><a href="#字符型：" class="headerlink" title="字符型："></a>字符型：</h4><p>char c = ‘c’</p>
+<p>注意：ASCII 码标准的范围是 0 ~127</p>
+<p>0~9对应48~57</p>
+<p>A~Z 对应65~90</p>
+<p>a~z 对应97~122</p>
+<p>小写字母比大写字母的 ASCII 码大32</p>
+<h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><p>\用来进行转义</p>
+<h4 id="字符串常量"><a href="#字符串常量" class="headerlink" title="字符串常量"></a>字符串常量</h4><ul>
+<li>char * s = “Hello, World!”</li>
+<li>char s[] = “Hello, World!”</li>
+</ul>
+<p>这两种方法都是定义一个字符串常量，但前者是指针（这个字符串不知道在哪里，是处理参数，且动态分配空间）后者是数组（这个字符串在这里，作为本地变量空间被自动回收）</p>
+<p>如果要构造一个字符串——数组</p>
+<p>如果要处理一个字符串——指针</p>
+<p>字符串字面量即一对双引号括起来的字符序列</p>
+<p><strong>字符串字面量的操作：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> ch;</span><br><span class="line">ch = <span class="string">"abc"</span>[<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
+<p>则 ch 的新值将会是字母 b</p>
+<h4 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h4><ul>
+<li>布尔型在 C++中可以直接使用，但是在 C 语言中必须添加 stdbool.h 的头文件才可以使用。</li>
+<li>bool 型变量 它的取值只能是 true 或者 false。</li>
+<li>整型常量在赋值给布尔型变量时会自动转换为 true（非零）或者 false（零）</li>
+<li>true 和 false 在存储时分别为 1 和 0</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> flag1 = <span class="number">0</span>, flag2 = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">1</span>, b = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>, flag1, flag2, a == b);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 1 1</span><br></pre></td></tr></table></figure>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>格式：</p>
+<p>（新类型名）变量名</p>
+<h3 id="宏定义和-const-常量"><a href="#宏定义和-const-常量" class="headerlink" title="宏定义和 const 常量"></a>宏定义和 const 常量</h3><p>常量定义方式一：宏定义</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define 标识符 常量</span><br></pre></td></tr></table></figure>
+<p>常量定义方式儿：const 定义</p>
+<p>格式：</p>
+<p>const 数据类型 变量名 = 常量；</p>
+<p><strong>注意：const 也能定义指针变量，如果定义了指针变量则被定义的指针变量的地址不可更改</strong></p>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>注意位运算符：</p>
+<ul>
+<li><p>a&lt;&lt;&lt;x  整数 a 按二进制左移 x 位</p>
+</li>
+<li><p>a&gt;&gt;&gt;x  整数 a 按二进制右移 x 位</p>
+</li>
+<li><p>a &amp; b 整数 a 与 b 按二进制对齐，按位进行与运算（除了11得1，其他均为0）</p>
+</li>
+<li>a | b 整数 a 与 b 按二进制对齐，按位进行或运算（除了0 0 得0，其他均为1）</li>
+<li>a^b  整数 a 与 b 按二进制对齐，按位进行异或运算（相同为0，不同为1）</li>
+<li>~a 整数 a 二进制得每一位进行0到1，1到0变换操作</li>
+</ul>
+<h3 id="scanf-和-printf-的输入-输出"><a href="#scanf-和-printf-的输入-输出" class="headerlink" title="scanf 和 printf 的输入/输出"></a>scanf 和 printf 的输入/输出</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>格式</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>long long</td>
+<td>%lld</td>
+<td>scanf(“%lld”, &amp;n)</td>
+</tr>
+<tr>
+<td>float</td>
+<td>%f</td>
+<td>scanf(“%f”, &amp;n)</td>
+</tr>
+<tr>
+<td>double</td>
+<td>%lf</td>
+<td>scanf(“%lf”, &amp;n)</td>
+</tr>
+<tr>
+<td>char</td>
+<td>%c</td>
+<td>scanf(“%c”, &amp;n)</td>
+</tr>
+<tr>
+<td>char（字符串即 char 数组）</td>
+<td>%s</td>
+<td>scanf(“%s”, str)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>注意：在 scanf 中除了 char 数组整个输入不需要加 &amp; 之外，其他变量类型都要加 &amp;，因为数组变量本身就是地址（详见数组与指针的比较）</strong></p>
+<h6 id="scanf-除了-c-外，对其他格式符（如-d）的输入是以空白字符（即空格、tab）为结束判断标志。"><a href="#scanf-除了-c-外，对其他格式符（如-d）的输入是以空白字符（即空格、tab）为结束判断标志。" class="headerlink" title="scanf 除了 %c  外，对其他格式符（如%d）的输入是以空白字符（即空格、tab）为结束判断标志。"></a>scanf 除了 %c  外，对其他格式符（如%d）的输入是以空白字符（即空格、tab）为结束判断标志。</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">char</span> c, d;</span><br><span class="line">   <span class="keyword">int</span> a, b;</span><br><span class="line">   </span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%d%c%d%c"</span>, &amp;a, &amp;c, &amp;b,&amp;d);</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%d%c%d%c"</span>, a, c, b, d);</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 20</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 20</span><br></pre></td></tr></table></figure>
+<h3 id="printf-输出的注意"><a href="#printf-输出的注意" class="headerlink" title="printf 输出的注意"></a>printf 输出的注意</h3><ul>
+<li><p>%md</p>
+<p>%md 可以使不足 m 位的 int 型变量以 m 位进行右对齐输出，其中高位用空格补齐；如果本身超过 m 位，则保持不变。</p>
+</li>
+<li><p>如果需要左对齐，格式为：%-md</p>
+</li>
+<li><p>%0md</p>
+<p>%0md 跟%md 的不同点在于，当变量不足 m 位时，将会用0来补齐前面的不足空位</p>
+</li>
+<li><p>%.mf</p>
+<p>注意这里的%与 m 之间是有 • 点，意思为让浮点数保留 m 位小数输出，这个“保留”使用的是精度的“四舍六入五成双”规则。</p>
+<p>如果要用四舍五入需要使用 round 函数</p>
+</li>
+</ul>
+<h3 id="getchar-和-putchar-输入-输出字符"><a href="#getchar-和-putchar-输入-输出字符" class="headerlink" title="getchar 和 putchar 输入/输出字符"></a>getchar 和 putchar 输入/输出字符</h3><p>getchar 用来输入单个字符，putchar 用来输出单个字符</p>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c1, c2, c3;</span><br><span class="line">    c1 = getchar();</span><br><span class="line">    getchar();</span><br><span class="line">    c2 = getchar();</span><br><span class="line">    c3 = getchar();</span><br><span class="line">    <span class="built_in">putchar</span>(c1);</span><br><span class="line">    <span class="built_in">putchar</span>(c2);</span><br><span class="line">    <span class="built_in">putchar</span>(c3);</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abcd</span><br></pre></td></tr></table></figure>
+<hr>
+<p>输出：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acd</span><br></pre></td></tr></table></figure>
+<hr>
+<p>这里的‘a’被 c1接受；‘b’虽然被接受，但是没有将它存储在变量中，第三个字符‘c’被 c2接受，第四个‘d’被 c3接受。</p>
+<p><strong>getchar 可以识别换行符，即如果输入中存在换行符\n（回车），则输出也会有回车</strong></p>
+<h3 id="注释："><a href="#注释：" class="headerlink" title="注释："></a>注释：</h3><ul>
+<li>/**/</li>
+<li>//</li>
+</ul>
+<h3 id="typedef"><a href="#typedef" class="headerlink" title="typedef:"></a>typedef:</h3><p>typedef 可以给一个复杂的数据类型起一个别名，这在数据结构中经常用到：</p>
+<p>例如可以将 long long 定义为 LL。即：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br></pre></td></tr></table></figure>
+<p>注意：结束需要有分号 ( ; )  而 define 后没有分号</p>
+<h3 id="常用的-math-函数"><a href="#常用的-math-函数" class="headerlink" title="常用的 math 函数"></a>常用的 math 函数</h3><ul>
+<li><p>fabs(double x): 取绝对值</p>
+</li>
+<li><p>floor(double x)：向下取整（即向小取整）</p>
+</li>
+<li><p>ceil(double x)：向上取整（即向大取整）</p>
+</li>
+<li><p>sqrt(double x)：返回 double 类型变量的算数平方根</p>
+</li>
+<li><p>pow(double r, double p)：返回 r^p，r 的 p 次方</p>
+</li>
+<li><p>log(double x)：返回 double 类型的自然对数e为底的对数。</p>
+<p>需要注意的是，C 语言中没有对任意底数求对数得函数，如果需要则需要用到对数中的“换底公式” 来求任意底数的对数。</p>
+</li>
+<li><p>sin(double x)、cos(double x) 和 tan(double x)：分别返回 double 型变量的正弦、余弦和正切的值。（x 为弧度制）</p>
+</li>
+<li><p>asin(double x)、acos(double x) 和 atan(double x)： 分别返回 double 型变量的反正弦、反余弦和反正切的值。</p>
+</li>
+<li><p>round(double x)：进行四舍五入，返回类型为 double，需要进行取整</p>
+<p>示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> db1 = round(<span class="number">3.40</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, (<span class="keyword">int</span>)db1);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h3><ul>
+<li><p>if (条件 A){</p>
+<p>…</p>
+<p>}</p>
+</li>
+<li><p>if(条件 A){</p>
+<p>…</p>
+<p>}else if(条件 B){</p>
+<p>…</p>
+<p>}else{</p>
+<p>…</p>
+<p>}</p>
+</li>
+<li><p>if语句的嵌套</p>
+<p>if(条件 A){</p>
+<p>…</p>
+<p>​    if(条件 B){</p>
+<p>​        …</p>
+<p>​    }</p>
+<p>}</p>
+</li>
+</ul>
+<h3 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h3><p>格式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式)&#123;</span><br><span class="line">        <span class="keyword">case</span> 常量表达式<span class="number">1</span>：</span><br><span class="line">            ...</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> 常量表达式<span class="number">2</span>：</span><br><span class="line">            ...</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> 常量表达式<span class="number">3</span>：</span><br><span class="line">            ...</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    	<span class="keyword">default</span>:</span><br><span class="line">        	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mian</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">switch</span>(a + b)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, a);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,b);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a+b);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Sad Input!"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<p>2</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>每个 case 下属语句没有使用大括号，是因为 case 本身默认把两个 case 之间的内容全部作为上一个 case 的内容</p>
+</li>
+<li><p>break 的使用是结束当前语句，不继续向下进行。如果上例子中去掉所有的 break，那么结果将会是:</p>
+<p>2</p>
+<p>3</p>
+<p>Sad Input!</p>
+</li>
+</ul>
+<h3 id="while-与-do-…-while"><a href="#while-与-do-…-while" class="headerlink" title="while 与 do … while"></a>while 与 do … while</h3><p>while(条件 A){</p>
+<p>​    …</p>
+<p>}</p>
+<hr>
+<p>do{</p>
+<p>​    …</p>
+<p>}while(条件 A)</p>
+<p>二者的区别就是 do … while 会至少先执行省略号中的内容一次。而 while 只有当条件满足时才能够进入 while 循环</p>
+<h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h3><p>格式：</p>
+<p>for(表达式 A; 表达式 B; 表达式 C){</p>
+<p>​    …</p>
+<p>}</p>
+<p>break 和 continue 在 for 循环中的使用：</p>
+<p>break 是终止循环，continue 是跳过 continue 之后的本次循环内容</p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>const int a[] = {1, 2, 3, 4};</p>
+<p>这里数组变量已经是 const 指针，const 表明数组的每个单元都是 const int</p>
+<p>必须通过初始化进行赋值</p>
+<h3 id="memset-对数组中每一个元素赋相同的值"><a href="#memset-对数组中每一个元素赋相同的值" class="headerlink" title="memset 对数组中每一个元素赋相同的值"></a>memset 对数组中每一个元素赋相同的值</h3><p>对数组中每一个元素赋相同的值有两种方法：memset 函数和 fill 函数。使用 memset 函数必须在程序开头添加 string.h 头文件，使用 fill 函数需要用到 STL 的 algorithm 头文件</p>
+<h4 id="memset-函数的格式："><a href="#memset-函数的格式：" class="headerlink" title="memset 函数的格式："></a>memset 函数的格式：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">memset</span>(数组名, 值, <span class="keyword">sizeof</span>(数组名))</span><br></pre></td></tr></table></figure>
+<p>下面直介绍对数组赋值0或-1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(a));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="built_in">memset</span>(a, <span class="number">-1</span>, <span class="keyword">sizeof</span>(a));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="built_in">memset</span>(a, <span class="number">1</span>, <span class="keyword">sizeof</span>(a));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h6 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 0 0</span><br><span class="line">1 1 1 1 1 </span><br><span class="line">16843009 16843009 16843009 16843009 16843009</span><br></pre></td></tr></table></figure>
+<p><strong>注意：memset 只能用于对数组进行赋0或赋1操作</strong></p>
+<h3 id="字符数组"><a href="#字符数组" class="headerlink" title="字符数组"></a>字符数组</h3><ol>
+<li>字符数组的初始化</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">15</span>] = &#123;<span class="string">'G'</span>, <span class="string">'o'</span>, <span class="string">'o'</span>, <span class="string">'d'</span>, <span class="string">' '</span>, <span class="string">'s'</span>, <span class="string">'t'</span>, <span class="string">'d'</span>, <span class="string">'o'</span>, <span class="string">'r'</span>, <span class="string">'y'</span>, <span class="string">'!'</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>, str[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h6 id="输出：-1"><a href="#输出：-1" class="headerlink" title="输出："></a>输出：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Good story!</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>字符串数组直接通过赋值字符串来初始化（仅限于初始化，程序的其他位置不允许这样直接赋值整个字符串）</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">15</span>] = <span class="string">"Good story!"</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>, str);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h6 id="输出：-2"><a href="#输出：-2" class="headerlink" title="输出："></a>输出：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Good story!</span><br></pre></td></tr></table></figure>
+<hr>
+<ol>
+<li>字符数组的输入输出(有关字符串浅析见：<a href="https://lipsky.info/2019/03/20/Character-String-C/" target="_blank" rel="noopener">C语言字符串浅析 Character String (C)</a>)</li>
+</ol>
+<ul>
+<li><p>scanf 、printf</p>
+</li>
+<li><p>getchar、putchar：分别用来输入和输出单个字符，之前已详细说明，需要注意的是，getchar 可以识别空格和换行符</p>
+</li>
+<li><p>gets、puts：get 识别换行符 \n 作为输入结束，（因此，如果使用 scanf 完一个整数后，如果要使用 gets，需要先用 getchar 接受整数后的换行符）；puts 用来输出一行字符串，即将一维数组（或二维数组的一维）在界面上输出，并紧跟一个换行。</p>
+<p>示例：</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;    </span><br><span class="line">    <span class="keyword">char</span> str1[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">char</span> str2[<span class="number">5</span>][<span class="number">10</span>];</span><br><span class="line">    gets(str1);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">        gets(str2[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(str1);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">puts</span>(str2[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="sscanf-与-sprintf"><a href="#sscanf-与-sprintf" class="headerlink" title="sscanf 与 sprintf"></a>sscanf 与 sprintf</h3><ul>
+<li><p>sscanf 与 sprintf 的写法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sscanf</span>(str, <span class="string">"%d"</span>, &amp;n);</span><br><span class="line"><span class="built_in">sprintf</span>(str, <span class="string">"%d"</span>, n);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sscanf 写法的作用是把字符串数组 str 中的内容以”%d”的格式写到 n 中（从左至右）</p>
+</li>
+<li><p>sprintf 写法的作用是把 n 以”%d”的格式写到 str 字符数组中（从左至右）</p>
+<p>即：一个往后写，一个往前写</p>
+<p>示例：</p>
+</li>
+<li><p>sscanf 示例：</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">100</span>] = <span class="string">"123"</span>;</span><br><span class="line">    <span class="built_in">sscanf</span>(str, <span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, n);</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>sprintf 示例：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">100</span>];</span><br><span class="line">    <span class="built_in">sprintf</span>(str, <span class="string">"%d"</span>, n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, str);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>sscanf 和 sprintf 进阶操作:</p>
+<p>使用 sscanf 将字符数组 str 中的内容按 “%d:%lf,%s”的格式写到 int 型变量 n、double 型变量 db、char 型数组 str2中</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">double</span> db;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">100</span>] = <span class="string">"2048:3.14,hello"</span>, str2[<span class="number">100</span>];</span><br><span class="line">    <span class="built_in">sscanf</span>(str, <span class="string">"%d:%lf,%s"</span>, &amp;n, &amp;db, &amp;str2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"n = %d, db = %.2f, str = %s\n"</span>, n, db, str2);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n &#x3D; 2048, db &#x3D; 3.14, str2 &#x3D; hello</span><br></pre></td></tr></table></figure>
+<hr>
+<p>使用 sprintf 将 int 型 n，double 型 db，char 型 str2，按照”%d:%.2f%s”格式写入字符数组 str 中</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">2048</span>;</span><br><span class="line">    <span class="keyword">double</span> db = <span class="number">3.14</span>;</span><br><span class="line">    <span class="keyword">char</span> str2[<span class="number">100</span>] = <span class="string">"hello"</span>, str[<span class="number">100</span>];</span><br><span class="line">    <span class="built_in">sprintf</span>(str, <span class="string">"%d:%.2f%s"</span>,n, db, str2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"str = %s\n"</span>, str);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str &#x3D; 2048:3.14,hello</span><br></pre></td></tr></table></figure>
+<h3 id="C-C-函数"><a href="#C-C-函数" class="headerlink" title="C/C++ 函数"></a>C/C++ 函数</h3><p><strong>注意点：</strong></p>
+<ul>
+<li><p>当以数组作为函数参数时：</p>
+<p>数组作为参数，在函数中对数组元素的修改等同于对原数组元素的修改(因为数组本身传递的就是指针）</p>
+</li>
+</ul>
+<h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><h5 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>* p;</span><br><span class="line"><span class="keyword">double</span>* p;</span><br><span class="line"><span class="keyword">int</span> *p;</span><br><span class="line"><span class="keyword">double</span> *p;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>星号的位置可以跟随数据类型之后，也可以放在变量名之前</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a;</span><br><span class="line">  <span class="keyword">int</span> *p = &amp; a;</span><br><span class="line">  a = <span class="number">233</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *p);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注解：</strong> 只有定义的 p 才是指针，*p 代表指针所指向的存储空间的值</p>
+<ul>
+<li><p>p++</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p;</span><br><span class="line">p++</span><br></pre></td></tr></table></figure>
+<p>p+1是指 p 所指的 int 型变量的下一个 int 型变量地址，这个”下一个”是指跨越了一整个 int 型(即4byte)。</p>
+</li>
+</ul>
+<h4 id="malloc"><a href="#malloc" class="headerlink" title="malloc"></a>malloc</h4><ul>
+<li>#include <stdlib.h></li>
+<li>void * malloc(size_t size); </li>
+<li>向 malloc 申请的空间的大小是以字节为单位的</li>
+<li>返回的结果是 void * 的类型，需要类型转换为自己需要的类型</li>
+<li>(int *)malloc(n*sizeof(int));</li>
+</ul>
+<h3 id="数组与指针"><a href="#数组与指针" class="headerlink" title="数组与指针"></a>数组与指针</h3><p>C语言中数组名称可以作为数组的首地址使用</p>
+<p>示例1： </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">10</span>] = &#123;<span class="number">1</span>&#125;;</span><br><span class="line">  <span class="keyword">int</span> *p = a;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d"</span>, *p);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>示例2：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a[<span class="number">10</span>];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a+i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d "</span>, a + i);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h6 id="输入："><a href="#输入：" class="headerlink" title="输入："></a>输入：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 4 5 6 7 8 9 10</span><br></pre></td></tr></table></figure>
+<h6 id="输出：-3"><a href="#输出：-3" class="headerlink" title="输出："></a>输出：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 4 5 6 7 8 9 10</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>由于指针本身可以进行自增或者自减，因此上面的例子可以使用指针自增或者自减进行枚举</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a[<span class="number">10</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>&#125;;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> *p = a; p &lt; a + <span class="number">10</span>; p++)&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d "</span>, *p)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="指针的减法："><a href="#指针的减法：" class="headerlink" title="指针的减法："></a>指针的减法：</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a[<span class="number">10</span>] = &#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">28</span>,<span class="number">23</span>,<span class="number">22</span>&#125;;</span><br><span class="line">  <span class="keyword">int</span> *p = a;</span><br><span class="line">  <span class="keyword">int</span> *q = &amp;a[<span class="number">5</span>];</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%p\n"</span>, p);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%p\n"</span>, q);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"p-q = %d\n"</span>, q-p);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="输出：-4"><a href="#输出：-4" class="headerlink" title="输出："></a>输出：</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x7ffee6e9f860</span></span><br><span class="line"><span class="number">0x7ffee6e9f874</span></span><br><span class="line">p-q = <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p><strong>注解：</strong> 1. 打印出的地址是16进制，p 与 q 之间相差的是20；因为相隔了5个距离的 int；2. 打印出的 q-p 是两个指针之间相差几个 int。</p>
+<h4 id="使用指针交换两个数"><a href="#使用指针交换两个数" class="headerlink" title="使用指针交换两个数"></a>使用指针交换两个数</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x = <span class="number">11</span>, y = <span class="number">22</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"before: x = %d, y = %d\n"</span>, x, y);</span><br><span class="line">  swap(&amp;x, &amp;y);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"after:  x = %d, y = %d\n"</span>, x, y);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b)</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> temp;</span><br><span class="line">  temp = *a;</span><br><span class="line">  *a = *b;</span><br><span class="line">  *b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h6 id="输出：-5"><a href="#输出：-5" class="headerlink" title="输出："></a>输出：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">before: x &#x3D; 11, y &#x3D; 22</span><br><span class="line">after:  x &#x3D; 22, y &#x3D; 11</span><br></pre></td></tr></table></figure>
+<p><strong>同时需要注意：</strong></p>
+<ul>
+<li>swap 函数里函数参数的传送方式是单向一次性的，其本身跟普通变量一样只是”值传递”，swap 函数对地址进行修改并不能对 main 函数里的地址进行修改。</li>
+<li>对地址本身进行修改其实跟之前对传入的普通变量进行交换的函数是一样的作用，都只是副本，没法对数据产生实质性的影响，即相当于 int * 看作一个政体，传入的 a 和 b 都只是地址的副本。</li>
+</ul>
+<h3 id="引用："><a href="#引用：" class="headerlink" title="引用："></a>引用：</h3><h4 id="引用的含义"><a href="#引用的含义" class="headerlink" title="引用的含义"></a>引用的含义</h4><ul>
+<li>引用不产生副本，而是只是给变量起了一个别名</li>
+<li>新旧名字都是指同一个东西，对引用变量的操作就是对原变量的操作</li>
+<li>引用：只需要在函数的参数类型后面加 “&amp;”。</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> &amp;x)</span></span>&#123;</span><br><span class="line">  x = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x = <span class="number">10</span>;</span><br><span class="line">  change(x);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, x);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>其中，函数的参数名和实际传入的参数可以不同</p>
+<hr>
+<h4 id="指针的引用"><a href="#指针的引用" class="headerlink" title="指针的引用"></a>指针的引用</h4><p>示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>* &amp;p1, <span class="keyword">int</span>* &amp;p2)</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> *temp = p1;</span><br><span class="line">  p1 = p2;</span><br><span class="line">  p2 = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">int</span> *p1 = &amp;a, *p2 = &amp;b;</span><br><span class="line">  swap(p1, p2);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"a = %d, b = %d\n"</span>, *p1, *p2);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：引用是产生变量的别名，因此常量不可使用引用，于是上例中不可写成 swap(&amp;a, &amp;b)，而必须使用指针变量p1和p2存放&amp;a 和&amp;b，然后把指针变量的参数写入。</strong></p>
+<h4 id="引用作为返回值："><a href="#引用作为返回值：" class="headerlink" title="引用作为返回值："></a>引用作为返回值：</h4><p>当函数返回一个引用时，则返回一个指向返回值的隐式指针。这样，函数就可以放在赋值语句的左边。</p>
+<p>示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">double</span> vals[] = &#123;<span class="number">10.1</span>, <span class="number">12.6</span>, <span class="number">33.1</span>, <span class="number">24.1</span>, <span class="number">50.9</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">double</span> &amp;<span class="title">setvalues</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> vals[i]; 		<span class="comment">//返回第 i 个元素的引用</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"previous value："</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"vals["</span> &lt;&lt; vals[i] &lt;&lt; <span class="string">"] = "</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; vals[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  setvalues(<span class="number">1</span>) = <span class="number">20.1</span>;</span><br><span class="line">  setvalues(<span class="number">3</span>) = <span class="number">30.1</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"subsequent value："</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"vals["</span> &lt;&lt; vals[i] &lt;&lt; <span class="string">"] = "</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; vals[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">previous value：</span><br><span class="line">vals[10.1] &#x3D; 10.1</span><br><span class="line">vals[12.6] &#x3D; 12.6</span><br><span class="line">vals[33.1] &#x3D; 33.1</span><br><span class="line">vals[24.1] &#x3D; 24.1</span><br><span class="line">vals[50.9] &#x3D; 50.9</span><br><span class="line">subsequent value：</span><br><span class="line">vals[10.1] &#x3D; 10.1</span><br><span class="line">vals[20.1] &#x3D; 20.1</span><br><span class="line">vals[33.1] &#x3D; 33.1</span><br><span class="line">vals[30.1] &#x3D; 30.1</span><br><span class="line">vals[50.9] &#x3D; 50.9</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><h4 id="结构体类型的概念："><a href="#结构体类型的概念：" class="headerlink" title="结构体类型的概念："></a>结构体类型的概念：</h4><p>结构体是一种构造类型，它是由若干成员组成的，其成员可以是一个基本数据类型，也可以是一个构造类型。例如：将“商品”定义为一个类型，则商品具有产品名称、形状、颜色、功能、价格和产地等。商品不能够使用之前学习过的任何一种类型表示，这时要自己定义一种新的类型，将这种自己定义的类型成为“结构体”。</p>
+<p>声明结构体：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> 结构体名</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    成员列表；</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
+<p>e.g.:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">char</span> shape[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">char</span> color[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">char</span> func[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">int</span> price;</span><br><span class="line">    <span class="keyword">char</span> area[<span class="number">20</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="结构体变量的定义"><a href="#结构体变量的定义" class="headerlink" title="结构体变量的定义"></a>结构体变量的定义</h4><ul>
+<li><p>先声明结构体类型，再定义结构体变量：</p>
+<p>上面定义了 Product 结构体，可以用其进行定义结构体变量：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Product</span> <span class="title">product1</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Product</span> <span class="title">product2</span>;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在声明结构体类型时，同时定义变量：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> 结构体名</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    成员列表;</span><br><span class="line">&#125;变量名列表;</span><br></pre></td></tr></table></figure>
+<p>其中的变量名列表可以定义多个</p>
+<p>e.g.:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">char</span> shape[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">char</span> color[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">char</span> func[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">int</span> price;</span><br><span class="line">    <span class="keyword">char</span> area[<span class="number">20</span>];</span><br><span class="line">&#125;product1,product2;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接定义结构体类型变量：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	成员列表;    </span><br><span class="line">&#125;变量名列表;</span><br></pre></td></tr></table></figure>
+<p>e.g.:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">char</span> shape[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">char</span> color[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">char</span> func[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">int</span> price;</span><br><span class="line">    <span class="keyword">char</span> area[<span class="number">20</span>];</span><br><span class="line">&#125;product1,product2;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>注意：</strong></p>
+<p>结构体里能够定义除了自己本身之外的任何数据类型，但是能够定义自身类型的指针变量：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">  <span class="keyword">int</span> i;</span><br><span class="line">  node n;</span><br><span class="line">  node *next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="结构体变量的引用"><a href="#结构体变量的引用" class="headerlink" title="结构体变量的引用"></a>结构体变量的引用</h4><p>e.g.:</p>
+<p>product1.name = “ipad”</p>
+<h4 id="结构体类型的初始化"><a href="#结构体类型的初始化" class="headerlink" title="结构体类型的初始化"></a>结构体类型的初始化</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> cName[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">char</span> cSex;</span><br><span class="line">    <span class="keyword">int</span> iGrade;</span><br><span class="line">&#125;student1 = &#123;<span class="string">"lipsky"</span>,<span class="string">'W'</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="结构体数组"><a href="#结构体数组" class="headerlink" title="结构体数组"></a>结构体数组</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> cName[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">char</span> cSex;</span><br><span class="line">    <span class="keyword">int</span> iGrade;</span><br><span class="line">&#125;student[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+<h4 id="结构体指针"><a href="#结构体指针" class="headerlink" title="结构体指针"></a>结构体指针</h4><p><strong>一般形式：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">结构体类型  *指针名</span><br><span class="line">e.g.</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span> *<span class="title">pStruct</span>;</span></span><br></pre></td></tr></table></figure>
+<p><strong>使用结构体成员的方法：</strong></p>
+<ul>
+<li>点运算符引用结构成员：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(*pStruct).成员名</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="keyword">char</span> cName[<span class="number">20</span>];</span><br><span class="line">        <span class="keyword">int</span> iNumber;</span><br><span class="line">        <span class="keyword">char</span> cSex;</span><br><span class="line">        <span class="keyword">int</span> iGrade;</span><br><span class="line">    &#125;student = &#123;<span class="string">"lipsky"</span>,<span class="number">2016416634</span>,<span class="string">'W'</span>,<span class="number">3</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> *<span class="title">pStruct</span>;</span></span><br><span class="line">    pStruct=&amp;student;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Name: %s\n"</span>,(*pStruct).cName);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Number: %d\n"</span>,(*pStruct).iNumber);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Sex: %c\n"</span>,(*pStruct).cSex);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Grade: %d\n"</span>,(*pStruct).iGrade);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第二种方法使用指向运算符☝🏻引用结构成员：</li>
+</ul>
+<p>e.g.:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pStruct-&gt;成员名；</span><br></pre></td></tr></table></figure>
+<h5 id="三种引用结构体成员的方法等价："><a href="#三种引用结构体成员的方法等价：" class="headerlink" title="三种引用结构体成员的方法等价："></a>三种引用结构体成员的方法等价：</h5><p>假设 student为结构体变量，pStruct 为指向结构体变量的指针，则以下三种方法等价</p>
+<ul>
+<li>student.成员名</li>
+<li>（*pStruct）.成员名</li>
+<li>pStruct-&gt;成员名</li>
+</ul>
+<p>e.g.:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> cName[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">int</span> iNumber;</span><br><span class="line">    <span class="keyword">char</span> cSex;</span><br><span class="line">    <span class="keyword">int</span> iGrade;</span><br><span class="line">&#125;studnet;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> *<span class="title">pStruct</span>;</span></span><br><span class="line">    pStruct = &amp;student;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">strcpy</span>(pStruct-&gt;cName,<span class="string">"lipsky"</span>);</span><br><span class="line">    pStruct-&gt;iNumber=<span class="string">"2016426634"</span>;</span><br><span class="line">    pStruct-&gt;cSex=<span class="string">'W'</span>;</span><br><span class="line">    pStruct-&gt;iGrade=<span class="number">2</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Name: %s\n"</span>,(*pStruct).cName);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Number: %d\n"</span>,(*pStruct).iNumber);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Sex: %c\n"</span>,(*pStruct).cSex);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Grade: %d\n"</span>,(*pStruct).iGrade);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="指向结构体数组的指针"><a href="#指向结构体数组的指针" class="headerlink" title="指向结构体数组的指针"></a>指向结构体数组的指针</h4><p><strong>概述：</strong>结构体指针变量不但可以指向一个结构体变量，还可以指向结构体数组，此时指针变量的值就是结构体数组的首地址</p>
+<p>e.g.:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span> *<span class="title">pStruct</span>;</span></span><br><span class="line">pStruct=student;	<span class="comment">//默认指向结构体数组的第一个元素</span></span><br><span class="line"></span><br><span class="line">pStruct=&amp;student[<span class="number">2</span>] <span class="comment">//指向结构体数组的第三个元素</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> cName[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">int</span> iNumber;</span><br><span class="line">    <span class="keyword">char</span> cSex;</span><br><span class="line">    <span class="keyword">int</span> iGrade;</span><br><span class="line">&#125;student[<span class="number">5</span>]=&#123;</span><br><span class="line">    &#123;<span class="string">"lipsky"</span>,<span class="number">12442</span>,<span class="string">'W'</span>,<span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"wenwne"</span>,<span class="number">23423</span>,<span class="string">'W'</span>,<span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"john"</span>,<span class="number">23432</span>,<span class="string">'W'</span>,<span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"Dawei"</span>,<span class="number">42322</span>,<span class="string">'W'</span>,<span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"Djorny"</span>,<span class="number">88302</span>,<span class="string">'W'</span>,<span class="number">3</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Student</span> *<span class="title">pStruct</span>;</span></span><br><span class="line">    pStruct = student;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> index=<span class="number">0</span>;index&lt;<span class="number">5</span>;index++,pStruct++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"NO%d studnet:\n"</span>,index+<span class="number">1</span>); <span class="comment">//输出学生的名次</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Name: %s, Number: %d\n"</span>,pStruct-&gt;cName,pStruct-&gt;iNumber);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Sex: %c, Grade: %d\n"</span>,pStruct-&gt;cSex,pStruct-&gt;iGrade);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C-的-cin-和-cout"><a href="#C-的-cin-和-cout" class="headerlink" title="C++ 的 cin 和 cout"></a>C++ 的 cin 和 cout</h3><h4 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h4><p>cin 的输入不指定格式：</p>
+<p>输入示例</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">double</span> b；</span><br><span class="line"><span class="keyword">char</span> c;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; b &gt;&gt; c;</span><br></pre></td></tr></table></figure>
+<h4 id="cout"><a href="#cout" class="headerlink" title="cout"></a>cout</h4><p>cout 的输出：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; a &lt;&lt; b &lt;&lt; c &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"first"</span> &lt;&lt; a &lt;&lt; <span class="string">"second"</span> &lt;&lt; b &lt;&lt; <span class="string">"third"</span> &lt;&lt; c &lt;&lt;<span class="string">"\n"</span>;</span><br></pre></td></tr></table></figure>
+<p>其中endl 是换行，与 “\n”作用相同</p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/03/27/PAT-1016-%E9%83%A8%E5%88%86A-B/" title= "PAT 1016 部分A+B">
+                    <div class="nextTitle">PAT 1016 部分A+B</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/03/24/PAT-1014%E7%A6%8F%E5%B0%94%E6%91%A9%E6%96%AF%E7%9A%84%E7%BA%A6%E4%BC%9A/" title= "PAT 1014福尔摩斯的约会">
+                    <div class="prevTitle">PAT 1014福尔摩斯的约会</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "3z31za5tyuogWzU86rydsH0h-gzGzoHsz",
+        appKey: "YeLtmtT5U8NP5GXTUesonkhB",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:liylipsky@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/bobouc" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#c-c-快速入门"><span class="toc-number">1.</span> <span class="toc-text">c&#x2F;c++快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#变量类型："><span class="toc-number">1.1.</span> <span class="toc-text">变量类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#整型："><span class="toc-number">1.1.1.</span> <span class="toc-text">整型：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#浮点型："><span class="toc-number">1.1.2.</span> <span class="toc-text">浮点型：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-number">1.2.</span> <span class="toc-text"> </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#字符型："><span class="toc-number">1.2.1.</span> <span class="toc-text">字符型：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#转义字符"><span class="toc-number">1.2.2.</span> <span class="toc-text">转义字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串常量"><span class="toc-number">1.2.3.</span> <span class="toc-text">字符串常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#布尔型"><span class="toc-number">1.2.4.</span> <span class="toc-text">布尔型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#强制类型转换"><span class="toc-number">1.3.</span> <span class="toc-text">强制类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#宏定义和-const-常量"><span class="toc-number">1.4.</span> <span class="toc-text">宏定义和 const 常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算符"><span class="toc-number">1.5.</span> <span class="toc-text">运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scanf-和-printf-的输入-输出"><span class="toc-number">1.6.</span> <span class="toc-text">scanf 和 printf 的输入&#x2F;输出</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#scanf-除了-c-外，对其他格式符（如-d）的输入是以空白字符（即空格、tab）为结束判断标志。"><span class="toc-number">1.6.0.0.1.</span> <span class="toc-text">scanf 除了 %c  外，对其他格式符（如%d）的输入是以空白字符（即空格、tab）为结束判断标志。</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#printf-输出的注意"><span class="toc-number">1.7.</span> <span class="toc-text">printf 输出的注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getchar-和-putchar-输入-输出字符"><span class="toc-number">1.8.</span> <span class="toc-text">getchar 和 putchar 输入&#x2F;输出字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释："><span class="toc-number">1.9.</span> <span class="toc-text">注释：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#typedef"><span class="toc-number">1.10.</span> <span class="toc-text">typedef:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用的-math-函数"><span class="toc-number">1.11.</span> <span class="toc-text">常用的 math 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if语句"><span class="toc-number">1.12.</span> <span class="toc-text">if语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#switch-语句"><span class="toc-number">1.13.</span> <span class="toc-text">switch 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#while-与-do-…-while"><span class="toc-number">1.14.</span> <span class="toc-text">while 与 do … while</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-循环"><span class="toc-number">1.15.</span> <span class="toc-text">for 循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组"><span class="toc-number">1.16.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#memset-对数组中每一个元素赋相同的值"><span class="toc-number">1.17.</span> <span class="toc-text">memset 对数组中每一个元素赋相同的值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#memset-函数的格式："><span class="toc-number">1.17.1.</span> <span class="toc-text">memset 函数的格式：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#输出："><span class="toc-number">1.17.1.0.1.</span> <span class="toc-text">输出：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符数组"><span class="toc-number">1.18.</span> <span class="toc-text">字符数组</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#输出：-1"><span class="toc-number">1.18.0.0.1.</span> <span class="toc-text">输出：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#输出：-2"><span class="toc-number">1.18.0.0.2.</span> <span class="toc-text">输出：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sscanf-与-sprintf"><span class="toc-number">1.19.</span> <span class="toc-text">sscanf 与 sprintf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-C-函数"><span class="toc-number">1.20.</span> <span class="toc-text">C&#x2F;C++ 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指针"><span class="toc-number">1.21.</span> <span class="toc-text">指针</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#变量的定义"><span class="toc-number">1.21.0.1.</span> <span class="toc-text">变量的定义</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#malloc"><span class="toc-number">1.21.1.</span> <span class="toc-text">malloc</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组与指针"><span class="toc-number">1.22.</span> <span class="toc-text">数组与指针</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#输入："><span class="toc-number">1.22.0.0.1.</span> <span class="toc-text">输入：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#输出：-3"><span class="toc-number">1.22.0.0.2.</span> <span class="toc-text">输出：</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指针的减法："><span class="toc-number">1.22.0.1.</span> <span class="toc-text">指针的减法：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#输出：-4"><span class="toc-number">1.22.0.1.1.</span> <span class="toc-text">输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用指针交换两个数"><span class="toc-number">1.22.1.</span> <span class="toc-text">使用指针交换两个数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#输出：-5"><span class="toc-number">1.22.1.0.1.</span> <span class="toc-text">输出：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用："><span class="toc-number">1.23.</span> <span class="toc-text">引用：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#引用的含义"><span class="toc-number">1.23.1.</span> <span class="toc-text">引用的含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指针的引用"><span class="toc-number">1.23.2.</span> <span class="toc-text">指针的引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#引用作为返回值："><span class="toc-number">1.23.3.</span> <span class="toc-text">引用作为返回值：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结构体"><span class="toc-number">1.24.</span> <span class="toc-text">结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#结构体类型的概念："><span class="toc-number">1.24.1.</span> <span class="toc-text">结构体类型的概念：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结构体变量的定义"><span class="toc-number">1.24.2.</span> <span class="toc-text">结构体变量的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结构体变量的引用"><span class="toc-number">1.24.3.</span> <span class="toc-text">结构体变量的引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结构体类型的初始化"><span class="toc-number">1.24.4.</span> <span class="toc-text">结构体类型的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结构体数组"><span class="toc-number">1.24.5.</span> <span class="toc-text">结构体数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结构体指针"><span class="toc-number">1.24.6.</span> <span class="toc-text">结构体指针</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#三种引用结构体成员的方法等价："><span class="toc-number">1.24.6.1.</span> <span class="toc-text">三种引用结构体成员的方法等价：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指向结构体数组的指针"><span class="toc-number">1.24.7.</span> <span class="toc-text">指向结构体数组的指针</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-的-cin-和-cout"><span class="toc-number">1.25.</span> <span class="toc-text">C++ 的 cin 和 cout</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cin"><span class="toc-number">1.25.1.</span> <span class="toc-text">cin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cout"><span class="toc-number">1.25.2.</span> <span class="toc-text">cout</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 88
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2022 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/22</span><a class="archive-post-title" href= "/2022/04/22/Java-Reflect/" >Java Reflect</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/19</span><a class="archive-post-title" href= "/2022/04/19/Android%20Learning/" >Android Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2022/04/04/Thread-Process-and-Parallel-computing/" >Thread, Process and Parallel computing</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2022/04/02/C-Smart-pointer/" >C++ Smart pointer</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2022/03/30/Cmake-common-syntax/" >Cmake common syntax</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2021/11/29/LeetCode-TIPS/" >LeetCode TIPS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/18</span><a class="archive-post-title" href= "/2021/08/18/golang-specific-notes/" >golang specific notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/07</span><a class="archive-post-title" href= "/2021/08/07/ListNode-Data-Structure/" >ListNode-Data Structure</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/13</span><a class="archive-post-title" href= "/2021/07/13/Slam-Learning/" >SLAM Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/13</span><a class="archive-post-title" href= "/2021/06/13/A-Little-bit-of-Summary-Of-Deep-Learning/" >A Little bit of Summary Of Deep Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2021/05/27/git-frequently-used-actions/" >git frequently used actions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2021/05/12/OS-Learning-Linux-Homebrew/" >OS-Learning: Linux Homebrew</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2021/05/11/Dynamic-Programming-Analysis/" >Dynamic Programming Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2021/04/24/CUDA-coding/" >CUDA coding</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2021/04/23/Sliding-Window/" >Sliding Window </a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2021/04/20/Binary-Search/" >Binary Search</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2021/04/17/logofapplegeniusbar/" >记一次苹果天才吧维修记录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2021/04/01/Learnopengl-note/" >Learnopengl-note</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2021/03/29/Analysis-of-Dual-Attention-Network-for-Scene-Segmentation/" >Analysis of "Dual Attention Network for Scene Segmentation"</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2021/03/23/Important-Conception-In-CG/" >Important Conception In CG</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2021/03/21/Docker-notes/" >Docker notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2021/03/17/Self-Learning-OF-Hongyi-Lee-Machine-Learning-Spring-Mandarin/" >Hongyi-Lee Machine Learning Spring 2021 Mandarin</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href= "/2021/02/22/CPP-refresh/" >CPP refresh</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/03</span><a class="archive-post-title" href= "/2021/02/03/752-Open-the-Lock/" >752. Open the Lock</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2021/02/01/Iteratively-144-Binary-Tree-Preorder-Inorder-Traversal/" >Iteratively. 144.Binary Tree Preorder&Inorder Traversal</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/29</span><a class="archive-post-title" href= "/2021/01/29/LeetCode-111-Minimum-Depth-of-Binary-Tree/" >LeetCode 111. Minimum Depth of Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2021/01/14/full-permutation-with-backtracking/" >full permutation with backtracking</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/04</span><a class="archive-post-title" href= "/2021/01/04/Hyperspectral-Classification/" >高光谱分类-Hyperspectral Classification</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/06</span><a class="archive-post-title" href= "/2020/12/06/LeetCode-322-Coin-Change/" >LeetCode 322. Coin Change</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/05</span><a class="archive-post-title" href= "/2020/12/05/LeetCode509-Fibonacci-Number/" >LeetCode509. Fibonacci Number</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2020/11/28/Learn-AndrewNg-Ai-notes/" >Learn AndrewNg-MachineLearning notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span><a class="archive-post-title" href= "/2020/11/20/LeetCode-Hanota-LCCI/" >LeetCode-Hanota LCCI</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href= "/2020/11/18/DogsVSCats/" >DogsVSCats</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/14</span><a class="archive-post-title" href= "/2020/11/14/region-growsplitmerge-watershed/" >区域生长&区域分割与合成&分水岭算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span><a class="archive-post-title" href= "/2020/11/10/threshouldeffecton2valueimg/" >不同阈值处理方法对于二值图像的影响</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span><a class="archive-post-title" href= "/2020/10/23/%E9%A2%91%E7%8E%87%E5%9F%9F%E9%AB%98%E9%80%9A%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2-%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/" >频率域高通低通滤波&同态滤波</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span><a class="archive-post-title" href= "/2020/10/19/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86work-%E7%A9%BA%E9%97%B4%E5%9F%9F-%E5%9B%BE%E5%83%8F%E5%9F%9F-%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96-%E5%B9%B3%E6%BB%91%E7%A9%BA%E9%97%B4%E6%BB%A4%E6%B3%A2-%E9%94%90%E5%8C%96%E6%BB%A4%E6%B3%A2%E5%99%A8/" >数字图像处理work-空间域/图像域-直方图均衡化/平滑空间滤波/锐化滤波器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/23</span><a class="archive-post-title" href= "/2020/09/23/std-vector-in-c/" >std::vector in c++</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/22</span><a class="archive-post-title" href= "/2020/09/22/Reverse-Integer/" >LeetCode 7.Reverse Integer</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/LeetCode4-Median-of-Two-Sorted-Arrays/" >LeetCode4. Median of Two Sorted Arrays</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2020/03/07/LeetCode628-Maximum-Product-of-Three-Numbers/" >LeetCode628. Maximum Product of Three Numbers</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/LeetCode637-Average-of-Levels-in-Binary-Tree/" >LeetCode637. Average of Levels in Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2020/03/02/LeetCode463-Island-Perimeter/" >LeetCode463. Island Perimeter</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/%E6%9C%80%E5%B0%8F%E6%95%B0%E7%BB%84/" >最小数组</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/%E6%AF%94%E8%BE%83%E5%A5%87%E5%81%B6%E4%B8%AA%E6%95%B0/" >比较奇偶个数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/29</span><a class="archive-post-title" href= "/2020/02/29/LeetCode504-Base-7/" >LeetCode504. Base 7</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href= "/2020/02/27/LeetCode551-Student-Attendance-Record-I/" >LeetCode551. Student Attendance Record I</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2020/02/26/LeetCode-303-Range-Sum-Query-Immutable/" >LeetCode 303. Range Sum Query - Immutable</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2020/02/26/LeetCode655-Print-Binary-Tree/" >LeetCode655. Print Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/24</span><a class="archive-post-title" href= "/2020/02/24/LeetCode561-Array-Partition-I/" >LeetCode561. Array Partition I </a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2020/02/23/LeetCode566-Reshape-the-Matrix-%E9%87%8D%E7%BD%AE%E7%9F%A9%E9%98%B5/" >LeetCode566.Reshape the Matrix 重置矩阵</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2020/02/23/LeetCode174-Dungeon-Game%F0%9F%A4%B4%E5%9C%B0%E7%8B%B1%E6%95%91%F0%9F%91%B8/" >LeetCode174. Dungeon Game🤴地狱救👸</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/LeetCode-404-Sum-of-Left-Leaves-%E5%B7%A6%E5%8F%B6%E5%AD%90%E7%BB%93%E7%82%B9%E5%80%BC%E4%B9%8B%E5%92%8C/" >LeetCode 404. Sum of Left Leaves 左叶子结点值之和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2020/02/19/LeetCode-455-Assign-Cookies-%E9%A5%BC%E5%B9%B2%E5%88%86%E9%85%8D/" >LeetCode 455. Assign Cookies 饼干分配</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/18</span><a class="archive-post-title" href= "/2020/02/18/LeetCode-461-Hamming-Distance-%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" >LeetCode 461 Hamming Distance 汉明距离</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/LeetCode-657-Judge-Route-Cricle-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%98%AF%E5%90%A6%E8%BF%94%E5%9B%9E%E5%8E%9F%E7%82%B9/" >LeetCode 657 Judge Route Cricle 机器人是否返回原点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/LeetCode-1-Two-Sum/" >LeetCode 1 Two Sum</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/23</span><a class="archive-post-title" href= "/2020/01/23/Python-Error-Handing/" >Python_Error_Handing</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/2020/01/12/Python-Functional-Programming/" >Python_Functional_Programming</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/25</span><a class="archive-post-title" href= "/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE%E7%9A%84%E6%A6%82%E5%BF%B5/" >数据结构-图的概念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href= "/2019/08/06/Spider-for-a-Book-Secrets-from-the-New-Science-of-Expertise-comments-on-JD-com/" >Spider for a Book "Secrets from the New Science of Expertise" comments on JD.com</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href= "/2019/07/17/%E7%89%A9%E8%81%94%E7%BD%91%E6%96%B0%E5%9E%8B%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82%E7%9A%84%E5%8F%91%E5%B1%95/" >物联网新型智慧城市的发展</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2019/05/27/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" >树和二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2019/03/27/PAT-1016-%E9%83%A8%E5%88%86A-B/" >PAT 1016 部分A+B</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2019/03/27/C-C-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-%E8%AF%AD%E6%B3%95%E9%80%9F%E9%80%92/" >C/C++快速入门-语法速递</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2019/03/24/PAT-1014%E7%A6%8F%E5%B0%94%E6%91%A9%E6%96%AF%E7%9A%84%E7%BA%A6%E4%BC%9A/" >PAT 1014福尔摩斯的约会</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2019/03/21/PAT-1013-%E6%95%B0%E7%B4%A0%E6%95%B0/" >PAT 1013 数素数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/2019/03/20/Character-String-C/" >C语言字符串浅析 Character String (C)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/13</span><a class="archive-post-title" href= "/2019/01/13/12306-Python-%E6%8A%A2%E8%BD%A6%E7%A5%A8%E5%BC%80%E6%BA%90%E7%A8%8B%E5%BA%8F%EF%BC%88%E7%AE%80%E6%98%93%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%EF%BC%89/" >12306 Python 抢车票开源程序（简易使用教程）</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href= "/2018/12/31/Android-learning-record/" >Android_learning_record</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/08</span><a class="archive-post-title" href= "/2018/12/08/%E5%8F%99%E8%BF%B0%E4%B8%80%E4%BA%9B%E7%AE%80%E7%BA%A6%E7%9A%84%E4%BA%8B/" >叙述一些简约的事</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/2018/12/04/Linux-learning-record/" >Linux_learning_record</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2018/11/29/Data-Structure-C/" >Data Structure(C)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2018/11/21/Cortex-STM32F107-learning-record/" >Cortex-M3(STM32F107)_Learning_Notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2018/10/05/The-method-of-get-in-Requests-lib/" >The method of get() in Requests lib</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/17</span><a class="archive-post-title" href= "/2018/09/17/Basic-Matrix-knowledge/" >Basic Matrix knowledge</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/14</span><a class="archive-post-title" href= "/2018/09/14/Numpy-generate-array/" >Numpy generate array</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/24</span><a class="archive-post-title" href= "/2018/08/24/Parse-web-pages-using-CSS-class-by-BeautifulSoup/" >Parse web pages using CSS class by BeautifulSoup</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/17</span><a class="archive-post-title" href= "/2018/08/17/Regular-Expression/" >Regular Expression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span><a class="archive-post-title" href= "/2018/08/13/Sets-Dictionaries/" >Sets & Dictionaries</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/11</span><a class="archive-post-title" href= "/2018/08/11/Character-string-and-Data-type/" >Character string and Data type</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span><a class="archive-post-title" href= "/2018/08/10/Requests-details-of-Python/" >Requests' details of Python</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2018/04/20/Virtual-Environment-For-Different-Projects/" >Virtual Environment For Different Projects</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2018/04/16/20180416starspaceXtougao/" >我们一起数月亮，看星星。</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="Deep Learning"><span class="iconfont-archer">&#xe606;</span>Deep Learning</span>
+    
+        <span class="sidebar-tag-name" data-tags="Paper-reading"><span class="iconfont-archer">&#xe606;</span>Paper-reading</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="CUDA"><span class="iconfont-archer">&#xe606;</span>CUDA</span>
+    
+        <span class="sidebar-tag-name" data-tags="cmake"><span class="iconfont-archer">&#xe606;</span>cmake</span>
+    
+        <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
+    
+        <span class="sidebar-tag-name" data-tags="DataStructure"><span class="iconfont-archer">&#xe606;</span>DataStructure</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
+    
+        <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="OS-Linux"><span class="iconfont-archer">&#xe606;</span>OS-Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="slidingwindow"><span class="iconfont-archer">&#xe606;</span>slidingwindow</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="golang"><span class="iconfont-archer">&#xe606;</span>golang</span>
+    
+        <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "jax"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
+
+

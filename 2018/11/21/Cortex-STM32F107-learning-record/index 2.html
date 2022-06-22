@@ -1,0 +1,3201 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="jax">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="jax">
+    
+    <meta name="keywords" content="hexo,lipsky,lipsky-blog">
+    
+    <meta name="description" content="Help myself">
+    <meta name="description" content="Cortex-M3概述 ARM 是一个公司，一种技术，一类处理器 CM3 内核采用哈佛结构，拥有独立的32位指令总线和数据总线 CM3 内核不再支持  ARM  指令集，而只支持  Thumb-2 和 Thumb 指令集 STM32 系列 MCU 由意法半导体 （ST）公司设计和制造 CMSIS 是 ARM 公司和一些编译器厂家以及半导体厂家共同遵循的一套标准，是由 ARM 公司提出，专门针对 C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cortex-M3(STM32F107)_Learning_Notes">
+<meta property="og:url" content="https://github.com/liysky/liysky.github.io.git/2018/11/21/Cortex-STM32F107-learning-record/index.html">
+<meta property="og:site_name" content="GuoXin Li&#39;s Blog">
+<meta property="og:description" content="Cortex-M3概述 ARM 是一个公司，一种技术，一类处理器 CM3 内核采用哈佛结构，拥有独立的32位指令总线和数据总线 CM3 内核不再支持  ARM  指令集，而只支持  Thumb-2 和 Thumb 指令集 STM32 系列 MCU 由意法半导体 （ST）公司设计和制造 CMSIS 是 ARM 公司和一些编译器厂家以及半导体厂家共同遵循的一套标准，是由 ARM 公司提出，专门针对 C">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxfr5bsfkfj31a005mq5s.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxgkema3ojj31am0ckn2u.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fygorfp6qvj31fs0u0q6w.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fygpjplm1wj31yo04wmxn.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fygpuoy935j31rs0l0jxy.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fygq34tsetj31y00m00wd.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fygqsjnik3j30wz0u076p.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fygr72njo7j30yq0nqdj0.jpg">
+<meta property="article:published_time" content="2018-11-21T04:54:40.000Z">
+<meta property="article:modified_time" content="2020-05-05T15:36:20.000Z">
+<meta property="article:author" content="jax">
+<meta property="article:tag" content="learning-note">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxfr5bsfkfj31a005mq5s.jpg">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    
+    <link rel="alternate" href="/atom.xml" title="GuoXin Li&#39;s Blog" type="application/atom+xml">
+    
+    <title>Cortex-M3(STM32F107)_Learning_Notes · GuoXin Li&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >GuoXin Li&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Cortex-M3(STM32F107)_Learning_Notes</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>GuoXin Li's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random/1600x500)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Cortex-M3(STM32F107)_Learning_Notes
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "learning-note">learning-note</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">11.9k</span>阅读时长: <span class="post-count reading-time">44 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/11/21</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="Cortex-M3"><a href="#Cortex-M3" class="headerlink" title="Cortex-M3"></a>Cortex-M3</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>ARM 是一个公司，一种技术，一类处理器</li>
+<li>CM3 内核采用哈佛结构，拥有独立的32位指令总线和数据总线</li>
+<li>CM3 内核不再支持  ARM  指令集，而只支持  Thumb-2 和 Thumb 指令集</li>
+<li>STM32 系列 MCU 由意法半导体 （ST）公司设计和制造</li>
+<li>CMSIS 是 ARM 公司和一些编译器厂家以及半导体厂家共同遵循的一套标准，是由 ARM 公司提出，专门针对 Cortex-M 系列的标准</li>
+<li>STM32 固件库是一个函数包，它由程序、数据结构和宏组成，包括了 STM32 系列 MCU 标准外设的性能特征</li>
+<li>采用调用 STM32 固件库的编程方法，既可以较快地掌握外设的使用，又可以加快学习和开发的速度</li>
+<li>MDK-ARM 开发工具源自德国</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>Cortex-M3 内核支持的汇编指令集有2种</li>
+<li>CM3内核通过3条总线与其他外设相连，分别是：<ul>
+<li>I-code 总线连 Flash 存储器接口</li>
+<li>D-code 总线（负责数据访问操作）</li>
+<li>系统总线（连接总线矩阵）</li>
+</ul>
+</li>
+<li>Cortex内核三个系列和特点：<ul>
+<li>A 系列（应用程序系列）：A 系列在 MMU（内存管理单元）、用于多媒体应用程序的可选 NEON （加速多媒体和信号处理算法）处理单元以及支持半精度和精度运算的高级硬件浮点单元的基础上实现了虚拟内存系统架构，适用于高端消费电子设备、网络设备、移动  Internet  设备和企业市场</li>
+<li>R 系列（实时型）：R 系列在 MPU （内存保护单元）的基础上实现了受保护的内存系统架构。适用于高性能实时控制系统（包括汽车和大容量存储设备）例如：硬盘驱动器和汽车系统的电子控制单元</li>
+<li>M 系列（微控制器型）：该系列可快速进行中断处理，适用于需要高度确定的行为和门数最少的成本敏感型设备。主要用于取代“旧时代”的单片机，面向嵌入式以及工业控制行业</li>
+</ul>
+</li>
+<li>STM32 固件库组成：<ul>
+<li>_htmresc：含有 CMSIS 和 ST 的 logo</li>
+<li>Libraries：<ul>
+<li>CMSIS：包含 CM3 的相关说明和代码，内核级和设备级代码</li>
+<li>STM32F10x_StdPerph_Driver：<ul>
+<li>inc：含有标准外设的头文件</li>
+<li>src：含有标准外设的函数源文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Project：<ul>
+<li>STM32F10x_StdPerph_Examples：文件夹含有所有标准外设的例程文件</li>
+<li>STM32F10x_StdPerph_Template：文件夹含有工程模板示例</li>
+</ul>
+</li>
+<li>Utilities：意法半导体官方评估板的相关代码和说明</li>
+</ul>
+</li>
+<li>使用固件库的优点：通过使用固件库，无需深入掌握细节，用户可以轻松应用每一个外设，大大减少用户程序编写的时间，进而降低开发成本</li>
+</ul>
+<h2 id="STM32F107内核架构"><a href="#STM32F107内核架构" class="headerlink" title="STM32F107内核架构"></a>STM32F107内核架构</h2><h3 id="CM3内核架构"><a href="#CM3内核架构" class="headerlink" title="CM3内核架构"></a>CM3内核架构</h3><ul>
+<li>哈佛结构</li>
+<li>指令总线和数据总线共享一个储存器空间，两条总线的寻址空间总共 4GB</li>
+<li>内核提供一个可选的 MPU （存储器保护单元）以应对比较复杂的应用</li>
+<li>CM3内部还有一些调试组件，用于硬件水平上支持调试操作，如指令断点，数据感测点</li>
+</ul>
+<p>CM3处理器主要包括的部件和组件：</p>
+<ul>
+<li>NVIC（向量中断控制器），它与CM3 内核紧密耦合，是不可分割的一部分，还包括 MPU、SysTick 定时器以及与调试控制器相关的寄存器</li>
+<li>三级流水线：流水线的三级分别为：取指、解码和执行</li>
+<li>可选的 MPU（存储器保护单元）</li>
+<li>调试和跟踪</li>
+<li>I-Code 总线</li>
+<li>D-Code 总线</li>
+<li>系统总线</li>
+</ul>
+<h3 id="存储器组织"><a href="#存储器组织" class="headerlink" title="存储器组织"></a>存储器组织</h3><ul>
+<li>CM3 支持 4GB 的存储空间，用来映射程序存储器、数据存储器、外设寄存器</li>
+</ul>
+<h3 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h3><p>CM3 使用“向下生长”的堆栈模型，即堆栈指针 SP 指向最后一个被压入堆栈的 32 位数值</p>
+<h3 id="电源管理"><a href="#电源管理" class="headerlink" title="电源管理"></a>电源管理</h3><p>正常工作电压：2.0~3.6V，实际电路中经常用 3.3V 作为 STM32F107 供压电源。其通过内置的电压调节器提供所需的 1.8V 电源</p>
+<h3 id="复位和启动配置"><a href="#复位和启动配置" class="headerlink" title="复位和启动配置"></a>复位和启动配置</h3><p>STM32F107 有三种复位方式：系统复位、电源复位和备份区域复位</p>
+<h3 id="时钟"><a href="#时钟" class="headerlink" title="时钟"></a>时钟</h3><p>STM32F107 有5个时钟：HSI、LSI、HSE、LSE 和 PLL</p>
+<p>按照速度划分：</p>
+<ul>
+<li>HSE（高速外部）</li>
+<li>HSI（高速内部）</li>
+<li>PLL（锁相环倍频）</li>
+<li>LSI（低速内部）</li>
+<li>LSE（低速外部）</li>
+</ul>
+<p>STM32F107 内部有三种不同的时钟源可以用来驱动系统时钟（SYSCLK）：HSI 振荡器时钟、HSE 振荡器时钟和 PLL 时钟</p>
+<p>注意：要从主内存存储器启动 STM32F107，BOOT1管脚逻辑可以随意，但 BOOT0管教必须置0</p>
+<h3 id="复位机制"><a href="#复位机制" class="headerlink" title="复位机制"></a>复位机制</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>复位信号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>上电复位</td>
+<td>在器件上电时，把处理器核心和调试系统一起复位</td>
+</tr>
+<tr>
+<td>系统复位</td>
+<td>只影响处理器核心、NVIC（与调试相关的除外）以及 MPU（存储器保护单元），<br />不复位调试系统</td>
+</tr>
+<tr>
+<td>测试复位</td>
+<td>只复位调试系统</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="复位序列："><a href="#复位序列：" class="headerlink" title="复位序列："></a>复位序列：</h4><ul>
+<li>从地址0x0000_0000处读取 MSP （主堆栈栈顶地址）的初始值</li>
+<li>从地址 0x0000_0004处读取 PC  （程序计数器）的初始值</li>
+</ul>
+<h2 id="GPIO-和-AFIO："><a href="#GPIO-和-AFIO：" class="headerlink" title="GPIO 和 AFIO："></a>GPIO 和 AFIO：</h2><h3 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h3><p>STM32F107有 GPIOA、GPIOB、GPIOC、GPIOD 和 GPIOE 五个16位通用接口，每个 GPIO 端口有16个口线对应的16个管脚。例如：GPIOA 端口有 GPIOA0~GPIOA15共计16个管脚，简写为 PA0~PA15</p>
+<p><strong>GPIO 端口的功能，由软件配置为8种模式：</strong></p>
+<ul>
+<li>浮空输入：用于不确定高低电平的输入</li>
+<li>上拉输入：用于默认为上拉至高电平的输入</li>
+<li>输入下拉：用于默认为下拉至低电平的输入</li>
+<li>模拟输入：用于模拟量的输入</li>
+<li>开漏输出：用于实现电平转换和线与功能的输出</li>
+<li>推挽式输出：用于较大功率驱动输出</li>
+<li>推挽复用功能：复用功能下的推挽输出</li>
+<li>开漏复用功能：复用功能情况下的开漏输出</li>
+</ul>
+<p><strong>GPIO 的特点：</strong></p>
+<ul>
+<li>复位期间和刚复位后，复用功能未开启，I/O 端口被配置成浮空输入模式</li>
+<li>所有 GPIO 引脚有一个内部弱上拉和弱下拉，当配置为输入时，它们可以被激活也可以被断开</li>
+<li>可以以推挽模式或开漏模式使用输出驱动器</li>
+<li>当作为输出配置时，写到输出数据寄存器上的值（GPIOx_ODR）输出到相应的 I/O 管脚</li>
+</ul>
+<h3 id="GPIO-配置"><a href="#GPIO-配置" class="headerlink" title="GPIO 配置"></a>GPIO 配置</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GPIO_Config</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/*定义一个 GPIO_InitTypeDef 类型的结构体*/</span></span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*使能 GPIOC 口的时钟，相当于给 GPIOC 供电，使能时钟是外设工作前的第一步*/</span></span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*选择管脚6*/</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*选择管脚速度为50MHz*/</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*配置 PD6管脚为推挽输出模式*/</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*按照 GPIO_InitStructure 的配置进行初始化*/</span></span><br><span class="line">    GPIO_Init(GPIOC,&amp;GPIO_InitStructure);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>为了优化64脚或者100脚封装的外设数目，可以把一些复用功能重新映射到指定的管脚上</li>
+<li>设置 AFIO 可以实现管脚的重新映射，重新映射后原来的管脚将不再具有该功能</li>
+<li>重映射功能只需要调用函数库 GPIO_PinRemapConfig() 开启和关闭即可</li>
+</ul>
+<h3 id="简述-IO-的通用功能、复用功能和复用功能重映射之间的联系和区别："><a href="#简述-IO-的通用功能、复用功能和复用功能重映射之间的联系和区别：" class="headerlink" title="简述 IO 的通用功能、复用功能和复用功能重映射之间的联系和区别："></a>简述 IO 的通用功能、复用功能和复用功能重映射之间的联系和区别：</h3><ul>
+<li>GPIO （General Purpose Input Output）通用功能：MCU（微控制单元）与外部电路和设备连接的基本外设，即常说的端口或管脚，GPIO 主要用于通用的功能，常用于连接 LED 显示、驱动蜂鸣器、检测按键等</li>
+<li>复用功能（Alternate Function）：是指某些 GPIO 除了通用功能外还可以设置为一些外设专用的功能。这样做可以减少管脚数目并且根据需求灵活配置</li>
+<li>复用功能重映射：可以把一些“复用功能”重映射到“指定的引脚”上。原来的引脚便不再具有该功能。直接好处：PCB电路板的设计人员可以在需要的情况下，不必把某些信号在板上绕一大圈完成联接，方便了PCB的设计同时潜在地减少了信号的交叉干扰。</li>
+</ul>
+<h2 id="NVIC-和-EXTI"><a href="#NVIC-和-EXTI" class="headerlink" title="NVIC 和 EXTI"></a>NVIC 和 EXTI</h2><h3 id="概述：-1"><a href="#概述：-1" class="headerlink" title="概述："></a>概述：</h3><ul>
+<li>NVIC 是一个总的中断控制器，其中1~15号对应的系统异常，大于等于16号的全部是外部中断</li>
+<li>不管是来自 CM3 内部的异常还是外部的中断都将进入该控制器进行处理和逻辑判断</li>
+<li>STM32F107 的异常响应系统是 CM3 的裁剪和细化</li>
+<li>EXTI 由20个产生事件/中断请求的边沿检测器组成</li>
+</ul>
+<h3 id="中断优先级"><a href="#中断优先级" class="headerlink" title="中断优先级"></a>中断优先级</h3><ul>
+<li><p>NVIC支持中断嵌套，使得高优先级异常会抢占低优先级异常</p>
+</li>
+<li><p>系统异常有 3 个：</p>
+<ul>
+<li>复位</li>
+<li>NMI（不可屏蔽中断）</li>
+<li>硬件失效（Hard Fault）</li>
+</ul>
+</li>
+<li><p>抢占优先级和从优先级</p>
+<ul>
+<li>MSB：所在的位段对应抢占优先级，抢占优先级决定了抢占行为</li>
+<li>LSB：所在的位段对应从优先级，从优先级则处理“内务”</li>
+</ul>
+</li>
+<li><p>STM32F107采用最高有效位对齐，在设计时裁掉表达优先级的4个低端有效位，所以只支持16级优先级</p>
+</li>
+</ul>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxfr5bsfkfj31a005mq5s.jpg" alt="Priority Bits 优先级有效位"></p>
+<h3 id="中断输入和悬起："><a href="#中断输入和悬起：" class="headerlink" title="中断输入和悬起："></a>中断输入和悬起：</h3><ul>
+<li>当中断输入脚被置为有效后，该中断就被“悬起”</li>
+<li>所谓悬起就是等待、就绪的意思。（即使后来中断撤销了中断请求，已经被标记成悬起的中断也被记录了下来，在系统中，当它的优先级最高时，就会得到响应，并获得其服务程序的开始地址）</li>
+<li>当某个中断服务开始执行后，就称此中断进入了“活跃”状态，并且其悬起位会被<strong>硬件</strong>清除，在一个中断活跃后，直到该服务例程执行完毕，并且返回后，该中断才能对新的请求予以响应。</li>
+</ul>
+<h3 id="中断响应序列："><a href="#中断响应序列：" class="headerlink" title="中断响应序列："></a>中断响应序列：</h3><p>当 NVIC 响应一个中断时，会自动完成以下三项工作，以便安全、准确地跳转到相应的中断服务程序 </p>
+<ul>
+<li><strong>入栈：</strong>把8个寄存器的值压入栈</li>
+<li><strong>取向量：</strong>从向量表中找出对应的服务程序入口地址</li>
+<li><strong>更新寄存器：</strong>选择堆栈指针 MSP/PSP，更新堆栈指针 SP，更新连接寄存器 LR，更新程序计数器 PC</li>
+</ul>
+<h3 id="中断返回"><a href="#中断返回" class="headerlink" title="中断返回"></a>中断返回</h3><ul>
+<li><strong>出栈：</strong> 把先前压入栈中的寄存器在这里恢复。内部出栈顺序与入栈顺序相对应，堆栈指针的值也改回先前的值</li>
+<li><strong>更新 NVIC 寄存器：</strong> 伴随着中断的返回，它的活动位也被硬件清除。对于外部中断，倘若中断输入再次被置为有效，则悬起位也将再次置位，新一次的中断响应序列可随之再次开始</li>
+</ul>
+<h3 id="中断嵌套"><a href="#中断嵌套" class="headerlink" title="中断嵌套"></a>中断嵌套</h3><ul>
+<li>NVIC 和 CM3 处理器会根据优先级的设置来控制抢占与嵌套行为</li>
+<li>有了自动入栈和出栈，不用担心在中断发生嵌套时，会使寄存器的数据损毁</li>
+</ul>
+<h3 id="SysTick-定时器"><a href="#SysTick-定时器" class="headerlink" title="SysTick 定时器"></a>SysTick 定时器</h3><p>SysTick 定时器被捆绑在 NVIC 中，用于产生 SysTick 异常（异常号为15）</p>
+<h3 id="中断向量—（异常）向量表"><a href="#中断向量—（异常）向量表" class="headerlink" title="中断向量—（异常）向量表"></a>中断向量—（异常）向量表</h3><ul>
+<li>缺省情况下，CM3 认为（异常）向量表位于零地址处，且各向量占用 4 字节</li>
+<li>在STM32F107中，这种映射关系具体体现在启动代码startup_stm32f10x_cl.s文件中</li>
+</ul>
+<h3 id="NVIC-函数库配置"><a href="#NVIC-函数库配置" class="headerlink" title="NVIC 函数库配置"></a>NVIC 函数库配置</h3><p>NVIC 涉及的库函数存放在 <strong>misc.c</strong> 文件中，并非类似 stm32f10x_nvic.c 这样的命名，这是因为 NVIC 属于 CM3 内核部件，遵从 CMSIS 接口协议。就其函数库来看，NVIC 主要是设置中断优先级，以达到控制其运行顺序及嵌套等功能</p>
+<p><strong>配置代码：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NVIC_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/*定义一个 NVIC_InitTypeDef 类型的结构体，该类型在 misc.c 中定义*/</span></span><br><span class="line">    NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*在 NVIC_InitStructure 中配置中断通道为 EXTI3*/</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannel = EXTI3_IRQn;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*在 NVIC_InitStructure 中配置中断抢占优先级为7*/</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">0x07</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*在 NVIC_InitStructure 中配置从优先级为7*/</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">0x07</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*在 NVIC_InitStructure 中使能该中断*/</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*NVIC_Init 函数根据 NVIC_InitStructure 设置进行 NVIC 初始化*/</span></span><br><span class="line">    NVIC_Init(&amp;NVIC_INitStructure);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="外部中断-事件控制器"><a href="#外部中断-事件控制器" class="headerlink" title="外部中断/事件控制器"></a>外部中断/事件控制器</h3><p>外部中断/事件控制器EXTI是STM32F107的一个外设，不属于CM3内核的范畴，主要用于<strong>外部中断和事件</strong>的控制</p>
+<p>EXTI 由20个产生中断/事件请求的边沿检测器组成，特点：</p>
+<ul>
+<li>每个输入线可以独立的配置输入类型（脉冲或挂起）和对应的触发事件（上升沿、下降沿或者双边沿都触发）</li>
+<li>每个输入线都可以独立地被屏蔽</li>
+<li>挂起寄存器保持着状态线的中断请求</li>
+</ul>
+<h3 id="EXTI-库函数配置："><a href="#EXTI-库函数配置：" class="headerlink" title="EXTI 库函数配置："></a>EXTI 库函数配置：</h3><p><strong>配置代码：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EXTI_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/* 定义一个EXTI_InitTypeDef类型的结构体，该类型在stm32f10x_exti.h中定义 */</span></span><br><span class="line">	EXTI_InitTypeDef   EXTI_InitStructure;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 使能AFIO 时钟 */</span></span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 配置 PD3管脚作为EXTI线3  */</span></span><br><span class="line">	GPIO_EXTILineConfig(GPIO_PortSourceGPIOD, GPIO_PinSource3);</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 在EXTI中配置 EXTI线3为中断模式，下降沿有效，并使能该配置 */</span></span><br><span class="line">	EXTI_InitStructure.EXTI_Line = EXTI_Line3;</span><br><span class="line">	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;		<span class="comment">//配置模式为中断模式</span></span><br><span class="line">	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling; <span class="comment">//下降沿有效 </span></span><br><span class="line">	EXTI_InitStructure.EXTI_LineCmd = ENABLE;				<span class="comment">//使能该配置</span></span><br><span class="line">	EXTI_Init(&amp;EXTI_InitStructure);							<span class="comment">//初始化 EXTI</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>判断两个中断优先级高低的规则：</p>
+<blockquote>
+<p>优先级的数值越小，则优先级越高，中断优先级支持中断嵌套，高优先级的异常会抢占低优先级的异常。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="定时器（TIM）"><a href="#定时器（TIM）" class="headerlink" title="定时器（TIM）"></a>定时器（TIM）</h2><p><strong>概述：</strong></p>
+<ul>
+<li>定时器是MCU中常用的外设，用于实现计数、定时等功能。常用于脉冲计数、时间控制和波形控制等场合。</li>
+<li>STM32F107有7个通用功能的定时器（还有几个专用的，例如看门狗、RTC），分别是TIM1-TIM7，它们分为三组：高级控制定时器、通用定时器和基本定时器。</li>
+</ul>
+<p><strong><em>注意：TIM1在APB2总线，而其他定时器在APB1总线，当调用库函数开启它们时钟的时候，需要特别注意函数和参数的一致</em></strong></p>
+<h4 id="使能时钟"><a href="#使能时钟" class="headerlink" title="使能时钟"></a>使能时钟</h4><p>  /<em> 使能TIM1时钟  </em>/</p>
+<p>  RCC_<strong>APB2</strong>PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);  </p>
+<p>  /<em> 使能 TIM3 时钟 </em>/</p>
+<p>  RCC_<strong>APB1</strong>PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);</p>
+<h3 id="高级和通用定时器TIMx—TIMx主要特性"><a href="#高级和通用定时器TIMx—TIMx主要特性" class="headerlink" title="高级和通用定时器TIMx—TIMx主要特性"></a>高级和通用定时器TIMx—TIMx主要特性</h3><ul>
+<li><p>基本计数、定时功能，计数范围1-65535。 </p>
+</li>
+<li><p>每个定时器有四个独立通道，TIM1还有额外的三个通道可产生互补信号。 </p>
+</li>
+<li><p>适合多种用途，包含测量输入信号的脉冲宽度（输入捕获），或者产生输出波形。 </p>
+</li>
+<li><p>使用定时器预分频器和RCC时钟控制预分频器，可以实现脉冲宽度和波形周期从几个微秒到几个毫秒的调节。 </p>
+</li>
+<li><p>定时器之间完全独立的，它们不共享任何资源，可以同步操作。</p>
+</li>
+</ul>
+<h3 id="时基单元"><a href="#时基单元" class="headerlink" title="时基单元"></a>时基单元</h3><ul>
+<li>TIMx的16位计数器、预分频器、自动装载寄存器以及重复次数计数器（TIM1特有）组成了“时基单元”</li>
+</ul>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxgkema3ojj31am0ckn2u.jpg" alt=""></p>
+<h3 id="TIMx的三种计数模式"><a href="#TIMx的三种计数模式" class="headerlink" title="TIMx的三种计数模式"></a>TIMx的三种计数模式</h3><ul>
+<li>向下计数：计数器从0计数到自动加载值（TIMx_ARR计数器的内容），然后重新从0开始计数并且产生一个计数器溢出事件</li>
+<li>向上计数：计数器从自动装入的值（TIMx_ARR计数器的值） 开始向下计数到0 ，然后从自动装入的值重新开始并且产生一个计数器向下溢出事件</li>
+<li>中央对齐：计数器从0 开始计数到自动加载的值（TIMx_ARR寄存器）−1 ，产生一个计数器溢出事件，然后向下计数到1并且产生一个计数器下溢事件；然后再从0开始重新计数。这种计数模式下，一个周期可以产生对称的两次更新事件，可用于产生50%占空比的方波</li>
+</ul>
+<h3 id="计数模式-工作方式"><a href="#计数模式-工作方式" class="headerlink" title="计数模式 工作方式"></a>计数模式 工作方式</h3><ul>
+<li>如果使用重复计数器功能，则在溢出次数达到设置的重复计数时，产生更新事件</li>
+<li>发生溢出或更新事件后，自动装载影子寄存器将被重新置入预装载寄存器（TIMx_ARR）的值</li>
+<li>发生溢出或更新事件后，预分频器的缓冲区被置入预装载寄存器的值（即 TIMx_PSC）</li>
+<li>自动装载寄存器在计数器重载入之前被更新，因此在下一个周期才会生效</li>
+</ul>
+<h3 id="计数模式配置"><a href="#计数模式配置" class="headerlink" title="计数模式配置"></a>计数模式配置</h3><p>定时公式和计数脉冲数量公式</p>
+<ul>
+<li>时间 = 计数脉冲数量 x （1、输入时钟频率）</li>
+<li>计数脉冲数量 = 时间 x 输入时钟频率</li>
+</ul>
+<p><strong>配置具体步骤：</strong></p>
+<ul>
+<li>计算预分频数值</li>
+<li>计算计数数值</li>
+<li>计算重复次数值</li>
+</ul>
+<p><strong>代码配置：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TIM1_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/*定义一个 TIM_TimeBaseInitTypeDef 类型的结构体，该类型在 stm32f10x_tim.h 中定义*/</span></span><br><span class="line">    TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*使能一下 TIM1 的时钟*/</span></span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*自动装载的计数值*/</span></span><br><span class="line">    TIM_TimeBaseStructure.TIM_Period = (<span class="number">10000</span><span class="number">-1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*预分频系数设置*/</span></span><br><span class="line">    TIM_TimeBaseStructure.TIM_Perscaler = (<span class="number">7200</span><span class="number">-1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*向上计数*/</span></span><br><span class="line">    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*重复次数为0，即每一溢出都中断*/</span></span><br><span class="line">    TIM_TimeBaseStructure.TIM_RepetitionCounter = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*时钟分割，用于数字滤波器等，计数模式中无作用*/</span></span><br><span class="line">    TIM_TimeBaseStructure.TIM_ClockDivision = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*根据设置的参数初始化 TIM1*/</span></span><br><span class="line">    TIM_TimeBaseInit(TIM1, &amp;TIM_TimeBaseStructure);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*使能 TIM1 计数器*/</span></span><br><span class="line">    TIM_Cmd(TIM1, ENABLE);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="输出模式PWM模式"><a href="#输出模式PWM模式" class="headerlink" title="输出模式PWM模式"></a>输出模式PWM模式</h3><p><strong>概述：</strong></p>
+<blockquote>
+<p>PWM（Pulse Width Modulation，脉冲宽度调制）是一种对模拟信号电平进行数字编码的方法，它利用脉冲宽度即占空比来表示一个模拟信号电平的高低，是一种数字信号对模拟电路进行控制的非常有效的技术</p>
+</blockquote>
+<ul>
+<li><p>在STM32F107中，TIMx模块可以产生一个由<strong>TIMx_ARR寄存器</strong>确定频率、由<strong>TIMx_CCR（捕获/比较）寄存器</strong>确定占空比的PWM信号</p>
+</li>
+<li><p>在 STM32F107中，每一个 TIMx 通道都有一个捕获/比较 模块，用于对输入信号进行捕获和设定值进行比较，可实现测量脉冲宽度和控制波形输出等功能</p>
+</li>
+</ul>
+<p><strong>PWM模式配置：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TIM3_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/* 定义一个TIM_TimeBaseInitTypeDef类型的结构体，该类型在stm32f10x_tim.h中定义 */</span></span><br><span class="line">	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;</span><br><span class="line">	<span class="comment">/* 定义一个TIM_OCInitTypeDef类型的结构体，该类型在stm32f10x_tim.h中定义 */</span></span><br><span class="line">	TIM_OCInitTypeDef  TIM_OCInitStructure;</span><br><span class="line">	<span class="comment">/* 使能 TIM3 时钟 */</span></span><br><span class="line">	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);</span><br><span class="line">	<span class="comment">/* TIM3完全重映射，即映射到PC6,7,8,9 */</span></span><br><span class="line">	GPIO_PinRemapConfig(GPIO_FullRemap_TIM3, ENABLE);	</span><br><span class="line">	<span class="comment">/* 计算预分频系数 */</span></span><br><span class="line">	PrescalerValue = (<span class="keyword">uint16_t</span>) (SystemCoreClock / <span class="number">24000000</span>) - <span class="number">1</span>;</span><br><span class="line">	<span class="comment">/* 时基设置，TIM3为向上计数 */</span></span><br><span class="line">	TIM_TimeBaseStructure.TIM_Period = <span class="number">665</span>;</span><br><span class="line">	TIM_TimeBaseStructure.TIM_Prescaler = PrescalerValue;</span><br><span class="line">	TIM_TimeBaseStructure.TIM_ClockDivision = <span class="number">0</span>;</span><br><span class="line">	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;</span><br><span class="line">	TIM_TimeBaseInit(TIM3, &amp;TIM_TimeBaseStructure);</span><br><span class="line">	<span class="comment">/* TIM3为PWM1模式，输出使能，溢出值为CCR1_Val */</span></span><br><span class="line">	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;</span><br><span class="line">	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;</span><br><span class="line">	TIM_OCInitStructure.TIM_Pulse = CCR1_Val;</span><br><span class="line">	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;</span><br><span class="line">	<span class="comment">/* 调用通道1初始化程序进行初始化,使能通道1预装载寄存器 */</span></span><br><span class="line">	TIM_OC1Init(TIM3, &amp;TIM_OCInitStructure);</span><br><span class="line">	TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);</span><br><span class="line">	<span class="comment">/* 溢出值为CCR2_Val,进行初始化,使能通道2预装载寄存器 */</span></span><br><span class="line">	TIM_OCInitStructure.TIM_Pulse = CCR2_Val;</span><br><span class="line">	TIM_OC2Init(TIM3, &amp;TIM_OCInitStructure);</span><br><span class="line">	TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);</span><br><span class="line">	<span class="comment">/* 溢出值为CCR3_Val,进行初始化,使能通道3预装载寄存器 */</span></span><br><span class="line">	TIM_OCInitStructure.TIM_Pulse = CCR3_Val;</span><br><span class="line">	TIM_OC3Init(TIM3, &amp;TIM_OCInitStructure);</span><br><span class="line">	TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);</span><br><span class="line">	<span class="comment">/* 溢出值为CCR4_Val,进行初始化,使能通道4预装载寄存器 */</span></span><br><span class="line">	TIM_OCInitStructure.TIM_Pulse = CCR4_Val;</span><br><span class="line">	TIM_OC4Init(TIM3, &amp;TIM_OCInitStructure);</span><br><span class="line">	TIM_OC4PreloadConfig(TIM3, TIM_OCPreload_Enable);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="看门狗"><a href="#看门狗" class="headerlink" title="看门狗"></a>看门狗</h2><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><p>一种专门用于检测 MCU 程序运行状态的外设或芯片，俗称“看门狗”</p>
+<ul>
+<li>喂狗：用户程序中用专门的语句在看门狗达到溢出条件之前，对计数进行重置，以免 MCU 复位</li>
+</ul>
+<p>STM32F107内置两个看门狗：</p>
+<ul>
+<li>独立看门狗（IWDG）：限制喂狗时间在0~x 内，x 由相关寄存器的值决定（即IWDG_RLR），喂狗时间不能过晚；适用于那些需要看门狗作为一个在主程序之外，能够完全独立工作，并且对时间精度要求较低的场合</li>
+<li>窗口看门狗（WWDG）：其喂狗时间是一个有上、下限的范围，用户可以通过相关寄存器设定上限时间和下限时间；喂狗的时间不能过早，也不能过晚；使用于那些要求看门狗在精确计时窗口起作用的应用程序</li>
+</ul>
+<h3 id="独立看门狗（IWDG）"><a href="#独立看门狗（IWDG）" class="headerlink" title="独立看门狗（IWDG）"></a>独立看门狗（IWDG）</h3><p><strong>主要性能：</strong></p>
+<ul>
+<li>自由运行的递减计数器</li>
+<li>时钟由独立的 RC 振荡器提供（可在停止和待机模式下工作）</li>
+<li>看门狗被激活后，在计数器计数至0x000时产生复位</li>
+</ul>
+<p><strong>IWDG 主要部件：</strong></p>
+<ul>
+<li>预分频寄存器（IWDG_PR）及控制的8位预分频器，主要用于将专用的 40KHz 的 LSI 时钟进行分频</li>
+<li>状态寄存器（IWDG_SR）：用于指示分频值和重装载值的更行状态</li>
+<li>重装载寄存器（IWDG_RLR）：用于配置看门狗计数器的重装载值</li>
+<li>12位递减计数器，用于递减计数，一旦计数至末尾0x000，就产生一个复位信号</li>
+<li>键寄存器（IWDG_KR）：用于设置键值，特定的键值有特定的用途，例如0xCCCC表示启动看门狗，0xAAAA 表示“喂狗”指令，0x5555表示解除写保护指令</li>
+</ul>
+<p><strong>IWDG 的开启和喂狗：</strong></p>
+<p>开启：</p>
+<p>在键寄存器（IWDG_KR）中写入键值0xCCCC，开始启用独立看门狗；此时计数器开始从其复位值0FFF递减计数。当计数器计数到末尾0x000时，产生一个复位信号（IWDG_RESET）</p>
+<p><strong>喂狗：</strong></p>
+<p>无论何时，只要在键寄存器（IWDG_KR）中写入0xAAAA，重装载寄存器（IWDG_RLR）中的值就会被重新加载到计数器，以避免看门狗复位（即“喂狗”）</p>
+<p><strong>寄存器的写入保护：</strong></p>
+<p>STM32F107中的预分频寄存器（IWDG_PR）和重装载寄存器（IWDG_RLR）具有写入保护功能，以防止程序被意外修改，要修改这两个寄存器的值必须先向 IWDG_KR 中写入0x5555，以取消其两个寄存器的写保护</p>
+<h3 id="IWDG-的配置步骤"><a href="#IWDG-的配置步骤" class="headerlink" title="IWDG 的配置步骤"></a>IWDG 的配置步骤</h3><ul>
+<li><ol>
+<li>向 IWDG_KR 中写入0x5555：取消掉 IWDG_PR和 IWDG_RLR 的写保护</li>
+</ol>
+</li>
+<li><ol>
+<li>设置 IWDG_PR 的值：设置看门狗的分频系数，本例中为32</li>
+</ol>
+</li>
+<li><ol>
+<li>设置 IWDG_RLR 的值：设置看门狗的重装载的值，本例中625</li>
+</ol>
+</li>
+<li><ol>
+<li>向 IWDG_KR 中写入0xAAAA，以使 STM32F107重新加载 IWDG_RLR 的值到看门狗计数器中</li>
+</ol>
+</li>
+<li><ol>
+<li>向 IWDG_KR 中写入0xCCCC，以启动 STM32F107的看门狗</li>
+</ol>
+</li>
+</ul>
+<p>  <strong>注意：IWDG 有自己独立的时钟，所以不需要像配置其他外设那样另外开启时钟</strong></p>
+<h3 id="代码配置"><a href="#代码配置" class="headerlink" title="代码配置"></a>代码配置</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">IWDG_Config()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/*向 IWDG_KR 中写入0x5555*/</span></span><br><span class="line">    IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);</span><br><span class="line">    <span class="comment">/*设置分频系数*/</span></span><br><span class="line">    IWDG_SetPrescaler(IWDG_Perscaler <span class="number">32</span>);</span><br><span class="line">    <span class="comment">/*设置重装载的值*/</span></span><br><span class="line">    IWDG_SetReload(<span class="number">625</span>);</span><br><span class="line">    <span class="comment">/*RLR 重装载寄存器*/</span></span><br><span class="line">    IWDG_ReloadCounter();</span><br><span class="line">    <span class="comment">/*使能 IWDG */</span></span><br><span class="line">    IWDG_Enable;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="通用同步-异步收发器（USART）"><a href="#通用同步-异步收发器（USART）" class="headerlink" title="通用同步/异步收发器（USART）"></a>通用同步/异步收发器（USART）</h2><p><strong>概述：</strong></p>
+<p>USART 通用同步/异步收发器是 MCU 常用外设，常用于 MCU 之间、MCU 与 PC 或 MCU 与其他模块之间的通信。</p>
+<p>STM32F107 中有5个通用同步/异步收发器（USART）,除了支持异步双工通信外，还支持多种工作模式，并且可以使用多缓冲器配置的 DMA方式实现高速数据通信</p>
+<p><strong>USART主要特性:</strong></p>
+<ul>
+<li>支持全双工，异步通信</li>
+<li>NRZ（Not Return Zero，不归零码）标准格式</li>
+<li>发送和接受共用分数波特率发生器，可灵活设置波特率，最高达4.5Mb/s</li>
+<li>可设置8位或9位数据字长度</li>
+<li>可设置1或2个停止位</li>
+<li>具有单线半双工通信模式</li>
+<li>具有 LIN（局域互联网）功能</li>
+<li>同步模式时，作为发送方为同步传输提供时钟</li>
+<li>具有 IrDA（红外数据组织）SIR 编码器/解码器模块</li>
+<li>具有智能卡模拟功能，接口支持 ISO7816-3标准中定义的异步智能卡协议</li>
+<li>可在 SRAM 里使用 DMA缓冲/接受发送字节</li>
+<li>可单独开启或关闭发送器和接收器</li>
+</ul>
+<p><strong>USART 外设模块有多种标志，具体如下：</strong></p>
+<ul>
+<li>三种检测标志：接受缓冲器满、发送缓冲器空和传输结束标志</li>
+<li>四个错误检测标志：溢出错误、噪音错误、帧错误和校验错误标志</li>
+<li>十个中断源标志：CTS 改变、LIN 断开符检测、发送数据寄存器空、发送完成、接受数据寄存器满、检测到总线为空闲、溢出错误、帧错误、噪音错误和校验错误标志</li>
+</ul>
+<p><strong>USART异步模式：</strong></p>
+<ul>
+<li><p>概述：</p>
+<p>异步模式不需要专门的时钟信号来控制数据的收发，因此发送数据时位与位的间隙可以任意改变，虽然需要额外的开销用于定义数据的开始位和停止位等，但可省掉一条时钟线，有很大的实用意义</p>
+</li>
+<li><p>异步模式下重要的参数和概念，需严格匹配</p>
+<ul>
+<li>波特率：指串行通信中每秒传送的位数，如波特率115200，表示每秒传送115200个比特位，其中包含起始位和停止位，即实际传输的位数</li>
+<li>数据位：指每一帧数据里包含数据的位数。（通常选择8位）</li>
+<li>停止位：作为一帧数据的结束符号</li>
+<li>奇偶校验：一种串行通信中简单的校验方式：<ul>
+<li>奇校验：如果一帧数据以及校验位中的“1”的个数为奇数，则校验位为“0”，否则为“1”</li>
+<li>偶校验：如果一帧数据以及校验位中的“1”的个数为偶数，则校验位为“0”，否则为“1”</li>
+</ul>
+</li>
+<li>硬件流控制：常用 RTS和 CTS 流控制，各自占一条线，作为硬件握手信号</li>
+</ul>
+</li>
+<li><p>分数波特率：stm32F107中，使用分数波特率的概念，即将波特率的数值设置为由4位小数（DIV_Fraction）和12位整数（DIV_Mantissa）组成的16位 USARTDIV，并将其存放在USART_BRR（波特率寄存器）低16位中，USART_BRR 的高16位为保留位，无定义。</p>
+<script type="math/tex; mode=display">波特率 = fPCLK/(USARTDIV * 16)</script><p>fPCLK是外设的时钟。USART1在 APB2总线，fPLCK 最高可达72MHz；其他 USART 在 APB1总线，fPLCK 最高可达36MHz</p>
+<script type="math/tex; mode=display">USARTDIV = fPCLK/(波特率 * 16)</script><p> 例如：USART1时钟频率为72MHz，波特率115200，则：</p>
+<p>USART 根据上式为39.0625</p>
+<p>从而得到：DIV_Fraction = 16 * 0.0625 = 1 = 0x01</p>
+<p>DIV_Mantissa = 39 = 0x27</p>
+<p>所以完整的 USART_BRR 配置字节：0x0271就可以得到115200的波特率</p>
+</li>
+<li><p>DMA 传输</p>
+<p>直接存储器存取（DMA）用来提供外设和寄存器之间或者存储器和存储器之间的高速数据传输。其接受和发送过程如下：</p>
+<ul>
+<li>DMA 发送：首先设置 DMA 从指定的 SRAM 区传送数据到 USART_DR，然后通过发送器送出</li>
+<li>DMA 接受：首先设置 SRAM 区作为 DMA 缓存区，而后每次接受到一个字节，DMA 控制器就把数据从 USART_DR 传送到指定的 DMA 缓存区</li>
+</ul>
+</li>
+<li><p>中断请求</p>
+<p>为了更好的配合通信，STM32F107的 USART 可以产生多个中断请求。USART 的各种中断向量也被连接到同一个中断向量。</p>
+<ul>
+<li>发送期间：发送完成、清除发送、发送数据寄存器空</li>
+<li>接受期间：空闲总线检测、溢出错误」接受数据寄存器非空、检验错误、LIN 断开符检测、噪音标志和帧错误</li>
+</ul>
+</li>
+</ul>
+<p><strong>异步模式配置: </strong></p>
+<p>下述函数用于实现调用固件库初始化 USART1 为异步模式，波特率9600，8位数据位，1位停止位，偶校验，无硬件流控制</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">COM_Config()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/*声明USART 初始化结构体*/</span></span><br><span class="line">    USART_InitTypeDef  USART_InitStructure;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*开启 USART1时钟*/</span></span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置波特率9600*/</span></span><br><span class="line">    USART_InitStructure.USART_BaudRate = <span class="number">9600</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置8位数据位*/</span></span><br><span class="line">    USART_InitStructure.USART_WordLength = USART_WordLength_8b;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置1位停止位*/</span></span><br><span class="line">    USART_InitStructure.USART_StopBits = USART_StopBits_1;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置偶校验*/</span></span><br><span class="line">    USART_InitStructure.USART_Parity = USART_Parity_Even;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置不开启硬件流控制*/</span></span><br><span class="line">    USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置 USART 模式为收发*/</span></span><br><span class="line">    USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*按照初始化结构体进行 USART1初始化*/</span></span><br><span class="line">    USART_Init(USART1, &amp;USART_InitStructure);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*使能 USART1*/</span></span><br><span class="line">    USART_Cmd(USART1, ENABLE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>USART编程实例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GPIO_Config</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">COM_Init</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">uint8_t</span> ch;</span><br><span class="line">    GPIO_Config();</span><br><span class="line">    COM_Init();</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*如果 USART2 的接受标志位不为0，即已经接收到数据*/</span></span><br><span class="line">        <span class="keyword">if</span>(USART_GetFlagStatus(USART2, USART_FLAG_RXNE)!= RESET)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/*将 USART2 接受到的数据放入变量 ch 缓存*/</span></span><br><span class="line">            ch = USART_ReceiveData(USART2);</span><br><span class="line">            <span class="comment">/*通过 USART2 发送 ch 的内容*/</span></span><br><span class="line">            USART_SendData(USART2, ch);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">GPIO_Config(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    GPIO_InitTypeDef GPIO_Initstructure;</span><br><span class="line">    </span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD | RCC_APB2Periph_GPIOA | RCC_APB2Pefiph_AFIO, ENABLE);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*重映射 USART2，使能 USART2管脚重映射 */</span></span><br><span class="line">    GPIO_PinRemapConfig(GPIO_Remap_USART2, ENABLE);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*使能 USART2 时钟*/</span></span><br><span class="line">    RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置重映射后的 USART2 输出 TX 管脚 PD5为复用推挽*/</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;</span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;</span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">    GPIO_Init(GPIOD, &amp;GPIO_InitStructure);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置重映射后的 USART2 输入 RX 管脚 PD6为浮空输入*/</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;</span><br><span class="line">    GPIO_InitStructrue.GPIO_Pin = GPIO_Pin_6;</span><br><span class="line">    GPIO_Init(GPIOD, &amp;GPIO_InitStructure);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">COM_Init(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/*声明USART 初始化结构体*/</span></span><br><span class="line">    USART_InitTypeDef  USART_InitStructure;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置波特率115200*/</span></span><br><span class="line">    USART_InitStructure.USART_BaudRate = <span class="number">115200</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置8位数据位*/</span></span><br><span class="line">    USART_InitStructure.USART_WordLength = USART_WordLength_8b;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置1位停止位*/</span></span><br><span class="line">    USART_InitStructure.USART_StopBits = USART_StopBits_1;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置无校验*/</span></span><br><span class="line">    USART_InitStructure.USART_Parity = USART_Parity_None;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置不开启硬件流控制*/</span></span><br><span class="line">    USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*设置 USART 模式为收发*/</span></span><br><span class="line">    USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*按照初始化结构体进行 USART1初始化*/</span></span><br><span class="line">    USART_Init(USART1, &amp;USART_InitStructure);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*使能 USART1*/</span></span><br><span class="line">    USART_Cmd(USART1, ENABLE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>总结：</strong></p>
+<ul>
+<li>STM32F107共有 5 个通用异步收发器</li>
+<li>9600波特率是指每秒钟传输 9600 位</li>
+<li>三线制串口需要的三根线分别是：发送、接受和接地</li>
+<li>简述异步模式与同步模式的区别<ul>
+<li>看收发双方的时钟是否是同步的，同步即为同步模式，否则即为异步模式下</li>
+<li>同步方式的不同，同步模式与异步模式下相对应，数据的每一位间隙都有严格规定，否则会造成数据错位</li>
+</ul>
+</li>
+</ul>
+<h2 id="直接寄存器访问（DMA）"><a href="#直接寄存器访问（DMA）" class="headerlink" title="直接寄存器访问（DMA）"></a>直接寄存器访问（DMA）</h2><p><strong>功能描述：</strong></p>
+<p>DMA（Direct Memory Access，直接寄存器访问）是一种提供在外设和存储器（内存）之间或者存储器和存储器之间高速数据传输的数据。大块数据可以通过 DMA 快速地移动，无需 CPU干预，从而节省了 CPU 的资源。因此，DMA 可以在数据采集、数据移动和周期性数据处理等方面有效的降低 CPU 负荷，使系统运行更加高效。</p>
+<h3 id="DMA-结构及特性"><a href="#DMA-结构及特性" class="headerlink" title="DMA 结构及特性"></a>DMA 结构及特性</h3><p>STM32F107 有两个 DMA 控制器，共计12个通道（DMA1有7个通道，DMA2有5个通道），每个通道管理来自一个或多个外设对存储器访问的请求。</p>
+<p>DMA 控制器和 CM3共享系统数据总线，当 CPU 和 DMA 同时访问相同的目标（存储器或外设）时，DMA 请求会暂停 CPU 访问系统总线达若干个周期。为了保证 CPU 的正常工作，可以由总线仲裁器执行循环调度，以保证 CPU 至少可以得到一半的系统总线带宽。</p>
+<h4 id="DMA控制器特性："><a href="#DMA控制器特性：" class="headerlink" title="DMA控制器特性："></a>DMA控制器特性：</h4><ul>
+<li>每个通道都直接连接专用的硬件 DMA 请求，每个通道都支持软件触发</li>
+<li>同一个 DMA 模块上，多个请求间的优先权刻意通过软件编程设置（共有四级：很高、高、中等和低），如果优先权设置相同，可以由通道号决定优先权的高低（请求0优先于请求1）</li>
+<li>数据源和目标数据区刻意选字节、半字、全字三种传输宽度</li>
+<li>源地址和目标地址必须按数据传输宽度对齐</li>
+<li>循环的缓冲器，以便用于数据长度固定并且周期操作的场合</li>
+<li>每个通道都有三个事件标志（传输过半、传输完成和传输错误），这三个事件标志通过“逻辑或”成为一个单独的中断请求，即三个事件标志使用同一个中断服务程序入口</li>
+<li>DMA 有三种传输方式：存储器和存储器，外设和存储器以及存储器和外设之间</li>
+<li>闪存、SRAM、外设的 SRAM、APB1、APB2和 AHB 外设均可以作为访问源或访问目标</li>
+<li>DMA 传输数据量最大为65535</li>
+</ul>
+<h3 id="DMA-传送"><a href="#DMA-传送" class="headerlink" title="DMA 传送"></a>DMA 传送</h3><p>DMA传送由 DMA 控制器控制，在发生一个事件后，外设向 DMA 控制器发送一个请求信号。如果此请求的优先级为目前最高，则 DMA 控制器开始访问该外设，并立即向外设发送一个应答信号。当 DMA 控制器得到应答信号时，外设立即释放它的请求。一旦外设释放了这个请求，DMA 控制器同时撤销应答信号。</p>
+<p>DMA 传送由三个操作组成：</p>
+<ul>
+<li>取外设地址：第一次传输时的开始地址保存在 DMA_CPARx（通道 x 外设地址）寄存器中，更具传输数目和地址加减操作取当前需要的地址</li>
+<li>取存储器地址：第一次传输时的开始地址保存在DMA_CMARx（存储器地址）寄存器中，根据传输数目和地址加减操作取当前需要的地址</li>
+<li>指针递减：对 DMA_CNDTRx（传输数量，包含未完成的操作数目）寄存器内的数据进行减一操作</li>
+</ul>
+<h3 id="仲裁器和优先级："><a href="#仲裁器和优先级：" class="headerlink" title="仲裁器和优先级："></a>仲裁器和优先级：</h3><p>DMA 控制器内部有仲裁器。仲裁器根据通道请求的优先权来启动外设/存储器的访问。优先权管理分两个层次：</p>
+<ul>
+<li>软件： 需要用户来设置，每个通道优先权由4个等级：最高优先级、高优先级、中等优先级和低优先级</li>
+<li>硬件：由硬件定义的，如果两个请求由相同的软件优先级，则低编号的通道比高编号的通道有较高的优先权</li>
+</ul>
+<h3 id="存储器到存储器模式："><a href="#存储器到存储器模式：" class="headerlink" title="存储器到存储器模式："></a>存储器到存储器模式：</h3><p>在 DMA通道的操作可以在没有外设请求的情况下进行，这种模式下，一旦开启 DMA 外设，DMA 传输将立即开始。当配置传输数目减为0时，DMA 传输结束。但存储器到存储器模式不能与循环模式同时使用</p>
+<h3 id="DMA-中断"><a href="#DMA-中断" class="headerlink" title="DMA 中断"></a>DMA 中断</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>中断事件</th>
+<th>事件标志位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传输过半</td>
+<td>HTIF</td>
+</tr>
+<tr>
+<td>传输完成</td>
+<td>TCIF</td>
+</tr>
+<tr>
+<td>传输错误</td>
+<td>TEIF</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="指针增量"><a href="#指针增量" class="headerlink" title="指针增量"></a>指针增量</h3><p>DMA 中的“指针”其实是外设和存储器到“地址值”。“指针增量”是指启动 DMA 之后，外设和存储器到“地址值”在每次传输后可以有选择的完成自动增加的“数值”</p>
+<p>DMA 传输有两种“地址模式”</p>
+<ul>
+<li>普通地址模式：不开启增量模式，DMA 传输完毕后地址不变</li>
+<li>指针增量模式：当设置为增量模式时，下一个要传输的地址将是前一个地址加上增量值</li>
+</ul>
+<p>“指针增量模式”的增量值取决于所选的数据宽度，其值可以为1、2或4，即数据宽度是8位、16位还是32位。 </p>
+<h3 id="DMA-配置步骤"><a href="#DMA-配置步骤" class="headerlink" title="DMA 配置步骤"></a>DMA 配置步骤</h3><ul>
+<li>定义初始化结构体</li>
+<li>使能DMA1时钟</li>
+<li>设置外设地址</li>
+<li>设置存储器（内存）地址为缓存去的首地址</li>
+<li>设置传送数目</li>
+<li>设置 DMA 的其他配置</li>
+<li>设置存储器（内存）和外设的数据宽度</li>
+<li>设置 DMA 模式</li>
+<li>设置优先级</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DMA_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/*定义 DMA 初始化结构体*/</span></span><br><span class="line">    DMA_InitTypeDef DMA_InitStructure;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*使能 DMA1时钟*/</span></span><br><span class="line">    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1,ENABLE);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*外设地址为 USART1的 DR 寄存器即数据寄存器*/</span></span><br><span class="line">    DMA_InitStructure.DMA_PeripheralBaseAddr = (<span class="keyword">uint32_t</span>)(&amp;(USART2-&gt;DR));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*内存地址为 dma_buffer[500]首地址*/</span></span><br><span class="line">    DMA_INitStructure.DMA_MemoryBaseAddr = (<span class="keyword">uint32_t</span>)&amp;dma_buffer;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*DMA 以外设作为目的地，即内存向外设传输*/</span></span><br><span class="line">    DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralDST;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*传送数目为5000*/</span></span><br><span class="line">    DMA_InitStructure.DMA_BufferSize = <span class="number">5000</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*外设地址不增加*/</span></span><br><span class="line">    DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*内存地址自动加1*/</span></span><br><span class="line">    DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*外设数据宽度为 Byte，即8位*/</span></span><br><span class="line">    DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Bye;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*内存数据宽度为 Bye*/</span></span><br><span class="line">    DMA_InitStructure.DMA_MemoryDtaSize = DMA_MemoryDtaSize_Byte;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*DMA 模式为循环模式*/</span></span><br><span class="line">    DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*优先级为高*/</span></span><br><span class="line">    DMA_InitStructure.DMA_Priority = DMA_priority_High;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*禁用内存至内存模式*/</span></span><br><span class="line">    DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*根据设定的参数初始化 USART1的 TX 所在的 DMA1的通道4*/</span></span><br><span class="line">    DMA_Init(DMA1_Channel4, &amp;DMA_InitStructure);</span><br><span class="line">    <span class="comment">/*使能 DMA */</span></span><br><span class="line">    DMA_Cmd(DMA1_Channel4, ENABLE);</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h4><ul>
+<li><p>STM32F107有两个DMA控制器共计12个通道（DMA1有7 个通道，DMA2 有5 个通道） </p>
+</li>
+<li><p>在每个DMA控制器中，还有一个仲裁器来协调各个请求的优先权 </p>
+</li>
+<li><p>每个通道都可以在有固定地址的外设寄存器和存储器地址之间执行DMA传输 </p>
+</li>
+<li><p>DMA通道的操作可以在没有外设请求的情况下进行，这种操作就是存储器到存储器模式 </p>
+</li>
+<li><p>DMA中的“指针”其实是外设和存储器的“地址值” </p>
+</li>
+<li><p>“指针增量”是指在启动DMA之后，外设和存储器的“地址值”在每次传输后可以有选择地完成自动增加的“数值” </p>
+</li>
+</ul>
+<h4 id="简述-DMA-的概念、作用和优点"><a href="#简述-DMA-的概念、作用和优点" class="headerlink" title="简述 DMA 的概念、作用和优点"></a>简述 DMA 的概念、作用和优点</h4><blockquote>
+<p>DMA（直接寄存器访问）是一种提供在外设和存储器（内存）之间或者存储器和存储器之间的高速数据传输的技术。</p>
+<p><strong>优点：</strong>大块数据可以通过 DMA 快速的移动，无需 CPU 的干预，从而节省了 CPU 的资源。可以用在数据采集、数据移动和和周期性数据处理等方面</p>
+</blockquote>
+<h2 id="ADC和-DAC"><a href="#ADC和-DAC" class="headerlink" title="ADC和 DAC"></a>ADC和 DAC</h2><h3 id="模拟-数字转换器（ADC）"><a href="#模拟-数字转换器（ADC）" class="headerlink" title="模拟/数字转换器（ADC）"></a>模拟/数字转换器（ADC）</h3><p><strong>概述：</strong></p>
+<ul>
+<li>模拟/数字转换器（Analog to Digtal Converter，ADC，也称为“A/D转换器”）是 MCU 上重要和常用的外设，主要用来将模拟的数值数字化，以便进行数字化处理。</li>
+<li>ADC 与 DAC 架起了一座沟通模拟世界与数字世界的桥梁。</li>
+<li>AD转换用来将MCU不方便处理的模拟量转换为数字量，常用于数据采集，例如电压、电流、电阻和温度等，为MCU的计算和控制提供数据。</li>
+</ul>
+<h4 id="ADC-功能简介"><a href="#ADC-功能简介" class="headerlink" title="ADC 功能简介"></a>ADC 功能简介</h4><p>STM32F107内置了两个12位逐次逼近型 ADC 转换器（ADC1和 ADC2），其主要特点：</p>
+<ul>
+<li>多达18个通道，可测量16个外部信号源和2个内部信号源</li>
+<li>各通道的 A/D 转换可以单词、连续、扫描或间断模式执行</li>
+<li>ADC 的结果可以在左对齐或右对齐方式存储在16为数据寄存器中</li>
+<li>转换结束、注入转换结束和发生模拟看门狗事件事产生中断</li>
+<li>ADC 转换器可进行自校准</li>
+<li>采样间隔可以按通道分别编程</li>
+<li>规则转换和注入转换均可由外部触发</li>
+<li>规则通道转换期间有 DMA 请求产生</li>
+<li>双 ADC 模式</li>
+<li>时钟频率为72MHz 时，转换时间为1.17us</li>
+<li>ADC 的供电要求为2.4~3.6V</li>
+<li>ADC 的输入范围为$V<em>{REN}≤V</em>{IN}≤V_{REF+}$</li>
+</ul>
+<h3 id="ADC-主要构成部件"><a href="#ADC-主要构成部件" class="headerlink" title="ADC 主要构成部件"></a>ADC 主要构成部件</h3><ul>
+<li>多路选择器：用于选择16各来自 GPIO 端口和温度传感器以及$V_{REFINT}$的信号</li>
+<li>ADC：用于管理最多4个注入通道和16个规则通道</li>
+<li>注入通道数据寄存器：用于存放注入通道转换数据</li>
+<li>规则通道数据寄存器：用于存放规则通道转换数据</li>
+</ul>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fygorfp6qvj31fs0u0q6w.jpg" alt="image-20181223145739337"></p>
+<h3 id="模拟-数字转换（ADC）—ADC校准"><a href="#模拟-数字转换（ADC）—ADC校准" class="headerlink" title="模拟/数字转换（ADC）—ADC校准"></a>模拟/数字转换（ADC）—ADC校准</h3><p>ADC有一个内置自校准模式。一旦校准结束，可以开始正常转换。建议在上电时执行一次ADC校准。（启动校准前，ADC 必须处于关电状态超过至少两个 ADC 时钟周期）</p>
+<p><strong>使用下述代码调用库函数进行ADC1的校准</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 重置ADC1校验寄存器 */</span>   </span><br><span class="line">	ADC_ResetCalibration(ADC1);	</span><br><span class="line">	<span class="comment">/* 等待重置ADC1校验寄存器完成 */</span></span><br><span class="line">	<span class="keyword">while</span>(ADC_GetResetCalibrationStatus(ADC1))</span><br><span class="line">	&#123;&#125;</span><br><span class="line">	<span class="comment">/* 开始ADC1校验 */</span></span><br><span class="line">	ADC_StartCalibration(ADC1);	</span><br><span class="line">	<span class="comment">/* 等待校验完成 */</span></span><br><span class="line">	<span class="keyword">while</span>(ADC_GetCalibrationStatus(ADC1))</span><br><span class="line">	&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ADC-通道选择"><a href="#ADC-通道选择" class="headerlink" title="ADC 通道选择"></a>ADC 通道选择</h3><p>STM32F107有16个多路通道，可以在任意多个通道上以任意顺序进行一系列转换。可以把转换组织成两组：“规则组”和“注入组”。这两个分组比较灵活，例如可以如下顺序完成转换</p>
+<ul>
+<li>“规则组”最多可以设置16个转换，而“注入组”则最多可设置4个</li>
+<li>“规则组”一般用于普通的AD转换分组 </li>
+<li>“注入组”一般用于不常用或突发的AD转换</li>
+<li>可以认为“注入组”是对“规则组”的一种中断行为。  </li>
+</ul>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fygpjplm1wj31yo04wmxn.jpg" alt="image-20181223152452350"></p>
+<h3 id="ADC-中断"><a href="#ADC-中断" class="headerlink" title="ADC 中断"></a>ADC 中断</h3><h5 id="ADC中断有以下两种情况，这两种中断都有独立的中断使能位："><a href="#ADC中断有以下两种情况，这两种中断都有独立的中断使能位：" class="headerlink" title="ADC中断有以下两种情况，这两种中断都有独立的中断使能位："></a>ADC中断有以下两种情况，这两种中断都有独立的中断使能位：</h5><ul>
+<li><p>规则组和注入组转换结束时能产生中断。 </p>
+</li>
+<li><p>当模拟看门狗状态位被设置时也能产生中断。 </p>
+</li>
+</ul>
+<p>/<em> 使能ADC2 EOC 和 AWDOG 中断 </em>/ </p>
+<p>ADC_ITConfig(ADC2, ADC_IT_EOC | ADC_IT_AWD, ENABLE); </p>
+<h3 id="DMA-请求"><a href="#DMA-请求" class="headerlink" title="DMA 请求"></a>DMA 请求</h3><ul>
+<li>因为规则通道转换的值储存在一个数据寄存器（ADC_DR）中，所以当转换多个规则通道时需要使用DMA，这可以避免丢失已经存储在寄存器中的数据。</li>
+<li>只有在规则通道的转换结束时才产生DMA请求，并将转换的数据从ADC_DR寄存器传输到用户指定的目的地址。</li>
+</ul>
+<p>/<em> 使能 ADC1的 DMA </em>/</p>
+<p>ADC_DMACmd(ADC1, ENABLE); </p>
+<h3 id="ADC-的工作模式"><a href="#ADC-的工作模式" class="headerlink" title="ADC 的工作模式"></a>ADC 的工作模式</h3><h4 id="转换模式："><a href="#转换模式：" class="headerlink" title="转换模式："></a>转换模式：</h4><p>STM32F107的 ADC 有单次转换和连续转换两种方式，而在不同的通道分组中，当转换完成时，其转换数据存放的位置和相关标志位也不相同</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fygpuoy935j31rs0l0jxy.jpg" alt="image-20181223153525613"></p>
+<h4 id="扫描模式："><a href="#扫描模式：" class="headerlink" title="扫描模式："></a>扫描模式：</h4><ul>
+<li><p>扫描模式用来扫描一组模拟通道，这组通道可以是已经配置好的规则组也可以是注入组。</p>
+</li>
+<li><p>当开启扫描模式后，ADC将扫描“被选中组”中的所有通道。如果此时的转换模式为单次模式，则在扫描完本组所有通道后，ADC自动停止。</p>
+</li>
+<li><p>如果转换模式为连续转换，则转换不会在所选择组的最后一个通道上停止，而是再次从选择组的第一个通道继续转换。 </p>
+</li>
+</ul>
+<h4 id="间断模式："><a href="#间断模式：" class="headerlink" title="间断模式："></a>间断模式：</h4><ul>
+<li><p>所谓间断模式，即可以对选择的组执行一个短序列的n次转换（n&lt;=8），一个外部触发信号可以启动下一轮n次转换，直到此序列所有的转换完成为止，以规则组为例：</p>
+</li>
+<li><p>被转换的通道 = 0、1、2、3、6、7、9、10，当n=3时。 </p>
+</li>
+<li><p>第一次触发：转换的序列为 0、1、2 </p>
+</li>
+<li><p>第二次触发：转换的序列为 3、6、7 </p>
+</li>
+<li><p>第三次触发：转换的序列为 9、10，并产生EOC事件 </p>
+</li>
+<li><p>第四次触发：转换的序列 0、1、2 </p>
+</li>
+</ul>
+<h4 id="数据对齐："><a href="#数据对齐：" class="headerlink" title="数据对齐："></a>数据对齐：</h4><p>由于STM32F107的ADC只有12位，所以转换后数据储存在16位的寄存器中，其数据可以左对齐或右对齐</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fygq34tsetj31y00m00wd.jpg" alt="image-20181223154332052"></p>
+<h4 id="通道采样时间："><a href="#通道采样时间：" class="headerlink" title="通道采样时间："></a>通道采样时间：</h4><ul>
+<li><p>ADC使用若干个ADC_CLK周期对输入电压采样，采样周期数目可以通过固件库函数进行配置。每个通道可以分别用不同的时间采样。总转换时间如下计算： </p>
+</li>
+<li><p>TCONV = 采样时间+ 12.5 个周期 </p>
+</li>
+<li><p>例如，当ADCCLK=14MHz ，采样时间为1.5周期，则： </p>
+</li>
+<li><p>TCONV = 1.5 + 12.5 = 14 周期 = 1μs </p>
+</li>
+</ul>
+<h4 id="外部触发转换："><a href="#外部触发转换：" class="headerlink" title="外部触发转换："></a>外部触发转换：</h4><ul>
+<li><p>转换可以由外部事件触发( 例如定时器捕获、EXTI线)。</p>
+</li>
+<li><p>用户选择8个事件中的某一个，来触发规则和注入组的采样。</p>
+</li>
+<li><p>注意，当外部触发信号被选为ADC规则或注入转换时，只有它的上升沿可以启动转换。</p>
+</li>
+</ul>
+<p><strong>ADC 配置</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADC_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="comment">/* ADC初始化结构体声明 */</span></span><br><span class="line">	ADC_InitTypeDef ADC_InitStructure;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 开启ADC1时钟 */</span></span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 独立的转换模式 */</span></span><br><span class="line">	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;  </span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 开启扫描模式 */</span></span><br><span class="line">	ADC_InitStructure.ADC_ScanConvMode = ENABLE;	</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 开启连续转换模式 */</span></span><br><span class="line">	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;   </span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 关闭ADC外部触发 */</span></span><br><span class="line">	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;	</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 对齐方式,ADC为12位右对齐方式 */</span> </span><br><span class="line">	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;   </span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 开启通道数，1个 */</span></span><br><span class="line">	ADC_InitStructure.ADC_NbrOfChannel = <span class="number">1</span>;	 </span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* ADC初始化 */</span></span><br><span class="line">	ADC_Init(ADC1, &amp;ADC_InitStructure);</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/*通道组，第10个通道 采样顺序1，转换时间55.5周期 */</span> </span><br><span class="line">	ADC_RegularChannelConfig(ADC1, ADC_Channel_10, <span class="number">1</span>,ADC_SampleTime_55Cycles5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="ADC-编程实例"><a href="#ADC-编程实例" class="headerlink" title="ADC 编程实例"></a>ADC 编程实例</h5><p>下述代码用于实现任务描述10.D.1，使用ADC1通道10连续转换电压值，其源代码如下： </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">main.c</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>	<span class="meta-string">"stm32f10x.h"</span></span></span><br><span class="line"><span class="comment">/* 声明GPIO初始化函数 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GPIO_Config</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="comment">/* 声明ADC初始化函数 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADC_Config</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="comment">/* 声明延时函数 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="comment">/* 声明一个变量用于存放转换数值 */</span></span><br><span class="line">	<span class="keyword">uint16_t</span> ad_v=<span class="number">0</span>;</span><br><span class="line">	GPIO_Config();</span><br><span class="line">	ADC_Config();</span><br><span class="line">	<span class="comment">/* 开启ADC1 */</span></span><br><span class="line">	ADC_Cmd(ADC1, ENABLE);</span><br><span class="line">    <span class="comment">/* 重置ADC1校准寄存器 */</span>   </span><br><span class="line">	ADC_ResetCalibration(ADC1);	  </span><br><span class="line">	<span class="comment">/*  等待重置完成 */</span></span><br><span class="line">	<span class="keyword">while</span>(ADC_GetResetCalibrationStatus(ADC1)); </span><br><span class="line">	<span class="comment">/* 开始校准ADC1 */</span></span><br><span class="line">	ADC_StartCalibration(ADC1);		</span><br><span class="line">	<span class="comment">/* 等待校准完成 */</span></span><br><span class="line">	<span class="keyword">while</span>(ADC_GetCalibrationStatus(ADC1));	   </span><br><span class="line">	<span class="comment">/* 开始软件触发转换 */</span> </span><br><span class="line">	ADC_SoftwareStartConvCmd(ADC1, ENABLE);	</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">	  	<span class="built_in">delay</span>();</span><br><span class="line">		<span class="comment">/* 获取转换数值 */</span></span><br><span class="line">	   	ad_v=ADC_GetConversionValue(ADC1);</span><br><span class="line">		<span class="comment">/* 只保留右对齐的12位 */</span></span><br><span class="line">	   	ad_v&amp;=<span class="number">0x0fff</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GPIO_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*PC0作为模拟通道10的输入管脚*/</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIP_Pin_0;</span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;</span><br><span class="line">    GPIO_Init(GPIOC,&amp;GPIO_InitStructure);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">uint32_t</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">100000</span>;i++)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADC_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="comment">/* ADC初始化结构体声明 */</span></span><br><span class="line">	ADC_InitTypeDef ADC_InitStructure;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 开启ADC1时钟 */</span></span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 独立的转换模式 */</span></span><br><span class="line">	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;  </span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 开启扫描模式 */</span></span><br><span class="line">	ADC_InitStructure.ADC_ScanConvMode = ENABLE;	</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 开启连续转换模式 */</span></span><br><span class="line">	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;   </span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 关闭ADC外部触发 */</span></span><br><span class="line">	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;	</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 对齐方式,ADC为12位右对齐方式 */</span> </span><br><span class="line">	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;   </span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* 开启通道数，1个 */</span></span><br><span class="line">	ADC_InitStructure.ADC_NbrOfChannel = <span class="number">1</span>;	 </span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* ADC初始化 */</span></span><br><span class="line">	ADC_Init(ADC1, &amp;ADC_InitStructure);</span><br><span class="line">    </span><br><span class="line">	<span class="comment">/*通道组，第10个通道 采样顺序1，转换时间55.5周期 */</span> </span><br><span class="line">	ADC_RegularChannelConfig(ADC1, ADC_Channel_10, <span class="number">1</span>,ADC_SampleTime_55Cycles5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数字-模拟转换器（DAC）"><a href="#数字-模拟转换器（DAC）" class="headerlink" title="数字/模拟转换器（DAC）"></a>数字/模拟转换器（DAC）</h3><ul>
+<li><p>数字/模拟转换（Digital to Analog Converter，简称DAC），是一种将数字信号转换为模拟信号的外设，是ADC转换的相反过程。</p>
+</li>
+<li><p>DAC用于产生MCU不方便产生的模拟信号，以便直接控制或者输出给模拟器件和设备。 </p>
+</li>
+</ul>
+<h4 id="DAC-功能简介："><a href="#DAC-功能简介：" class="headerlink" title="DAC 功能简介："></a>DAC 功能简介：</h4><ul>
+<li><p>2个DAC转换器，每个转换器对应1个输出通道。</p>
+</li>
+<li><p>8位或者12位数字输出。</p>
+</li>
+<li><p>12位模式下数据左对齐或者右对齐。</p>
+</li>
+<li><p>同步更新功能。</p>
+</li>
+<li><p>噪声波形生成。</p>
+</li>
+<li><p>三角波形生成。≈≈</p>
+</li>
+<li><p>双DAC通道同时或者分别转换。</p>
+</li>
+<li><p>每个通道都有DMA功能。</p>
+</li>
+<li><p>外部触发转换。</p>
+</li>
+<li><p>输入参考电压VREF+（2.4V&lt; VREF+&lt;3.3V)。 </p>
+</li>
+</ul>
+<h4 id="DAC模块主要有以下部分组成："><a href="#DAC模块主要有以下部分组成：" class="headerlink" title="DAC模块主要有以下部分组成："></a>DAC模块主要有以下部分组成：</h4><ul>
+<li><p>触发选择开关，用于触发源的选择。</p>
+</li>
+<li><p>DAC控制寄存器，用于DAC的配置。</p>
+</li>
+<li><p>逻辑控制器，用于对触发及控制综合配置，并将转换数值输出到转换器。</p>
+</li>
+<li><p>数据保持寄存器，用于存放和保持需要转换为模拟量的数字量。</p>
+</li>
+<li><p>数字至模拟转换器，用于将数字量转换为模拟量并由输出引脚输出。 </p>
+</li>
+</ul>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fygqsjnik3j30wz0u076p.jpg" alt="image-20181223160757675"></p>
+<h4 id="DAC输出模式："><a href="#DAC输出模式：" class="headerlink" title="DAC输出模式："></a>DAC输出模式：</h4><ul>
+<li><p>可以利用LFSR产生幅度变化的伪噪声。</p>
+</li>
+<li><p>可以在DC或者缓慢变化的信号上加上一个小幅度的三角波。</p>
+</li>
+</ul>
+<p><strong>DAC 配置</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">	DAC_Config( )</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DAC_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    DAC_InitTypeDef DAC_InitStructure;      </span><br><span class="line">    RCC_APB1PeriphClockCmd(RCC_APB1Periph_DAC, ENABLE);</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/* DAC配置*/</span></span><br><span class="line">    <span class="comment">/* DAC 配置为软件触发，产生三角波 */</span></span><br><span class="line">    DAC_InitStructure.DAC_Trigger = DAC_Trigger_Software;			 <span class="comment">//设置为软触发</span></span><br><span class="line">    DAC_InitStructure.DAC_WaveGeneration = DAC_WaveGeneration_ Triangle;	<span class="comment">//TIM1_CC3事件</span></span><br><span class="line">    DAC_InitStructure.DAC_LFSRUnmask_TriangleAmplitude=DAC_TriangleAmplitude_63;			<span class="comment">//三角波幅值为63</span></span><br><span class="line">    DAC_InitStructure.DAC_OutputBuffer = DAC_OutputBuffer_Enable;	<span class="comment">//输出缓存器使能</span></span><br><span class="line">    DAC_Init(DAC_Channel_1, &amp;DAC_InitStructure);</span><br><span class="line">    <span class="comment">/* 使能DAC1 */</span></span><br><span class="line">    DAC_Cmd(DAC_Channel_1, ENABLE);</span><br><span class="line">    <span class="comment">/* 设置DAC为12位左对齐 */</span></span><br><span class="line">    DAC_SetChannel1Data(DAC_Align_12b_L, <span class="number">0x7FF0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="DAC编程实例："><a href="#DAC编程实例：" class="headerlink" title="DAC编程实例："></a>DAC编程实例：</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"> main.c</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span>	<span class="meta-string">"stm32f10x.h"</span></span></span><br><span class="line"><span class="comment">/* 声明初始化函数 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GPIO_Config</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DAC_Config</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	GPIO_Config();</span><br><span class="line">	DAC_Config();</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="comment">/* 软件触发产生三角波*/</span></span><br><span class="line">	DAC_SoftwareTriggerCmd(DAC_Channel_1, ENABLE);</span><br><span class="line">  	&#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GPIO_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);</span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">uint32_t</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">100000</span>;i++)</span><br><span class="line">	&#123;&#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DAC_Config</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    DAC_InitTypeDef DAC_InitStructure;      </span><br><span class="line">    RCC_APB1PeriphClockCmd(RCC_APB1Periph_DAC, ENABLE);</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/* DAC配置*/</span></span><br><span class="line">    <span class="comment">/* DAC 配置为软件触发，产生三角波 */</span></span><br><span class="line">    DAC_InitStructure.DAC_Trigger = DAC_Trigger_Software;</span><br><span class="line">    DAC_InitStructure.DAC_WaveGeneration = DAC_WaveGeneration_ Triangle;	<span class="comment">//TIM1_CC3事件</span></span><br><span class="line">    DAC_InitStructure.DAC_LFSRUnmask_TriangleAmplitude=DAC_TriangleAmplitude_63;		</span><br><span class="line">    DAC_InitStructure.DAC_OutputBuffer = DAC_OutputBuffer_Enable;	<span class="comment">//输出缓存器使能</span></span><br><span class="line">    DAC_Init(DAC_Channel_1, &amp;DAC_InitStructure);</span><br><span class="line">    <span class="comment">/* 使能DAC1 */</span></span><br><span class="line">    DAC_Cmd(DAC_Channel_1, ENABLE);</span><br><span class="line">    <span class="comment">/* 设置DAC为12位左对齐 */</span></span><br><span class="line">    DAC_SetChannel1Data(DAC_Align_12b_L, <span class="number">0x7FF0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fygr72njo7j30yq0nqdj0.jpg" alt=""></p>
+<p><strong>小结：</strong></p>
+<ul>
+<li><p>STM32F107内置两个12位逐次逼近型ADC转换器 </p>
+</li>
+<li><p>STM32F107的ADC共有18个通道，可测量16个外部信号源和2个内部信号源 </p>
+</li>
+<li><p>ADC规则组最多可以设置16个转换，而注入组则最多可设置4个 </p>
+</li>
+<li><p>STM32F107的DAC是12位数字输入、电压输出的数字/模拟转换器 </p>
+</li>
+<li><p>DAC可以配置为8位或12位模式，也可以与DMA控制器配合使用 </p>
+</li>
+<li><p>常规的DA转换外，还可以利用LFSR产生各种波形 </p>
+</li>
+</ul>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2018/11/29/Data-Structure-C/" title= "Data Structure(C)">
+                    <div class="nextTitle">Data Structure(C)</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/10/05/The-method-of-get-in-Requests-lib/" title= "The method of get() in Requests lib">
+                    <div class="prevTitle">The method of get() in Requests lib</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "3z31za5tyuogWzU86rydsH0h-gzGzoHsz",
+        appKey: "YeLtmtT5U8NP5GXTUesonkhB",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:liylipsky@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/bobouc" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Cortex-M3"><span class="toc-number">1.</span> <span class="toc-text">Cortex-M3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.1.1.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STM32F107内核架构"><span class="toc-number">1.2.</span> <span class="toc-text">STM32F107内核架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CM3内核架构"><span class="toc-number">1.2.1.</span> <span class="toc-text">CM3内核架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储器组织"><span class="toc-number">1.2.2.</span> <span class="toc-text">存储器组织</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#堆栈"><span class="toc-number">1.2.3.</span> <span class="toc-text">堆栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#电源管理"><span class="toc-number">1.2.4.</span> <span class="toc-text">电源管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复位和启动配置"><span class="toc-number">1.2.5.</span> <span class="toc-text">复位和启动配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时钟"><span class="toc-number">1.2.6.</span> <span class="toc-text">时钟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复位机制"><span class="toc-number">1.2.7.</span> <span class="toc-text">复位机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#复位序列："><span class="toc-number">1.2.7.1.</span> <span class="toc-text">复位序列：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPIO-和-AFIO："><span class="toc-number">1.3.</span> <span class="toc-text">GPIO 和 AFIO：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述："><span class="toc-number">1.3.1.</span> <span class="toc-text">概述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPIO-配置"><span class="toc-number">1.3.2.</span> <span class="toc-text">GPIO 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简述-IO-的通用功能、复用功能和复用功能重映射之间的联系和区别："><span class="toc-number">1.3.3.</span> <span class="toc-text">简述 IO 的通用功能、复用功能和复用功能重映射之间的联系和区别：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NVIC-和-EXTI"><span class="toc-number">1.4.</span> <span class="toc-text">NVIC 和 EXTI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述：-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">概述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中断优先级"><span class="toc-number">1.4.2.</span> <span class="toc-text">中断优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中断输入和悬起："><span class="toc-number">1.4.3.</span> <span class="toc-text">中断输入和悬起：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中断响应序列："><span class="toc-number">1.4.4.</span> <span class="toc-text">中断响应序列：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中断返回"><span class="toc-number">1.4.5.</span> <span class="toc-text">中断返回</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中断嵌套"><span class="toc-number">1.4.6.</span> <span class="toc-text">中断嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SysTick-定时器"><span class="toc-number">1.4.7.</span> <span class="toc-text">SysTick 定时器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中断向量—（异常）向量表"><span class="toc-number">1.4.8.</span> <span class="toc-text">中断向量—（异常）向量表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NVIC-函数库配置"><span class="toc-number">1.4.9.</span> <span class="toc-text">NVIC 函数库配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外部中断-事件控制器"><span class="toc-number">1.4.10.</span> <span class="toc-text">外部中断&#x2F;事件控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXTI-库函数配置："><span class="toc-number">1.4.11.</span> <span class="toc-text">EXTI 库函数配置：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定时器（TIM）"><span class="toc-number">1.5.</span> <span class="toc-text">定时器（TIM）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使能时钟"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">使能时钟</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级和通用定时器TIMx—TIMx主要特性"><span class="toc-number">1.5.1.</span> <span class="toc-text">高级和通用定时器TIMx—TIMx主要特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时基单元"><span class="toc-number">1.5.2.</span> <span class="toc-text">时基单元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TIMx的三种计数模式"><span class="toc-number">1.5.3.</span> <span class="toc-text">TIMx的三种计数模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计数模式-工作方式"><span class="toc-number">1.5.4.</span> <span class="toc-text">计数模式 工作方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计数模式配置"><span class="toc-number">1.5.5.</span> <span class="toc-text">计数模式配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出模式PWM模式"><span class="toc-number">1.5.6.</span> <span class="toc-text">输出模式PWM模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#看门狗"><span class="toc-number">1.6.</span> <span class="toc-text">看门狗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念："><span class="toc-number">1.6.1.</span> <span class="toc-text">概念：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#独立看门狗（IWDG）"><span class="toc-number">1.6.2.</span> <span class="toc-text">独立看门狗（IWDG）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IWDG-的配置步骤"><span class="toc-number">1.6.3.</span> <span class="toc-text">IWDG 的配置步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码配置"><span class="toc-number">1.6.4.</span> <span class="toc-text">代码配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通用同步-异步收发器（USART）"><span class="toc-number">1.7.</span> <span class="toc-text">通用同步&#x2F;异步收发器（USART）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#直接寄存器访问（DMA）"><span class="toc-number">1.8.</span> <span class="toc-text">直接寄存器访问（DMA）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DMA-结构及特性"><span class="toc-number">1.8.1.</span> <span class="toc-text">DMA 结构及特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DMA控制器特性："><span class="toc-number">1.8.1.1.</span> <span class="toc-text">DMA控制器特性：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DMA-传送"><span class="toc-number">1.8.2.</span> <span class="toc-text">DMA 传送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仲裁器和优先级："><span class="toc-number">1.8.3.</span> <span class="toc-text">仲裁器和优先级：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储器到存储器模式："><span class="toc-number">1.8.4.</span> <span class="toc-text">存储器到存储器模式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DMA-中断"><span class="toc-number">1.8.5.</span> <span class="toc-text">DMA 中断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指针增量"><span class="toc-number">1.8.6.</span> <span class="toc-text">指针增量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DMA-配置步骤"><span class="toc-number">1.8.7.</span> <span class="toc-text">DMA 配置步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#小结："><span class="toc-number">1.8.7.1.</span> <span class="toc-text">小结：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#简述-DMA-的概念、作用和优点"><span class="toc-number">1.8.7.2.</span> <span class="toc-text">简述 DMA 的概念、作用和优点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ADC和-DAC"><span class="toc-number">1.9.</span> <span class="toc-text">ADC和 DAC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟-数字转换器（ADC）"><span class="toc-number">1.9.1.</span> <span class="toc-text">模拟&#x2F;数字转换器（ADC）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ADC-功能简介"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">ADC 功能简介</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ADC-主要构成部件"><span class="toc-number">1.9.2.</span> <span class="toc-text">ADC 主要构成部件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟-数字转换（ADC）—ADC校准"><span class="toc-number">1.9.3.</span> <span class="toc-text">模拟&#x2F;数字转换（ADC）—ADC校准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ADC-通道选择"><span class="toc-number">1.9.4.</span> <span class="toc-text">ADC 通道选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ADC-中断"><span class="toc-number">1.9.5.</span> <span class="toc-text">ADC 中断</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ADC中断有以下两种情况，这两种中断都有独立的中断使能位："><span class="toc-number">1.9.5.0.1.</span> <span class="toc-text">ADC中断有以下两种情况，这两种中断都有独立的中断使能位：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DMA-请求"><span class="toc-number">1.9.6.</span> <span class="toc-text">DMA 请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ADC-的工作模式"><span class="toc-number">1.9.7.</span> <span class="toc-text">ADC 的工作模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#转换模式："><span class="toc-number">1.9.7.1.</span> <span class="toc-text">转换模式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扫描模式："><span class="toc-number">1.9.7.2.</span> <span class="toc-text">扫描模式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#间断模式："><span class="toc-number">1.9.7.3.</span> <span class="toc-text">间断模式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据对齐："><span class="toc-number">1.9.7.4.</span> <span class="toc-text">数据对齐：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通道采样时间："><span class="toc-number">1.9.7.5.</span> <span class="toc-text">通道采样时间：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#外部触发转换："><span class="toc-number">1.9.7.6.</span> <span class="toc-text">外部触发转换：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ADC-编程实例"><span class="toc-number">1.9.7.6.1.</span> <span class="toc-text">ADC 编程实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数字-模拟转换器（DAC）"><span class="toc-number">1.9.8.</span> <span class="toc-text">数字&#x2F;模拟转换器（DAC）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DAC-功能简介："><span class="toc-number">1.9.8.1.</span> <span class="toc-text">DAC 功能简介：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DAC模块主要有以下部分组成："><span class="toc-number">1.9.8.2.</span> <span class="toc-text">DAC模块主要有以下部分组成：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DAC输出模式："><span class="toc-number">1.9.8.3.</span> <span class="toc-text">DAC输出模式：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#DAC编程实例："><span class="toc-number">1.9.8.3.1.</span> <span class="toc-text">DAC编程实例：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 88
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2022 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/22</span><a class="archive-post-title" href= "/2022/04/22/Java-Reflect/" >Java Reflect</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/19</span><a class="archive-post-title" href= "/2022/04/19/Android%20Learning/" >Android Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2022/04/04/Thread-Process-and-Parallel-computing/" >Thread, Process and Parallel computing</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2022/04/02/C-Smart-pointer/" >C++ Smart pointer</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2022/03/30/Cmake-common-syntax/" >Cmake common syntax</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2021/11/29/LeetCode-TIPS/" >LeetCode TIPS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/18</span><a class="archive-post-title" href= "/2021/08/18/golang-specific-notes/" >golang specific notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/07</span><a class="archive-post-title" href= "/2021/08/07/ListNode-Data-Structure/" >ListNode-Data Structure</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/13</span><a class="archive-post-title" href= "/2021/07/13/Slam-Learning/" >SLAM Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/13</span><a class="archive-post-title" href= "/2021/06/13/A-Little-bit-of-Summary-Of-Deep-Learning/" >A Little bit of Summary Of Deep Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2021/05/27/git-frequently-used-actions/" >git frequently used actions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span><a class="archive-post-title" href= "/2021/05/12/OS-Learning-Linux-Homebrew/" >OS-Learning: Linux Homebrew</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2021/05/11/Dynamic-Programming-Analysis/" >Dynamic Programming Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/24</span><a class="archive-post-title" href= "/2021/04/24/CUDA-coding/" >CUDA coding</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href= "/2021/04/23/Sliding-Window/" >Sliding Window </a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2021/04/20/Binary-Search/" >Binary Search</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/17</span><a class="archive-post-title" href= "/2021/04/17/logofapplegeniusbar/" >记一次苹果天才吧维修记录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2021/04/01/Learnopengl-note/" >Learnopengl-note</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2021/03/29/Analysis-of-Dual-Attention-Network-for-Scene-Segmentation/" >Analysis of "Dual Attention Network for Scene Segmentation"</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2021/03/23/Important-Conception-In-CG/" >Important Conception In CG</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2021/03/21/Docker-notes/" >Docker notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2021/03/17/Self-Learning-OF-Hongyi-Lee-Machine-Learning-Spring-Mandarin/" >Hongyi-Lee Machine Learning Spring 2021 Mandarin</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href= "/2021/02/22/CPP-refresh/" >CPP refresh</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/03</span><a class="archive-post-title" href= "/2021/02/03/752-Open-the-Lock/" >752. Open the Lock</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2021/02/01/Iteratively-144-Binary-Tree-Preorder-Inorder-Traversal/" >Iteratively. 144.Binary Tree Preorder&Inorder Traversal</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/29</span><a class="archive-post-title" href= "/2021/01/29/LeetCode-111-Minimum-Depth-of-Binary-Tree/" >LeetCode 111. Minimum Depth of Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2021/01/14/full-permutation-with-backtracking/" >full permutation with backtracking</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/04</span><a class="archive-post-title" href= "/2021/01/04/Hyperspectral-Classification/" >高光谱分类-Hyperspectral Classification</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/06</span><a class="archive-post-title" href= "/2020/12/06/LeetCode-322-Coin-Change/" >LeetCode 322. Coin Change</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/05</span><a class="archive-post-title" href= "/2020/12/05/LeetCode509-Fibonacci-Number/" >LeetCode509. Fibonacci Number</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2020/11/28/Learn-AndrewNg-Ai-notes/" >Learn AndrewNg-MachineLearning notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span><a class="archive-post-title" href= "/2020/11/20/LeetCode-Hanota-LCCI/" >LeetCode-Hanota LCCI</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href= "/2020/11/18/DogsVSCats/" >DogsVSCats</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/14</span><a class="archive-post-title" href= "/2020/11/14/region-growsplitmerge-watershed/" >区域生长&区域分割与合成&分水岭算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span><a class="archive-post-title" href= "/2020/11/10/threshouldeffecton2valueimg/" >不同阈值处理方法对于二值图像的影响</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span><a class="archive-post-title" href= "/2020/10/23/%E9%A2%91%E7%8E%87%E5%9F%9F%E9%AB%98%E9%80%9A%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2-%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/" >频率域高通低通滤波&同态滤波</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span><a class="archive-post-title" href= "/2020/10/19/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86work-%E7%A9%BA%E9%97%B4%E5%9F%9F-%E5%9B%BE%E5%83%8F%E5%9F%9F-%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96-%E5%B9%B3%E6%BB%91%E7%A9%BA%E9%97%B4%E6%BB%A4%E6%B3%A2-%E9%94%90%E5%8C%96%E6%BB%A4%E6%B3%A2%E5%99%A8/" >数字图像处理work-空间域/图像域-直方图均衡化/平滑空间滤波/锐化滤波器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/23</span><a class="archive-post-title" href= "/2020/09/23/std-vector-in-c/" >std::vector in c++</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/22</span><a class="archive-post-title" href= "/2020/09/22/Reverse-Integer/" >LeetCode 7.Reverse Integer</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/LeetCode4-Median-of-Two-Sorted-Arrays/" >LeetCode4. Median of Two Sorted Arrays</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2020/03/07/LeetCode628-Maximum-Product-of-Three-Numbers/" >LeetCode628. Maximum Product of Three Numbers</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/LeetCode637-Average-of-Levels-in-Binary-Tree/" >LeetCode637. Average of Levels in Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2020/03/02/LeetCode463-Island-Perimeter/" >LeetCode463. Island Perimeter</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/%E6%9C%80%E5%B0%8F%E6%95%B0%E7%BB%84/" >最小数组</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2020/03/01/%E6%AF%94%E8%BE%83%E5%A5%87%E5%81%B6%E4%B8%AA%E6%95%B0/" >比较奇偶个数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/29</span><a class="archive-post-title" href= "/2020/02/29/LeetCode504-Base-7/" >LeetCode504. Base 7</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href= "/2020/02/27/LeetCode551-Student-Attendance-Record-I/" >LeetCode551. Student Attendance Record I</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2020/02/26/LeetCode-303-Range-Sum-Query-Immutable/" >LeetCode 303. Range Sum Query - Immutable</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2020/02/26/LeetCode655-Print-Binary-Tree/" >LeetCode655. Print Binary Tree</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/24</span><a class="archive-post-title" href= "/2020/02/24/LeetCode561-Array-Partition-I/" >LeetCode561. Array Partition I </a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2020/02/23/LeetCode566-Reshape-the-Matrix-%E9%87%8D%E7%BD%AE%E7%9F%A9%E9%98%B5/" >LeetCode566.Reshape the Matrix 重置矩阵</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2020/02/23/LeetCode174-Dungeon-Game%F0%9F%A4%B4%E5%9C%B0%E7%8B%B1%E6%95%91%F0%9F%91%B8/" >LeetCode174. Dungeon Game🤴地狱救👸</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/LeetCode-404-Sum-of-Left-Leaves-%E5%B7%A6%E5%8F%B6%E5%AD%90%E7%BB%93%E7%82%B9%E5%80%BC%E4%B9%8B%E5%92%8C/" >LeetCode 404. Sum of Left Leaves 左叶子结点值之和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2020/02/19/LeetCode-455-Assign-Cookies-%E9%A5%BC%E5%B9%B2%E5%88%86%E9%85%8D/" >LeetCode 455. Assign Cookies 饼干分配</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/18</span><a class="archive-post-title" href= "/2020/02/18/LeetCode-461-Hamming-Distance-%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" >LeetCode 461 Hamming Distance 汉明距离</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/LeetCode-657-Judge-Route-Cricle-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%98%AF%E5%90%A6%E8%BF%94%E5%9B%9E%E5%8E%9F%E7%82%B9/" >LeetCode 657 Judge Route Cricle 机器人是否返回原点</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/LeetCode-1-Two-Sum/" >LeetCode 1 Two Sum</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/23</span><a class="archive-post-title" href= "/2020/01/23/Python-Error-Handing/" >Python_Error_Handing</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/2020/01/12/Python-Functional-Programming/" >Python_Functional_Programming</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/25</span><a class="archive-post-title" href= "/2019/11/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE%E7%9A%84%E6%A6%82%E5%BF%B5/" >数据结构-图的概念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href= "/2019/08/06/Spider-for-a-Book-Secrets-from-the-New-Science-of-Expertise-comments-on-JD-com/" >Spider for a Book "Secrets from the New Science of Expertise" comments on JD.com</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href= "/2019/07/17/%E7%89%A9%E8%81%94%E7%BD%91%E6%96%B0%E5%9E%8B%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82%E7%9A%84%E5%8F%91%E5%B1%95/" >物联网新型智慧城市的发展</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2019/05/27/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" >树和二叉树</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2019/03/27/PAT-1016-%E9%83%A8%E5%88%86A-B/" >PAT 1016 部分A+B</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2019/03/27/C-C-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-%E8%AF%AD%E6%B3%95%E9%80%9F%E9%80%92/" >C/C++快速入门-语法速递</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/2019/03/24/PAT-1014%E7%A6%8F%E5%B0%94%E6%91%A9%E6%96%AF%E7%9A%84%E7%BA%A6%E4%BC%9A/" >PAT 1014福尔摩斯的约会</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2019/03/21/PAT-1013-%E6%95%B0%E7%B4%A0%E6%95%B0/" >PAT 1013 数素数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/2019/03/20/Character-String-C/" >C语言字符串浅析 Character String (C)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/C-vector-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" >C++ vector 基础操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2019/03/19/PAT-1012-%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB/" >PAT 1012 数字分类</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1010-%E4%B8%80%E5%85%83%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%B1%82%E5%AF%BC/" >PAT 1010 一元多项式求导</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2019/03/18/PAT-1011-A-B-%E5%92%8C-C/" >PAT 1011 A+B 和 C</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/13</span><a class="archive-post-title" href= "/2019/01/13/12306-Python-%E6%8A%A2%E8%BD%A6%E7%A5%A8%E5%BC%80%E6%BA%90%E7%A8%8B%E5%BA%8F%EF%BC%88%E7%AE%80%E6%98%93%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%EF%BC%89/" >12306 Python 抢车票开源程序（简易使用教程）</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href= "/2018/12/31/Android-learning-record/" >Android_learning_record</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/08</span><a class="archive-post-title" href= "/2018/12/08/%E5%8F%99%E8%BF%B0%E4%B8%80%E4%BA%9B%E7%AE%80%E7%BA%A6%E7%9A%84%E4%BA%8B/" >叙述一些简约的事</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/04</span><a class="archive-post-title" href= "/2018/12/04/Linux-learning-record/" >Linux_learning_record</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2018/11/29/Data-Structure-C/" >Data Structure(C)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2018/11/21/Cortex-STM32F107-learning-record/" >Cortex-M3(STM32F107)_Learning_Notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href= "/2018/10/05/The-method-of-get-in-Requests-lib/" >The method of get() in Requests lib</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/17</span><a class="archive-post-title" href= "/2018/09/17/Basic-Matrix-knowledge/" >Basic Matrix knowledge</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/14</span><a class="archive-post-title" href= "/2018/09/14/Numpy-generate-array/" >Numpy generate array</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/24</span><a class="archive-post-title" href= "/2018/08/24/Parse-web-pages-using-CSS-class-by-BeautifulSoup/" >Parse web pages using CSS class by BeautifulSoup</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/17</span><a class="archive-post-title" href= "/2018/08/17/Regular-Expression/" >Regular Expression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span><a class="archive-post-title" href= "/2018/08/13/Sets-Dictionaries/" >Sets & Dictionaries</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/11</span><a class="archive-post-title" href= "/2018/08/11/Character-string-and-Data-type/" >Character string and Data type</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span><a class="archive-post-title" href= "/2018/08/10/Requests-details-of-Python/" >Requests' details of Python</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href= "/2018/04/20/Virtual-Environment-For-Different-Projects/" >Virtual Environment For Different Projects</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2018/04/16/20180416starspaceXtougao/" >我们一起数月亮，看星星。</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="essay"><span class="iconfont-archer">&#xe606;</span>essay</span>
+    
+        <span class="sidebar-tag-name" data-tags="Deep Learning"><span class="iconfont-archer">&#xe606;</span>Deep Learning</span>
+    
+        <span class="sidebar-tag-name" data-tags="Paper-reading"><span class="iconfont-archer">&#xe606;</span>Paper-reading</span>
+    
+        <span class="sidebar-tag-name" data-tags="learning-note"><span class="iconfont-archer">&#xe606;</span>learning-note</span>
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="CUDA"><span class="iconfont-archer">&#xe606;</span>CUDA</span>
+    
+        <span class="sidebar-tag-name" data-tags="cmake"><span class="iconfont-archer">&#xe606;</span>cmake</span>
+    
+        <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
+    
+        <span class="sidebar-tag-name" data-tags="DataStructure"><span class="iconfont-archer">&#xe606;</span>DataStructure</span>
+    
+        <span class="sidebar-tag-name" data-tags="Numpy"><span class="iconfont-archer">&#xe606;</span>Numpy</span>
+    
+        <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="OS-Linux"><span class="iconfont-archer">&#xe606;</span>OS-Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="slidingwindow"><span class="iconfont-archer">&#xe606;</span>slidingwindow</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="golang"><span class="iconfont-archer">&#xe606;</span>golang</span>
+    
+        <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="Data-Structure"><span class="iconfont-archer">&#xe60a;</span>Data-Structure</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "jax"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
+
+
