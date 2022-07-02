@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/liysky/liysky.github.io.git/"/>
-  <updated>2022-04-23T13:32:01.702Z</updated>
+  <updated>2022-07-02T15:36:26.457Z</updated>
   <id>https://github.com/liysky/liysky.github.io.git/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Rendering pipline</title>
+    <link href="https://github.com/liysky/liysky.github.io.git/2022/07/02/Rendering-pipline/"/>
+    <id>https://github.com/liysky/liysky.github.io.git/2022/07/02/Rendering-pipline/</id>
+    <published>2022-07-02T15:23:46.000Z</published>
+    <updated>2022-07-02T15:36:26.457Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="阶段"><a href="#阶段" class="headerlink" title="阶段"></a>阶段</h1><ul><li>应用程序阶段</li><li>几何阶段</li><li>光栅化阶段</li></ul><h2 id="应用程序阶段"><a href="#应用程序阶段" class="headerlink" title="应用程序阶段"></a>应用程序阶段</h2><ul><li>通过软件的方式来实现的阶段（其他阶段全部或者部分建立在硬件基础之上）</li><li>可以并行在 CPU 上执行，超标量体系结构，同一阶段同一时间做不同的几件事情。</li><li>包含碰撞检测、加速算法、输入检测、动画、力反馈、纹理动画、变换仿真、几何变形等。（视锥体裁剪等加速算法）</li><li>主要任务为：将需要在屏幕上显示出来的几何体（图元）输入到绘制管线的下一阶段。</li></ul><h2 id="几何阶段"><a href="#几何阶段" class="headerlink" title="几何阶段"></a>几何阶段</h2><ul><li>模型视点变换</li><li>顶点着色</li><li>投影</li><li>裁剪</li><li>屏幕映射</li></ul><h2 id="光栅化阶段"><a href="#光栅化阶段" class="headerlink" title="光栅化阶段"></a>光栅化阶段</h2><ul><li>即给每个像素进行正确的配色，以便正确的绘制整幅图像。</li><li>三角形设定（Triangle Setup）</li><li>三角形遍历 (Triangle Traversal)</li><li>像素着色阶段 (Pixel Shading)</li><li>融合阶段 (Merging)</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;阶段&quot;&gt;&lt;a href=&quot;#阶段&quot; class=&quot;headerlink&quot; title=&quot;阶段&quot;&gt;&lt;/a&gt;阶段&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;应用程序阶段&lt;/li&gt;
+&lt;li&gt;几何阶段&lt;/li&gt;
+&lt;li&gt;光栅化阶段&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;应用程序阶段&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+    
+    
+      <category term="CG" scheme="https://github.com/liysky/liysky.github.io.git/tags/CG/"/>
+    
+  </entry>
   
   <entry>
     <title>Java Reflect</title>
@@ -467,28 +496,6 @@
     
     
       <category term="Paper-reading" scheme="https://github.com/liysky/liysky.github.io.git/tags/Paper-reading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Important Conception In CG</title>
-    <link href="https://github.com/liysky/liysky.github.io.git/2021/03/23/Important-Conception-In-CG/"/>
-    <id>https://github.com/liysky/liysky.github.io.git/2021/03/23/Important-Conception-In-CG/</id>
-    <published>2021-03-23T13:50:57.000Z</published>
-    <updated>2021-03-23T13:52:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-03-22%20at%2017.06.20.png" alt="Screen Shot 2021-03-23 at 15.26.53"></p><p><img src="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-03-23%20at%2015.26.53.png" alt="Screen Shot 2021-03-23 at 15.26.53"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;img src=&quot;https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-03-22%20at%2017.06.20.png&quot; alt=&quot;Screen Shot 2
-      
-    
-    </summary>
-    
-    
     
   </entry>
   

@@ -370,6 +370,56 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2022/07/02/Rendering-pipline/" >
+            
+                <span>Rendering pipline</span>
+        </a>
+        <div class="abstract-content">
+            阶段
+应用程序阶段
+几何阶段
+光栅化阶段
+
+应用程序阶段
+通过软件的方式来实现的阶段（其他阶段全部或者部分建立在硬件基础之上）
+可以并行在 CPU 上执行，超标量体系结构，同一阶段同一时间做不同的几件事情。
+包含碰撞检测、加速算法、输入检测、动画、力反馈、纹理动画、变换仿真、几何变形等。（视锥体裁剪等加速算法）
+主要任务为：将需要在屏幕上显示出来的几何体（图元）输入到绘制管线的下一阶段。
+
+几何阶段
+模型视点变换
+顶点着色
+投影
+裁剪
+屏幕映射
+
+光栅化阶段
+即给每个像素进行正确的配色，以便正确的绘制整幅图像。
+三角形设定（Triangle Setup）
+三角形遍历 (Triangle ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CG">CG</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2022/04/22/Java-Reflect/" >
             
                 <span>Java Reflect</span>
@@ -971,29 +1021,6 @@ CPU结构图
         <a class="post-tag" href="javascript:void(0);" data-tags = "slidingwindow">slidingwindow</a>
     
 </div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2021/04/20/Binary-Search/" >
-            
-                <span>Binary Search</span>
-        </a>
-        <div class="abstract-content">
-            12345678910111213141516171819202122232425262728#include &lt;iostream&gt;#include &lt;vector&gt;int binarysear(std::vector&lt;int&gt; &amp;nums, int target)&#123;    int left = 0;    int right = nums.size();    while(left &lt;= right)&#123;        int mid = left+(right - left) / 2 ;        if(nums...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/04/20</span>
-            </div>
-            <!-- tags  -->
             
         </div>
     </article>
@@ -2459,9 +2486,28 @@ CPU结构图
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 88
+        Total : 89
         </div>
         <!-- search  -->
         
@@ -2474,6 +2520,11 @@ CPU结构图
     
     <div class="archive-year"> 2022 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/02</span><a class="archive-post-title" href= "/2022/07/02/Rendering-pipline/" >Rendering pipline</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2987,6 +3038,8 @@ CPU结构图
         <span class="sidebar-tag-name" data-tags="golang"><span class="iconfont-archer">&#xe606;</span>golang</span>
     
         <span class="sidebar-tag-name" data-tags="BuaaAssignments"><span class="iconfont-archer">&#xe606;</span>BuaaAssignments</span>
+    
+        <span class="sidebar-tag-name" data-tags="CG"><span class="iconfont-archer">&#xe606;</span>CG</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
