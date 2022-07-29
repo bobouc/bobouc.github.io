@@ -41,8 +41,9 @@
 <meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/47e20a39-36a3-467c-8f04-23601e527cd0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%252F20220729%252Fus-west-2%252Fs3%252Faws4_request&amp;X-Amz-Date=20220729T152102Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=74ccdf43747fe37a7d4fa418657b57b8def1eee6dcdd59e2699ea1bb9c1ad424&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%253D%22Untitled.png%22&amp;x-id=GetObject">
 <meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/60341eab-814c-4679-9a02-2c111db0c212/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%252F20220729%252Fus-west-2%252Fs3%252Faws4_request&amp;X-Amz-Date=20220729T152137Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=935b71e30641f4ecf6ff7afcdd02f32a31e52102849565258ad73dd474ae73b8&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%253D%22Untitled.png%22&amp;x-id=GetObject">
 <meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/44806d7b-19e4-4e74-8199-7c84d4afc189/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%252F20220729%252Fus-west-2%252Fs3%252Faws4_request&amp;X-Amz-Date=20220729T152157Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=f52a2d9f3cb193d7a3eb5af35f5a0e5a55e0690a9dc219bbc4dad1afffd057b8&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%253D%22Untitled.png%22&amp;x-id=GetObject">
+<meta property="og:image" content="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b1846702-f27a-416b-9f24-ac663d9a661c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%252F20220729%252Fus-west-2%252Fs3%252Faws4_request&amp;X-Amz-Date=20220729T153057Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=9490b4e016dfa1e0db2bcb13a2bb5b79a1a64b92bf97a530c0040747deacadd2&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%253D%22Untitled.png%22&amp;x-id=GetObject">
 <meta property="article:published_time" content="2021-02-22T14:32:46.000Z">
-<meta property="article:modified_time" content="2022-07-29T15:22:21.162Z">
+<meta property="article:modified_time" content="2022-07-29T15:31:23.233Z">
 <meta property="article:author" content="jax">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jaximage-1253102271.cos.ap-beijing.myqcloud.com/uPic/Screen%20Shot%202021-03-01%20at%2019.22.52.png">
@@ -295,7 +296,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">21.4k</span>阅读时长: <span class="post-count reading-time">98 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">21.7k</span>阅读时长: <span class="post-count reading-time">100 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -1490,6 +1491,17 @@ Phone m_Phone;
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(base) root@cy:~/rust_Pro<span class="meta"># size hello_world/target/release/hello_world</span></span><br><span class="line">   text    data     bss     dec     hex filename</span><br><span class="line"> <span class="number">341457</span>   <span class="number">13448</span>     <span class="number">536</span>  <span class="number">355441</span>   <span class="number">56</span>c71 hello_world/target/release/hello_world</span><br></pre></td></tr></table></figure>
 <p>内核空间</p>
 <p>x86 32位系统，Linux 内核地址空间指虚拟地址从 0xC0000000开始到 0xFFFFFFFF位置的高端内存地址空间，总容量1G的容量。包含，内核镜像、物理页面表、驱动程序等运行在内核空间。</p>
+<p>进程</p>
+<p><strong>进程是程序执行的过程</strong>，包括了动态创建、调度和消亡的整个过程，<strong>进程是程序资源管理的最小单位</strong>。</p>
+<p>线程</p>
+<p>线程是操作系统能够进行运算调度的最小单位。线程被包含在进程之中，是进程中实际运作单位，一个进程可以包含多个线程，<strong>线程是资源调度的最小单位</strong>。</p>
+<p>线程资源和开销</p>
+<p>同一进程中多条线程共享全部该进程中的系统资源，如虚拟地址空间，文件描述符文件描述符和信号处理等。但同一进程中多个线程有各自的调用栈、寄存器环境、线程本地存储等。</p>
+<p>线程创建的开销主要是线程堆栈的建立，分配内存的开销，开销不大，其中最大的开销发生在线程上下文切换的时候。</p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b1846702-f27a-416b-9f24-ac663d9a661c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220729%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20220729T153057Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=9490b4e016dfa1e0db2bcb13a2bb5b79a1a64b92bf97a530c0040747deacadd2&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22Untitled.png%22&amp;x-id=GetObject" alt="img"></p>
+<p><strong>协程：轻量化的微线程。</strong></p>
+<p>协程的调度完全由用户控制，协程拥有自己的寄存器上下文和栈，协程调度切换时，将寄存器上下文和栈保存到其他地方，再切回来时，回复先前保存的寄存器上下文和栈，直接将操作用户空间栈，完全没有内核切换的开销。</p>
+<p>动态协程：协程的栈大小２KB，最大到１GB，可动态伸缩。而线程存储上下文寄存器和栈固定为２MB，不灵活且相对较大。</p>
 
     </article>
     <!-- license  -->
@@ -3596,7 +3608,23 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
 </html>
 
 
